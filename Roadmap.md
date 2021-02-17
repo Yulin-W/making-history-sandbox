@@ -30,7 +30,7 @@
     - Meta, SEO
     - Linking from old app
     - Advertising online
-## Plugins planned
+## Plugins planned (these can go into separate repos)
 - [ ] Convert image to basemap/scenario
 - [ ] Wikipedia event AI recommendation
 - [ ] Auto generation of territorial changes based on natural language processing or just in general with randomness
