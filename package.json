@@ -11,6 +11,7 @@
     "cesium": "^1.78.0",
     "craco-cesium": "^1.2.0",
     "react": "^17.0.1",
+    "react-color": "^2.19.3",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.2",
     "resium": "^1.13.1",
