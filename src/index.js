@@ -6,11 +6,8 @@ import App from './App';
 // Import Cesium
 import { Ion } from "cesium";
 
-// Import config
-import config from './config.json';
-
 // Use Cesium Ion token
-Ion.defaultAccessToken = config.cesiumIonAccessToken;
+Ion.defaultAccessToken = process.env.REACT_APP_CESIUM_ION_TOKEN;
 
 ReactDOM.render(
   <React.StrictMode>
