@@ -9,7 +9,7 @@ const themeDict = {
         polyStrokeOpacity: 1,
         polyStrokeWidth: 2, // This seems to not work very well on windows for cesium
         polyFillDefault: "#f5f5f5",
-        polyFillOpacity: 0.1,
+        polyFillOpacity: 0.3,
     }
 
 }
