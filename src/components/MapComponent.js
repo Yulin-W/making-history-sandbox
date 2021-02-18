@@ -33,15 +33,22 @@ export default function MapComponent(props) {
     return (
         <div>
             <div id={cesiumCreditContainerID} className={classes.cesiumCreditContainer}></div>
-            <Viewer full timeline={false} animation={false} fullscreenButton={false} creditContainer={cesiumCreditContainerID} className={classes.map}>
+            <Viewer
+                full
+                timeline={false}
+                animation={false}
+                fullscreenButton={false}
+                creditContainer={cesiumCreditContainerID}
+                selectionIndicator={false}
+                onSelectedEntityChange={entity => {entity.polygon.material=cesiumColorFromHex(props.getColor(), props.themeDict.polyFillOpacity);}}
+                className={classes.map}
+            >
                 <GeoJsonDataSource
                     data={mapAdmin}
                     fill={cesiumColorFromHex(props.themeDict.polyFillDefault, props.themeDict.polyFillOpacity)}
                     stroke={cesiumColorFromHex(props.themeDict.polyStroke, props.themeDict.polyStrokeOpacity)}
                     strokeWidth={props.themeDict.polyStrokeWidth}
-                    onLoad={(data) => { console.log(data.entities.values); }}
                 />
-                {/*FIXME:so how can i use this onload funciton to set colors */}
             </Viewer>
         </div>
     );
