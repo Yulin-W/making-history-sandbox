@@ -1,20 +1,95 @@
 // Import React
-import { makeStyles } from '@material-ui/core/styles';
+import React from "react";
+import { withStyles } from '@material-ui/core/styles';
 
-// Import default basemap geojson
-import mapAdmin from "../assets/basemap/mapAdmin.json";
+// Import leaflet
+import { MapContainer, GeoJSON, TileLayer} from 'react-leaflet';
+import "leaflet/dist/leaflet.css";
 
-const useStyles = makeStyles(theme => ({
-    map: {
-        zIndex: 0
-    },
-}));
+const useStyles = theme => ({
+    mapContainer: {
+        position: "absolute",
+        top: 0,
+        left: 0,
+        height: "100vh",
+        width: "100vw",
+    }
+});
 
-export default function MapComponent(props) {
-    const classes = useStyles();
+class MapComponent extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            baseMap: props.baseMap,
+        }
 
-    return (
-        <div>
-        </div>
-    );
+        // Binding methods
+        this.onEachFeature = this.onEachFeature.bind(this);
+        this.style = this.style.bind(this);
+    }
+
+    onEachFeature(feature, layer) {
+        layer.addEventListener("click", () => {
+            this.clickRegion(feature, layer);
+        });
+        layer.addEventListener("mouseover", () => {
+            this.highlightRegion(feature, layer);
+        });
+        layer.addEventListener("mouseout", () => {
+            this.resetHighlightRegion(feature, layer);
+        });
+    }
+
+    style(feature, layer) {
+        return {
+            color: this.props.themeDict.polyStrokeColor,
+            weight: this.props.themeDict.polyStrokeWeight,
+            fillColor: this.props.themeDict.polyFillColorDefault,
+            fillOpacity: this.props.themeDict.polyFillOpacityDefault,
+        };
+    }
+
+
+    hightlightStyle(feature, layer) {
+        return {
+            fillOpacity: this.props.themeDict.polyFillOpacityHovered
+        };
+    }
+
+    highlightRegion(feature, layer) {
+        layer.setStyle(this.hightlightStyle(feature, layer));
+    }
+
+    resetHighlightRegion(feature, layer) {
+        layer.setStyle(this.style(feature, layer));
+    }
+
+    clickRegion(feature, layer) {
+        this.props.assignRegion(feature, layer);
+    }
+
+    render() {
+        const { classes } = this.props;
+
+        return (
+            <MapContainer
+                center={[0, 0]}
+                zoom={2}
+                scrollWheelZoom={true}
+                className={classes.mapContainer}
+            >
+                <TileLayer
+                    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                ></TileLayer>
+                <GeoJSON
+                    data={this.state.baseMap}
+                    style={this.style}
+                    onEachFeature={this.onEachFeature}
+                ></GeoJSON>
+            </MapContainer>
+        );
+    }
 }
+
+export default withStyles(useStyles)(MapComponent);

@@ -5,11 +5,11 @@ const themeDict = {
 
     },
     other: { // Theme object for map (currently done via cesium) to use, this is passed down as props to all child
-        polyStroke: "#414141",
-        polyStrokeOpacity: 1,
-        polyStrokeWidth: 2, // This seems to not work very well on windows for cesium
-        polyFillDefault: "#f5f5f5",
-        polyFillOpacity: 0.3,
+        polyStrokeColor: "#414141",
+        polyStrokeWeight: 0.5, // This seems to not work very well on windows for cesium
+        polyFillColorDefault: "#f5f5f5",
+        polyFillOpacityDefault: 0.3,
+        polyFillOpacityHovered: 0.5,
     }
 
 }
