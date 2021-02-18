@@ -51,3 +51,5 @@
 - Play timeline
 - Generate timeline
 - Scenarios and points of divergence
+- Geojson refiner
+  - Currently geojson inputs are required to have name, and regionID attributes

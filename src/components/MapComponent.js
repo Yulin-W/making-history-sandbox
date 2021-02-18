@@ -45,7 +45,7 @@ class MapComponent extends React.Component {
         return {
             color: this.props.themeDict.polyStrokeColor,
             weight: this.props.themeDict.polyStrokeWeight,
-            fillColor: this.props.themeDict.polyFillColorDefault,
+            fillColor: this.props.getRegionColorByIndex(feature.properties.regionID),
             fillOpacity: this.props.themeDict.polyFillOpacityDefault,
         };
     }
@@ -66,7 +66,7 @@ class MapComponent extends React.Component {
     }
 
     clickRegion(feature, layer) {
-        this.props.assignRegion(feature, layer);
+        this.props.assignRegion(feature.properties.regionID);
     }
 
     render() {
@@ -74,14 +74,15 @@ class MapComponent extends React.Component {
 
         return (
             <MapContainer
-                center={[0, 0]}
-                zoom={2}
+                center={[30, 0]}
+                zoom={3}
                 scrollWheelZoom={true}
                 className={classes.mapContainer}
             >
                 <TileLayer
                     attribution='Map data: &copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors | Map style: &copy <a href="https://opentopomap.org/">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
                     url="https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png"
+                    noWrap
                 ></TileLayer>
                 <GeoJSON
                     data={this.state.baseMap}
