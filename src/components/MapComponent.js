@@ -13,6 +13,7 @@ const useStyles = theme => ({
         left: 0,
         height: "100vh",
         width: "100vw",
+        zIndex: 0,
     }
 });
 
@@ -79,8 +80,8 @@ class MapComponent extends React.Component {
                 className={classes.mapContainer}
             >
                 <TileLayer
-                    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    attribution='Map data: &copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors | Map style: &copy <a href="https://opentopomap.org/">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+                    url="https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png"
                 ></TileLayer>
                 <GeoJSON
                     data={this.state.baseMap}

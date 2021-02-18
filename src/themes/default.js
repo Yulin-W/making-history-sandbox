@@ -8,8 +8,8 @@ const themeDict = {
         polyStrokeColor: "#414141",
         polyStrokeWeight: 0.5, // This seems to not work very well on windows for cesium
         polyFillColorDefault: "#f5f5f5",
-        polyFillOpacityDefault: 0.3,
-        polyFillOpacityHovered: 0.5,
+        polyFillOpacityDefault: 0.7,
+        polyFillOpacityHovered: 0.9,
     }
 
 }
