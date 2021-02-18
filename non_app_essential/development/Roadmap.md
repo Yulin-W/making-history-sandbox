@@ -1,3 +1,8 @@
+# Code notes
+- z-index levels:
+  - -1: background, should not be used
+  - 0: background
+  - 1: foreground
 # Basic requirements
 - Backward save compatibility (do so by making a plugin app for converting save from old map to new seamlessly)
 - Plugin-extension system to allow adding stuff
