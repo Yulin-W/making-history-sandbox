@@ -15,13 +15,15 @@ import themeDict from './themes/default';
 // Import default basemap geojson
 import mapAdmin from "./assets/basemap/mapAdmin.json";
 
+// Import react load script
+import { Helmet } from "react-helmet";
+
 // Import scripts
 import createRegionDict from './scripts/createRegionDict.js';
 import createScenarioEntry from './scripts/createScenarioEntry.js';
 
 // Convert mapAdmin to a prototype, const dictionary indexed by regionID
 const regionDictDefault = createRegionDict(mapAdmin);
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -63,6 +65,9 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
+        <Helmet>
+          <title>Making History Sandbox</title>
+        </Helmet>
         <ColorBarComponent ref={this.colorBarRef} themeDict={this.themeDict.other}/>
         <MapComponent themeDict={this.themeDict.other} baseMap={mapAdmin} getRegionColorByIndex={this.getRegionColorByIndex} assignRegion={this.assignRegion}/>
         <Button style={{ zIndex: 1, position: "absolute", top: "50%", left: 10, width: 100, height: 30 }} color="primary" variant="contained" onClick={() => { console.log(this.colorBarRef.current.state.color); }}>Get color</Button>

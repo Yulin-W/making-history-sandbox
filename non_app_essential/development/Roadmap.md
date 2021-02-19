@@ -49,6 +49,7 @@
 - Auto generatic of scenario
 - AI to simulate and change territory and generate events elsewhere to save player time from changing less so important regions (turn on or off and also choose for what regions or states perhaps to turn it on)
 - Play timeline
+- Smooth scrolling
 - Generate timeline
 - Scenarios and points of divergence
 - Geojson refiner

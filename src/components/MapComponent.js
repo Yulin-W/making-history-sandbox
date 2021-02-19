@@ -3,7 +3,7 @@ import React from "react";
 import { withStyles } from '@material-ui/core/styles';
 
 // Import leaflet
-import { MapContainer, GeoJSON, TileLayer} from 'react-leaflet';
+import { MapContainer, GeoJSON, TileLayer } from 'react-leaflet';
 import "leaflet/dist/leaflet.css";
 
 const useStyles = theme => ({
@@ -76,7 +76,9 @@ class MapComponent extends React.Component {
             <MapContainer
                 center={[30, 0]}
                 zoom={3}
-                scrollWheelZoom={true}
+                scrollWheelZoom
+                zoomSnap={0}
+                doubleClickZoom={false}
                 className={classes.mapContainer}
             >
                 <TileLayer
