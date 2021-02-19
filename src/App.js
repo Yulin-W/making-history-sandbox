@@ -27,7 +27,10 @@ class App extends React.Component {
     super(props);
     this.state = {
       scenarioData: [ // Array of information for the scenarios
-        createScenarioEntry(regionDictDefault) // Default is single entry with the default regionDict, empty date and event entry
+        createScenarioEntry(regionDictDefault, "2000 January 1"), // Default is 4 entry with the default regionDict, empty date and event entry
+        createScenarioEntry(regionDictDefault, "2010 January 1"),
+        createScenarioEntry(regionDictDefault, "2020 January 1"),
+        createScenarioEntry(regionDictDefault, "2030 January 1"),
       ],
       activeEntry: 0, // index of currently active on map entry in scenarioData
     }
@@ -69,7 +72,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <TimelineComponent updateActiveEntry={this.updateActiveEntry} activeEntry={this.state.activeEntry}></TimelineComponent>
+        <TimelineComponent updateActiveEntry={this.updateActiveEntry} activeEntry={this.state.activeEntry} scenarioData={this.state.scenarioData} themeDict={this.themeDict.other}/>
         <ColorBarComponent ref={this.colorBarRef} themeDict={this.themeDict.other}/>
         <MapComponent themeDict={this.themeDict.other} baseMap={mapAdmin} getRegionColorByIndex={this.getRegionColorByIndex} assignRegion={this.assignRegion}/>
         <Button style={{ zIndex: 1, position: "absolute", top: "50%", left: 10, width: 100, height: 30 }} color="primary" variant="contained" onClick={() => { console.log(this.colorBarRef.current.state.color); }}>Get color</Button>
