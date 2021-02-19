@@ -19,6 +19,9 @@ import mapAdmin from "./assets/basemap/mapAdmin.json";
 // Import scripts
 import createRegionDict from './scripts/createRegionDict.js';
 import createScenarioEntry from './scripts/createScenarioEntry.js';
+import cloneDeep from "clone-deep";
+
+// Import deep clone
 
 // Convert mapAdmin to a prototype, const dictionary indexed by regionID
 const regionDictDefault = createRegionDict(mapAdmin);
@@ -41,6 +44,7 @@ class App extends React.Component {
     this.getColor = this.getColor.bind(this);
     this.assignRegion = this.assignRegion.bind(this);
     this.updateActiveEntry = this.updateActiveEntry.bind(this);
+    this.addEntry = this.addEntry.bind(this);
   }
 
   // Returns hex of currently selected color, as in the colorBarComponent
@@ -53,18 +57,31 @@ class App extends React.Component {
     this.setState({activeEntry: newIndex}, () => {this.mapRef.current.resetAllRegionStyle();});// TODO: not the best practice, but using refs does make it easy
   }
 
+  // Adds entry in position at specified index in scenarioData, new entry has no date nor event
+  addEntry(index) {
+    let currentData = this.state.scenarioData;
+    let newRegionDict = null;
+    if (index > 0) { // use the regionDict of the previous entry as the starting spot
+      newRegionDict = createScenarioEntry(this.state.scenarioData[index-1].regionDict);
+    } else { // use the default regionDict if we are to insert at the beginning, currently this is not possible as it seems to lead to a multi-rerender yet some code is not ran in app.render scenario, and I get a regionDict undefined thing which I have no idea why; in light of this, I didn't do the add entry button in front of the first entry
+      newRegionDict = createScenarioEntry(regionDictDefault);
+    }
+    currentData.splice(index, 0, newRegionDict);
+    this.setState({scenarioData : currentData});
+  }
+
   // Assigns region of specified index the currently selected color
   assignRegion(index) {
     const color = this.getColor();
     let currentData = this.state.scenarioData;
     currentData[this.state.activeEntry].regionDict[index].color = color;
-    this.setState({scenarioData : currentData});
+    this.setState({scenarioData : currentData}, () => {this.updateActiveEntry(index);});
   }
 
   render() {
     return (
       <div className="App">
-        <TimelineComponent updateActiveEntry={this.updateActiveEntry} activeEntry={this.state.activeEntry} scenarioData={this.state.scenarioData} themeDict={this.themeDict.other}/>
+        <TimelineComponent updateActiveEntry={this.updateActiveEntry} activeEntry={this.state.activeEntry} scenarioData={this.state.scenarioData} addEntry={this.addEntry} themeDict={this.themeDict.other}/>
         <ColorBarComponent ref={this.colorBarRef} themeDict={this.themeDict.other}/>
         <MapComponent themeDict={this.themeDict.other} baseMap={mapAdmin} assignRegion={this.assignRegion} regionDict={this.state.scenarioData[this.state.activeEntry].regionDict} ref={this.mapRef}/>
       </div>
@@ -72,4 +89,4 @@ class App extends React.Component {
   }
 }
 
-export default App
+export default App;

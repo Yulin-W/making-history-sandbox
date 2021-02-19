@@ -5,6 +5,7 @@ import { Scrollbars } from 'react-custom-scrollbars';
 
 // Import custom components
 import TimelineMarker from './TimelineMarker.js';
+import TimelineAddButton from './TimelineAddButton.js';
 
 // Import script
 import useWindowSize from '../scripts/useWindowSize.js';
@@ -21,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     },
     timelineLine: {
         position: "absolute",
-        top: 28,
+        top: 26,
         left: 0,
         height: 2,
         width: 1000,
@@ -36,13 +37,13 @@ const useStyles = makeStyles((theme) => ({
         top: 0,
         left: 0,
         width: 1000,
-    }
+    },
 }));
 
 export default function TimelineBarComponent(props) {
     const classes = useStyles();
     const markers = props.scenarioData.map((entry, index) =>
-        <TimelineMarker key={index} index={index} label={entry.date} selected={props.activeEntry === index} updateActiveEntry={props.updateActiveEntry} themeDict={props.themeDict} />
+        <TimelineMarker key={index} index={index} label={entry.date} selected={props.activeEntry === index} updateActiveEntry={props.updateActiveEntry} addEntry={props.addEntry} themeDict={props.themeDict} />
     )
     const [width, height] = useWindowSize(); // Values that change whenever window is resized, height is not used for now TODO: get rid of height part if performacne suffers, else overhead I guess is fine
     const lineLength = Math.max(width, (props.scenarioData.length + 1) * props.themeDict.timelineMarkerSpacing); // Take the larger of the viewport width and the length required to fit the timeline markers as the length of the timeline TODO: the issue of what I've done here is that the right end and the left end of the timeline won't match up in length when the second line length case in the max arguments is triggered, not too important, but fix it if possible
