@@ -3,7 +3,7 @@ import React from "react";
 import { withStyles } from '@material-ui/core/styles';
 
 // Import leaflet
-import { MapContainer, GeoJSON, TileLayer } from 'react-leaflet';
+import { MapContainer, GeoJSON, TileLayer, AttributionControl } from 'react-leaflet';
 import "leaflet/dist/leaflet.css";
 
 const useStyles = theme => ({
@@ -11,12 +11,11 @@ const useStyles = theme => ({
         position: "absolute",
         top: 0,
         left: 0,
-        height: "100vh",
         width: "100vw",
+        height: "calc(100vh - 45px)", // the -50px is to ensure that the map's bottom meets the timeline bar, hence if timeline bar height is adjusted, adjust map height here accordingly
         zIndex: 0,
-    }
+    },
 });
-
 class MapComponent extends React.Component {
     constructor(props) {
         super(props);
@@ -97,6 +96,7 @@ class MapComponent extends React.Component {
                 zoomSnap={0}
                 doubleClickZoom={false}
                 zoomControl={false}
+                attributionControl={false}
                 className={classes.mapContainer}
             >
                 <TileLayer
@@ -110,6 +110,7 @@ class MapComponent extends React.Component {
                     onEachFeature={this.onEachFeature}
                     ref={this.geojsonRef}
                 ></GeoJSON>
+                <AttributionControl position="bottomright"/>
             </MapContainer>
         );
     }

@@ -18,9 +18,10 @@ const useStyles = theme => ({
         justifyContent: "center",
         flexFlow: "column",
         alignItems: "stretch",
-        margin: 5,
+        marginTop: 0,
         padding: 5,
         borderRadius: 5,
+        transform: "scale(0.8)"
     },
 });
 

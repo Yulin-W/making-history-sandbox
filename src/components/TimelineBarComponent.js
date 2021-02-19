@@ -6,11 +6,14 @@ import { Scrollbars } from 'react-custom-scrollbars';
 // Import custom components
 import TimelineMarker from './TimelineMarker.js';
 
+// Import script
+import useWindowSize from '../scripts/useWindowSize.js';
+
 const useStyles = makeStyles((theme) => ({
     timelineBarContainer: {
         position: "absolute",
         width: "100%",
-        height: 50,
+        height: 45, // If this is adjusted, need to adjust the height of the map element as well so that the top of the timeline meets the bottom of the map
         bottom: 0,
         overflow: "hidden",
         zIndex: 1,
@@ -36,26 +39,12 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-// Function for listener on windows resize
-function useWindowSize() {
-    const [size, setSize] = React.useState([0, 0]);
-    React.useLayoutEffect(() => {
-        function updateSize() {
-            setSize([window.innerWidth, window.innerHeight]);
-        }
-        window.addEventListener('resize', updateSize);
-        updateSize();
-        return () => window.removeEventListener('resize', updateSize);
-    }, []);
-    return size;
-}
-
 export default function TimelineBarComponent(props) {
     const classes = useStyles();
     const markers = props.scenarioData.map((entry, index) =>
         <TimelineMarker key={index} index={index} label={entry.date} selected={props.activeEntry === index} updateActiveEntry={props.updateActiveEntry} themeDict={props.themeDict} />
     )
-    const [width, height] = useWindowSize(); // Values that change whenever window is resized, height is not used for now, but kept in case it becomes useful TODO: if performance is getting bad, delete the height and its corresponding code in the function useWindowSize
+    const [width, height] = useWindowSize(); // Values that change whenever window is resized, height is not used for now TODO: get rid of height part if performacne suffers, else overhead I guess is fine
     const lineLength = Math.max(width, (props.scenarioData.length + 1) * props.themeDict.timelineMarkerSpacing); // Take the larger of the viewport width and the length required to fit the timeline markers as the length of the timeline TODO: the issue of what I've done here is that the right end and the left end of the timeline won't match up in length when the second line length case in the max arguments is triggered, not too important, but fix it if possible
     return (
         <div className={classes.timelineBarContainer}>
