@@ -16,7 +16,7 @@ export default function TimelineComponent(props) {
     const classes = useStyles();
     return (
         <div className={classes.timelineComponent}>
-            <TimelineBarComponent updateActiveEntry={props.updateActiveEntry} activeEntry={props.activeEntry} scenarioData={props.scenarioData} addEntry={props.addEntry} themeDict={props.themeDict}/>
+            <TimelineBarComponent updateActiveEntry={props.updateActiveEntry} activeEntry={props.activeEntry} scenarioData={props.scenarioData} themeDict={props.themeDict}/>
             <TimelineEventComponent themeDict={props.themeDict}/>
         </div>
     );

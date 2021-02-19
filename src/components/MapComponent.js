@@ -28,9 +28,6 @@ class MapComponent extends React.Component {
         this.style = this.style.bind(this);
         this.getRegionColorByIndex = this.getRegionColorByIndex.bind(this);
         this.resetAllRegionStyle = this.resetAllRegionStyle.bind(this);
-        this.clickRegion = this.clickRegion.bind(this);
-        this.highlightRegion = this.highlightRegion.bind(this);
-        this.resetHighlightRegion = this.resetHighlightRegion.bind(this);
     }
 
     onEachFeature(feature, layer) {
