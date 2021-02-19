@@ -27,10 +27,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       scenarioData: [ // Array of information for the scenarios
-        createScenarioEntry(regionDictDefault, "2000 January 1"), // Default is 4 entry with the default regionDict, empty date and event entry
-        createScenarioEntry(regionDictDefault, "2010 January 1"),
-        createScenarioEntry(regionDictDefault, "2020 January 1"),
-        createScenarioEntry(regionDictDefault, "2030 January 1"),
+        createScenarioEntry(regionDictDefault, "2000 January 1", "An Event"), // Default is 2 entry with the default regionDict, empty date and event entry
+        createScenarioEntry(regionDictDefault, "2010 January 1", "Another Event"),
       ],
       activeEntry: 0, // index of currently active on map entry in scenarioData
     }
@@ -39,7 +37,6 @@ class App extends React.Component {
     
     // Bind this to methods
     this.getColor = this.getColor.bind(this);
-    this.getRegionColorByIndex = this.getRegionColorByIndex.bind(this);
     this.assignRegion = this.assignRegion.bind(this);
     this.updateActiveEntry = this.updateActiveEntry.bind(this);
   }
@@ -47,13 +44,6 @@ class App extends React.Component {
   // Returns hex of currently selected color, as in the colorBarComponent
   getColor() { 
     return this.colorBarRef.current.state.color;
-  }
-
-  // Returns hex color for the region of the specified index
-  getRegionColorByIndex(index) {
-    let color = this.state.scenarioData[this.state.activeEntry].regionDict[index].color;
-    // Return color hex if there is one, else if record shows null color, use the default fill color as specified in themeDict
-    return color ? color : this.themeDict.other.polyFillColorDefault;
   }
 
   // Updates index for active entry
@@ -74,7 +64,7 @@ class App extends React.Component {
       <div className="App">
         <TimelineComponent updateActiveEntry={this.updateActiveEntry} activeEntry={this.state.activeEntry} scenarioData={this.state.scenarioData} themeDict={this.themeDict.other}/>
         <ColorBarComponent ref={this.colorBarRef} themeDict={this.themeDict.other}/>
-        <MapComponent themeDict={this.themeDict.other} baseMap={mapAdmin} getRegionColorByIndex={this.getRegionColorByIndex} assignRegion={this.assignRegion}/>
+        <MapComponent themeDict={this.themeDict.other} baseMap={mapAdmin} assignRegion={this.assignRegion} regionDict={this.state.scenarioData[this.state.activeEntry].regionDict}/>
         <Button style={{ zIndex: 1, position: "absolute", top: "50%", left: 10, width: 100, height: 30 }} color="primary" variant="contained" onClick={() => { console.log(this.colorBarRef.current.state.color); }}>Get color</Button>
         {/*FIXME: above is a test button, please remove */}
       </div>

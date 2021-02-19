@@ -23,10 +23,10 @@ class MapComponent extends React.Component {
         this.state = {
             baseMap: props.baseMap,
         }
-
         // Binding methods
         this.onEachFeature = this.onEachFeature.bind(this);
         this.style = this.style.bind(this);
+        this.getRegionColorByIndex = this.getRegionColorByIndex.bind(this);
     }
 
     onEachFeature(feature, layer) {
@@ -41,11 +41,18 @@ class MapComponent extends React.Component {
         });
     }
 
+    // Returns hex color for the region of the specified index
+    getRegionColorByIndex(index) {
+        let color = this.props.regionDict[index].color;
+        // Return color hex if there is one, else if record shows null color, use the default fill color as specified in themeDict
+        return color ? color : this.props.themeDict.polyFillColorDefault;
+    }
+
     style(feature, layer) {
         return {
             color: this.props.themeDict.polyStrokeColor,
             weight: this.props.themeDict.polyStrokeWeight,
-            fillColor: this.props.getRegionColorByIndex(feature.properties.regionID),
+            fillColor: this.getRegionColorByIndex(feature.properties.regionID),
             fillOpacity: this.props.themeDict.polyFillOpacityDefault,
         };
     }
