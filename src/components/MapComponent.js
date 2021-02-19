@@ -79,6 +79,7 @@ class MapComponent extends React.Component {
                 scrollWheelZoom
                 zoomSnap={0}
                 doubleClickZoom={false}
+                zoomControl={false}
                 className={classes.mapContainer}
             >
                 <TileLayer

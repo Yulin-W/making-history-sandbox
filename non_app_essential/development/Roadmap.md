@@ -14,16 +14,13 @@
 - All side bar components should be allowed to disappeear and be retracted
 - Make components have good APIs for extensibility
 # Beta version
-- [ ] 0.1.0: 3D or 2D Map component (perhaps allowing 2D alternatives, it depends on what library we get), should allow basemap imports
-  - Use Caesium alongside geojson
+- [x] 0.1.0: 3D or 2D Map component (perhaps allowing 2D alternatives, it depends on what library we get), should allow basemap imports
 - [ ] 0.2.0: Timeline component
-- [ ] 0.3.0: Efficient save file data format standard
-- [ ] 0.4.0: Timeline add new entries and inherit interactivity
-- [ ] 0.5.0: Save/load functionality
-- [ ] 0.6.0: Legend
-- [ ] 0.7.0: Lasso select
-- [ ] 0.8.0: Plugin and extension capabilities, i.e. ensure there is a highly extensive and versatile API for accessing the various features of the features above (keep this in mind when writing the program as well, i.e. try to use functional programming I'd say)
-- [ ] 0.9.0: Refining visuals
+- [ ] 0.3.0: Save/load functionality
+- [ ] 0.4.0: Legend
+- [ ] 0.5.0: Lasso select
+- [ ] 0.6.0: Plugin and extension capabilities, i.e. ensure there is a highly extensive and versatile API for accessing the various features of the features above (keep this in mind when writing the program as well, i.e. try to use functional programming I'd say)
+- [ ] 0.7.0: Refining visuals
 # Standard version
 ## Version 1
 - [ ] 1.0.0: fix any bugs from the beta versions and bundle it no release on github pages
