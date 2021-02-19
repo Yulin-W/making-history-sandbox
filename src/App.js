@@ -33,7 +33,9 @@ class App extends React.Component {
       activeEntry: 0, // index of currently active on map entry in scenarioData
     }
     this.themeDict = themeDict;
+    // Numerous refs
     this.colorBarRef = React.createRef(null);
+    this.mapRef = React.createRef(null);
     
     // Bind this to methods
     this.getColor = this.getColor.bind(this);
@@ -43,12 +45,12 @@ class App extends React.Component {
 
   // Returns hex of currently selected color, as in the colorBarComponent
   getColor() { 
-    return this.colorBarRef.current.state.color;
+    return this.colorBarRef.current.state.color; // TODO: not the best practice, but using refs does make it easy
   }
 
   // Updates index for active entry
   updateActiveEntry(newIndex) {
-    this.setState({activeEntry: newIndex});
+    this.setState({activeEntry: newIndex}, () => {this.mapRef.current.resetAllRegionStyle();});// TODO: not the best practice, but using refs does make it easy
   }
 
   //
@@ -64,7 +66,7 @@ class App extends React.Component {
       <div className="App">
         <TimelineComponent updateActiveEntry={this.updateActiveEntry} activeEntry={this.state.activeEntry} scenarioData={this.state.scenarioData} themeDict={this.themeDict.other}/>
         <ColorBarComponent ref={this.colorBarRef} themeDict={this.themeDict.other}/>
-        <MapComponent themeDict={this.themeDict.other} baseMap={mapAdmin} assignRegion={this.assignRegion} regionDict={this.state.scenarioData[this.state.activeEntry].regionDict}/>
+        <MapComponent themeDict={this.themeDict.other} baseMap={mapAdmin} assignRegion={this.assignRegion} regionDict={this.state.scenarioData[this.state.activeEntry].regionDict} ref={this.mapRef}/>
         <Button style={{ zIndex: 1, position: "absolute", top: "50%", left: 10, width: 100, height: 30 }} color="primary" variant="contained" onClick={() => { console.log(this.colorBarRef.current.state.color); }}>Get color</Button>
         {/*FIXME: above is a test button, please remove */}
       </div>

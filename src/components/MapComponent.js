@@ -23,10 +23,12 @@ class MapComponent extends React.Component {
         this.state = {
             baseMap: props.baseMap,
         }
+        this.geojsonRef = React.createRef(null);
         // Binding methods
         this.onEachFeature = this.onEachFeature.bind(this);
         this.style = this.style.bind(this);
         this.getRegionColorByIndex = this.getRegionColorByIndex.bind(this);
+        this.resetAllRegionStyle = this.resetAllRegionStyle.bind(this);
     }
 
     onEachFeature(feature, layer) {
@@ -74,6 +76,14 @@ class MapComponent extends React.Component {
 
     clickRegion(feature, layer) {
         this.props.assignRegion(feature.properties.regionID);
+        layer.setStyle(this.style(feature, layer)); // TODO: such setting would not highlight the region though, which might be a problem
+    }
+
+    // Resets styles of all regions to match those of the regionDict data
+    resetAllRegionStyle() {
+        Object.values(this.geojsonRef.current._layers).forEach(layer => {
+            layer.setStyle(this.style(layer.feature, layer));
+        });
     }
 
     render() {
@@ -98,6 +108,7 @@ class MapComponent extends React.Component {
                     data={this.state.baseMap}
                     style={this.style}
                     onEachFeature={this.onEachFeature}
+                    ref={this.geojsonRef}
                 ></GeoJSON>
             </MapContainer>
         );
