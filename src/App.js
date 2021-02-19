@@ -53,7 +53,7 @@ class App extends React.Component {
     this.setState({activeEntry: newIndex}, () => {this.mapRef.current.resetAllRegionStyle();});// TODO: not the best practice, but using refs does make it easy
   }
 
-  //
+  // Assigns region of specified index the currently selected color
   assignRegion(index) {
     const color = this.getColor();
     let currentData = this.state.scenarioData;
@@ -67,8 +67,6 @@ class App extends React.Component {
         <TimelineComponent updateActiveEntry={this.updateActiveEntry} activeEntry={this.state.activeEntry} scenarioData={this.state.scenarioData} themeDict={this.themeDict.other}/>
         <ColorBarComponent ref={this.colorBarRef} themeDict={this.themeDict.other}/>
         <MapComponent themeDict={this.themeDict.other} baseMap={mapAdmin} assignRegion={this.assignRegion} regionDict={this.state.scenarioData[this.state.activeEntry].regionDict} ref={this.mapRef}/>
-        <Button style={{ zIndex: 1, position: "absolute", top: "50%", left: 10, width: 100, height: 30 }} color="primary" variant="contained" onClick={() => { console.log(this.colorBarRef.current.state.color); }}>Get color</Button>
-        {/*FIXME: above is a test button, please remove */}
       </div>
     );
   }
