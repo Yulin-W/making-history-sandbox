@@ -19,12 +19,16 @@ import mapAdmin from "./assets/basemap/mapAdmin.json";
 // Import scripts
 import createRegionDict from './scripts/createRegionDict.js';
 import createScenarioEntry from './scripts/createScenarioEntry.js';
+import createRegionNameDict from './scripts/createRegionNameDict.js';
 
 // Import deep clone
 import cloneDeep from "clone-deep";
 
 // Convert mapAdmin to a prototype, const dictionary indexed by regionID
 const regionDictDefault = createRegionDict(mapAdmin);
+
+// Create a constant dictionary mapping index of region to name of region, as opposed to keeping this repeated info contained in every single entry in the scenario data
+const regionNameDict = createRegionNameDict(mapAdmin);
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -35,6 +39,7 @@ class App extends React.Component {
       ],
       activeEntry: 0, // index of currently active on map entry in scenarioData
     }
+    this.regionNameDict = regionNameDict;
     this.themeDict = themeDict;
     // Numerous refs
     this.colorBarRef = React.createRef(null);
