@@ -124,7 +124,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <MenuComponent></MenuComponent>
+        <MenuComponent data={this.state.scenarioData}></MenuComponent>
         <TimelineComponent updateActiveEntry={this.updateActiveEntry} activeEntry={this.state.activeEntry} scenarioData={this.state.scenarioData} addEntry={this.addEntry} updateEventDate={this.updateEventDate} updateEvent={this.updateEvent} deleteEntry={this.deleteEntry} clearEntry={this.clearEntry} themeDict={this.themeDict.other}/>
         <ColorBarComponent ref={this.colorBarRef} themeDict={this.themeDict.other} />
         <MapComponent themeDict={this.themeDict.other} baseMap={mapAdmin} assignRegion={this.assignRegion} regionDict={this.state.scenarioData[this.state.activeEntry].regionDict} ref={this.mapRef} />

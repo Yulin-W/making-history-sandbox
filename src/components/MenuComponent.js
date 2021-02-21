@@ -1,5 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import saveScenario from '../scripts/saveScenario.js';
 
 const useStyles = makeStyles((theme) => ({
     menuContainer: {
@@ -25,9 +26,10 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MenuComponent(props) {
     const classes = useStyles();
+    console.log(props.data);
     return (
         <div className={classes.menuContainer}>
-            <Button size="small" className={classes.menuButton}>Save</Button>
+            <Button size="small" className={classes.menuButton} onClick={() => {saveScenario(props.data);}}>Save</Button>
             <Button size="small" className={classes.menuButton}>Load</Button>
         </div>
     );

@@ -22,6 +22,7 @@
   - Add entry
   - Controlled date and event input elements
 - [ ] 0.3.0: Save/load functionality
+  - Currently assumed only the admin map is used hence saves only include the scenarioData
 - [ ] 0.4.0: Legend
 - [ ] 0.5.0: Lasso select
 - [ ] 0.6.0: Plugin and extension capabilities, i.e. ensure there is a highly extensive and versatile API for accessing the various features of the features above (keep this in mind when writing the program as well, i.e. try to use functional programming I'd say)
