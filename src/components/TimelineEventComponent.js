@@ -52,7 +52,7 @@ export default function TimelineEventComponent(props) {
             <div className={classes.eventBar}>
                 <TextField size="small" label="Date" margin="dense" value={props.date} onChange={e => {props.updateEventDate(e.target.value)}} className={classes.dateInput}></TextField>
                 <Button variant="contained" size="small" color="primary" onClick={() => {props.clearEntry();}} className={classes.eventButton}>Clear Entry</Button>
-                <Button variant="contained" size="small" color="secondary" onClick={() => {props.deleteEntry(props.activeEntry);}} disabled={props.activeEntry===0} className={classes.eventButton}>Delete Entry</Button>
+                <Button variant="contained" size="small" color="secondary" onClick={() => {props.deleteEntry(props.activeEntry);}} disabled={props.oneEntryLeft} className={classes.eventButton}>Delete Entry</Button>
                 {/*Delete button is disabled for the first entry TODO: because for now we haven't implemented the add entry before first element functionality yet, nor is there a button for it*/}
             </div>
             <textarea className={classes.eventContent} value={props.event} onChange={e => {props.updateEvent(e.target.value)}} multiline="true"></textarea>

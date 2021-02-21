@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function TimelineComponent(props) {
     const classes = useStyles();
+    const oneEntryLeft = props.scenarioData.length === 1; // If there is onely 1 entry left, disable the entry delete button as currently the add entry after deleting all entries functionality is yet to be added TODO:
     return (
         <div className={classes.timelineComponent}>
             <TimelineBarComponent
@@ -31,6 +32,7 @@ export default function TimelineComponent(props) {
                 deleteEntry={props.deleteEntry}
                 activeEntry={props.activeEntry}
                 clearEntry={props.clearEntry}
+                oneEntryLeft={oneEntryLeft}
                 themeDict={props.themeDict}
             />
         </div>

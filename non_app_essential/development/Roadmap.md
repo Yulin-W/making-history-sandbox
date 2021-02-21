@@ -21,7 +21,8 @@
   - Timeline to click on
   - Add entry
   - Controlled date and event input elements
-- [ ] 0.3.0: Save/load functionality
+- [x] 0.3.0: Save/load functionality
+  - Currently assumed only the admin map is used hence saves only include the scenarioData
 - [ ] 0.4.0: Legend
 - [ ] 0.5.0: Lasso select
 - [ ] 0.6.0: Plugin and extension capabilities, i.e. ensure there is a highly extensive and versatile API for accessing the various features of the features above (keep this in mind when writing the program as well, i.e. try to use functional programming I'd say)
@@ -38,6 +39,7 @@
     - Attributions
       - Basemap source (use same as alternative history editor, noting on personal alterations)
 ## Plugins planned (these can go into separate repos)
+- [ ] Save converter that converts the old alternate history editor saves to the new save
 - [ ] Convert image to basemap/scenario
 - [ ] Wikipedia event AI recommendation
 - [ ] Auto generation of territorial changes based on natural language processing or just in general with randomness
@@ -58,3 +60,4 @@
 - Scenarios and points of divergence
 - Geojson refiner
   - Currently geojson inputs are required to have name, and regionID attributes
+- Edit region names (this would require possibly changing the way data is stored for the app, or possibly via a plugin that requires as part of the save an additional id to name mapping for different entries in the save)
