@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     timelineBarContainer: {
         position: "absolute",
         width: "100%",
-        height: 45, // If this is adjusted, need to adjust the height of the map element as well so that the top of the timeline meets the bottom of the map
+        height: 45, // If this is adjusted, need to adjust the height of the map element and event component as well so that the top of the timeline meets the bottom of the map
         bottom: 0,
         overflow: "hidden",
         zIndex: 1,
