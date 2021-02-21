@@ -3,7 +3,7 @@ import React from "react";
 import { withStyles } from '@material-ui/core/styles';
 
 // Import leaflet
-import { MapContainer, GeoJSON, TileLayer } from 'react-leaflet';
+import { MapContainer, GeoJSON, TileLayer, AttributionControl } from 'react-leaflet';
 import "leaflet/dist/leaflet.css";
 
 const useStyles = theme => ({
@@ -11,22 +11,26 @@ const useStyles = theme => ({
         position: "absolute",
         top: 0,
         left: 0,
-        height: "100vh",
         width: "100vw",
+        height: "calc(100vh - 45px)", // the -50px is to ensure that the map's bottom meets the timeline bar, hence if timeline bar height is adjusted, adjust map height here accordingly
         zIndex: 0,
-    }
+    },
 });
-
 class MapComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             baseMap: props.baseMap,
         }
-
+        this.geojsonRef = React.createRef(null);
         // Binding methods
         this.onEachFeature = this.onEachFeature.bind(this);
         this.style = this.style.bind(this);
+        this.getRegionColorByIndex = this.getRegionColorByIndex.bind(this);
+        this.resetAllRegionStyle = this.resetAllRegionStyle.bind(this);
+        this.clickRegion = this.clickRegion.bind(this);
+        this.highlightRegion = this.highlightRegion.bind(this);
+        this.resetHighlightRegion = this.resetHighlightRegion.bind(this);
     }
 
     onEachFeature(feature, layer) {
@@ -41,11 +45,18 @@ class MapComponent extends React.Component {
         });
     }
 
+    // Returns hex color for the region of the specified index
+    getRegionColorByIndex(index) {
+        let color = this.props.regionDict[index].color;
+        // Return color hex if there is one, else if record shows null color, use the default fill color as specified in themeDict
+        return color ? color : this.props.themeDict.polyFillColorDefault;
+    }
+
     style(feature, layer) {
         return {
             color: this.props.themeDict.polyStrokeColor,
             weight: this.props.themeDict.polyStrokeWeight,
-            fillColor: this.props.getRegionColorByIndex(feature.properties.regionID),
+            fillColor: this.getRegionColorByIndex(feature.properties.regionID),
             fillOpacity: this.props.themeDict.polyFillOpacityDefault,
         };
     }
@@ -67,6 +78,14 @@ class MapComponent extends React.Component {
 
     clickRegion(feature, layer) {
         this.props.assignRegion(feature.properties.regionID);
+        layer.setStyle(this.style(feature, layer)); // TODO: such setting would not highlight the region though, which might be a problem
+    }
+
+    // Resets styles of all regions to match those of the regionDict data
+    resetAllRegionStyle() {
+        Object.values(this.geojsonRef.current._layers).forEach(layer => {
+            layer.setStyle(this.style(layer.feature, layer));
+        });
     }
 
     render() {
@@ -80,6 +99,7 @@ class MapComponent extends React.Component {
                 zoomSnap={0}
                 doubleClickZoom={false}
                 zoomControl={false}
+                attributionControl={false}
                 className={classes.mapContainer}
             >
                 <TileLayer
@@ -91,7 +111,9 @@ class MapComponent extends React.Component {
                     data={this.state.baseMap}
                     style={this.style}
                     onEachFeature={this.onEachFeature}
+                    ref={this.geojsonRef}
                 ></GeoJSON>
+                <AttributionControl position="bottomright"/>
             </MapContainer>
         );
     }

@@ -10,6 +10,8 @@ const themeDict = {
         polyFillColorDefault: "#f5f5f5",
         polyFillOpacityDefault: 0.7,
         polyFillOpacityHovered: 0.9,
+        timelineMarkerSpacing: 120,
+        timelineMarkerLabelWidth: 100,
     }
 
 }
