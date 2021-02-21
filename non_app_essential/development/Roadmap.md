@@ -27,9 +27,10 @@
   - Lasso select
   - Eraser
   - Put toolbar besides the color bar, perhaps by placing both in a colorToolbar component container
-- [ ] 0.5.0: Legend
-- [ ] 0.6.0: Plugin and extension capabilities, i.e. ensure there is a highly extensive and versatile API for accessing the various features of the features above (keep this in mind when writing the program as well, i.e. try to use functional programming I'd say)
-- [ ] 0.7.0: Refining visuals
+- [ ] 0.5.0: Add smooth scrolling leaflet plugin
+- [ ] 0.6.0: Legend
+- [ ] 0.7.0: Plugin and extension capabilities, i.e. ensure there is a highly extensive and versatile API for accessing the various features of the features above (keep this in mind when writing the program as well, i.e. try to use functional programming I'd say)
+- [ ] 0.8.0: Refining visuals
   - Try create a neoclassical style interface
   - Position attribution element in a convenient location, this is mandatory as attribution is key
 # Standard version
