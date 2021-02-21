@@ -39,6 +39,7 @@
     - Attributions
       - Basemap source (use same as alternative history editor, noting on personal alterations)
 ## Plugins planned (these can go into separate repos)
+- [ ] Save converter that converts the old alternate history editor saves to the new save
 - [ ] Convert image to basemap/scenario
 - [ ] Wikipedia event AI recommendation
 - [ ] Auto generation of territorial changes based on natural language processing or just in general with randomness
