@@ -6,6 +6,9 @@ import { withStyles } from '@material-ui/core/styles';
 import { MapContainer, GeoJSON, TileLayer, AttributionControl } from 'react-leaflet';
 import "leaflet/dist/leaflet.css";
 
+// Import relevant custom components for plugins
+import LassoComponent from "./LassoComponent.js";
+
 const useStyles = theme => ({
     mapContainer: {
         position: "absolute",
@@ -113,6 +116,7 @@ class MapComponent extends React.Component {
                     onEachFeature={this.onEachFeature}
                     ref={this.geojsonRef}
                 ></GeoJSON>
+                <LassoComponent/>
                 <AttributionControl position="bottomright"/>
             </MapContainer>
         );

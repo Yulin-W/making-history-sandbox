@@ -9,6 +9,7 @@ import MenuComponent from "./components/MenuComponent";
 import MapComponent from './components/MapComponent.js';
 import ColorBarComponent from './components/ColorBarComponent';
 import TimelineComponent from "./components/TimelineComponent";
+import ToolbarComponent from "./components/ToolbarComponent";
 
 // Import default themeDict
 import themeDict from './themes/default';
@@ -141,6 +142,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <MenuComponent data={this.state.scenarioData} updateScenario={this.updateScenario}></MenuComponent>
+        <ToolbarComponent></ToolbarComponent>
         <TimelineComponent updateActiveEntry={this.updateActiveEntry} activeEntry={this.state.activeEntry} scenarioData={this.state.scenarioData} addEntry={this.addEntry} updateEventDate={this.updateEventDate} updateEvent={this.updateEvent} deleteEntry={this.deleteEntry} clearEntry={this.clearEntry} themeDict={this.themeDict.other}/>
         <ColorBarComponent ref={this.colorBarRef} themeDict={this.themeDict.other} />
         <MapComponent themeDict={this.themeDict.other} baseMap={mapAdmin} assignRegion={this.assignRegion} regionDict={this.state.scenarioData[this.state.activeEntry].regionDict} ref={this.mapRef} />
