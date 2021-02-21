@@ -54,6 +54,7 @@ class App extends React.Component {
     this.updateEvent = this.updateEvent.bind(this);
     this.deleteEntry = this.deleteEntry.bind(this);
     this.clearEntry = this.clearEntry.bind(this);
+    this.updateScenario = this.updateScenario.bind(this);
   }
 
   // Returns hex of currently selected color, as in the colorBarComponent
@@ -131,10 +132,15 @@ class App extends React.Component {
     this.setState({ scenarioData: currentData });
   }
 
+  // Loads the specified save file
+  updateScenario(newScenario) {
+    this.setState({ scenarioData: newScenario });
+  }
+
   render() {
     return (
       <div className="App">
-        <MenuComponent data={this.state.scenarioData}></MenuComponent>
+        <MenuComponent data={this.state.scenarioData} updateScenario={this.updateScenario}></MenuComponent>
         <TimelineComponent updateActiveEntry={this.updateActiveEntry} activeEntry={this.state.activeEntry} scenarioData={this.state.scenarioData} addEntry={this.addEntry} updateEventDate={this.updateEventDate} updateEvent={this.updateEvent} deleteEntry={this.deleteEntry} clearEntry={this.clearEntry} themeDict={this.themeDict.other}/>
         <ColorBarComponent ref={this.colorBarRef} themeDict={this.themeDict.other} />
         <MapComponent themeDict={this.themeDict.other} baseMap={mapAdmin} assignRegion={this.assignRegion} regionDict={this.state.scenarioData[this.state.activeEntry].regionDict} ref={this.mapRef} />
