@@ -78,10 +78,15 @@ class App extends React.Component {
   deleteEntry(index) {
     let currentData = cloneDeep(this.state.scenarioData);
     currentData.splice(index, 1);
-    // Define the new index to be the index preceding the deleted if the deleted entry was the last entry, else make new index the same as the deleted index
-    const newIndex = index === this.state.scenarioData.length-1 ? index-1 : index;
-    // To avoid possibly access invalid active entry values, we update the activeEntry first, then update the scenarioDict to delete the entry
-    this.updateActiveEntry(newIndex, () => {this.setState({ scenarioData: currentData });})
+    if (index === this.state.scenarioData.length-1) {
+      // Deleted entry is last entry, hence new entry to be focused on is the entry before the last entry
+      let newIndex = index-1;
+      // To avoid possibly access invalid active entry values, we update the activeEntry first, then update the scenarioDict to delete the entry
+      this.updateActiveEntry(newIndex, () => {this.setState({ scenarioData: currentData });}) // Note reset style is included in the updateActiveEntry function already
+    } else {
+      // Deleted entry was not the last entry, hence new entry to be focused on is the entry after the deleted entry, i.e. activeEntry index need not change
+      this.setState({ scenarioData: currentData }, () => {this.mapRef.current.resetAllRegionStyle();});
+    }
   }
 
   // Updates event date for active entry, expects a string argument
