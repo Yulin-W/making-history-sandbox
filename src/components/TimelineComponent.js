@@ -30,6 +30,7 @@ export default function TimelineComponent(props) {
                 updateEvent={props.updateEvent}
                 deleteEntry={props.deleteEntry}
                 activeEntry={props.activeEntry}
+                clearEntry={props.clearEntry}
                 themeDict={props.themeDict}
             />
         </div>
