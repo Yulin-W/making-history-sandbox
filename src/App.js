@@ -132,9 +132,9 @@ class App extends React.Component {
     this.setState({ scenarioData: currentData });
   }
 
-  // Loads the specified save file
+  // Loads the specified save file, then sets current active entry to the first one, thereby resetting the region styling as well
   updateScenario(newScenario) {
-    this.setState({ scenarioData: newScenario });
+    this.setState({ scenarioData: newScenario }, () => {this.updateActiveEntry(0)});
   }
 
   render() {
