@@ -21,7 +21,7 @@
   - Timeline to click on
   - Add entry
   - Controlled date and event input elements
-- [ ] 0.3.0: Save/load functionality
+- [x] 0.3.0: Save/load functionality
   - Currently assumed only the admin map is used hence saves only include the scenarioData
 - [ ] 0.4.0: Legend
 - [ ] 0.5.0: Lasso select
