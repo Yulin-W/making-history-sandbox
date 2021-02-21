@@ -15,7 +15,12 @@
 - Make components have good APIs for extensibility
 # Beta version
 - [x] 0.1.0: 3D or 2D Map component (perhaps allowing 2D alternatives, it depends on what library we get), should allow basemap imports
-- [ ] 0.2.0: Timeline component
+- [x] 0.2.0: Timeline component
+  - Clear entry
+  - Delete entry
+  - Timeline to click on
+  - Add entry
+  - Controlled date and event input elements
 - [ ] 0.3.0: Save/load functionality
 - [ ] 0.4.0: Legend
 - [ ] 0.5.0: Lasso select
