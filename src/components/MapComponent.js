@@ -8,6 +8,7 @@ import "leaflet/dist/leaflet.css";
 
 // Import relevant custom components for plugins
 import LassoComponent from "./LassoComponent.js";
+import "../leafletPlugins/SmoothWheelZoom.js";
 
 const useStyles = theme => ({
     mapContainer: {
@@ -116,8 +117,8 @@ class MapComponent extends React.Component {
                     onEachFeature={this.onEachFeature}
                     ref={this.geojsonRef}
                 ></GeoJSON>
-                {this.props.lassoSelecting && <LassoComponent updateLassoSelecting={this.props.updateLassoSelecting} assignRegions={this.props.assignRegions}/>}
                 <AttributionControl position="bottomright"/>
+                {this.props.lassoSelecting && <LassoComponent updateLassoSelecting={this.props.updateLassoSelecting} assignRegions={this.props.assignRegions}/>}
             </MapContainer>
         );
     }
