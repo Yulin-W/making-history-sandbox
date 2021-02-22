@@ -23,7 +23,7 @@
   - Controlled date and event input elements
 - [x] 0.3.0: Save/load functionality
   - Currently assumed only the admin map is used hence saves only include the scenarioData
-- [ ] 0.4.0: Toolbar
+- [x] 0.4.0: Toolbar
   - Lasso select
   - Eraser
 - [ ] 0.5.0: Add smooth scrolling leaflet plugin
