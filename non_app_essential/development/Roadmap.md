@@ -55,6 +55,10 @@
 - [ ] GIF/Screenshot generation
 - [ ] Detailed state world building: e.g. mark major cities, flags, hereditary linages, populations, gdp
 - [ ] Data generation for states, e.g. land area
+
+# Possible code improvements
+- Minimise use of refs
+- Try to find another way as opposed to passing the App's this value to the plugin methods that run after corresponding App methods
 # Possible future features
 - Add chinese version
 - Use more icons alongside words for buttons

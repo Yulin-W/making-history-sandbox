@@ -91,18 +91,11 @@ class App extends React.Component {
     this.updateErasing = this.updateErasing.bind(this);
   }
 
-  // Updates plugin data for the specified plugin with the specified data
+  // Updates plugin data for the specified plugin with the specified data, the key should be the one used in the plugins dictionary
   updatePluginData(key, data) {
     let currentData = cloneDeep(this.state.pluginData);
     currentData[key] = data;
     this.setState({ pluginData: currentData });
-
-    // Running plugin methods
-    Object.values(this.plugins).forEach(entry => {
-      if (entry.functions.onUpdatePluginData) {
-        entry.functions.onUpdatePluginData(this, key, data);
-      }
-    });
   }
 
   // Updates lasso selecting, expects true/false boolean value, then runs callback if any
