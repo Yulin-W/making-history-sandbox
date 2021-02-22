@@ -99,7 +99,9 @@ class MapComponent extends React.Component {
                 center={[30, 0]}
                 zoom={3}
                 scrollWheelZoom
+                preferCanvas
                 zoomSnap={0}
+                wheelPxPerZoomLevel={120}
                 doubleClickZoom={false}
                 zoomControl={false}
                 attributionControl={false}
@@ -116,8 +118,8 @@ class MapComponent extends React.Component {
                     onEachFeature={this.onEachFeature}
                     ref={this.geojsonRef}
                 ></GeoJSON>
-                {this.props.lassoSelecting && <LassoComponent updateLassoSelecting={this.props.updateLassoSelecting} assignRegions={this.props.assignRegions}/>}
                 <AttributionControl position="bottomright"/>
+                {this.props.lassoSelecting && <LassoComponent updateLassoSelecting={this.props.updateLassoSelecting} assignRegions={this.props.assignRegions}/>}
             </MapContainer>
         );
     }
