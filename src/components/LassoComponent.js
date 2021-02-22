@@ -36,7 +36,7 @@ export default function LassoComponent(props) {
         map.addEventListener('lasso.finished', eventHandler);
 
         return (() => { // What to do on unmounting the LassoComponent
-            lasso.disable(); // FIXME: bug: disabling via this salong, i.e. in the case of disabling via using the cancel button, appears to lead to the drawing of selection persisting, though that selection has no coloring effect
+            lasso.disable(); // FIXME: bug: disabling via clicking cancel button, i.e. in the case of disabling via using the cancel button, appears to lead to the drawing of selection persisting, though that selection has no coloring effect
             map.removeEventListener('lasso.finished', eventHandler); // Remove event handler to avoid creating multiple handlers
         });
     }, [map, lasso]);
