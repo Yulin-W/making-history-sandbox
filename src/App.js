@@ -40,6 +40,7 @@ class App extends React.Component {
       ],
       activeEntry: 0, // index of currently active on map entry in scenarioData
       lassoSelecting: false, // state for whether lasso select tool is activated
+      erasing: false, // state for whether eraser tool is activated
     }
     this.regionNameDict = regionNameDict;
     this.themeDict = themeDict;
@@ -58,6 +59,7 @@ class App extends React.Component {
     this.clearEntry = this.clearEntry.bind(this);
     this.updateScenario = this.updateScenario.bind(this);
     this.updateLassoSelecting = this.updateLassoSelecting.bind(this);
+    this.updateErasing = this.updateErasing.bind(this);
   }
 
   // Updates lasso selecting, expects true/false boolean value, then runs callback if any
@@ -69,9 +71,14 @@ class App extends React.Component {
     });
   }
 
+  // Update eraser state, such state in turn determins the value getColor returns
+  updateErasing(newState) {
+    this.setState({ erasing: newState });
+  }
+
   // Returns hex of currently selected color, as in the colorBarComponent
   getColor() {
-    return this.colorBarRef.current.state.color; // TODO: not the best practice, but using refs does make it easy
+    return this.state.erasing ? null : this.colorBarRef.current.state.color; // TODO: not the best practice, but using refs does make it easy
   }
 
   // Adds entry in position at specified index in scenarioData, new entry has no date nor event
@@ -161,7 +168,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <MenuComponent data={this.state.scenarioData} updateScenario={this.updateScenario}></MenuComponent>
-        <ToolbarComponent lassoSelecting={this.state.lassoSelecting} updateLassoSelecting={this.updateLassoSelecting}/>
+        <ToolbarComponent lassoSelecting={this.state.lassoSelecting} updateLassoSelecting={this.updateLassoSelecting} erasing={this.state.erasing} updateErasing={this.updateErasing}/>
         <TimelineComponent updateActiveEntry={this.updateActiveEntry} activeEntry={this.state.activeEntry} scenarioData={this.state.scenarioData} addEntry={this.addEntry} updateEventDate={this.updateEventDate} updateEvent={this.updateEvent} deleteEntry={this.deleteEntry} clearEntry={this.clearEntry} themeDict={this.themeDict.other} />
         <ColorBarComponent ref={this.colorBarRef} themeDict={this.themeDict.other} />
         <MapComponent themeDict={this.themeDict.other} baseMap={mapAdmin} assignRegions={this.assignRegions} regionDict={this.state.scenarioData[this.state.activeEntry].regionDict} lassoSelecting={this.state.lassoSelecting} updateLassoSelecting={this.updateLassoSelecting} ref={this.mapRef} />

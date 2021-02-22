@@ -28,10 +28,13 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ToolbarComponent(props) {
         const classes = useStyles();
-        const lassoButtonText = props.lassoSelecting ? "Cancel" : "Lasso";
+        const lassoButtonText = props.lassoSelecting ? "Cancel" : "Lasso"; // TODO: using switches might be better in these situations
         const lassoButtonColor = props.lassoSelecting ? "secondary" : "default";
+        const eraserButtonText = props.erasing ? "Cancel" : "Eraser";
+        const eraserButtonColor = props.erasing ? "secondary" : "default";
         return (
             <div className={classes.toolbarContainer}>
+                <Button color={eraserButtonColor} className={classes.toolbarButton} onClick={() => {props.updateErasing(!props.erasing);}}>{eraserButtonText}</Button>
                 <Button color={lassoButtonColor} className={classes.toolbarButton} onClick={() => {props.updateLassoSelecting(!props.lassoSelecting);}}>{lassoButtonText}</Button>
             </div>
         );
