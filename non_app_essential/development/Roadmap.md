@@ -52,6 +52,8 @@
 - [ ] Detailed state world building: e.g. mark major cities, flags, hereditary linages, populations, gdp
 - [ ] Data generation for states, e.g. land area
 # Possible future features
+- Add chinese version
+- Use more icons alongside words for buttons
 - Make work well for phones
 - Geojson editor to create basemaps or edit them easily
 - Link
