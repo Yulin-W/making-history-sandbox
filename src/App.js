@@ -64,7 +64,7 @@ class App extends React.Component {
   }
 
   // Updates lasso selecting, expects true/false boolean value, then runs callback if any
-  updateLassoSelecting(newState, callback=null) {
+  updateLassoSelecting(newState, callback = null) {
     this.setState({ lassoSelecting: newState }, () => {
       if (callback) {
         callback();
@@ -145,7 +145,7 @@ class App extends React.Component {
   }
 
   // Assigns regions of specified indices the currently selected color, then run callback if any
-  assignRegions(indices, callback=null) {
+  assignRegions(indices, callback = null) {
     const color = this.getColor();
     let currentData = cloneDeep(this.state.scenarioData);
     indices.forEach(index => {
@@ -157,7 +157,7 @@ class App extends React.Component {
         if (callback) {
           callback();
         }
-    });
+      });
   }
 
   // Loads the specified save file, then sets current active entry to the first one, thereby resetting the region styling as well
@@ -166,11 +166,25 @@ class App extends React.Component {
   }
 
   render() {
+    // Setup api dictionary
+    const api = { // Dictionary of methods/variables relating to the app that plugins are able to use
+      assignRegions: this.assignRegions,
+      getColor: this.getColor,
+      addEntry: this.addEntry,
+      deleteEntry: this.deleteEntry,
+      updateActiveEntry: this.updateActiveEntry,
+      updateEventDate: this.updateEventDate,
+      updateEvent: this.updateEvent,
+      mapRef: this.mapRef, // this shouldn't be modified directly in plugins
+      colorBarRef: this.colorBarRef, // this shouldn't be modified directly in plugins
+      state: this.state, // this shouldn't be modified directly in plugins
+    };
+
     return (
       <div className="App">
         <MenuComponent data={this.state.scenarioData} updateScenario={this.updateScenario}></MenuComponent>
-        <ToolbarComponent lassoSelecting={this.state.lassoSelecting} updateLassoSelecting={this.updateLassoSelecting} erasing={this.state.erasing} updateErasing={this.updateErasing}/>
-        <PluginMenuComponent/>
+        <ToolbarComponent lassoSelecting={this.state.lassoSelecting} updateLassoSelecting={this.updateLassoSelecting} erasing={this.state.erasing} updateErasing={this.updateErasing} />
+        <PluginMenuComponent api={api} />
         <TimelineComponent updateActiveEntry={this.updateActiveEntry} activeEntry={this.state.activeEntry} scenarioData={this.state.scenarioData} addEntry={this.addEntry} updateEventDate={this.updateEventDate} updateEvent={this.updateEvent} deleteEntry={this.deleteEntry} clearEntry={this.clearEntry} themeDict={this.themeDict.other} />
         <ColorBarComponent ref={this.colorBarRef} themeDict={this.themeDict.other} />
         <MapComponent themeDict={this.themeDict.other} baseMap={mapAdmin} assignRegions={this.assignRegions} regionDict={this.state.scenarioData[this.state.activeEntry].regionDict} lassoSelecting={this.state.lassoSelecting} updateLassoSelecting={this.updateLassoSelecting} ref={this.mapRef} />
