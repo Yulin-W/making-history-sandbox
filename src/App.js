@@ -39,7 +39,7 @@ class App extends React.Component {
         createScenarioEntry(regionDictDefault, "2010 January 1", "Another Event"),
       ],
       activeEntry: 0, // index of currently active on map entry in scenarioData
-      lassoSelecting: true, // state for whether lasso select tool is activated
+      lassoSelecting: false, // state for whether lasso select tool is activated
     }
     this.regionNameDict = regionNameDict;
     this.themeDict = themeDict;
@@ -60,9 +60,13 @@ class App extends React.Component {
     this.updateLassoSelecting = this.updateLassoSelecting.bind(this);
   }
 
-  // Updates lasso selecting, expects true/false boolean value
-  updateLassoSelecting(newState) {
-    this.setState({ lassoSelecting: newState });
+  // Updates lasso selecting, expects true/false boolean value, then runs callback if any
+  updateLassoSelecting(newState, callback=null) {
+    this.setState({ lassoSelecting: newState }, () => {
+      if (callback) {
+        callback();
+      }
+    });
   }
 
   // Returns hex of currently selected color, as in the colorBarComponent
@@ -132,14 +136,20 @@ class App extends React.Component {
       });
   }
 
-  // Assigns regions of specified indices the currently selected color
-  assignRegions(indices) {
+  // Assigns regions of specified indices the currently selected color, then run callback if any
+  assignRegions(indices, callback=null) {
     const color = this.getColor();
     let currentData = cloneDeep(this.state.scenarioData);
     indices.forEach(index => {
       currentData[this.state.activeEntry].regionDict[index].color = color;
     });
-    this.setState({ scenarioData: currentData }, () => {this.mapRef.current.resetAllRegionStyle();});
+    this.setState({ scenarioData: currentData },
+      () => {
+        this.mapRef.current.resetAllRegionStyle();
+        if (callback) {
+          callback();
+        }
+    });
   }
 
   // Loads the specified save file, then sets current active entry to the first one, thereby resetting the region styling as well
