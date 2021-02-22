@@ -80,7 +80,7 @@ class MapComponent extends React.Component {
     }
 
     clickRegion(feature, layer) {
-        this.props.assignRegion(feature.properties.regionID);
+        this.props.assignRegions([feature.properties.regionID]);
         layer.setStyle(this.style(feature, layer)); // TODO: such setting would not highlight the region though, which might be a problem
     }
 
@@ -116,7 +116,7 @@ class MapComponent extends React.Component {
                     onEachFeature={this.onEachFeature}
                     ref={this.geojsonRef}
                 ></GeoJSON>
-                <LassoComponent lassoSelecting={this.props.lassoSelecting} updateLassoSelecting={this.props.updateLassoSelecting}/>
+                <LassoComponent lassoSelecting={this.props.lassoSelecting} updateLassoSelecting={this.props.updateLassoSelecting} assignRegions={this.props.assignRegions}/>
                 <AttributionControl position="bottomright"/>
             </MapContainer>
         );

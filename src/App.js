@@ -49,7 +49,7 @@ class App extends React.Component {
 
     // Bind this to methods
     this.getColor = this.getColor.bind(this);
-    this.assignRegion = this.assignRegion.bind(this);
+    this.assignRegions = this.assignRegions.bind(this);
     this.updateActiveEntry = this.updateActiveEntry.bind(this);
     this.addEntry = this.addEntry.bind(this);
     this.updateEventDate = this.updateEventDate.bind(this);
@@ -132,12 +132,14 @@ class App extends React.Component {
       });
   }
 
-  // Assigns region of specified index the currently selected color
-  assignRegion(index) {
+  // Assigns regions of specified indices the currently selected color
+  assignRegions(indices) {
     const color = this.getColor();
     let currentData = cloneDeep(this.state.scenarioData);
-    currentData[this.state.activeEntry].regionDict[index].color = color;
-    this.setState({ scenarioData: currentData });
+    indices.forEach(index => {
+      currentData[this.state.activeEntry].regionDict[index].color = color;
+    });
+    this.setState({ scenarioData: currentData }, () => {this.mapRef.current.resetAllRegionStyle();});
   }
 
   // Loads the specified save file, then sets current active entry to the first one, thereby resetting the region styling as well
@@ -152,7 +154,7 @@ class App extends React.Component {
         <ToolbarComponent lassoSelecting={this.state.lassoSelecting} updateLassoSelecting={this.updateLassoSelecting}/>
         <TimelineComponent updateActiveEntry={this.updateActiveEntry} activeEntry={this.state.activeEntry} scenarioData={this.state.scenarioData} addEntry={this.addEntry} updateEventDate={this.updateEventDate} updateEvent={this.updateEvent} deleteEntry={this.deleteEntry} clearEntry={this.clearEntry} themeDict={this.themeDict.other} />
         <ColorBarComponent ref={this.colorBarRef} themeDict={this.themeDict.other} />
-        <MapComponent themeDict={this.themeDict.other} baseMap={mapAdmin} assignRegion={this.assignRegion} regionDict={this.state.scenarioData[this.state.activeEntry].regionDict} lassoSelecting={this.state.lassoSelecting} updateLassoSelecting={this.updateLassoSelecting} ref={this.mapRef} />
+        <MapComponent themeDict={this.themeDict.other} baseMap={mapAdmin} assignRegions={this.assignRegions} regionDict={this.state.scenarioData[this.state.activeEntry].regionDict} lassoSelecting={this.state.lassoSelecting} updateLassoSelecting={this.updateLassoSelecting} ref={this.mapRef} />
       </div>
     );
   }

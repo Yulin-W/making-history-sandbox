@@ -20,9 +20,19 @@ export default function LassoComponent(props) {
 
     // Event handler for when lasso selection is complete
     const eventHandler = event => {
+        let indices = [];
         event.layers.forEach(layer => {
-            // FIXME: actions to take on each layer
+            if (layer) { // Series of if statements to only record in indices the valid selected regions TODO: this seems a bit dodgy
+                if (layer.feature) {
+                    if (layer.feature.properties) {
+                        if (layer.feature.properties.regionID) {
+                            indices.push(layer.feature.properties.regionID);
+                        }
+                    }
+                }
+            }
         });
+        props.assignRegions(indices);
         // Disable lasso
         props.updateLassoSelecting(false);
     };
