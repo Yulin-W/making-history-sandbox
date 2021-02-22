@@ -39,7 +39,7 @@ export default function LassoComponent(props) {
             lasso.disable(); // FIXME: bug: disabling via this salong, i.e. in the case of disabling via using the cancel button, appears to lead to the drawing of selection persisting, though that selection has no coloring effect
             map.removeEventListener('lasso.finished', eventHandler); // Remove event handler to avoid creating multiple handlers
         });
-    }, [map]);
+    }, [map, lasso]);
 
     return null;
 }
