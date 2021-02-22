@@ -116,7 +116,7 @@ class MapComponent extends React.Component {
                     onEachFeature={this.onEachFeature}
                     ref={this.geojsonRef}
                 ></GeoJSON>
-                <LassoComponent/>
+                <LassoComponent lassoSelecting={this.props.lassoSelecting} updateLassoSelecting={this.props.updateLassoSelecting}/>
                 <AttributionControl position="bottomright"/>
             </MapContainer>
         );

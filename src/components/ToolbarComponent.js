@@ -1,7 +1,7 @@
 // Import React
 import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles((theme) => ({
     toolbarContainer: {
@@ -28,9 +28,11 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ToolbarComponent(props) {
         const classes = useStyles();
+        const lassoButtonText = props.lassoSelecting ? "Cancel" : "Lasso";
+        const lassoButtonColor = props.lassoSelecting ? "secondary" : "default";
         return (
             <div className={classes.toolbarContainer}>
-                <Button className={classes.toolbarButton}>Lasso</Button>
+                <Button color={lassoButtonColor} className={classes.toolbarButton} onClick={() => {props.updateLassoSelecting(!props.lassoSelecting);}}>{lassoButtonText}</Button>
             </div>
         );
     }

@@ -39,6 +39,7 @@ class App extends React.Component {
         createScenarioEntry(regionDictDefault, "2010 January 1", "Another Event"),
       ],
       activeEntry: 0, // index of currently active on map entry in scenarioData
+      lassoSelecting: true, // state for whether lasso select tool is activated
     }
     this.regionNameDict = regionNameDict;
     this.themeDict = themeDict;
@@ -56,6 +57,12 @@ class App extends React.Component {
     this.deleteEntry = this.deleteEntry.bind(this);
     this.clearEntry = this.clearEntry.bind(this);
     this.updateScenario = this.updateScenario.bind(this);
+    this.updateLassoSelecting = this.updateLassoSelecting.bind(this);
+  }
+
+  // Updates lasso selecting, expects true/false boolean value
+  updateLassoSelecting(newState) {
+    this.setState({ lassoSelecting: newState });
   }
 
   // Returns hex of currently selected color, as in the colorBarComponent
@@ -73,21 +80,21 @@ class App extends React.Component {
       newRegionDict = createScenarioEntry(regionDictDefault);
     }
     currentData.splice(index, 0, newRegionDict);
-    this.setState({ scenarioData: currentData }, () => {this.updateActiveEntry(index);});
+    this.setState({ scenarioData: currentData }, () => { this.updateActiveEntry(index); });
   }
 
   // Deletes entry in position at specified index in scenarioData
   deleteEntry(index) {
     let currentData = cloneDeep(this.state.scenarioData);
     currentData.splice(index, 1);
-    if (index === this.state.scenarioData.length-1) {
+    if (index === this.state.scenarioData.length - 1) {
       // Deleted entry is last entry, hence new entry to be focused on is the entry before the last entry
-      let newIndex = index-1;
+      let newIndex = index - 1;
       // To avoid possibly access invalid active entry values, we update the activeEntry first, then update the scenarioDict to delete the entry
-      this.updateActiveEntry(newIndex, () => {this.setState({ scenarioData: currentData });}) // Note reset style is included in the updateActiveEntry function already
+      this.updateActiveEntry(newIndex, () => { this.setState({ scenarioData: currentData }); }) // Note reset style is included in the updateActiveEntry function already
     } else {
       // Deleted entry was not the last entry, hence new entry to be focused on is the entry after the deleted entry, i.e. activeEntry index need not change
-      this.setState({ scenarioData: currentData }, () => {this.mapRef.current.resetAllRegionStyle();});
+      this.setState({ scenarioData: currentData }, () => { this.mapRef.current.resetAllRegionStyle(); });
     }
   }
 
@@ -114,7 +121,7 @@ class App extends React.Component {
   }
 
   // Updates index for active entry
-  updateActiveEntry(newIndex, callback=null) {
+  updateActiveEntry(newIndex, callback = null) {
     this.setState(
       { activeEntry: newIndex },
       () => {
@@ -135,17 +142,17 @@ class App extends React.Component {
 
   // Loads the specified save file, then sets current active entry to the first one, thereby resetting the region styling as well
   updateScenario(newScenario) {
-    this.setState({ scenarioData: newScenario }, () => {this.updateActiveEntry(0)});
+    this.setState({ scenarioData: newScenario }, () => { this.updateActiveEntry(0) });
   }
 
   render() {
     return (
       <div className="App">
         <MenuComponent data={this.state.scenarioData} updateScenario={this.updateScenario}></MenuComponent>
-        <ToolbarComponent></ToolbarComponent>
-        <TimelineComponent updateActiveEntry={this.updateActiveEntry} activeEntry={this.state.activeEntry} scenarioData={this.state.scenarioData} addEntry={this.addEntry} updateEventDate={this.updateEventDate} updateEvent={this.updateEvent} deleteEntry={this.deleteEntry} clearEntry={this.clearEntry} themeDict={this.themeDict.other}/>
+        <ToolbarComponent lassoSelecting={this.state.lassoSelecting} updateLassoSelecting={this.updateLassoSelecting}/>
+        <TimelineComponent updateActiveEntry={this.updateActiveEntry} activeEntry={this.state.activeEntry} scenarioData={this.state.scenarioData} addEntry={this.addEntry} updateEventDate={this.updateEventDate} updateEvent={this.updateEvent} deleteEntry={this.deleteEntry} clearEntry={this.clearEntry} themeDict={this.themeDict.other} />
         <ColorBarComponent ref={this.colorBarRef} themeDict={this.themeDict.other} />
-        <MapComponent themeDict={this.themeDict.other} baseMap={mapAdmin} assignRegion={this.assignRegion} regionDict={this.state.scenarioData[this.state.activeEntry].regionDict} ref={this.mapRef} />
+        <MapComponent themeDict={this.themeDict.other} baseMap={mapAdmin} assignRegion={this.assignRegion} regionDict={this.state.scenarioData[this.state.activeEntry].regionDict} lassoSelecting={this.state.lassoSelecting} updateLassoSelecting={this.updateLassoSelecting} ref={this.mapRef} />
       </div>
     );
   }
