@@ -99,6 +99,7 @@ class MapComponent extends React.Component {
                 center={[30, 0]}
                 zoom={3}
                 scrollWheelZoom
+                preferCanvas
                 zoomSnap={0}
                 doubleClickZoom={false}
                 zoomControl={false}
