@@ -101,6 +101,7 @@ class MapComponent extends React.Component {
                 scrollWheelZoom
                 preferCanvas
                 zoomSnap={0}
+                wheelPxPerZoomLevel={120}
                 doubleClickZoom={false}
                 zoomControl={false}
                 attributionControl={false}
