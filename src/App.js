@@ -202,7 +202,7 @@ class App extends React.Component {
   // Loads the specified save file containing scenarioData and pluginData, then sets current active entry to the first one, thereby resetting the region styling as well
   loadSave(saveData) {
     console.log(saveData);
-    this.setState({ scenarioData: saveData.scenarioData, pluginData: saveData.pluginData}, () => { this.updateActiveEntry(0) });
+    this.setState({ scenarioData: saveData.scenarioData, colorData: saveData.colorData, pluginData: saveData.pluginData}, () => { this.updateActiveEntry(0) });
   }
 
   render() {
@@ -228,6 +228,7 @@ class App extends React.Component {
         <MenuComponent
           data={{
             scenarioData: this.state.scenarioData,
+            colorData: this.state.colorData,
             pluginData: this.state.pluginData,
           }}
           loadSave={this.loadSave}
