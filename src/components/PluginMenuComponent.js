@@ -1,4 +1,11 @@
 import { makeStyles } from '@material-ui/core/styles';
+import plugins from "../appPlugins.js";
+import Accordion from '@material-ui/core/Accordion';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Typography from '@material-ui/core/Typography';
+import Scrollbars from 'react-custom-scrollbars';
 
 const useStyles = makeStyles((theme) => ({
     pluginMenuContainer: {
@@ -12,20 +19,49 @@ const useStyles = makeStyles((theme) => ({
         height: "60%",
         backgroundColor: theme.palette.background.default,
         display: "flex",
+        justifyContent: "flex-start",
         flexFlow: "column",
         alignItems: "stretch",
-        padding: 5,
+        padding: 3,
         transform: "translate(0%, -50%)",
-    }
+    },
+    accordionContainer: {
+        paddingRight: 12,
+    },
+    accordionSummary: {
+        paddingTop: 0,
+        paddingBottom: 0,
+    },
+    accordionDetails: {
+        padding: 0,
+    },
+    accordionHeading: {
+
+    },
 }));
 
 export default function PluginMenuComponent(props) {
     const classes = useStyles();
-    console.log(props.api.state.activeEntry);
+    let accordionItems = [];
+    for (const [name, Plugin] of Object.entries(plugins)) {
+        accordionItems.push(
+            <Accordion defaultExpanded key={name} square>
+                <AccordionSummary expandIcon={<ExpandMoreIcon/>} className={classes.accordionSummary}>
+                    <Typography className={classes.accordionHeading}>{name}</Typography>
+                </AccordionSummary>
+                <AccordionDetails className={classes.accordionDetails}>
+                    <Plugin api={props.api}/>
+                </AccordionDetails>
+            </Accordion>
+        );
+    }
     return (
-        <div>
-            <div className={classes.pluginMenuContainer}>
-            </div>
+        <div className={classes.pluginMenuContainer}>
+            <Scrollbars>
+                <div className={classes.accordionContainer}>
+                    {accordionItems}
+                </div>
+            </Scrollbars>
         </div>
     );
 }

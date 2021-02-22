@@ -45,6 +45,7 @@
     - Attributions
       - Basemap source (use same as alternative history editor, noting on personal alterations)
 ## Plugins planned (these can go into separate repos)
+- [ ] Change from controlled element to uncontrolled in event editing to improve performance and responsiveness
 - [ ] Save converter that converts the old alternate history editor saves to the new save
 - [ ] Convert image to basemap/scenario
 - [ ] Wikipedia event AI recommendation

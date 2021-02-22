@@ -23,6 +23,9 @@ import createRegionDict from './scripts/createRegionDict.js';
 import createScenarioEntry from './scripts/createScenarioEntry.js';
 import createRegionNameDict from './scripts/createRegionNameDict.js';
 
+// Import plugins
+import plugins from "./appPlugins.js";
+
 // Import deep clone
 import cloneDeep from "clone-deep";
 
@@ -39,6 +42,7 @@ class App extends React.Component {
         createScenarioEntry(regionDictDefault, "2000 January 1", "An Event"), // Default is 2 entry with the default regionDict, empty date and event entry
         createScenarioEntry(regionDictDefault, "2010 January 1", "Another Event"),
       ],
+      pluginData: Object.keys(plugins).reduce((obj, key) => ({ ...obj, [key]: null}), {}), // Create object for data in plugin indexed by name of plugin
       activeEntry: 0, // index of currently active on map entry in scenarioData
       lassoSelecting: false, // state for whether lasso select tool is activated
       erasing: false, // state for whether eraser tool is activated
@@ -57,10 +61,18 @@ class App extends React.Component {
     this.updateEventDate = this.updateEventDate.bind(this);
     this.updateEvent = this.updateEvent.bind(this);
     this.deleteEntry = this.deleteEntry.bind(this);
+    this.updatePluginData = this.updatePluginData.bind(this);
     this.clearEntry = this.clearEntry.bind(this);
-    this.updateScenario = this.updateScenario.bind(this);
+    this.loadSave = this.loadSave.bind(this);
     this.updateLassoSelecting = this.updateLassoSelecting.bind(this);
     this.updateErasing = this.updateErasing.bind(this);
+  }
+
+  // Updates plugin data for the specified plugin with the specified data
+  updatePluginData(key, data) {
+    let currentData = cloneDeep(this.state.pluginData);
+    currentData[key] = data;
+    this.setState({pluginData:currentData});
   }
 
   // Updates lasso selecting, expects true/false boolean value, then runs callback if any
@@ -160,9 +172,10 @@ class App extends React.Component {
       });
   }
 
-  // Loads the specified save file, then sets current active entry to the first one, thereby resetting the region styling as well
-  updateScenario(newScenario) {
-    this.setState({ scenarioData: newScenario }, () => { this.updateActiveEntry(0) });
+  // Loads the specified save file containing scenarioData and pluginData, then sets current active entry to the first one, thereby resetting the region styling as well
+  loadSave(saveData) {
+    console.log(saveData);
+    this.setState({ scenarioData: saveData.scenarioData, pluginData: saveData.pluginData}, () => { this.updateActiveEntry(0) });
   }
 
   render() {
@@ -175,14 +188,23 @@ class App extends React.Component {
       updateActiveEntry: this.updateActiveEntry,
       updateEventDate: this.updateEventDate,
       updateEvent: this.updateEvent,
+      loadSave: this.loadSave,
+      updatePluginData: this.updatePluginData,
       mapRef: this.mapRef, // this shouldn't be modified directly in plugins
       colorBarRef: this.colorBarRef, // this shouldn't be modified directly in plugins
-      state: this.state, // this shouldn't be modified directly in plugins
+      state: this.state, // this shouldn't be modified directly in plugins, use the update data, especially the update pluginData method to update values
     };
+
 
     return (
       <div className="App">
-        <MenuComponent data={this.state.scenarioData} updateScenario={this.updateScenario}></MenuComponent>
+        <MenuComponent
+          data={{
+            scenarioData: this.state.scenarioData,
+            pluginData: this.state.pluginData,
+          }}
+          loadSave={this.loadSave}
+        />
         <ToolbarComponent lassoSelecting={this.state.lassoSelecting} updateLassoSelecting={this.updateLassoSelecting} erasing={this.state.erasing} updateErasing={this.updateErasing} />
         <PluginMenuComponent api={api} />
         <TimelineComponent updateActiveEntry={this.updateActiveEntry} activeEntry={this.state.activeEntry} scenarioData={this.state.scenarioData} addEntry={this.addEntry} updateEventDate={this.updateEventDate} updateEvent={this.updateEvent} deleteEntry={this.deleteEntry} clearEntry={this.clearEntry} themeDict={this.themeDict.other} />

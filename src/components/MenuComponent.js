@@ -34,7 +34,7 @@ export default function MenuComponent(props) {
             <Button size="small" className={classes.menuButton} onClick={() => { saveScenario(props.data); }}>Save</Button>
             <Dropzone
                 onDrop={acceptedFiles => {
-                    loadScenario(acceptedFiles[0], props.updateScenario);
+                    loadScenario(acceptedFiles[0], props.loadSave);
                 }}
             >
                 {/*acceptedFiles[0] as we only care about a single file TODO: make some restriction to filetype (.json) to upload and number of files to upload (1 only)*/}
