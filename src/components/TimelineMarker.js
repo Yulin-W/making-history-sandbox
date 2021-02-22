@@ -38,7 +38,7 @@ export default function TimelineMarker(props) {
             {/*props.index+1 as we wish to add after the current entry*/}
             <Typography
                 className={classes.markerLabel}
-                variant="caption"
+                variant="body2"
                 style={{
                     width:props.themeDict.timelineMarkerLabelWidth,
                     marginLeft:-props.themeDict.timelineMarkerLabelWidth/2,

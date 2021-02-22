@@ -27,8 +27,11 @@
   - Lasso select
   - Eraser
 - [x] 0.5.0: Add smooth scrolling leaflet plugin
-- [ ] 0.6.0: Legend
-- [ ] 0.7.0: Plugin and extension capabilities, i.e. ensure there is a highly extensive and versatile API for accessing the various features of the features above (keep this in mind when writing the program as well, i.e. try to use functional programming I'd say)
+- [ ] 0.6.0: Plugin and extension capabilities, i.e. ensure there is a highly extensive and versatile API for accessing the various features of the features above (keep this in mind when writing the program as well, i.e. try to use functional programming I'd say)
+  - Plugins should be of the form of a single react component js file, needing only to import relevant material ui and react libraries, following the structure of existing custom components
+  - There should exists a standard api to the app to which the plugins be able to access
+  - Adding plugin to app should be simple as place file into a folder, and at most needing to update a plugin registry file
+- [ ] 0.7.0: Legend
 - [ ] 0.8.0: Refining visuals
   - Try create a neoclassical style interface
   - Position attribution element in a convenient location, this is mandatory as attribution is key

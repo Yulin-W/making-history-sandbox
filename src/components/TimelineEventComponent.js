@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
         position: "absolute",
         left: 0,
         bottom: 45, // This value should be such that the event box touches the timeline bar on the bottom, so adjust accordingly
-        minWidth: 290, // At least 300px adding in padding
+        minWidth: 240, // At least 250px adding in padding
         width: "20%",
         minHeight: 190, // At least 200px adding in padding
         height: "30%",
@@ -37,8 +37,7 @@ const useStyles = makeStyles((theme) => ({
     },
     eventButton: {
         fontSize: 10,
-        width: 50,
-        margin: 3,
+        margin: 2,
     },
     dateInput: {
         margin: 10,

@@ -5,11 +5,12 @@ import React from "react";
 import './App.css';
 
 // Import custom components
-import MenuComponent from "./components/MenuComponent";
+import MenuComponent from "./components/MenuComponent.js";
 import MapComponent from './components/MapComponent.js';
-import ColorBarComponent from './components/ColorBarComponent';
-import TimelineComponent from "./components/TimelineComponent";
-import ToolbarComponent from "./components/ToolbarComponent";
+import ColorBarComponent from './components/ColorBarComponent.js';
+import TimelineComponent from "./components/TimelineComponent.js";
+import ToolbarComponent from "./components/ToolbarComponent.js";
+import PluginMenuComponent from "./components/PluginMenuComponent.js";
 
 // Import default themeDict
 import themeDict from './themes/default';
@@ -169,6 +170,7 @@ class App extends React.Component {
       <div className="App">
         <MenuComponent data={this.state.scenarioData} updateScenario={this.updateScenario}></MenuComponent>
         <ToolbarComponent lassoSelecting={this.state.lassoSelecting} updateLassoSelecting={this.updateLassoSelecting} erasing={this.state.erasing} updateErasing={this.updateErasing}/>
+        <PluginMenuComponent/>
         <TimelineComponent updateActiveEntry={this.updateActiveEntry} activeEntry={this.state.activeEntry} scenarioData={this.state.scenarioData} addEntry={this.addEntry} updateEventDate={this.updateEventDate} updateEvent={this.updateEvent} deleteEntry={this.deleteEntry} clearEntry={this.clearEntry} themeDict={this.themeDict.other} />
         <ColorBarComponent ref={this.colorBarRef} themeDict={this.themeDict.other} />
         <MapComponent themeDict={this.themeDict.other} baseMap={mapAdmin} assignRegions={this.assignRegions} regionDict={this.state.scenarioData[this.state.activeEntry].regionDict} lassoSelecting={this.state.lassoSelecting} updateLassoSelecting={this.updateLassoSelecting} ref={this.mapRef} />
