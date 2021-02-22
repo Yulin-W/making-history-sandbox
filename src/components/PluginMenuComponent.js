@@ -19,8 +19,9 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function TimelineAddButton(props) {
+export default function PluginMenuComponent(props) {
     const classes = useStyles();
+    console.log(props.api.state.activeEntry);
     return (
         <div>
             <div className={classes.pluginMenuContainer}>
