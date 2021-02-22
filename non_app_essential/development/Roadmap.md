@@ -32,7 +32,8 @@
   - There should exists a standard api to the app to which the plugins be able to access
   - Adding plugin to app should be simple as place file into a folder, and at most needing to update a plugin registry file
 - [ ] 0.7.0: Legend
-- [ ] 0.8.0: Refining visuals
+- [ ] 0.8.0: New map button (probably just refresh the page tbh for simplicity)
+- [ ] 0.9.0: Refining visuals
   - Try create a neoclassical style interface
   - Position attribution element in a convenient location, this is mandatory as attribution is key
 # Standard version

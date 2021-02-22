@@ -43,14 +43,15 @@ const useStyles = makeStyles((theme) => ({
 export default function PluginMenuComponent(props) {
     const classes = useStyles();
     let accordionItems = [];
-    for (const [name, Plugin] of Object.entries(plugins)) {
+    for (const [name, value] of Object.entries(plugins)) {
+        const Plugin = value.component;
         accordionItems.push(
             <Accordion defaultExpanded key={name} square>
                 <AccordionSummary expandIcon={<ExpandMoreIcon/>} className={classes.accordionSummary}>
                     <Typography className={classes.accordionHeading}>{name}</Typography>
                 </AccordionSummary>
                 <AccordionDetails className={classes.accordionDetails}>
-                    <Plugin api={props.api}/>
+                    <Plugin app={props.app}/>
                 </AccordionDetails>
             </Accordion>
         );

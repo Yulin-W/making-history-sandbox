@@ -34,22 +34,44 @@ const regionDictDefault = createRegionDict(mapAdmin);
 
 // Create a constant dictionary mapping index of region to name of region, as opposed to keeping this repeated info contained in every single entry in the scenario data
 const regionNameDict = createRegionNameDict(mapAdmin);
+
+// Default scenarioData value
+const scenarioDataDefault = [
+  createScenarioEntry(regionDictDefault, "2000 January 1", "An Event"), // Default is 2 entry with the default regionDict, empty date and event entry
+  createScenarioEntry(regionDictDefault, "2010 January 1", "Another Event"),
+];
 class App extends React.Component {
   constructor(props) {
     super(props);
+
+    this.plugins = plugins;
+    // Default values should ideally all be based off the scenarioDataDefault
+    // Setup default state values
+    let pluginData = {};
+    for (const [name, entry] of Object.entries(this.plugins)) {
+      pluginData[name] = entry.initState(scenarioDataDefault);
+    }
+
+    let colorData = [];
+    let i;
+    for (i = 0; i < scenarioDataDefault.length; i++) {
+      colorData.push({});
+    }
+
+    // Set initial state
     this.state = {
-      scenarioData: [ // Array of information for the scenarios
-        createScenarioEntry(regionDictDefault, "2000 January 1", "An Event"), // Default is 2 entry with the default regionDict, empty date and event entry
-        createScenarioEntry(regionDictDefault, "2010 January 1", "Another Event"),
-      ],
-      pluginData: Object.keys(plugins).reduce((obj, key) => ({ ...obj, [key]: null}), {}), // Create object for data in plugin indexed by name of plugin
-      colorData: [{}, {}], // Dictionary with corresponding entries to scenarioData, that records the number of regions of specific color for the scenario timeline entry
+      scenarioData: scenarioDataDefault, // Array of information for the scenarios
+      pluginData: pluginData, // Create object for data in plugin indexed by name of plugin
+      colorData: colorData, // Dictionary with corresponding entries to scenarioData, that records the number of regions of specific color for the scenario timeline entry
       activeEntry: 0, // index of currently active on map entry in scenarioData
       lassoSelecting: false, // state for whether lasso select tool is activated
       erasing: false, // state for whether eraser tool is activated
     }
+
+    // Declare some constant attributes
     this.regionNameDict = regionNameDict;
     this.themeDict = themeDict;
+
     // Numerous refs
     this.colorBarRef = React.createRef(null);
     this.mapRef = React.createRef(null);
@@ -73,7 +95,14 @@ class App extends React.Component {
   updatePluginData(key, data) {
     let currentData = cloneDeep(this.state.pluginData);
     currentData[key] = data;
-    this.setState({pluginData:currentData});
+    this.setState({ pluginData: currentData });
+
+    // Running plugin methods
+    Object.values(this.plugins).forEach(entry => {
+      if (entry.functions.onUpdatePluginData) {
+        entry.functions.onUpdatePluginData(this, key, data);
+      }
+    });
   }
 
   // Updates lasso selecting, expects true/false boolean value, then runs callback if any
@@ -103,7 +132,7 @@ class App extends React.Component {
     let newColorEntry = null;
     if (index > 0) { // use the regionDict, color entry of the previous entry as the starting spot
       newRegionDict = createScenarioEntry(currentData[index - 1].regionDict);
-      newColorEntry = cloneDeep(currentColorData[index-1]);
+      newColorEntry = cloneDeep(currentColorData[index - 1]);
     } else { // use the default regionDict, color entry if we are to insert at the beginning, currently this is not possible as it seems to lead to a multi-rerender yet some code is not ran in app.render scenario, and I get a regionDict undefined thing which I have no idea why; in light of this, I didn't do the add entry button in front of the first entry
       newRegionDict = createScenarioEntry(regionDictDefault);
       newColorEntry = {};
@@ -111,6 +140,13 @@ class App extends React.Component {
     currentData.splice(index, 0, newRegionDict);
     currentColorData.splice(index, 0, newColorEntry);
     this.setState({ scenarioData: currentData, colorData: currentColorData }, () => { this.updateActiveEntry(index); });
+
+    // Running plugin methods
+    Object.values(this.plugins).forEach(entry => {
+      if (entry.functions.onAddEntry) {
+        entry.functions.onAddEntry(this, index);
+      }
+    });
   }
 
   // Deletes entry in position at specified index in scenarioData and colorData
@@ -128,6 +164,13 @@ class App extends React.Component {
       // Deleted entry was not the last entry, hence new entry to be focused on is the entry after the deleted entry, i.e. activeEntry index need not change
       this.setState({ scenarioData: currentData, colorData: currentColorData }, () => { this.mapRef.current.resetAllRegionStyle(); });
     }
+
+    // Running plugin methods
+    Object.values(this.plugins).forEach(entry => {
+      if (entry.functions.onDeleteEntry) {
+        entry.functions.onDeleteEntry(this, index);
+      }
+    });
   }
 
   // Updates event date for active entry, expects a string argument
@@ -135,6 +178,13 @@ class App extends React.Component {
     let currentData = cloneDeep(this.state.scenarioData);
     currentData[this.state.activeEntry].date = date;
     this.setState({ scenarioData: currentData });
+
+    // Running plugin methods
+    Object.values(this.plugins).forEach(entry => {
+      if (entry.functions.onUpdateEventDate) {
+        entry.functions.onUpdateEventDate(this, date);
+      }
+    });
   }
 
   // Updates event description for active entry, expects a string argument
@@ -142,6 +192,13 @@ class App extends React.Component {
     let currentData = cloneDeep(this.state.scenarioData);
     currentData[this.state.activeEntry].event = event;
     this.setState({ scenarioData: currentData });
+
+    // Running plugin methods
+    Object.values(this.plugins).forEach(entry => {
+      if (entry.functions.onUpdateEvent) {
+        entry.functions.onUpdateEvent(this, event);
+      }
+    });
   }
 
   // Clears date and event of the current active entry, not the map though
@@ -162,6 +219,13 @@ class App extends React.Component {
           callback();
         }
       });
+
+    // Running plugin methods
+    Object.values(this.plugins).forEach(entry => {
+      if (entry.functions.onUpdateActiveEntry) {
+        entry.functions.onUpdateActiveEntry(this, newIndex);
+      }
+    });
   }
 
   // Assigns regions of specified indices the currently selected color and update colorData accordingly, then run callback if any
@@ -196,7 +260,7 @@ class App extends React.Component {
       }
     });
 
-    // Setting state
+    // Setting state, then do callback
     this.setState({ scenarioData: currentData, colorData: currentColorData },
       () => {
         this.mapRef.current.resetAllRegionStyle();
@@ -204,32 +268,29 @@ class App extends React.Component {
           callback();
         }
       });
+
+    // Running plugin methods
+    // Running plugin methods
+    Object.values(this.plugins).forEach(entry => {
+      if (entry.functions.onAssignRegions) {
+        entry.functions.onAssignRegions(this, indices);
+      }
+    });
   }
 
   // Loads the specified save file containing scenarioData and pluginData, then sets current active entry to the first one, thereby resetting the region styling as well
   loadSave(saveData) {
-    console.log(saveData);
-    this.setState({ scenarioData: saveData.scenarioData, colorData: saveData.colorData, pluginData: saveData.pluginData}, () => { this.updateActiveEntry(0) });
+    this.setState({ scenarioData: saveData.scenarioData, colorData: saveData.colorData, pluginData: saveData.pluginData }, () => { this.updateActiveEntry(0) });
+
+    // Running plugin methods
+    Object.values(this.plugins).forEach(entry => {
+      if (entry.functions.onLoadSave) {
+        entry.functions.onLoadSave(this, saveData);
+      }
+    });
   }
 
   render() {
-    // Setup api dictionary
-    const api = { // Dictionary of methods/variables relating to the app that plugins are able to use
-      assignRegions: this.assignRegions,
-      getColor: this.getColor,
-      addEntry: this.addEntry,
-      deleteEntry: this.deleteEntry,
-      updateActiveEntry: this.updateActiveEntry,
-      updateEventDate: this.updateEventDate,
-      updateEvent: this.updateEvent,
-      loadSave: this.loadSave,
-      updatePluginData: this.updatePluginData,
-      mapRef: this.mapRef, // this shouldn't be modified directly in plugins
-      colorBarRef: this.colorBarRef, // this shouldn't be modified directly in plugins
-      state: this.state, // this shouldn't be modified directly in plugins, use the update data, especially the update pluginData method to update values
-    };
-
-
     return (
       <div className="App">
         <MenuComponent
@@ -241,7 +302,7 @@ class App extends React.Component {
           loadSave={this.loadSave}
         />
         <ToolbarComponent lassoSelecting={this.state.lassoSelecting} updateLassoSelecting={this.updateLassoSelecting} erasing={this.state.erasing} updateErasing={this.updateErasing} />
-        <PluginMenuComponent api={api} />
+        <PluginMenuComponent app={this} />
         <TimelineComponent updateActiveEntry={this.updateActiveEntry} activeEntry={this.state.activeEntry} scenarioData={this.state.scenarioData} addEntry={this.addEntry} updateEventDate={this.updateEventDate} updateEvent={this.updateEvent} deleteEntry={this.deleteEntry} clearEntry={this.clearEntry} themeDict={this.themeDict.other} />
         <ColorBarComponent ref={this.colorBarRef} themeDict={this.themeDict.other} />
         <MapComponent themeDict={this.themeDict.other} baseMap={mapAdmin} assignRegions={this.assignRegions} regionDict={this.state.scenarioData[this.state.activeEntry].regionDict} lassoSelecting={this.state.lassoSelecting} updateLassoSelecting={this.updateLassoSelecting} ref={this.mapRef} />
