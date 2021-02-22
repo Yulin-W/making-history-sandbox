@@ -8,7 +8,6 @@ import "leaflet/dist/leaflet.css";
 
 // Import relevant custom components for plugins
 import LassoComponent from "./LassoComponent.js";
-import "../leafletPlugins/SmoothWheelZoom.js";
 
 const useStyles = theme => ({
     mapContainer: {
