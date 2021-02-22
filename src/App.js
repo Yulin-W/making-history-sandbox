@@ -43,6 +43,7 @@ class App extends React.Component {
         createScenarioEntry(regionDictDefault, "2010 January 1", "Another Event"),
       ],
       pluginData: Object.keys(plugins).reduce((obj, key) => ({ ...obj, [key]: null}), {}), // Create object for data in plugin indexed by name of plugin
+      colorData: [{}, {}], // Dictionary with corresponding entries to scenarioData, that records the number of regions of specific color for the scenario timeline entry
       activeEntry: 0, // index of currently active on map entry in scenarioData
       lassoSelecting: false, // state for whether lasso select tool is activated
       erasing: false, // state for whether eraser tool is activated
@@ -156,14 +157,40 @@ class App extends React.Component {
       });
   }
 
-  // Assigns regions of specified indices the currently selected color, then run callback if any
+  // Assigns regions of specified indices the currently selected color and update colorData accordingly, then run callback if any
   assignRegions(indices, callback = null) {
     const color = this.getColor();
+
+    // Modifying the new data before setting it as the state
     let currentData = cloneDeep(this.state.scenarioData);
+    let currentColorData = cloneDeep(this.state.colorData);
+
     indices.forEach(index => {
+      const previousColor = currentData[this.state.activeEntry].regionDict[index].color;
+      // Update for scenarioData the color of the region
       currentData[this.state.activeEntry].regionDict[index].color = color;
+
+      // Deal with decrementing previous color's colorData entry, if any
+      if (previousColor) {
+        currentColorData[this.state.activeEntry][previousColor] -= 1;
+        if (currentColorData[this.state.activeEntry][previousColor] === 0) {
+          // If the assigning took the count of regions of the color to 0, then remove it from the colorData
+          delete currentColorData[this.state.activeEntry][previousColor];
+        }
+      }
+
+      // Deal with incrementing or creating entry for added color's colorData entry, if any
+      if (color) {
+        if (color in currentColorData[this.state.activeEntry]) {
+          currentColorData[this.state.activeEntry][color] += 1;
+        } else {
+          currentColorData[this.state.activeEntry][color] = 1;
+        }
+      }
     });
-    this.setState({ scenarioData: currentData },
+
+    // Setting state
+    this.setState({ scenarioData: currentData, colorData: currentColorData },
       () => {
         this.mapRef.current.resetAllRegionStyle();
         if (callback) {

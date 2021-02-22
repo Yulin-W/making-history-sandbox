@@ -11,6 +11,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function LegendComponent(props) {
     const classes = useStyles();
+    
     return (
         <div className={classes.legendContainer}>
             <Scrollbars>
