@@ -95,31 +95,38 @@ class App extends React.Component {
     return this.state.erasing ? null : this.colorBarRef.current.state.color; // TODO: not the best practice, but using refs does make it easy
   }
 
-  // Adds entry in position at specified index in scenarioData, new entry has no date nor event
+  // Adds entry in position at specified index in scenarioData and colorData, new entry has no date nor event
   addEntry(index) {
     let currentData = cloneDeep(this.state.scenarioData);
+    let currentColorData = cloneDeep(this.state.colorData);
     let newRegionDict = null;
-    if (index > 0) { // use the regionDict of the previous entry as the starting spot
+    let newColorEntry = null;
+    if (index > 0) { // use the regionDict, color entry of the previous entry as the starting spot
       newRegionDict = createScenarioEntry(currentData[index - 1].regionDict);
-    } else { // use the default regionDict if we are to insert at the beginning, currently this is not possible as it seems to lead to a multi-rerender yet some code is not ran in app.render scenario, and I get a regionDict undefined thing which I have no idea why; in light of this, I didn't do the add entry button in front of the first entry
+      newColorEntry = cloneDeep(currentColorData[index-1]);
+    } else { // use the default regionDict, color entry if we are to insert at the beginning, currently this is not possible as it seems to lead to a multi-rerender yet some code is not ran in app.render scenario, and I get a regionDict undefined thing which I have no idea why; in light of this, I didn't do the add entry button in front of the first entry
       newRegionDict = createScenarioEntry(regionDictDefault);
+      newColorEntry = {};
     }
     currentData.splice(index, 0, newRegionDict);
-    this.setState({ scenarioData: currentData }, () => { this.updateActiveEntry(index); });
+    currentColorData.splice(index, 0, newColorEntry);
+    this.setState({ scenarioData: currentData, colorData: currentColorData }, () => { this.updateActiveEntry(index); });
   }
 
-  // Deletes entry in position at specified index in scenarioData
+  // Deletes entry in position at specified index in scenarioData and colorData
   deleteEntry(index) {
     let currentData = cloneDeep(this.state.scenarioData);
+    let currentColorData = cloneDeep(this.state.colorData);
     currentData.splice(index, 1);
+    currentColorData.splice(index, 1);
     if (index === this.state.scenarioData.length - 1) {
       // Deleted entry is last entry, hence new entry to be focused on is the entry before the last entry
       let newIndex = index - 1;
       // To avoid possibly access invalid active entry values, we update the activeEntry first, then update the scenarioDict to delete the entry
-      this.updateActiveEntry(newIndex, () => { this.setState({ scenarioData: currentData }); }) // Note reset style is included in the updateActiveEntry function already
+      this.updateActiveEntry(newIndex, () => { this.setState({ scenarioData: currentData, colorData: currentColorData }); }) // Note reset style is included in the updateActiveEntry function already
     } else {
       // Deleted entry was not the last entry, hence new entry to be focused on is the entry after the deleted entry, i.e. activeEntry index need not change
-      this.setState({ scenarioData: currentData }, () => { this.mapRef.current.resetAllRegionStyle(); });
+      this.setState({ scenarioData: currentData, colorData: currentColorData }, () => { this.mapRef.current.resetAllRegionStyle(); });
     }
   }
 
@@ -137,7 +144,7 @@ class App extends React.Component {
     this.setState({ scenarioData: currentData });
   }
 
-  // Clears date and event of the current active entry
+  // Clears date and event of the current active entry, not the map though
   clearEntry() {
     let currentData = cloneDeep(this.state.scenarioData);
     currentData[this.state.activeEntry].event = "";
