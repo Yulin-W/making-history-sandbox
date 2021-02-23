@@ -3,7 +3,7 @@ import React from "react";
 import { withStyles } from '@material-ui/core/styles';
 
 // Import leaflet
-import { MapContainer, GeoJSON, TileLayer, AttributionControl } from 'react-leaflet';
+import { MapContainer, GeoJSON, TileLayer, AttributionControl, LayersControl } from 'react-leaflet';
 import "leaflet/dist/leaflet.css";
 
 // Import relevant custom components for plugins
@@ -17,8 +17,22 @@ const useStyles = theme => ({
         width: "100vw",
         height: "calc(100vh - 45px)", // the -50px is to ensure that the map's bottom meets the timeline bar, hence if timeline bar height is adjusted, adjust map height here accordingly
         zIndex: 0,
+        filter: "brightness(1) contrast(100%)",
     },
 });
+
+const mapProviders = [
+    {
+        name: "Esri.WorldImagery",
+        attr: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
+        src: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'
+    },
+    {
+        name: "Stamen.Watercolor",
+        attr: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        src: 'https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.png'
+    },
+]
 class MapComponent extends React.Component {
     constructor(props) {
         super(props);
@@ -29,7 +43,6 @@ class MapComponent extends React.Component {
         // Binding methods
         this.onEachFeature = this.onEachFeature.bind(this);
         this.style = this.style.bind(this);
-        this.getRegionColorByIndex = this.getRegionColorByIndex.bind(this);
         this.resetAllRegionStyle = this.resetAllRegionStyle.bind(this);
         this.clickRegion = this.clickRegion.bind(this);
         this.highlightRegion = this.highlightRegion.bind(this);
@@ -64,11 +77,12 @@ class MapComponent extends React.Component {
     }
 
     style(feature, layer) {
+        const color = this.props.regionDict[feature.properties.regionID].color;
         return {
             color: this.props.themeDict.polyStrokeColor,
             weight: this.props.themeDict.polyStrokeWeight,
-            fillColor: this.getRegionColorByIndex(feature.properties.regionID),
-            fillOpacity: this.props.themeDict.polyFillOpacityDefault,
+            fillColor: color ? color : this.props.themeDict.polyFillColorDefault,
+            fillOpacity: color ? this.props.themeDict.polyFillOpacityColored : this.props.themeDict.polyFillOpacityDefault,
         };
     }
 
@@ -113,21 +127,27 @@ class MapComponent extends React.Component {
                 doubleClickZoom={false}
                 zoomControl={false}
                 attributionControl={false}
+                worldCopyJump
                 className={classes.mapContainer}
             >
-                <TileLayer
-                    attribution='Map data: &copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors | Map style: &copy <a href="https://opentopomap.org/">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
-                    url="https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png"
-                    noWrap
-                ></TileLayer>
-                <GeoJSON
-                    data={this.state.baseMap}
-                    style={this.style}
-                    onEachFeature={this.onEachFeature}
-                    ref={this.geojsonRef}
-                ></GeoJSON>
-                <AttributionControl position="bottomright"/>
-                {this.props.lassoSelecting && <LassoComponent updateLassoSelecting={this.props.updateLassoSelecting} assignRegions={this.props.assignRegions}/>}
+                <LayersControl position="topright">
+                    {mapProviders.map((entry, index) => <LayersControl.BaseLayer key={entry.name} checked={index===0} name={entry.name}>
+                        <TileLayer
+                            attribution={entry.attr}
+                            url={entry.src}
+                        ></TileLayer>
+                    </LayersControl.BaseLayer>)}
+                    <LayersControl.Overlay checked name="Regions">
+                        <GeoJSON
+                            data={this.state.baseMap}
+                            style={this.style}
+                            onEachFeature={this.onEachFeature}
+                            ref={this.geojsonRef}
+                        ></GeoJSON>
+                    </LayersControl.Overlay>
+                </LayersControl>
+                <AttributionControl position="bottomright" />
+                {this.props.lassoSelecting && <LassoComponent updateLassoSelecting={this.props.updateLassoSelecting} assignRegions={this.props.assignRegions} />}
             </MapContainer>
         );
     }

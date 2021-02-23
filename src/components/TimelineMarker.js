@@ -13,7 +13,6 @@ const useStyles = makeStyles((theme) => ({
         top: 15,
         zIndex: 2,
         transform: "scale(0.8)",
-        backgroundColor: theme.palette.background.default,
     },
     entryButton: {
         color: theme.palette.text.primary,
@@ -26,7 +25,8 @@ const useStyles = makeStyles((theme) => ({
         textAlign: "center",
         textOverflow: "ellipsis",
         overflow: "hidden",
-        whiteSpace: "nowrap"
+        whiteSpace: "nowrap",
+        color: theme.palette.text.primary
     },
 }));
 

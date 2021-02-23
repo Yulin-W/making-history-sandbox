@@ -4,7 +4,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import createScenarioEntry from '../scripts/createScenarioEntry.js';
 import cloneDeep from 'clone-deep';
 import csscolors from 'css-color-names';
-import { CollectionsOutlined } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
     altHistEditorLoaderContainer: {
@@ -141,6 +140,7 @@ function loadScenario(app, file, onload = null) {
                 pluginData["Legend"].push(legendEntry);
             });
             convertedObj.pluginData = pluginData;
+            console.log(convertedObj);
 
             // Load converted save
             if (onload) {

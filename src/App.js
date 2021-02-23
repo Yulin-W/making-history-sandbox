@@ -1,5 +1,6 @@
 // Import React
 import React from "react";
+import { createMuiTheme, ThemeProvider, withStyles } from '@material-ui/core/styles';
 
 // Import css
 import './App.css';
@@ -41,6 +42,11 @@ const scenarioDataDefault = [
   createScenarioEntry(regionDictDefault, "2000 January 1", "An Event"), // Default is 2 entry with the default regionDict, empty date and event entry
   createScenarioEntry(regionDictDefault, "2010 January 1", "Another Event"),
 ];
+
+const theme = createMuiTheme(themeDict.material);
+
+const useStyles = theme => ({
+});
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -322,50 +328,52 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
-        <MenuComponent
-          data={{
-            scenarioData: this.state.scenarioData,
-            colorData: this.state.colorData,
-            pluginData: this.state.pluginData,
-          }}
-          loadSave={this.loadSave}
-        />
-        <ToolbarComponent lassoSelecting={this.state.lassoSelecting} updateLassoSelecting={this.updateLassoSelecting} erasing={this.state.erasing} updateErasing={this.updateErasing} />
-        <PluginMenuComponent app={this} />
-        <TimelineBarComponent
-          updateActiveEntry={this.updateActiveEntry}
-          activeEntry={this.state.activeEntry}
-          scenarioData={this.state.scenarioData}
-          addEntry={this.addEntry}
-          themeDict={this.themeDict.other}
-        />
-        <TimelineEventComponent
-          date={this.state.scenarioData[this.state.activeEntry].date}
-          event={this.state.scenarioData[this.state.activeEntry].event}
-          updateEventDate={this.updateEventDate}
-          updateEvent={this.updateEvent}
-          deleteEntry={this.deleteEntry}
-          activeEntry={this.state.activeEntry}
-          clearEntry={this.clearEntry}
-          oneEntryLeft={this.state.scenarioData.length === 1}
-          themeDict={this.themeDict.other}
-        />
-        <ColorBarComponent defaultColorBarColor={this.state.defaultColorBarColor} ref={this.colorBarRef} themeDict={this.themeDict.other} />
-        <MapComponent
-          themeDict={this.themeDict.other}
-          baseMap={mapAdmin}
-          assignRegions={this.assignRegions}
-          regionDict={this.state.scenarioData[this.state.activeEntry].regionDict}
-          lassoSelecting={this.state.lassoSelecting}
-          updateLassoSelecting={this.updateLassoSelecting}
-          processRegionHoveredOn={this.processRegionHoveredOn}
-          processRegionHoveredOut={this.processRegionHoveredOut}
-          ref={this.mapRef}
-        />
-      </div>
+      <ThemeProvider theme={theme}>
+        <div className="App">
+          <MenuComponent
+            data={{
+              scenarioData: this.state.scenarioData,
+              colorData: this.state.colorData,
+              pluginData: this.state.pluginData,
+            }}
+            loadSave={this.loadSave}
+          />
+          <ToolbarComponent lassoSelecting={this.state.lassoSelecting} updateLassoSelecting={this.updateLassoSelecting} erasing={this.state.erasing} updateErasing={this.updateErasing} />
+          <PluginMenuComponent app={this} />
+          <TimelineBarComponent
+            updateActiveEntry={this.updateActiveEntry}
+            activeEntry={this.state.activeEntry}
+            scenarioData={this.state.scenarioData}
+            addEntry={this.addEntry}
+            themeDict={this.themeDict.other}
+          />
+          <TimelineEventComponent
+            date={this.state.scenarioData[this.state.activeEntry].date}
+            event={this.state.scenarioData[this.state.activeEntry].event}
+            updateEventDate={this.updateEventDate}
+            updateEvent={this.updateEvent}
+            deleteEntry={this.deleteEntry}
+            activeEntry={this.state.activeEntry}
+            clearEntry={this.clearEntry}
+            oneEntryLeft={this.state.scenarioData.length === 1}
+            themeDict={this.themeDict.other}
+          />
+          <ColorBarComponent defaultColorBarColor={this.state.defaultColorBarColor} ref={this.colorBarRef} themeDict={this.themeDict.other} />
+          <MapComponent
+            themeDict={this.themeDict.other}
+            baseMap={mapAdmin}
+            assignRegions={this.assignRegions}
+            regionDict={this.state.scenarioData[this.state.activeEntry].regionDict}
+            lassoSelecting={this.state.lassoSelecting}
+            updateLassoSelecting={this.updateLassoSelecting}
+            processRegionHoveredOn={this.processRegionHoveredOn}
+            processRegionHoveredOut={this.processRegionHoveredOut}
+            ref={this.mapRef}
+          />
+        </div>
+      </ThemeProvider>
     );
   }
 }
 
-export default App;
+export default withStyles(useStyles)(App);

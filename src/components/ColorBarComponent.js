@@ -13,14 +13,16 @@ const useStyles = theme => ({
         width: "30%",
         height: 50,
         zIndex: 1,
-        backgroundColor: theme.palette.background.default,
+        backgroundColor: theme.palette.background.paper,
         display: "flex",
         justifyContent: "center",
         flexFlow: "column",
         alignItems: "stretch",
         marginTop: 5,
         padding: 5,
-        borderRadius: 5,
+        borderStyle: "ridge",
+        borderColor: theme.palette.border,
+        WebkitBorderImage: theme.palette.borderImage
     },
 });
 

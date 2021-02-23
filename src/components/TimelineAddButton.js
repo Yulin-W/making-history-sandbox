@@ -5,8 +5,7 @@ import IconButton from '@material-ui/core/IconButton';
 const useStyles = makeStyles((theme) => ({
     addIconButtonContainer: {
         position: "absolute",
-        top: 0,
-        backgroundColor: theme.palette.background.default,
+        top: -12,
         padding: 0,
         zIndex: 1,
         transform: "scale(0.8)"

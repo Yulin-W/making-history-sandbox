@@ -40,7 +40,7 @@
   - Region label
   - Region name
 - [x] 0.11.0: Plugin for importing admin map saves from old editor
-- [ ] 0.12.0: Refining visuals
+- [x] 0.12.0: Refining visuals
   - Try create a neoclassical style interface
   - Position attribution element in a convenient location, this is mandatory as attribution is key
 # Standard version
