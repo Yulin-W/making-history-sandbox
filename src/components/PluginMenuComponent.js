@@ -24,6 +24,10 @@ const useStyles = makeStyles((theme) => ({
         alignItems: "stretch",
         padding: 3,
         transform: "translate(0%, -50%)",
+        borderTopStyle: "ridge",
+        borderBottomStyle: "ridge",
+        borderLeftStyle: "ridge",
+        borderColor: theme.palette.border,
     },
     accordionContainer: {
         paddingRight: 12,
@@ -35,9 +39,6 @@ const useStyles = makeStyles((theme) => ({
     accordionDetails: {
         padding: 0,
     },
-    accordionHeading: {
-
-    },
 }));
 
 export default function PluginMenuComponent(props) {
@@ -48,7 +49,7 @@ export default function PluginMenuComponent(props) {
         accordionItems.push(
             <Accordion defaultExpanded key={name} square>
                 <AccordionSummary expandIcon={<ExpandMoreIcon/>} className={classes.accordionSummary} IconButtonProps={{size:"small"}}>
-                    <Typography className={classes.accordionHeading}>{name}</Typography>
+                    <Typography>{name}</Typography>
                 </AccordionSummary>
                 <AccordionDetails className={classes.accordionDetails}>
                     <Plugin app={props.app}/>

@@ -21,6 +21,9 @@ const useStyles = makeStyles((theme) => ({
         flexFlow: "column",
         alignItems: "stretch",
         padding: 5,
+        borderRightStyle: "ridge",
+        borderTopStyle: "ridge",
+        borderColor: theme.palette.border,
     },
     eventBar: {
         backgroundColor: theme.palette.background.default,
@@ -34,6 +37,8 @@ const useStyles = makeStyles((theme) => ({
         marginTop: 5,
         flexGrow: 1,
         resize: "none",
+        backgroundColor: theme.palette.background.paper,
+        color: theme.palette.text.primary,
     },
     eventButton: {
         fontSize: 10,

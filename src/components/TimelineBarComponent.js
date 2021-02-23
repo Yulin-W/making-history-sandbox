@@ -18,6 +18,8 @@ const useStyles = makeStyles((theme) => ({
         overflow: "hidden",
         zIndex: 1,
         backgroundColor: theme.palette.background.default,
+        borderTopStyle: "ridge",
+        borderColor: theme.palette.border,
     },
     timelineLine: {
         position: "absolute",

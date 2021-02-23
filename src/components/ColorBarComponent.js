@@ -20,7 +20,8 @@ const useStyles = theme => ({
         alignItems: "stretch",
         marginTop: 5,
         padding: 5,
-        borderRadius: 5,
+        borderStyle: "ridge",
+        borderColor: theme.palette.border,
     },
 });
 

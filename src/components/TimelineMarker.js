@@ -26,7 +26,8 @@ const useStyles = makeStyles((theme) => ({
         textAlign: "center",
         textOverflow: "ellipsis",
         overflow: "hidden",
-        whiteSpace: "nowrap"
+        whiteSpace: "nowrap",
+        color: theme.palette.text.primary
     },
 }));
 
