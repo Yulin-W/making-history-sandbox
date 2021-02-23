@@ -113,7 +113,7 @@ function onDeleteEntry(app, index) {
 // This dictionary contains the component, initial state value generation function for the plugin's entry in pluginData; this be based off the scenarioData state value
 const LegendPluginDict = {
     component: LegendComponent,
-    initState: initState, // Expects a scenarioData argument (should be the default one for initialization)
+    initState: initState, // Given the value of scenarioData (assumed to be the scenarioDataDefault), the plugin should be able to work out its initial pluginData value
     // Below are functions to be called as part of App.js's corresponding methods, they expected to have this (of App) binded to them, and so code for them can be written accordingly
     // The arguments they expect should be the app (as in this of the app component) + the same as the corresponding arguments in App, except for the callback TODO: this is quite a dangerous practice to give reference to top element to plugin, but it is quite useful, so going to do this for now (meaning probably not gunna change)
     // For certain methods, other arguments are provided to improve performance and code reuse, check app.js for details
