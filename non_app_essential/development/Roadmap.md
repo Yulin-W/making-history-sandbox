@@ -43,7 +43,7 @@
 - [x] 0.12.0: Refining visuals
   - Try create a neoclassical style interface
   - Position attribution element in a convenient location, this is mandatory as attribution is key
-- [ ] 0.13.0: Scenarios plugin
+- [x] 0.13.0: Scenarios plugin
 - [ ] 0.14.0: Help button
 # Standard version
 ## Version 1
@@ -71,6 +71,8 @@
 - Minimise use of refs
 - Try to find another way as opposed to passing the App's this value to the plugin methods that run after corresponding App methods
 # Possible future features
+- If scenarios become too numerous, try storing them online and let the scenario plugin act simply as a download then load interface
+- Compressed saves
 - Refactor code, in particular names to make methods and variables more intuitive
 - Write a document summarizing how plugins could be added and what functionalities it could have, including the API it has access of
 - Make new map button more efficient by resetting required state values as opposed to reloading entire page

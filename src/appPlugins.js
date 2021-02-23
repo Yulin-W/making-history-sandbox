@@ -3,6 +3,7 @@
 import LegendPlugin from './plugins/LegendPlugin.js'; // Naming the plugins with Component is not required, it could have well been just Legend, given the source plugin file is named as such, having Plugin in the name is just due to personal preferences
 import RegionInfoPlugin from './plugins/RegionInfoPlugin.js';
 import AltHistEditorLoaderPlugin from './plugins/AltHistEditorLoaderPlugin.js';
+import ScenarioPlugin from './plugins/ScenarioPlugin.js';
 
 // All imported plugins above should then be listed below with their names, which will serve as the title in the plugins menu
 // Names of plugins should be unique as they will also serve as keys to the accordion element
@@ -11,6 +12,7 @@ import AltHistEditorLoaderPlugin from './plugins/AltHistEditorLoaderPlugin.js';
 const plugins = {
     "Region Info": RegionInfoPlugin,
     "Legend": LegendPlugin,
+    "Scenario": ScenarioPlugin,
     "Alt Hist Editor Loader": AltHistEditorLoaderPlugin, 
 };
 

@@ -1,0 +1,81 @@
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Select from '@material-ui/core/Select';
+import Button from '@material-ui/core/Button';
+import loadScenario from '../scripts/loadScenario.js';
+
+// Import scenarios
+import scen356BC from "../assets/scenario/356BC-Birth-of-Alexander.json";
+import scen1206 from "../assets/scenario/1206-Rise-of-Mongolia.json";
+import scen1444 from "../assets/scenario/1444-Battle-of-Varna.json";
+import scen1936 from "../assets/scenario/1936-Coming-of-the-Storm.json"
+import MenuItem from '@material-ui/core/MenuItem';
+
+// Import json scenarios, keys should be names that will be displayed for the scenario
+const scenarios = {
+    "356BC Birth of Alexander": scen356BC,
+    "1206 Rise of Mongolia": scen1206,
+    "1444 Battle of Varna": scen1444,
+    "1936 Coming of the Storm": scen1936,
+};
+
+// Setup styles
+const useStyles = makeStyles((theme) => ({
+    scenarioContainer: {
+        backgroundColor: theme.palette.background.paper,
+        width: "calc(100% - 10px)", // This subtraction corresponds to the padding of the parent
+        padding: 5,
+        display: "flex",
+        flexFlow: "column",
+        alignItems: "center",
+        justifyContent: "flex-start",
+    },
+    scenarioSelect: {
+        fontSize: 12,
+        width: "calc(100% - 10px)",
+    }
+}));
+
+// Load file 
+function ScenarioPluginComponent(props) {
+    const classes = useStyles();
+    const [selectedScenario, setSelectedScenario] = React.useState(Object.keys(scenarios)[0]);
+    return (
+        <div className={classes.scenarioContainer}>
+            <Select
+                value={selectedScenario}
+                className={classes.scenarioSelect}
+                onChange={e => {setSelectedScenario(e.target.value);}}
+            >
+                {Object.keys(scenarios).map(key => <MenuItem key={key} value={key}>
+                    {key}
+                </MenuItem>)}
+            </Select>
+            <Button onClick={() => {
+                props.app.loadSave(scenarios[selectedScenario]);
+            }}>Load</Button>
+        </div>
+    );
+}
+
+const initState = scenarioData => {
+    return null;
+};
+
+const ScenarioPluginDict = {
+    component: ScenarioPluginComponent,
+    initState: initState,
+    functions: {
+        onAssignRegions: null,
+        onAddEntry: null,
+        onDeleteEntry: null,
+        onUpdateActiveEntry: null,
+        onUpdateEventDate: null,
+        onUpdateEvent: null,
+        onLoadSave: null,
+        onProcessRegionHoveredOn: null,
+        onProcessRegionHoveredOut: null,
+    }
+};
+
+export default ScenarioPluginDict;
