@@ -39,7 +39,8 @@
 - [x] 0.10.0: Region info plugin, displays on hovering above a region
   - Region label
   - Region name
-- [ ] 0.11.0: Refining visuals
+- [x] 0.11.0: Plugin for importing admin map saves from old editor
+- [ ] 0.12.0: Refining visuals
   - Try create a neoclassical style interface
   - Position attribution element in a convenient location, this is mandatory as attribution is key
 # Standard version
@@ -51,7 +52,7 @@
     - Advertising online
     - Attributions
       - Basemap source (use same as alternative history editor, noting on personal alterations)
-## Plugins planned (these can go into separate repos)
+## Plugins planned (these can go into separate repos), some might not be plugins in the sense that it goes into the sidebar menu
 - [ ] Save converter that converts the old alternate history editor saves to the new save
 - [ ] Convert image to basemap/scenario
 - [ ] Wikipedia event AI recommendation
