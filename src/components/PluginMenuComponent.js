@@ -31,7 +31,8 @@ const useStyles = makeStyles((theme) => ({
         WebkitBorderImage: theme.palette.borderImage
     },
     accordionContainer: {
-        paddingRight: 12,
+        paddingRight: 10,
+        paddingLeft: 10,
     },
     accordionSummary: {
         paddingTop: 0,
