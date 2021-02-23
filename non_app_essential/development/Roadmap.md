@@ -65,7 +65,7 @@
 - Minimise use of refs
 - Try to find another way as opposed to passing the App's this value to the plugin methods that run after corresponding App methods
 # Possible future features
-- Make
+- Make new map button more efficient by resetting required state values as opposed to reloading entire page
 - Add chinese version
 - Use more icons alongside words for buttons
 - Make work well for phones
