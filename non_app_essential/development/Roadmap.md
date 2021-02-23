@@ -65,6 +65,8 @@
 - Minimise use of refs
 - Try to find another way as opposed to passing the App's this value to the plugin methods that run after corresponding App methods
 # Possible future features
+- Refactor code, in particular names to make methods and variables more intuitive
+- Write a document summarizing how plugins could be added and what functionalities it could have, including the API it has access of
 - Make new map button more efficient by resetting required state values as opposed to reloading entire page
 - Add chinese version
 - Use more icons alongside words for buttons

@@ -4,6 +4,7 @@ import LegendPlugin from './plugins/LegendPlugin.js'; // Naming the plugins with
 
 // All imported plugins above should then be listed below with their names, which will serve as the title in the plugins menu
 // Names of plugins should be unique as they will also serve as keys to the accordion element
+// See LegendPlugin.js for example of plugin and the requirements of it 
 const plugins = {
     "Legend": LegendPlugin,
 };
