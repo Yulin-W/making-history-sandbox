@@ -43,7 +43,6 @@ class MapComponent extends React.Component {
         // Binding methods
         this.onEachFeature = this.onEachFeature.bind(this);
         this.style = this.style.bind(this);
-        this.getRegionColorByIndex = this.getRegionColorByIndex.bind(this);
         this.resetAllRegionStyle = this.resetAllRegionStyle.bind(this);
         this.clickRegion = this.clickRegion.bind(this);
         this.highlightRegion = this.highlightRegion.bind(this);
@@ -78,11 +77,12 @@ class MapComponent extends React.Component {
     }
 
     style(feature, layer) {
+        const color = this.props.regionDict[feature.properties.regionID].color;
         return {
             color: this.props.themeDict.polyStrokeColor,
             weight: this.props.themeDict.polyStrokeWeight,
-            fillColor: this.getRegionColorByIndex(feature.properties.regionID),
-            fillOpacity: this.props.themeDict.polyFillOpacityDefault,
+            fillColor: color ? color : this.props.themeDict.polyFillColorDefault,
+            fillOpacity: color ? this.props.themeDict.polyFillOpacityColored : this.props.themeDict.polyFillOpacityDefault,
         };
     }
 
@@ -127,6 +127,7 @@ class MapComponent extends React.Component {
                 doubleClickZoom={false}
                 zoomControl={false}
                 attributionControl={false}
+                worldCopyJump
                 className={classes.mapContainer}
             >
                 <LayersControl position="topright">
@@ -134,7 +135,6 @@ class MapComponent extends React.Component {
                         <TileLayer
                             attribution={entry.attr}
                             url={entry.src}
-                            noWrap
                         ></TileLayer>
                     </LayersControl.BaseLayer>)}
                     <LayersControl.Overlay checked name="Regions">

@@ -14,8 +14,9 @@ const themeDict = {
     other: { // Theme object for map (currently done via cesium) to use, this is passed down as props to all child
         polyStrokeColor: "#36454F",
         polyStrokeWeight: 0.5,
-        polyFillColorDefault: "#f5f5f5",
-        polyFillOpacityDefault: 0.6,
+        polyFillColorDefault: "#DCDCDC",
+        polyFillOpacityDefault: 0.2,
+        polyFillOpacityColored: 0.6,
         polyFillOpacityHovered: 0.9,
         timelineMarkerSpacing: 120,
         timelineMarkerLabelWidth: 100,
