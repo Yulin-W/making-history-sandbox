@@ -140,7 +140,6 @@ function loadScenario(app, file, onload = null) {
                 pluginData["Legend"].push(legendEntry);
             });
             convertedObj.pluginData = pluginData;
-            console.log(convertedObj);
 
             // Load converted save
             if (onload) {
