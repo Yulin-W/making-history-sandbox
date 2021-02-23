@@ -5,6 +5,18 @@ import createScenarioEntry from '../scripts/createScenarioEntry.js';
 import cloneDeep from 'clone-deep';
 import csscolors from 'css-color-names';
 
+// Adding some additional colors that I customized in the alternate history app
+csscolors["tyrian-purple"] = "#66023C";
+csscolors["wine"] = "#722f37";
+csscolors["persian-blue"] = "#1C39BB";
+csscolors["midnight-blue"] = csscolors["midnightblue"];
+csscolors["sky-blue"] = csscolors["skyblue"];
+csscolors["persian-green"] = "#00A693";
+csscolors["basil"] = "#579229";
+csscolors["fire"] = "#e25822";
+csscolors["ruby"] = "#9B111E";
+
+// Setup styles
 const useStyles = makeStyles((theme) => ({
     altHistEditorLoaderContainer: {
         height: 120,

@@ -21,7 +21,9 @@ const useStyles = makeStyles((theme) => ({
         margin: 5,
     },
     legendEntryLabel: {
-
+    },
+    legendGrid: {
+        height: 200,
     }
 }));
 
@@ -63,7 +65,7 @@ function LegendComponent(props) {
     return (
         <div className={classes.legendContainer}>
             <Scrollbars>
-                <Grid container direction="column" justify="flex-start" wrap="wrap">
+                <Grid container direction="column" justify="flex-start" wrap="wrap" className={classes.legendGrid}>
                     {entries}
                 </Grid>
             </Scrollbars>
