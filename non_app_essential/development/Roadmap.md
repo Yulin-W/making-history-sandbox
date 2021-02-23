@@ -43,12 +43,15 @@
 - [x] 0.12.0: Refining visuals
   - Try create a neoclassical style interface
   - Position attribution element in a convenient location, this is mandatory as attribution is key
+- [ ] 0.13.0: Scenarios plugin
+- [ ] 0.14.0: Help button
 # Standard version
 ## Version 1
 - [ ] 1.0.0: fix any bugs from the beta versions and bundle it no release on github pages
     - Favicon
     - Meta, SEO
     - Linking from old app
+    - README
     - Advertising online
     - Attributions
       - Basemap source (use same as alternative history editor, noting on personal alterations)
