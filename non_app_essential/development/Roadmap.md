@@ -31,9 +31,15 @@
   - Plugins should be of the form of a single react component js file, needing only to import relevant material ui and react libraries, following the structure of existing custom components
   - There should exists a standard api to the app to which the plugins be able to access
   - Adding plugin to app should be simple as place file into a folder, and at most needing to update a plugin registry file
-- [ ] 0.7.0: Legend
-- [ ] 0.8.0: New map button (probably just refresh the page tbh for simplicity)
-- [ ] 0.9.0: Refining visuals
+- [x] 0.7.0: Legend
+- [ ] 0.8.0: Various minor features
+  - Make timeline bar and timeline event directly rendered by app to reduce rendering costs
+  - Click on Legend to select color, so to allow selecting the same color as existing one on legend
+- [ ] 0.9.0: New map button (probably just refresh the page tbh for simplicity)
+- [ ] 0.10.0: Region info plugin, displays on hovering above a region
+  - Region label
+  - Region name
+- [ ] 0.11.0: Refining visuals
   - Try create a neoclassical style interface
   - Position attribution element in a convenient location, this is mandatory as attribution is key
 # Standard version
@@ -46,7 +52,6 @@
     - Attributions
       - Basemap source (use same as alternative history editor, noting on personal alterations)
 ## Plugins planned (these can go into separate repos)
-- [ ] Change from controlled element to uncontrolled in event editing to improve performance and responsiveness
 - [ ] Save converter that converts the old alternate history editor saves to the new save
 - [ ] Convert image to basemap/scenario
 - [ ] Wikipedia event AI recommendation
@@ -60,6 +65,7 @@
 - Minimise use of refs
 - Try to find another way as opposed to passing the App's this value to the plugin methods that run after corresponding App methods
 # Possible future features
+- Make
 - Add chinese version
 - Use more icons alongside words for buttons
 - Make work well for phones
