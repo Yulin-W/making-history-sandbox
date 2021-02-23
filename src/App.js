@@ -228,27 +228,34 @@ class App extends React.Component {
     // Modifying the new data before setting it as the state
     let currentData = cloneDeep(this.state.scenarioData);
     let currentColorData = cloneDeep(this.state.colorData);
+    let removedColors = [];
+    let addedColor = false;
 
     indices.forEach(index => {
       const previousColor = currentData[this.state.activeEntry].regionDict[index].color;
       // Update for scenarioData the color of the region
       currentData[this.state.activeEntry].regionDict[index].color = color;
 
-      // Deal with decrementing previous color's colorData entry, if any
-      if (previousColor) {
-        currentColorData[this.state.activeEntry][previousColor] -= 1;
-        if (currentColorData[this.state.activeEntry][previousColor] === 0) {
-          // If the assigning took the count of regions of the color to 0, then remove it from the colorData
-          delete currentColorData[this.state.activeEntry][previousColor];
+      // Only need to update if the previousColor is different from current color
+      if (previousColor !== color) {
+        // Deal with decrementing previous color's colorData entry, if any
+        if (previousColor) {
+          currentColorData[this.state.activeEntry][previousColor] -= 1;
+          if (currentColorData[this.state.activeEntry][previousColor] === 0) {
+            // If the assigning took the count of regions of the color to 0, then remove it from the colorData
+            delete currentColorData[this.state.activeEntry][previousColor];
+            removedColors.push(previousColor);
+          }
         }
-      }
 
-      // Deal with incrementing or creating entry for added color's colorData entry, if any
-      if (color) {
-        if (color in currentColorData[this.state.activeEntry]) {
-          currentColorData[this.state.activeEntry][color] += 1;
-        } else {
-          currentColorData[this.state.activeEntry][color] = 1;
+        // Deal with incrementing or creating entry for added color's colorData entry, if any
+        if (color) {
+          if (color in currentColorData[this.state.activeEntry]) {
+            currentColorData[this.state.activeEntry][color] += 1;
+          } else {
+            currentColorData[this.state.activeEntry][color] = 1;
+            addedColor = true;
+          }
         }
       }
     });
@@ -260,15 +267,14 @@ class App extends React.Component {
         if (callback) {
           callback();
         }
-      });
 
-    // Running plugin methods
-    // Running plugin methods
-    Object.values(this.plugins).forEach(entry => {
-      if (entry.functions.onAssignRegions) {
-        entry.functions.onAssignRegions(this, indices);
-      }
-    });
+        // Running plugin methods
+        Object.values(this.plugins).forEach(entry => {
+          if (entry.functions.onAssignRegions) {
+            entry.functions.onAssignRegions(this, indices, color, removedColors, addedColor);
+          }
+        });
+      });
   }
 
   // Loads the specified save file containing scenarioData and pluginData, then sets current active entry to the first one, thereby resetting the region styling as well
