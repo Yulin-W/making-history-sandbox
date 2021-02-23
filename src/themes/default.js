@@ -1,3 +1,6 @@
+import MarbleTexture from '../assets/img/MarbleTexture.jpg';
+import GoldTexture from '../assets/img/GoldTexture.png';
+
 // Colors should be given in hex
 const themeDict = {
     material: { // Theme object for material ui theming component FIXME: add corresponding use themeprovider thing to the app js
@@ -9,6 +12,10 @@ const themeDict = {
                 dark: "#9b0000"
             },
             border: "#d4af37",
+            borderImage: `url(${GoldTexture}) 30`,
+            backgroundImage: {
+                main: `url(${MarbleTexture})`,
+            }
         },
     },
     other: { // Theme object for map (currently done via cesium) to use, this is passed down as props to all child

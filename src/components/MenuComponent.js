@@ -13,13 +13,14 @@ const useStyles = makeStyles((theme) => ({
         height: 25,
         width: 195,
         zIndex: 1,
-        backgroundColor: theme.palette.background.default,
         display: "flex",
         flexFlow: "row",
         justifyContent: "flex-start",
         borderBottomStyle: "ridge",
         borderRightStyle: "ridge",
         borderColor: theme.palette.border,
+        backgroundImage: theme.palette.backgroundImage.main,
+        WebkitBorderImage: theme.palette.borderImage
     },
     menuButton: {
         fontSize: 12,

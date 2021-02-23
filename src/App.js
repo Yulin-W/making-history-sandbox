@@ -1,6 +1,6 @@
 // Import React
 import React from "react";
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import { createMuiTheme, ThemeProvider, withStyles } from '@material-ui/core/styles';
 
 // Import css
 import './App.css';
@@ -44,6 +44,9 @@ const scenarioDataDefault = [
 ];
 
 const theme = createMuiTheme(themeDict.material);
+
+const useStyles = theme => ({
+});
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -373,4 +376,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withStyles(useStyles)(App);

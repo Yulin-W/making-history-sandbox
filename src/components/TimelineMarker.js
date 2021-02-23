@@ -13,7 +13,6 @@ const useStyles = makeStyles((theme) => ({
         top: 15,
         zIndex: 2,
         transform: "scale(0.8)",
-        backgroundColor: theme.palette.background.default,
     },
     entryButton: {
         color: theme.palette.text.primary,

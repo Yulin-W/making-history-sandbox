@@ -3,20 +3,17 @@ import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from "@material-ui/core/Button";
-import Scrollbars from "react-custom-scrollbars";
-import { InputBase } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
     eventContainer: {
         position: "absolute",
         left: 0,
-        bottom: 45, // This value should be such that the event box touches the timeline bar on the bottom, so adjust accordingly
+        bottom: 48, // This value should be such that the event box touches the timeline bar on the bottom, so adjust accordingly
         minWidth: 240, // At least 250px adding in padding
         width: "15%",
         minHeight: 190, // At least 200px adding in padding
         height: "25%",
         zIndex: 1,
-        backgroundColor: theme.palette.background.default,
         display: "flex",
         flexFlow: "column",
         alignItems: "stretch",
@@ -24,14 +21,16 @@ const useStyles = makeStyles((theme) => ({
         borderRightStyle: "ridge",
         borderTopStyle: "ridge",
         borderColor: theme.palette.border,
+        backgroundImage: theme.palette.backgroundImage.main,
+        WebkitBorderImage: theme.palette.borderImage
     },
     eventBar: {
-        backgroundColor: theme.palette.background.default,
         display: "flex",
         height: 50,
         flexFlow: "row",
         alignItems: "center",
-        justifyContent: "space-between"
+        justifyContent: "space-between",
+        backgroundImage: theme.palette.backgroundImage.main
     },
     eventContent: {
         marginTop: 5,

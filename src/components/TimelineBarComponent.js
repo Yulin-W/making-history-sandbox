@@ -16,10 +16,11 @@ const useStyles = makeStyles((theme) => ({
         height: 45, // If this is adjusted, need to adjust the height of the map element and event component as well so that the top of the timeline meets the bottom of the map
         bottom: 0,
         overflow: "hidden",
-        zIndex: 1,
-        backgroundColor: theme.palette.background.default,
+        zIndex: 2,
         borderTopStyle: "ridge",
         borderColor: theme.palette.border,
+        backgroundImage: theme.palette.backgroundImage.main,
+        WebkitBorderImage: theme.palette.borderImage
     },
     timelineLine: {
         position: "absolute",

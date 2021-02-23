@@ -12,7 +12,6 @@ const useStyles = makeStyles((theme) => ({
         height: 30,
         width: 130,
         zIndex: 1,
-        backgroundColor: theme.palette.background.default,
         display: "flex",
         flexFlow: "row",
         justifyContent: "flex-end",
@@ -20,6 +19,8 @@ const useStyles = makeStyles((theme) => ({
         borderLeftStyle: "ridge",
         borderRightStyle: "ridge",
         borderColor: theme.palette.border,
+        backgroundImage: theme.palette.backgroundImage.main,
+        WebkitBorderImage: theme.palette.borderImage
     },
     toolbarButton: {
         fontSize: 12,
@@ -38,7 +39,7 @@ export default function ToolbarComponent(props) {
         const eraserButtonText = props.erasing ? "Cancel" : "Erase";
         const eraserButtonColor = props.erasing ? "secondary" : "default";
         return (
-            <div className={classes.toolbarContainer}>
+            <div className={[classes.toolbarContainer, classes.marbleBackground].join(" ")}>
                 <Button color={eraserButtonColor} className={classes.toolbarButton} onClick={() => {props.updateErasing(!props.erasing);}}>{eraserButtonText}</Button>
                 <Button color={lassoButtonColor} className={classes.toolbarButton} onClick={() => {props.updateLassoSelecting(!props.lassoSelecting);}}>{lassoButtonText}</Button>
             </div>

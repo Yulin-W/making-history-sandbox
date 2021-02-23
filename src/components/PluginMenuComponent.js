@@ -17,7 +17,6 @@ const useStyles = makeStyles((theme) => ({
         width: "12%",
         minHeight: 240, // At least 250px adding in padding
         height: "70%",
-        backgroundColor: theme.palette.background.default,
         display: "flex",
         justifyContent: "flex-start",
         flexFlow: "column",
@@ -28,6 +27,8 @@ const useStyles = makeStyles((theme) => ({
         borderBottomStyle: "ridge",
         borderLeftStyle: "ridge",
         borderColor: theme.palette.border,
+        backgroundImage: theme.palette.backgroundImage.main,
+        WebkitBorderImage: theme.palette.borderImage
     },
     accordionContainer: {
         paddingRight: 12,
