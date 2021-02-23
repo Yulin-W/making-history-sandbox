@@ -8,9 +8,10 @@ import './App.css';
 import MenuComponent from "./components/MenuComponent.js";
 import MapComponent from './components/MapComponent.js';
 import ColorBarComponent from './components/ColorBarComponent.js';
-import TimelineComponent from "./components/TimelineComponent.js";
 import ToolbarComponent from "./components/ToolbarComponent.js";
 import PluginMenuComponent from "./components/PluginMenuComponent.js";
+import TimelineBarComponent from './components/TimelineBarComponent.js';
+import TimelineEventComponent from './components/TimelineEventComponent.js';
 
 // Import default themeDict
 import themeDict from './themes/default';
@@ -302,7 +303,24 @@ class App extends React.Component {
         />
         <ToolbarComponent lassoSelecting={this.state.lassoSelecting} updateLassoSelecting={this.updateLassoSelecting} erasing={this.state.erasing} updateErasing={this.updateErasing} />
         <PluginMenuComponent app={this} />
-        <TimelineComponent updateActiveEntry={this.updateActiveEntry} activeEntry={this.state.activeEntry} scenarioData={this.state.scenarioData} addEntry={this.addEntry} updateEventDate={this.updateEventDate} updateEvent={this.updateEvent} deleteEntry={this.deleteEntry} clearEntry={this.clearEntry} themeDict={this.themeDict.other} />
+        <TimelineBarComponent
+          updateActiveEntry={this.updateActiveEntry}
+          activeEntry={this.state.activeEntry}
+          scenarioData={this.state.scenarioData}
+          addEntry={this.addEntry}
+          themeDict={this.themeDict.other}
+        />
+        <TimelineEventComponent
+          date={this.state.scenarioData[this.state.activeEntry].date}
+          event={this.state.scenarioData[this.state.activeEntry].event}
+          updateEventDate={this.updateEventDate}
+          updateEvent={this.updateEvent}
+          deleteEntry={this.deleteEntry}
+          activeEntry={this.state.activeEntry}
+          clearEntry={this.clearEntry}
+          oneEntryLeft={this.state.scenarioData.length === 1}
+          themeDict={this.themeDict.other}
+        />
         <ColorBarComponent ref={this.colorBarRef} themeDict={this.themeDict.other} />
         <MapComponent themeDict={this.themeDict.other} baseMap={mapAdmin} assignRegions={this.assignRegions} regionDict={this.state.scenarioData[this.state.activeEntry].regionDict} lassoSelecting={this.state.lassoSelecting} updateLassoSelecting={this.updateLassoSelecting} ref={this.mapRef} />
       </div>
