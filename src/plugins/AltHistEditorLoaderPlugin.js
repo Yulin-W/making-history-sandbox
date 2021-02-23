@@ -5,7 +5,7 @@ import { BorderStyle } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
     altHistEditorLoaderContainer: {
-        height: 100,
+        height: 120,
         backgroundColor: theme.palette.background.paper,
         width: "100%",
         padding: 5,
@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     loaderDropzone: {
         textAlign: "center",
         backgroundColor: theme.palette.background.default,
-        height: 100,
+        height: 120,
         display: "flex",
         justifyContent: "center",
         alignItems: "center"
