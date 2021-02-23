@@ -32,11 +32,6 @@ function RegionInfoComponent(props) {
                     item="true"
                     style={{ backgroundColor: data.color ? data.color : props.app.themeDict.other.polyFillColorDefault }}
                     className={classes.regionInfoColor}
-                    onClick={() => {
-                        if (data.color) {
-                            props.app.setDefaultColorBarColor(data.color);
-                        }
-                    }}
                 />
                 <Typography variant="body1" item="true">{"Name: "}{data.name ? data.name : "None"}</Typography>
             </Grid>
