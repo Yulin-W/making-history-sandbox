@@ -43,7 +43,7 @@
 - [x] 0.12.0: Refining visuals
   - Try create a neoclassical style interface
   - Position attribution element in a convenient location, this is mandatory as attribution is key
-- [ ] 0.13.0: Scenarios plugin
+- [x] 0.13.0: Scenarios plugin
 - [ ] 0.14.0: Help button
 # Standard version
 ## Version 1
