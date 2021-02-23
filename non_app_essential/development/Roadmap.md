@@ -80,7 +80,5 @@
 - Smooth scrolling
 - Generate timeline
 - Scenarios and points of divergence
-- Geojson refiner
-  - Currently geojson inputs are required to have name, and regionID attributes
 - Edit region names (this would require possibly changing the way data is stored for the app, or possibly via a plugin that requires as part of the save an additional id to name mapping for different entries in the save)
 - Allow disabling plugins for sake of speed
