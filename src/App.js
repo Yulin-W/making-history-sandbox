@@ -91,6 +91,26 @@ class App extends React.Component {
     this.updateLassoSelecting = this.updateLassoSelecting.bind(this);
     this.updateErasing = this.updateErasing.bind(this);
     this.setDefaultColorBarColor = this.setDefaultColorBarColor.bind(this);
+    this.processRegionHoveredOn = this.processRegionHoveredOn.bind(this);
+    this.processRegionHoveredOut = this.processRegionHoveredOut.bind(this);
+  }
+
+  processRegionHoveredOn(layer) {
+    // Running plugin methods
+    Object.values(this.plugins).forEach(entry => {
+      if (entry.functions.onProcessRegionHoveredOn) {
+        entry.functions.onProcessRegionHoveredOn(this, layer);
+      }
+    });
+  }
+
+  processRegionHoveredOut(layer) {
+    // Running plugin methods
+    Object.values(this.plugins).forEach(entry => {
+      if (entry.functions.onProcessRegionHoveredOut) {
+        entry.functions.onProcessRegionHoveredOut(this, layer);
+      }
+    });
   }
 
   // Updates plugin data for the specified plugin with the specified data, the key should be the one used in the plugins dictionary
@@ -328,7 +348,17 @@ class App extends React.Component {
           themeDict={this.themeDict.other}
         />
         <ColorBarComponent defaultColorBarColor={this.state.defaultColorBarColor} ref={this.colorBarRef} themeDict={this.themeDict.other} />
-        <MapComponent themeDict={this.themeDict.other} baseMap={mapAdmin} assignRegions={this.assignRegions} regionDict={this.state.scenarioData[this.state.activeEntry].regionDict} lassoSelecting={this.state.lassoSelecting} updateLassoSelecting={this.updateLassoSelecting} ref={this.mapRef} />
+        <MapComponent
+          themeDict={this.themeDict.other}
+          baseMap={mapAdmin}
+          assignRegions={this.assignRegions}
+          regionDict={this.state.scenarioData[this.state.activeEntry].regionDict}
+          lassoSelecting={this.state.lassoSelecting}
+          updateLassoSelecting={this.updateLassoSelecting}
+          processRegionHoveredOn={this.processRegionHoveredOn}
+          processRegionHoveredOut={this.processRegionHoveredOut}
+          ref={this.mapRef}
+        />
       </div>
     );
   }

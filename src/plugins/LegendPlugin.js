@@ -1,7 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Scrollbars from 'react-custom-scrollbars';
-import Typography from '@material-ui/core/Typography';
 import cloneDeep from "clone-deep";
 import InputBase from '@material-ui/core/InputBase';
 
@@ -53,6 +52,7 @@ function LegendComponent(props) {
             key={color}
             color={color}
             label={props.app.state.pluginData["Legend"][props.app.state.activeEntry][color]}
+            item
             onChange={e => {
                 let currentLegendData = cloneDeep(props.app.state.pluginData["Legend"]);
                 currentLegendData[props.app.state.activeEntry][color] = e.target.value;
@@ -127,6 +127,8 @@ const LegendPluginDict = {
         onUpdateEventDate: null,
         onUpdateEvent: null,
         onLoadSave: null,
+        onProcessRegionHoveredOn: null,
+        onProcessRegionHoveredOut: null,
     }
 };
 
