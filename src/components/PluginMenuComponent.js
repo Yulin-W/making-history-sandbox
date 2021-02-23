@@ -14,9 +14,9 @@ const useStyles = makeStyles((theme) => ({
         top: "50%",
         zIndex: 1,
         minWidth: 190, // At least 200px adding in padding
-        width: "20%",
+        width: "12%",
         minHeight: 240, // At least 250px adding in padding
-        height: "60%",
+        height: "70%",
         backgroundColor: theme.palette.background.default,
         display: "flex",
         justifyContent: "flex-start",
