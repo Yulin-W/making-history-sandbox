@@ -17,8 +17,8 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "flex-start",
     },
     legendEntryColor: {
-        width: 15,
-        height: 15,
+        width: 12,
+        height: 12,
         margin: 5,
     },
     legendEntryLabel: {
@@ -42,13 +42,14 @@ function LegendEntry(props) {
 
 function LegendComponent(props) {
     const classes = useStyles();
-    const entries = Object.keys(props.app.state.colorData[props.app.state.activeEntry]).map((color, index) =>
+    const entries = Object.keys(props.app.state.pluginData["Legend"][props.app.state.activeEntry]).map((color) =>
         <LegendEntry
+            key={color}
             color={color}
-            label={"default label"}
+            label={props.app.state.pluginData["Legend"][props.app.state.activeEntry][color]}
             onChange={e => {
                 let currentLegendData = cloneDeep(props.app.state.pluginData["Legend"]);
-                currentLegendData[props.app.state.activeEntry][index][color] = e.target.value;
+                currentLegendData[props.app.state.activeEntry][color] = e.target.value;
                 props.app.updatePluginData("Legend", currentLegendData);
             }}
         />);
@@ -99,7 +100,6 @@ function onAddEntry(app, index) {
 function onDeleteEntry(app, index) {
     let currentLegendData = cloneDeep(app.state.pluginData["Legend"]);
     currentLegendData.splice(index, 1);
-    console.log(currentLegendData);
     app.updatePluginData("Legend", currentLegendData);
 }
 
