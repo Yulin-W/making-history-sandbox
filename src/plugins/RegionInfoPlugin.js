@@ -1,7 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import cloneDeep from "clone-deep";
 
 const useStyles = makeStyles((theme) => ({
     regionInfoContainer: {
@@ -33,9 +32,9 @@ function RegionInfoComponent(props) {
                     style={{ backgroundColor: data.color ? data.color : props.app.themeDict.other.polyFillColorDefault }}
                     className={classes.regionInfoColor}
                 />
-                <Typography variant="body1" item="true">{"Name: "}{data.name ? data.name : "None"}</Typography>
+                <Typography variant="body2" item="true">{"Name: "}{data.name ? data.name : "None"}</Typography>
             </Grid>
-            <Typography item="true" variant="body2" className={classes.regionInfoLabel}>{"Label: "}{data.label ? data.label : "None"}</Typography>
+            <Typography item="true" variant="caption" className={classes.regionInfoLabel}>{"Label: "}{data.label ? data.label : "None"}</Typography>
         </Grid>
     );
 }

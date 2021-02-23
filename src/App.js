@@ -73,6 +73,10 @@ class App extends React.Component {
     this.regionNameDict = regionNameDict;
     this.themeDict = themeDict;
 
+    // Some attributes for plugins to use
+    this.scenarioDataDefault = scenarioDataDefault;
+    this.regionDictDefault = regionDictDefault;
+
     // Numerous refs
     this.colorBarRef = React.createRef(null);
     this.mapRef = React.createRef(null);
