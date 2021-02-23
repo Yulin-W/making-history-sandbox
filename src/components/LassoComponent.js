@@ -22,7 +22,7 @@ export default function LassoComponent(props) {
                 });       
             }
         }
-        props.updateLassoSelecting(true, () => {props.assignRegions(indices);})
+        props.updateLassoSelecting(false, () => {props.assignRegions(indices);})
     };
 
     // Setup lasso
