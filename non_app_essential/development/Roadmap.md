@@ -32,7 +32,7 @@
   - There should exists a standard api to the app to which the plugins be able to access
   - Adding plugin to app should be simple as place file into a folder, and at most needing to update a plugin registry file
 - [x] 0.7.0: Legend
-- [ ] 0.8.0: Various minor features
+- [x] 0.8.0: Various minor features
   - Make timeline bar and timeline event directly rendered by app to reduce rendering costs
   - Click on Legend to select color, so to allow selecting the same color as existing one on legend
 - [ ] 0.9.0: New map button (probably just refresh the page tbh for simplicity)

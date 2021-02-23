@@ -8,9 +8,10 @@ import './App.css';
 import MenuComponent from "./components/MenuComponent.js";
 import MapComponent from './components/MapComponent.js';
 import ColorBarComponent from './components/ColorBarComponent.js';
-import TimelineComponent from "./components/TimelineComponent.js";
 import ToolbarComponent from "./components/ToolbarComponent.js";
 import PluginMenuComponent from "./components/PluginMenuComponent.js";
+import TimelineBarComponent from './components/TimelineBarComponent.js';
+import TimelineEventComponent from './components/TimelineEventComponent.js';
 
 // Import default themeDict
 import themeDict from './themes/default';
@@ -89,6 +90,7 @@ class App extends React.Component {
     this.loadSave = this.loadSave.bind(this);
     this.updateLassoSelecting = this.updateLassoSelecting.bind(this);
     this.updateErasing = this.updateErasing.bind(this);
+    this.setDefaultColorBarColor = this.setDefaultColorBarColor.bind(this);
   }
 
   // Updates plugin data for the specified plugin with the specified data, the key should be the one used in the plugins dictionary
@@ -114,7 +116,12 @@ class App extends React.Component {
 
   // Returns hex of currently selected color, as in the colorBarComponent
   getColor() {
-    return this.state.erasing ? null : this.colorBarRef.current.state.color; // TODO: not the best practice, but using refs does make it easy
+    return this.state.erasing ? null : this.colorBarRef.current.state.color;
+  }
+
+  // Sets color in colorBarComponent, expects a hex string
+  setDefaultColorBarColor(color) {
+    this.colorBarRef.current.setState({color:color});
   }
 
   // Adds entry in position at specified index in scenarioData and colorData, new entry has no date nor event
@@ -207,7 +214,7 @@ class App extends React.Component {
     this.setState(
       { activeEntry: newIndex },
       () => {
-        this.mapRef.current.resetAllRegionStyle(); // TODO: not the best practice, but using refs does make it easy
+        this.mapRef.current.resetAllRegionStyle();
         if (callback) { // runs callback if callback is not null
           callback();
         }
@@ -302,8 +309,25 @@ class App extends React.Component {
         />
         <ToolbarComponent lassoSelecting={this.state.lassoSelecting} updateLassoSelecting={this.updateLassoSelecting} erasing={this.state.erasing} updateErasing={this.updateErasing} />
         <PluginMenuComponent app={this} />
-        <TimelineComponent updateActiveEntry={this.updateActiveEntry} activeEntry={this.state.activeEntry} scenarioData={this.state.scenarioData} addEntry={this.addEntry} updateEventDate={this.updateEventDate} updateEvent={this.updateEvent} deleteEntry={this.deleteEntry} clearEntry={this.clearEntry} themeDict={this.themeDict.other} />
-        <ColorBarComponent ref={this.colorBarRef} themeDict={this.themeDict.other} />
+        <TimelineBarComponent
+          updateActiveEntry={this.updateActiveEntry}
+          activeEntry={this.state.activeEntry}
+          scenarioData={this.state.scenarioData}
+          addEntry={this.addEntry}
+          themeDict={this.themeDict.other}
+        />
+        <TimelineEventComponent
+          date={this.state.scenarioData[this.state.activeEntry].date}
+          event={this.state.scenarioData[this.state.activeEntry].event}
+          updateEventDate={this.updateEventDate}
+          updateEvent={this.updateEvent}
+          deleteEntry={this.deleteEntry}
+          activeEntry={this.state.activeEntry}
+          clearEntry={this.clearEntry}
+          oneEntryLeft={this.state.scenarioData.length === 1}
+          themeDict={this.themeDict.other}
+        />
+        <ColorBarComponent defaultColorBarColor={this.state.defaultColorBarColor} ref={this.colorBarRef} themeDict={this.themeDict.other} />
         <MapComponent themeDict={this.themeDict.other} baseMap={mapAdmin} assignRegions={this.assignRegions} regionDict={this.state.scenarioData[this.state.activeEntry].regionDict} lassoSelecting={this.state.lassoSelecting} updateLassoSelecting={this.updateLassoSelecting} ref={this.mapRef} />
       </div>
     );
