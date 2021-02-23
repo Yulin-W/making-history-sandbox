@@ -36,7 +36,7 @@
   - Make timeline bar and timeline event directly rendered by app to reduce rendering costs
   - Click on Legend to select color, so to allow selecting the same color as existing one on legend
 - [x] 0.9.0: New map button (probably just refresh the page tbh for simplicity)
-- [ ] 0.10.0: Region info plugin, displays on hovering above a region
+- [x] 0.10.0: Region info plugin, displays on hovering above a region
   - Region label
   - Region name
 - [ ] 0.11.0: Refining visuals
