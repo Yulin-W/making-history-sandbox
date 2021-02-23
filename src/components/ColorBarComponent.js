@@ -18,9 +18,9 @@ const useStyles = theme => ({
         justifyContent: "center",
         flexFlow: "column",
         alignItems: "stretch",
+        marginTop: 5,
         padding: 5,
         borderRadius: 5,
-        transform: "scale(0.8)"
     },
 });
 
@@ -36,7 +36,7 @@ class ColorBarComponent extends React.Component {
         const { classes } = this.props;
         return (
             <div className={classes.colorBarContainer}>
-                <SliderPicker color={this.state.color} onChangeComplete={(color, event) => this.setState({color: color.hex})}/>
+                <SliderPicker color={this.state.color} onChange={(color, event) => this.setState({color: color.hex})}/>
             </div>
         );
     }

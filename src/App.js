@@ -116,7 +116,7 @@ class App extends React.Component {
 
   // Returns hex of currently selected color, as in the colorBarComponent
   getColor() {
-    return this.state.erasing ? null : this.colorBarRef.current.state.color; // TODO: not the best practice, but using refs does make it easy
+    return this.state.erasing ? null : this.colorBarRef.current.state.color;
   }
 
   // Sets color in colorBarComponent, expects a hex string
@@ -214,7 +214,7 @@ class App extends React.Component {
     this.setState(
       { activeEntry: newIndex },
       () => {
-        this.mapRef.current.resetAllRegionStyle(); // TODO: not the best practice, but using refs does make it easy
+        this.mapRef.current.resetAllRegionStyle();
         if (callback) { // runs callback if callback is not null
           callback();
         }
