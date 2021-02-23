@@ -36,7 +36,7 @@
   - Make timeline bar and timeline event directly rendered by app to reduce rendering costs
   - Click on Legend to select color, so to allow selecting the same color as existing one on legend
 - [x] 0.9.0: New map button (probably just refresh the page tbh for simplicity)
-- [ ] 0.10.0: Region info plugin, displays on hovering above a region
+- [x] 0.10.0: Region info plugin, displays on hovering above a region
   - Region label
   - Region name
 - [ ] 0.11.0: Refining visuals
@@ -65,6 +65,8 @@
 - Minimise use of refs
 - Try to find another way as opposed to passing the App's this value to the plugin methods that run after corresponding App methods
 # Possible future features
+- Refactor code, in particular names to make methods and variables more intuitive
+- Write a document summarizing how plugins could be added and what functionalities it could have, including the API it has access of
 - Make new map button more efficient by resetting required state values as opposed to reloading entire page
 - Add chinese version
 - Use more icons alongside words for buttons
@@ -78,7 +80,5 @@
 - Smooth scrolling
 - Generate timeline
 - Scenarios and points of divergence
-- Geojson refiner
-  - Currently geojson inputs are required to have name, and regionID attributes
 - Edit region names (this would require possibly changing the way data is stored for the app, or possibly via a plugin that requires as part of the save an additional id to name mapping for different entries in the save)
 - Allow disabling plugins for sake of speed

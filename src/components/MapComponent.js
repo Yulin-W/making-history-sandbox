@@ -41,10 +41,18 @@ class MapComponent extends React.Component {
             this.clickRegion(feature, layer);
         });
         layer.addEventListener("mouseover", () => {
-            this.highlightRegion(feature, layer);
+            if (!this.props.lassoSelecting) {
+                // Ensures lasso selection is not interfered by mouse events
+                this.highlightRegion(feature, layer);
+                this.props.processRegionHoveredOn(layer);
+            }
         });
         layer.addEventListener("mouseout", () => {
-            this.resetHighlightRegion(feature, layer);
+            if (!this.props.lassoSelecting) {
+                // Ensures lasso selection is not interfered by mouse events
+                this.resetHighlightRegion(feature, layer);
+                this.props.processRegionHoveredOut(layer);
+            }
         });
     }
 
