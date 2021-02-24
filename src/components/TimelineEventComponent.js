@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function TimelineEventComponent(props) {
+function TimelineEventComponent(props) {
     const classes = useStyles();
     return (
         <div className={classes.eventContainer} id="timeline_event">
@@ -70,3 +70,5 @@ export default function TimelineEventComponent(props) {
         </div>
     );
 }
+
+export default React.memo(TimelineEventComponent);

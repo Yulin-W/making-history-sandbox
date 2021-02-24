@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
         position: "absolute",
         top: 96,
         right: "50%",
-        marginRight: -148/2,
+        marginRight: -148 / 2,
         height: 30,
         width: 130,
         zIndex: 1,
@@ -26,20 +26,22 @@ const useStyles = makeStyles((theme) => ({
         fontSize: 12,
         margin: 0,
         padding: 0,
-        height:"100%",
+        height: "100%",
     }
 }));
 
-export default function ToolbarComponent(props) {
-        const classes = useStyles();
-        const lassoButtonText = props.lassoSelecting ? "Cancel" : "Lasso"; // TODO: using switches might be better in these situations
-        const lassoButtonColor = props.lassoSelecting ? "secondary" : "default";
-        const eraserButtonText = props.erasing ? "Cancel" : "Erase";
-        const eraserButtonColor = props.erasing ? "secondary" : "default";
-        return (
-            <div className={classes.toolbarContainer} id="toolbar">
-                <Button color={eraserButtonColor} className={classes.toolbarButton} onClick={() => {props.updateErasing(!props.erasing);}}>{eraserButtonText}</Button>
-                <Button color={lassoButtonColor} className={classes.toolbarButton} onClick={() => {props.updateLassoSelecting(!props.lassoSelecting);}}>{lassoButtonText}</Button>
-            </div>
-        );
-    }
+function ToolbarComponent(props) {
+    const classes = useStyles();
+    const lassoButtonText = props.lassoSelecting ? "Cancel" : "Lasso"; // TODO: using switches might be better in these situations
+    const lassoButtonColor = props.lassoSelecting ? "secondary" : "default";
+    const eraserButtonText = props.erasing ? "Cancel" : "Erase";
+    const eraserButtonColor = props.erasing ? "secondary" : "default";
+    return (
+        <div className={classes.toolbarContainer} id="toolbar">
+            <Button color={eraserButtonColor} className={classes.toolbarButton} onClick={() => { props.updateErasing(!props.erasing); }}>{eraserButtonText}</Button>
+            <Button color={lassoButtonColor} className={classes.toolbarButton} onClick={() => { props.updateLassoSelecting(!props.lassoSelecting); }}>{lassoButtonText}</Button>
+        </div>
+    );
+}
+
+export default React.memo(ToolbarComponent);

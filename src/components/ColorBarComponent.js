@@ -26,7 +26,7 @@ const useStyles = theme => ({
     },
 });
 
-class ColorBarComponent extends React.Component {
+class ColorBarComponent extends React.PureComponent {
     constructor(props) {
         super(props);
         this.state = {

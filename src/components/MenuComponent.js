@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function MenuComponent(props) {
+function MenuComponent(props) {
     const classes = useStyles();
     return (
         <div className={classes.menuContainer} id="menu">
@@ -54,3 +54,5 @@ export default function MenuComponent(props) {
         </div>
     );
 }
+
+export default React.memo(MenuComponent);

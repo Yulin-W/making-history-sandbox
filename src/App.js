@@ -395,7 +395,7 @@ class App extends React.Component {
             oneEntryLeft={this.state.scenarioData.length === 1}
             themeDict={this.themeDict.other}
           />
-          <ColorBarComponent defaultColorBarColor={this.state.defaultColorBarColor} ref={this.colorBarRef} themeDict={this.themeDict.other} />
+          <ColorBarComponent ref={this.colorBarRef} themeDict={this.themeDict.other} />
           <MapComponent
             themeDict={this.themeDict.other}
             baseMap={mapAdmin}
