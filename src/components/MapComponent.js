@@ -124,7 +124,6 @@ class MapComponent extends React.PureComponent {
 
     render() {
         const { classes } = this.props;
-        console.log(2);
         return (
             <MapContainer
                 center={[30, 0]}
