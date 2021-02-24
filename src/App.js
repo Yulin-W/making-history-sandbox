@@ -328,7 +328,7 @@ class App extends React.Component {
     // Setting state, then do callback
     this.setState({ scenarioData: currentData, colorData: currentColorData },
       () => {
-        this.mapRef.current.resetAllRegionStyle();
+        this.mapRef.current.resetSpecifiedRegionStyle(indices);
         if (callback) {
           callback();
         }

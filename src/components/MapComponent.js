@@ -63,6 +63,7 @@ class MapComponent extends React.PureComponent {
         this.clickRegion = this.clickRegion.bind(this);
         this.highlightRegion = this.highlightRegion.bind(this);
         this.resetHighlightRegion = this.resetHighlightRegion.bind(this);
+        this.resetSpecifiedRegionStyle = this.resetSpecifiedRegionStyle.bind(this);
     }
 
     onEachFeature(feature, layer) {
@@ -119,6 +120,16 @@ class MapComponent extends React.PureComponent {
     resetAllRegionStyle() {
         Object.values(this.geojsonRef.current._layers).forEach(layer => {
             layer.setStyle(this.style(layer.feature, layer));
+        });
+    }
+
+    // Resets style of specified regions to match those of regionDict data
+    resetSpecifiedRegionStyle(indices) {
+        let layers = Object.values(this.geojsonRef.current._layers);
+        indices.forEach(index => {
+            let layer = layers[index];
+            let feature = layer.feature;
+            layers[index].setStyle(this.style(feature, layer));
         });
     }
 

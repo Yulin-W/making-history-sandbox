@@ -72,6 +72,7 @@
 # Possible code improvements
 - Minimise use of refs
 - Try to find another way as opposed to passing the App's this value to the plugin methods that run after corresponding App methods
+- Improve map performance by reducing style resetting
 # Possible future features
 - If webkit border image and background images fail, retreat back to a single color background
 - Making clicking and highlighting more responsive
