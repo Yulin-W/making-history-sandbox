@@ -90,7 +90,7 @@ class MapComponent extends React.PureComponent {
             const color = this.props.getRegionColorByIndex(feature.properties.regionID);
             if (color) {
                 // if region has a color, else just do nothing
-                this.props.setDefaultColorBarColor(color);
+                this.props.setColorBarColor(color);
             }
         } else {
             // Picking color tool not selected, hence color region as usual

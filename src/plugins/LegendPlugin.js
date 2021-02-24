@@ -36,7 +36,7 @@ function LegendEntry(props) {
                 style={{ backgroundColor: props.color }}
                 className={classes.legendEntryColor}
                 onClick={() => {
-                    props.setDefaultColorBarColor(props.color);
+                    props.setColorBarColor(props.color);
                 }}
             />
             <InputBase
@@ -61,7 +61,7 @@ function LegendComponent(props) {
                 currentLegendData[props.app.state.activeEntry][color] = e.target.value;
                 props.app.updatePluginData("Legend", currentLegendData);
             }}
-            setDefaultColorBarColor={props.app.setDefaultColorBarColor}
+            setColorBarColor={props.app.setColorBarColor}
         />);
     return (
         <div className={classes.legendContainer}>

@@ -117,7 +117,7 @@ class App extends React.Component {
     this.loadSave = this.loadSave.bind(this);
     this.updateLassoSelecting = this.updateLassoSelecting.bind(this);
     this.updateErasing = this.updateErasing.bind(this);
-    this.setDefaultColorBarColor = this.setDefaultColorBarColor.bind(this);
+    this.setColorBarColor = this.setColorBarColor.bind(this);
     this.processRegionHoveredOn = this.processRegionHoveredOn.bind(this);
     this.processRegionHoveredOut = this.processRegionHoveredOut.bind(this);
     this.save = this.save.bind(this);
@@ -185,7 +185,7 @@ class App extends React.Component {
   }
 
   // Sets color in colorBarComponent, expects a hex string
-  setDefaultColorBarColor(color) {
+  setColorBarColor(color) {
     this.colorBarRef.current.setState({ color: color });
   }
 
@@ -427,7 +427,7 @@ class App extends React.Component {
             processRegionHoveredOut={this.processRegionHoveredOut}
             updatePicking={this.updatePicking}
             picking={this.state.picking}
-            setDefaultColorBarColor={this.setDefaultColorBarColor}
+            setColorBarColor={this.setColorBarColor}
             ref={this.mapRef}
           />
         </div>
