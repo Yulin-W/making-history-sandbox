@@ -59,7 +59,7 @@
 - [x] 1.1.0: more background map providers
 - [x] 1.1.1: add title to site
 - [x] 1.1.2: changing positions of buttons and minimum sizes of panels for better mobile performance
-- [ ] 1.1.3: use react memo to improve performance
+- [x] 1.1.3: use react memo to improve performance
 ## Plugins planned (these can go into separate repos), some might not be plugins in the sense that it goes into the sidebar menu
 - [ ] Convert image to basemap/scenario
 - [ ] Wikipedia event AI recommendation
