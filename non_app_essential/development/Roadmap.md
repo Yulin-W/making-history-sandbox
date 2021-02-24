@@ -47,7 +47,7 @@
 - [x] 0.14.0: Help button
 # Standard version
 ## Version 1
-- [ ] 1.0.0: fix any bugs from the beta versions and bundle it no release on github pages
+- [x] 1.0.0: fix any bugs from the beta versions and bundle it no release on github pages
     - Favicon
     - Add google analytics
     - Meta, SEO
