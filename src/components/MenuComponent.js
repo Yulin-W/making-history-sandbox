@@ -49,8 +49,8 @@ export default function MenuComponent(props) {
                         {/*This is a dummy button for visuals only, the uploading functionality is contained in the Dropzone and the input element*/}
                     </div>
                 )}
-            </Dropzone>
-            <Button size="small" className={classes.menuButton}>Help</Button>
+                </Dropzone>
+            <Button size="small" className={classes.menuButton} onClick={props.openHelp}>Help</Button>
         </div>
     );
 }
