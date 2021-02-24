@@ -18,7 +18,7 @@ const useStyles = theme => ({
         justifyContent: "center",
         flexFlow: "column",
         alignItems: "stretch",
-        marginTop: 5,
+        marginTop: 30,
         padding: 5,
         borderStyle: "ridge",
         borderColor: theme.palette.border,
