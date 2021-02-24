@@ -122,6 +122,7 @@ class App extends React.Component {
     this.save = this.save.bind(this);
     this.closeHelp = this.closeHelp.bind(this);
     this.openHelp = this.openHelp.bind(this);
+    this.getRegionColorByIndex = this.getRegionColorByIndex.bind(this);
   }
 
   openHelp() {
@@ -362,6 +363,11 @@ class App extends React.Component {
     });
   }
 
+  getRegionColorByIndex(index) {
+    // Return color hex, or null if that was the value
+    return this.state.scenarioData[this.state.activeEntry].regionDict[index].color;
+  }
+
   render() {
     const { classes } = this.props;
     return (
@@ -397,10 +403,10 @@ class App extends React.Component {
           />
           <ColorBarComponent ref={this.colorBarRef} themeDict={this.themeDict.other} />
           <MapComponent
+            getRegionColorByIndex={this.getRegionColorByIndex}
             themeDict={this.themeDict.other}
             baseMap={mapAdmin}
             assignRegions={this.assignRegions}
-            regionDict={this.state.scenarioData[this.state.activeEntry].regionDict}
             lassoSelecting={this.state.lassoSelecting}
             updateLassoSelecting={this.updateLassoSelecting}
             processRegionHoveredOn={this.processRegionHoveredOn}
