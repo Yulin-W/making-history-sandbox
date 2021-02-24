@@ -25,8 +25,9 @@ export default function HelpComponent(props) {
             <p className={classes.helpContent}>Use the Delete button on the bottom right to delete the current time point</p>
             <p className={classes.helpContent}>Use the small + on the timeline to add time points in the location. The added entry will inherit the previous entry</p>
             <h2 className={classes.helpContent}>Alternate History Editor users</h2>
-            <p className={classes.helpContent}>Use the Alt Hist Editor Loader panel at the end of the right panel (scroll down if it isn't visible) to load your save, not the load button in the menu.</p>
-
+            <p className={classes.helpContent}>Use the Alt Hist Editor Loader panel at the end of the right panel (scroll down if it isn't visible)</p>
+            <h2 className={classes.helpContent}>For those that want to see code</h2>
+            <a className={classes.helpContent} href="https://github.com/Yulin-W/making-history-sandbox">Github repository</a>
         </Grid>
     );
 }
