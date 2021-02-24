@@ -34,6 +34,13 @@ import plugins from "./appPlugins.js";
 // Import deep clone
 import cloneDeep from "clone-deep";
 
+// Import Google Analytics
+import ReactGA from 'react-ga';
+
+// Setup Google Analytics
+ReactGA.initialize("UA-176706567-4");
+ReactGA.pageview(window.location.pathname + window.location.search);
+
 // Convert mapAdmin to a prototype, const dictionary indexed by regionID
 const regionDictDefault = createRegionDict(mapAdmin);
 
