@@ -6,7 +6,7 @@ const useStyles = makeStyles((theme) => ({
         width: "70%"
     },
     helpContent: {
-        margin: 10,
+        margin: 5,
     }
 }));
 
@@ -24,6 +24,8 @@ export default function HelpComponent(props) {
             <h2 className={classes.helpContent}>Adding and deleting entries</h2>
             <p className={classes.helpContent}>Use the Delete button on the bottom right to delete the current time point</p>
             <p className={classes.helpContent}>Use the small + on the timeline to add time points in the location. The added entry will inherit the previous entry</p>
+            <h2 className={classes.helpContent}>Switching background</h2>
+            <p className={classes.helpContent}>Use the top right layers icon to choose the background map and whether regions should be displayed</p>
             <h2 className={classes.helpContent}>Alternate History Editor users</h2>
             <p className={classes.helpContent}>Use the Alt Hist Editor Loader panel at the end of the right panel (scroll down if it isn't visible)</p>
             <h2 className={classes.helpContent}>For those that want to see code</h2>
