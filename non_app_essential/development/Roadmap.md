@@ -74,6 +74,7 @@
 - [ ] Auto generation of territorial changes based on natural language processing or just in general with randomness
 - [ ] Visual customization
 - [ ] GIF/Screenshot generation
+- [ ] Timeline play button
 - [ ] Detailed state world building: e.g. mark major cities, flags, hereditary linages, populations, gdp
 - [ ] Data generation for states, e.g. land area
 - [ ] Marker features, e.g. city, factories, fortification, etc.
