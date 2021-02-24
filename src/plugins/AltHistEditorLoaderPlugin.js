@@ -178,7 +178,7 @@ function AltHistEditorLoaderPluginComponent(props) {
                         <input {...getInputProps()} />
                         <div className={classes.loaderDropzone}>
                             <div>
-                                Drop your save here, or click to select files
+                                Drop your save here, or click to select file
                             </div>
                         </div>
                     </div>
