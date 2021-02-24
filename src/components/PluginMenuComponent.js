@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
         minWidth: 190, // At least 200px adding in padding
         width: "12%",
         minHeight: 240, // At least 250px adding in padding
-        height: "70%",
+        height: "60%",
         display: "flex",
         justifyContent: "flex-start",
         flexFlow: "column",
