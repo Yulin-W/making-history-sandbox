@@ -89,6 +89,7 @@ class App extends React.Component {
       lassoSelecting: false, // state for whether lasso select tool is activated
       erasing: false, // state for whether eraser tool is activated
       helpOn: true, // On opening app, defaults to have help on
+      picking: false, // color picking tool defaults to not on
     };
 
     // Declare some constant attributes
@@ -123,6 +124,12 @@ class App extends React.Component {
     this.closeHelp = this.closeHelp.bind(this);
     this.openHelp = this.openHelp.bind(this);
     this.getRegionColorByIndex = this.getRegionColorByIndex.bind(this);
+    this.updatePicking = this.updatePicking.bind(this);
+  }
+
+  // Update color picker state
+  updatePicking(newState) {
+    this.setState({ picking: newState });
   }
 
   openHelp() {
@@ -381,8 +388,15 @@ class App extends React.Component {
             loadSave={this.loadSave}
             openHelp={this.openHelp}
           />
-          <ToolbarComponent lassoSelecting={this.state.lassoSelecting} updateLassoSelecting={this.updateLassoSelecting} erasing={this.state.erasing} updateErasing={this.updateErasing} />
-          <PluginMenuComponent app={this}/>
+          <ToolbarComponent
+            lassoSelecting={this.state.lassoSelecting}
+            updateLassoSelecting={this.updateLassoSelecting}
+            erasing={this.state.erasing}
+            updateErasing={this.updateErasing}
+            picking={this.state.picking}
+            updatePicking={this.updatePicking}
+          />
+          <PluginMenuComponent app={this} />
           <TimelineBarComponent
             updateActiveEntry={this.updateActiveEntry}
             activeEntry={this.state.activeEntry}
@@ -411,6 +425,9 @@ class App extends React.Component {
             updateLassoSelecting={this.updateLassoSelecting}
             processRegionHoveredOn={this.processRegionHoveredOn}
             processRegionHoveredOut={this.processRegionHoveredOut}
+            updatePicking={this.updatePicking}
+            picking={this.state.picking}
+            setDefaultColorBarColor={this.setDefaultColorBarColor}
             ref={this.mapRef}
           />
         </div>
