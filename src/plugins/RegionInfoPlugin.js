@@ -53,20 +53,12 @@ function onProcessRegionHoveredOn(app, layer) {
     const color = app.state.scenarioData[app.state.activeEntry].regionDict[regionID].color;
     const name = layer.feature.properties.name;
     const label = app.state.pluginData["Legend"][app.state.activeEntry][color];
-    let newRegionInfoData = {}
-    newRegionInfoData.color = color ? color : null;
-    newRegionInfoData.name = name ? name : null;
-    newRegionInfoData.label = label ? label : null;
+    let newRegionInfoData = {
+        color: color ? color : null,
+        name: name ? name : null,
+        label: label ? label : null,
+    };
     app.updatePluginData("Region Info", newRegionInfoData);
-}
-
-// Resets region info to default, i.e. no region selected status
-function onProcessRegionHoveredOut(app, layer) {
-    app.updatePluginData("Region Info", {
-        color: null,
-        name: null,
-        label: null,
-    });
 }
 
 const RegionInfoPluginDict = {
@@ -81,7 +73,7 @@ const RegionInfoPluginDict = {
         onUpdateEvent: null,
         onLoadSave: null,
         onProcessRegionHoveredOn: onProcessRegionHoveredOn,
-        onProcessRegionHoveredOut: onProcessRegionHoveredOut,
+        onProcessRegionHoveredOut: null, // Although not having this causes the region info to linger on  after moving out of a region, it is faster and I feel that is worth is, nevertheless, try to find a solution that resolves the performance issue and ensures on moving out the region info is set to null
     }
 };
 
