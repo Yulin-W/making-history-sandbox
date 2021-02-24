@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
         right: 0,
         top: "50%",
         zIndex: 1,
-        minWidth: 190, // At least 200px adding in padding
+        minWidth: 140, // At least 150px adding in padding
         width: "12%",
         minHeight: 240, // At least 250px adding in padding
         height: "60%",

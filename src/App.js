@@ -125,11 +125,11 @@ class App extends React.Component {
   }
 
   openHelp() {
-    this.setState({helpOn:true});
+    this.setState({ helpOn: true });
   }
 
   closeHelp() {
-    this.setState({helpOn:false});
+    this.setState({ helpOn: false });
   }
 
   processRegionHoveredOn(layer) {
@@ -368,7 +368,7 @@ class App extends React.Component {
       <ThemeProvider theme={theme}>
         <div className="App">
           <Backdrop className={classes.backdrop} open={this.state.helpOn} onClick={this.closeHelp}>
-            <HelpComponent/>
+            <HelpComponent />
           </Backdrop>
           <MenuComponent
             save={this.save}
@@ -376,7 +376,7 @@ class App extends React.Component {
             openHelp={this.openHelp}
           />
           <ToolbarComponent lassoSelecting={this.state.lassoSelecting} updateLassoSelecting={this.updateLassoSelecting} erasing={this.state.erasing} updateErasing={this.updateErasing} />
-          <PluginMenuComponent app={this} />
+          <PluginMenuComponent app={this}/>
           <TimelineBarComponent
             updateActiveEntry={this.updateActiveEntry}
             activeEntry={this.state.activeEntry}

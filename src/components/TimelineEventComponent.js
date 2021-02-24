@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
         position: "absolute",
         left: 0,
         bottom: 48, // This value should be such that the event box touches the timeline bar on the bottom, so adjust accordingly
-        minWidth: 240, // At least 250px adding in padding
+        minWidth: 140, // At least 150px adding in padding
         width: "15%",
         minHeight: 190, // At least 200px adding in padding
         height: "25%",
@@ -26,11 +26,16 @@ const useStyles = makeStyles((theme) => ({
     },
     eventBar: {
         display: "flex",
-        height: 50,
         flexFlow: "row",
         alignItems: "center",
         justifyContent: "space-between",
         backgroundImage: theme.palette.backgroundImage.main
+    },
+    eventButtonHolder: {
+        display: "flex",
+        flexFlow: "column",
+        alignItems: "center",
+        justifyContent: "space-between",
     },
     eventContent: {
         marginTop: 5,
@@ -44,6 +49,7 @@ const useStyles = makeStyles((theme) => ({
         margin: 2,
     },
     dateInput: {
+        width: "max(calc(100% - 40px),)",
         margin: 10,
     }
 }));
@@ -54,9 +60,11 @@ export default function TimelineEventComponent(props) {
         <div className={classes.eventContainer} id="timeline_event">
             <div className={classes.eventBar}>
                 <TextField size="small" label="Date" margin="dense" value={props.date} onChange={e => {props.updateEventDate(e.target.value)}} className={classes.dateInput}></TextField>
-                <Button variant="contained" size="large" color="primary" onClick={() => {props.clearEntry();}} className={classes.eventButton}>Clear</Button>
-                <Button variant="contained" size="large" color="secondary" onClick={() => {props.deleteEntry(props.activeEntry);}} disabled={props.oneEntryLeft} className={classes.eventButton}>Delete</Button>
-                {/*Delete button is disabled for the first entry TODO: because for now we haven't implemented the add entry before first element functionality yet, nor is there a button for it*/}
+                <div className={classes.eventButtonHolder}>
+                    <Button variant="contained" size="small" color="primary" onClick={() => {props.clearEntry();}} className={classes.eventButton}>Clear</Button>
+                    <Button variant="contained" size="small" color="secondary" onClick={() => {props.deleteEntry(props.activeEntry);}} disabled={props.oneEntryLeft} className={classes.eventButton}>Delete</Button>
+                    {/*Delete button is disabled for the first entry TODO: because for now we haven't implemented the add entry before first element functionality yet, nor is there a button for it*/}
+                </div>  
             </div>
             <textarea className={classes.eventContent} value={props.event} onChange={e => {props.updateEvent(e.target.value)}} multiline="true"></textarea>
         </div>
