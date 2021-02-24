@@ -3,6 +3,8 @@ Simple, intuitive app using React, Leaflet and other packages for making alterna
 
 Saves from Alternate History Editor can be loaded into this app via using the Alt Hist Editor Loader Plugin on the right side of the app.
 
+Disclaimer: Making History Sandbox (application) is not intended to be historically accurate nor do they represent personal views of the author. The application is provided without any warranty of any kind whatsoever, either express or implied.
+
 ## Functionality showcase
 ![](https://raw.githubusercontent.com/Yulin-W/making-history-sandbox/main/non_app_essential/showcase/scenario-background-showcase.gif)
 
