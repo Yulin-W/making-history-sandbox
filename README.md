@@ -1,5 +1,7 @@
 # making-history-sandbox
-An app focusing on making alternate histories. Saves from Alternate History Editor can be loaded into this app via using the Alt Hist Editor Loader Plugin on the right side of the app.
+Simple, intuitive app for making alternate histories, and or choropleth maps in general. Features include pre-made scenarios, timeline, legend, region information, different background maps and more. Successor to Alternate History Editor.  
+
+Saves from Alternate History Editor can be loaded into this app via using the Alt Hist Editor Loader Plugin on the right side of the app.
 
 ## Features
 - Fast, simple, responsive
