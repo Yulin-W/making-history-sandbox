@@ -40,15 +40,6 @@ import ReactGA from 'react-ga';
 ReactGA.initialize("UA-176706567-4");
 ReactGA.pageview(window.location.pathname + window.location.search);
 
-// Convert mapAdmin to a prototype, const dictionary indexed by regionID
-const regionDictDefault = createRegionDict(mapAdmin);
-
-// Default scenarioData value
-const scenarioDataDefault = [
-  createScenarioEntry(regionDictDefault, "2000 January 1", "An Event"), // Default is 2 entry with the default regionDict, empty date and event entry
-  createScenarioEntry(regionDictDefault, "2010 January 1", "Another Event"),
-];
-
 const theme = createMuiTheme(themeDict.material);
 
 const useStyles = theme => ({
@@ -62,23 +53,34 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
+    // Declare some constant attributes
+    this.themeDict = themeDict;
+
+    // Some attributes for plugins to use
+    // Convert mapAdmin to a prototype, const dictionary indexed by regionID
+    this.regionDictDefault = createRegionDict(mapAdmin);
+    this.scenarioDataDefault = [
+      createScenarioEntry(this.regionDictDefault, "2000 January 1", "An Event"), // Default is 2 entry with the default regionDict, empty date and event entry
+      createScenarioEntry(this.regionDictDefault, "2010 January 1", "Another Event"),
+    ];
+
     this.plugins = plugins;
     // Default values should ideally all be based off the scenarioDataDefault
     // Setup default state values
     let pluginData = {};
     for (const [name, entry] of Object.entries(this.plugins)) {
-      pluginData[name] = entry.initState(scenarioDataDefault);
+      pluginData[name] = entry.initState(this.scenarioDataDefault);
     }
 
     let colorData = [];
     let i;
-    for (i = 0; i < scenarioDataDefault.length; i++) {
+    for (i = 0; i < this.scenarioDataDefault.length; i++) {
       colorData.push({});
     }
 
     // Set initial state
     this.state = {
-      scenarioData: scenarioDataDefault, // Array of information for the scenarios
+      scenarioData: this.scenarioDataDefault, // Array of information for the scenarios
       pluginData: pluginData, // Create object for data in plugin indexed by name of plugin
       colorData: colorData, // Dictionary with corresponding entries to scenarioData, that records the number of regions of specific color for the scenario timeline entry
       activeEntry: 0, // index of currently active on map entry in scenarioData
@@ -87,13 +89,6 @@ class App extends React.Component {
       helpOn: true, // On opening app, defaults to have help on
       picking: false, // color picking tool defaults to not on
     };
-
-    // Declare some constant attributes
-    this.themeDict = themeDict;
-
-    // Some attributes for plugins to use
-    this.scenarioDataDefault = scenarioDataDefault;
-    this.regionDictDefault = regionDictDefault;
 
     // Numerous refs
     this.colorBarRef = React.createRef(null);
@@ -194,7 +189,7 @@ class App extends React.Component {
       newRegionDict = createScenarioEntry(currentData[index - 1].regionDict);
       newColorEntry = cloneDeep(currentColorData[index - 1]);
     } else { // use the default regionDict, color entry if we are to insert at the beginning, currently this is not possible as it seems to lead to a multi-rerender yet some code is not ran in app.render scenario, and I get a regionDict undefined thing which I have no idea why; in light of this, I didn't do the add entry button in front of the first entry
-      newRegionDict = createScenarioEntry(regionDictDefault);
+      newRegionDict = createScenarioEntry(this.regionDictDefault);
       newColorEntry = {};
     }
     currentData.splice(index, 0, newRegionDict);
@@ -372,6 +367,8 @@ class App extends React.Component {
 
   render() {
     const { classes } = this.props;
+    // Set baseMap to be custom geoJSON if it exists//TODO: has room for performace improvement I reckon
+    const baseMap = this.state.pluginData["Custom GeoJSON Loader"] ? this.state.pluginData["Custom GeoJSON Loader"] : mapAdmin
     return (
       <ThemeProvider theme={theme}>
         <div className="App">
@@ -414,7 +411,7 @@ class App extends React.Component {
           <MapComponent
             getRegionColorByIndex={this.getRegionColorByIndex}
             themeDict={this.themeDict.other}
-            baseMap={mapAdmin}
+            baseMap={baseMap}
             assignRegions={this.assignRegions}
             lassoSelecting={this.state.lassoSelecting}
             updateLassoSelecting={this.updateLassoSelecting}
