@@ -72,6 +72,7 @@
 - Minimise use of refs
 - Try to find another way as opposed to passing the App's this value to the plugin methods that run after corresponding App methods
 # Possible future features
+- Making clicking and highlighting more responsive
 - If scenarios become too numerous, try storing them online and let the scenario plugin act simply as a download then load interface
 - Compressed saves
 - Refactor code, in particular names to make methods and variables more intuitive
