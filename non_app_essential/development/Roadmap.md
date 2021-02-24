@@ -56,6 +56,7 @@
     - Advertising online
     - Attributions
       - Basemap source (use same as alternative history editor, noting on personal alterations)
+- [ ] 1.1.0: more background map providers
 ## Plugins planned (these can go into separate repos), some might not be plugins in the sense that it goes into the sidebar menu
 - [ ] Add scenarios
 - [ ] Save converter that converts the old alternate history editor saves to the new save
