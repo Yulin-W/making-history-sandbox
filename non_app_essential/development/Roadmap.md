@@ -82,6 +82,7 @@
 - Try to find another way as opposed to passing the App's this value to the plugin methods that run after corresponding App methods
 - Improve map performance by reducing style resetting
 # Possible future features
+- Add theme options, e.g. light theme, e.g. allow changing opacity of regions, e.g. allow changing width of the region border lines
 - If webkit border image and background images fail, retreat back to a single color background
 - Making clicking and highlighting more responsive
 - If scenarios become too numerous, try storing them online and let the scenario plugin act simply as a download then load interface
