@@ -37,7 +37,7 @@ class ColorBarComponent extends React.Component {
     render() { //FIXME: add some color tests to ensure that selected color is notified if coincides with a color already on the page
         const { classes } = this.props;
         return (
-            <div className={classes.colorBarContainer}>
+            <div className={classes.colorBarContainer} id="colorbar">
                 <SliderPicker color={this.state.color} onChange={(color, event) => this.setState({color: color.hex})}/>
             </div>
         );

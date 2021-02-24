@@ -30,8 +30,6 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-// FIXME: make toolbar look like a toolbar, clearly different from the manu bar ideally; and I think in fact put the color related tools beside the color bar as they are relevant
-
 export default function ToolbarComponent(props) {
         const classes = useStyles();
         const lassoButtonText = props.lassoSelecting ? "Cancel" : "Lasso"; // TODO: using switches might be better in these situations
@@ -39,7 +37,7 @@ export default function ToolbarComponent(props) {
         const eraserButtonText = props.erasing ? "Cancel" : "Erase";
         const eraserButtonColor = props.erasing ? "secondary" : "default";
         return (
-            <div className={[classes.toolbarContainer, classes.marbleBackground].join(" ")}>
+            <div className={classes.toolbarContainer} id="toolbar">
                 <Button color={eraserButtonColor} className={classes.toolbarButton} onClick={() => {props.updateErasing(!props.erasing);}}>{eraserButtonText}</Button>
                 <Button color={lassoButtonColor} className={classes.toolbarButton} onClick={() => {props.updateLassoSelecting(!props.lassoSelecting);}}>{lassoButtonText}</Button>
             </div>

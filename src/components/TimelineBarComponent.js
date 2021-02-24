@@ -48,7 +48,7 @@ export default function TimelineBarComponent(props) {
     const [width, height] = useWindowSize(); // Values that change whenever window is resized, height is not used for now TODO: get rid of height part if performacne suffers, else overhead I guess is fine
     const lineLength = Math.max(width, (props.scenarioData.length + 1) * props.themeDict.timelineMarkerSpacing); // Take the larger of the viewport width and the length required to fit the timeline markers as the length of the timeline TODO: the issue of what I've done here is that the right end and the left end of the timeline won't match up in length when the second line length case in the max arguments is triggered, not too important, but fix it if possible
     return (
-        <div className={classes.timelineBarContainer}>
+        <div className={classes.timelineBarContainer} id="timeline_bar">
             <Scrollbars className={classes.timelineBarContentContainer}>
                 <div className={classes.timelineBarContentContainer}>
                     <div className={classes.timelineLine} style={{ width: lineLength }}></div>

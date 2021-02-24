@@ -1,7 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import saveScenario from '../scripts/saveScenario.js';
 import loadScenario from '../scripts/loadScenario.js';
 import Dropzone from 'react-dropzone';
 
@@ -11,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
         top: 0,
         left: 0,
         height: 25,
-        width: 195,
+        width: 255,
         zIndex: 1,
         display: "flex",
         flexFlow: "row",
@@ -26,16 +25,16 @@ const useStyles = makeStyles((theme) => ({
         fontSize: 12,
         margin: 0,
         padding: 0,
-        height:"100%",
+        height: "100%",
     }
 }));
 
 export default function MenuComponent(props) {
     const classes = useStyles();
     return (
-        <div className={classes.menuContainer}>
+        <div className={classes.menuContainer} id="menu">
             <Button size="small" className={classes.menuButton} onClick={() => window.location.reload()}>New</Button>
-            <Button size="small" className={classes.menuButton} onClick={() => { saveScenario(props.data); }}>Save</Button>
+            <Button size="small" className={classes.menuButton} onClick={props.save}>Save</Button>
             <Dropzone
                 onDrop={acceptedFiles => {
                     loadScenario(acceptedFiles[0], props.loadSave);
@@ -50,7 +49,8 @@ export default function MenuComponent(props) {
                         {/*This is a dummy button for visuals only, the uploading functionality is contained in the Dropzone and the input element*/}
                     </div>
                 )}
-            </Dropzone>
+                </Dropzone>
+            <Button size="small" className={classes.menuButton} onClick={props.openHelp}>Help</Button>
         </div>
     );
 }
