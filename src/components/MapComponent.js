@@ -128,6 +128,7 @@ class MapComponent extends React.Component {
                 zoomControl={false}
                 attributionControl={false}
                 worldCopyJump
+                id="map"
                 className={classes.mapContainer}
             >
                 <LayersControl position="topright">

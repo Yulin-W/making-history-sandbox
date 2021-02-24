@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
 export default function TimelineEventComponent(props) {
     const classes = useStyles();
     return (
-        <div className={classes.eventContainer}>
+        <div className={classes.eventContainer} id="timeline_event">
             <div className={classes.eventBar}>
                 <TextField size="small" label="Date" margin="dense" value={props.date} onChange={e => {props.updateEventDate(e.target.value)}} className={classes.dateInput}></TextField>
                 <Button variant="contained" size="large" color="primary" onClick={() => {props.clearEntry();}} className={classes.eventButton}>Clear</Button>

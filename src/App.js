@@ -1,4 +1,4 @@
-// Import React
+// Import React and other modules
 import React from "react";
 import { createMuiTheme, ThemeProvider, withStyles } from '@material-ui/core/styles';
 
@@ -24,6 +24,7 @@ import mapAdmin from "./assets/basemap/mapAdmin.json";
 import createRegionDict from './scripts/createRegionDict.js';
 import createScenarioEntry from './scripts/createScenarioEntry.js';
 import createRegionNameDict from './scripts/createRegionNameDict.js';
+import saveScenario from './scripts/saveScenario.js';
 
 // Import plugins
 import plugins from "./appPlugins.js";
@@ -47,6 +48,7 @@ const theme = createMuiTheme(themeDict.material);
 
 const useStyles = theme => ({
 });
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -73,7 +75,7 @@ class App extends React.Component {
       activeEntry: 0, // index of currently active on map entry in scenarioData
       lassoSelecting: false, // state for whether lasso select tool is activated
       erasing: false, // state for whether eraser tool is activated
-    }
+    };
 
     // Declare some constant attributes
     this.regionNameDict = regionNameDict;
@@ -103,6 +105,7 @@ class App extends React.Component {
     this.setDefaultColorBarColor = this.setDefaultColorBarColor.bind(this);
     this.processRegionHoveredOn = this.processRegionHoveredOn.bind(this);
     this.processRegionHoveredOut = this.processRegionHoveredOut.bind(this);
+    this.save = this.save.bind(this);
   }
 
   processRegionHoveredOn(layer) {
@@ -151,7 +154,7 @@ class App extends React.Component {
 
   // Sets color in colorBarComponent, expects a hex string
   setDefaultColorBarColor(color) {
-    this.colorBarRef.current.setState({color:color});
+    this.colorBarRef.current.setState({ color: color });
   }
 
   // Adds entry in position at specified index in scenarioData and colorData, new entry has no date nor event
@@ -314,6 +317,15 @@ class App extends React.Component {
       });
   }
 
+  // Saves the currently loaded scenario
+  save() {
+    saveScenario({
+      scenarioData: this.state.scenarioData,
+      colorData: this.state.colorData,
+      pluginData: this.state.pluginData,
+    });
+  }
+
   // Loads the specified save file containing scenarioData and pluginData, then sets current active entry to the first one, thereby resetting the region styling as well
   loadSave(saveData) {
     this.setState({ scenarioData: saveData.scenarioData, colorData: saveData.colorData, pluginData: saveData.pluginData }, () => { this.updateActiveEntry(0) });
@@ -331,11 +343,7 @@ class App extends React.Component {
       <ThemeProvider theme={theme}>
         <div className="App">
           <MenuComponent
-            data={{
-              scenarioData: this.state.scenarioData,
-              colorData: this.state.colorData,
-              pluginData: this.state.pluginData,
-            }}
+            save={this.save}
             loadSave={this.loadSave}
           />
           <ToolbarComponent lassoSelecting={this.state.lassoSelecting} updateLassoSelecting={this.updateLassoSelecting} erasing={this.state.erasing} updateErasing={this.updateErasing} />

@@ -60,7 +60,7 @@ export default function PluginMenuComponent(props) {
         );
     }
     return (
-        <div className={classes.pluginMenuContainer}>
+        <div className={classes.pluginMenuContainer} id="plugin_menu">
             <Scrollbars>
                 <div className={classes.accordionContainer}>
                     {accordionItems}
