@@ -57,9 +57,10 @@
     - Attributions
       - Basemap source (use same as alternative history editor, noting on personal alterations)
 - [x] 1.1.0: more background map providers
+- [x] 1.1.1: add title to site
+- [x] 1.1.2: changing positions of buttons and minimum sizes of panels for better mobile performance
+- [ ] 1.1.3: use react memo to improve performance
 ## Plugins planned (these can go into separate repos), some might not be plugins in the sense that it goes into the sidebar menu
-- [ ] Add scenarios
-- [ ] Save converter that converts the old alternate history editor saves to the new save
 - [ ] Convert image to basemap/scenario
 - [ ] Wikipedia event AI recommendation
 - [ ] Auto generation of territorial changes based on natural language processing or just in general with randomness
@@ -72,6 +73,7 @@
 - Minimise use of refs
 - Try to find another way as opposed to passing the App's this value to the plugin methods that run after corresponding App methods
 # Possible future features
+- If webkit border image and background images fail, retreat back to a single color background
 - Making clicking and highlighting more responsive
 - If scenarios become too numerous, try storing them online and let the scenario plugin act simply as a download then load interface
 - Compressed saves
