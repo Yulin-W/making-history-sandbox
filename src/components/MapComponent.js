@@ -49,7 +49,7 @@ const mapProviders = [
         src: 'https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.png'
     },
 ]
-class MapComponent extends React.Component {
+class MapComponent extends React.PureComponent {
     constructor(props) {
         super(props);
         this.state = {
@@ -85,15 +85,8 @@ class MapComponent extends React.Component {
         });
     }
 
-    // Returns hex color for the region of the specified index
-    getRegionColorByIndex(index) {
-        let color = this.props.regionDict[index].color;
-        // Return color hex if there is one, else if record shows null color, use the default fill color as specified in themeDict
-        return color ? color : this.props.themeDict.polyFillColorDefault;
-    }
-
     style(feature, layer) {
-        const color = this.props.regionDict[feature.properties.regionID].color;
+        const color = this.props.getRegionColorByIndex(feature.properties.regionID);
         return {
             color: this.props.themeDict.polyStrokeColor,
             weight: this.props.themeDict.polyStrokeWeight,
@@ -131,7 +124,7 @@ class MapComponent extends React.Component {
 
     render() {
         const { classes } = this.props;
-
+        console.log(2);
         return (
             <MapContainer
                 center={[30, 0]}
