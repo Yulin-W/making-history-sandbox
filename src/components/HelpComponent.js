@@ -6,7 +6,7 @@ const useStyles = makeStyles((theme) => ({
         width: "70%"
     },
     helpContent: {
-        margin: 10,
+        margin: 5,
     }
 }));
 
