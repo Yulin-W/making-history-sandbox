@@ -62,7 +62,7 @@
 - [x] 1.1.3: use react memo to improve performance
 - [x] 1.1.4: resolve lag due to regionInfo plugin
 - [x] 1.2.0: add color picker from region
-## Plugins planned (these can go into separate repos), some might not be plugins in the sense that it goes into the sidebar menu
+## Possible future plugins planned (these can go into separate repos, as separate projects), some might not be plugins in the sense that it goes into the sidebar menu
 - [ ] Convert image to basemap/scenario
 - [ ] Wikipedia event AI recommendation
 - [ ] Auto generation of territorial changes based on natural language processing or just in general with randomness
@@ -70,6 +70,12 @@
 - [ ] GIF/Screenshot generation
 - [ ] Detailed state world building: e.g. mark major cities, flags, hereditary linages, populations, gdp
 - [ ] Data generation for states, e.g. land area
+- [ ] Marker features, e.g. city, factories, fortification, etc.
+- [ ] Import own basemaps, and then can include it as part of output save like in alternate history editor
+- [ ] Allow importing image as background instead of provided tilelayer, and possibly save image in a save package
+
+## Potential side apps to supplement, possibly linking into a suite of apps
+- [ ] Image processing ai or likewise, turn image of borders into geojson polygons and then allow manual addition of labels; mainly its the ocr tech
 
 # Possible code improvements
 - Minimise use of refs
