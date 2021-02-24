@@ -86,8 +86,17 @@ class MapComponent extends React.PureComponent {
     }
 
     clickRegion(feature, layer) {
-        this.props.assignRegions([feature.properties.regionID]);
-        layer.setStyle(this.style(feature, layer)); // TODO: such setting would not highlight the region though, which might be a problem
+        if (this.props.picking) {
+            const color = this.props.getRegionColorByIndex(feature.properties.regionID);
+            if (color) {
+                // if region has a color, else just do nothing
+                this.props.setDefaultColorBarColor(color);
+            }
+        } else {
+            // Picking color tool not selected, hence color region as usual
+            this.props.assignRegions([feature.properties.regionID]);
+            layer.setStyle(this.style(feature, layer)); // TODO: such setting would not highlight the region though, which might be a problem
+        }
     }
 
     // Resets styles of all regions to match those of the regionDict data

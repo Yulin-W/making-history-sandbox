@@ -8,9 +8,9 @@ const useStyles = makeStyles((theme) => ({
         position: "absolute",
         top: 96,
         right: "50%",
-        marginRight: -148 / 2,
+        marginRight: -210 / 2,
         height: 30,
-        width: 130,
+        width: 190,
         zIndex: 1,
         display: "flex",
         flexFlow: "row",
@@ -36,10 +36,13 @@ function ToolbarComponent(props) {
     const lassoButtonColor = props.lassoSelecting ? "secondary" : "default";
     const eraserButtonText = props.erasing ? "Cancel" : "Erase";
     const eraserButtonColor = props.erasing ? "secondary" : "default";
+    const pickingButtonText = props.picking ? "Cancel" : "Pick";
+    const pickingButtonColor = props.picking ? "secondary" : "default";
     return (
         <div className={classes.toolbarContainer} id="toolbar">
             <Button color={eraserButtonColor} className={classes.toolbarButton} onClick={() => { props.updateErasing(!props.erasing); }}>{eraserButtonText}</Button>
             <Button color={lassoButtonColor} className={classes.toolbarButton} onClick={() => { props.updateLassoSelecting(!props.lassoSelecting); }}>{lassoButtonText}</Button>
+            <Button color={pickingButtonColor} className={classes.toolbarButton} onClick={() => { props.updatePicking(!props.picking); }}>{pickingButtonText}</Button>
         </div>
     );
 }
