@@ -25,7 +25,6 @@ import mapAdmin from "./assets/basemap/mapAdmin.json";
 // Import scripts
 import createRegionDict from './scripts/createRegionDict.js';
 import createScenarioEntry from './scripts/createScenarioEntry.js';
-import createRegionNameDict from './scripts/createRegionNameDict.js';
 import saveScenario from './scripts/saveScenario.js';
 
 // Import plugins
@@ -43,9 +42,6 @@ ReactGA.pageview(window.location.pathname + window.location.search);
 
 // Convert mapAdmin to a prototype, const dictionary indexed by regionID
 const regionDictDefault = createRegionDict(mapAdmin);
-
-// Create a constant dictionary mapping index of region to name of region, as opposed to keeping this repeated info contained in every single entry in the scenario data
-const regionNameDict = createRegionNameDict(mapAdmin);
 
 // Default scenarioData value
 const scenarioDataDefault = [
@@ -93,7 +89,6 @@ class App extends React.Component {
     };
 
     // Declare some constant attributes
-    this.regionNameDict = regionNameDict;
     this.themeDict = themeDict;
 
     // Some attributes for plugins to use

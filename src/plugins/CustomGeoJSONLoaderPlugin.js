@@ -2,6 +2,8 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Dropzone from 'react-dropzone';
 
+// This should be used both for loading saves made with custom geojsons and for loading a custom geojson
+
 // Setup styles
 const useStyles = makeStyles((theme) => ({
     customGeoJSONLoaderContainer: {
@@ -23,14 +25,19 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-// Function for converting loaded geoJSON to desired format
-function formatGeoJSON(geoJSON) {
-    
-}
-
 // Function for loading such file
+// Expects geoJSON either alone or part of a save to be of format, i.e. polygons have name, regionID attributes
 function loadGeoJSON(app, file) {
+    file.text().then(text => {
+        const obj = JSON.parse(text);
+        console.log(obj);
+        if ("scenarioData" in obj) {
+            // This is used to test obj is a save, not a geoJSON
+        } else {
+            // Assumes then the loaded file is geoJSON
 
+        }
+    });
 }
 
 // Load file 
