@@ -20,7 +20,7 @@ function HelpComponent(props) {
             <p className={classes.helpContent}>This is an app aiming to make alternate history timeline creations easier. Features include a map with named regions that can be easily labelled, interactive timeline for adding/removing timepoints, pre-made scenarios and more.</p>
             <h2 className={classes.helpContent}>Coloring and Labelling</h2>
             <p className={classes.helpContent}>Color/label region: use top panel, then click region to color. Use Legend panel on the right to modify label for regions of the color.</p>
-            <p className={classes.helpContent}>Pick existing color: click color icon in legend for that color</p>
+            <p className={classes.helpContent}>Pick existing color: use pick button under color panel or click on color in legend</p>
             <p className={classes.helpContent}>Mass labelling: click lasso under the color panel to activate lasso mode.</p>
             <p className={classes.helpContent}>Erase: click erase under the color panel, then either click on region or use lasso to mass unlabel.</p>
             <h2 className={classes.helpContent}>Adding/deleting entries</h2>
