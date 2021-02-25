@@ -64,6 +64,10 @@
 - [x] 1.2.0: add color picker from region
 - [x] 1.3.0: allow custom imports of geojson basemap plugin
   - Add the basemap as part of the save file
+- [ ] 1.3.1: add in display names for elements to help debugging
+- [ ] 1.3.2: code thinning and reuse, split code to smaller files though functionality should remain same
+- [ ] 1.3.3: abusive use testing, fix bugs, try to minimise need to refresh page
+- [ ] 1.3.4: add in proptypes for type checking
 - [ ] 1.4.0: allow theme selection changing, e.g. swap out a different theme and only resetting style afterwards; themes could include no border lines, 1 opacity 
 - [ ] 1.5.0: add extra inbuilt base map, a more reasonable one with finer dividsions where it needs and less fine where it isn't needed
 - [ ] 1.6.0: info marker plugin
@@ -71,7 +75,7 @@
   - Info adding to markers possible
 - [ ] 1.7.0: import background image option
 ## Possible future plugins planned (these can go into separate repos, as separate projects), some might not be plugins in the sense that it goes into the sidebar menu
-- [ ] Convert image to basemap/scenario
+- [ ] Convert image to basemap/scenario, of appropriate format
 - [ ] Wikipedia event AI recommendation
 - [ ] Auto generation of territorial changes based on natural language processing or just in general with randomness
 - [ ] Visual customization
