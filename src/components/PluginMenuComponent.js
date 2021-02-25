@@ -51,7 +51,7 @@ export default function PluginMenuComponent(props) {
         accordionItems.push(
             <Accordion defaultExpanded key={name} square>
                 <AccordionSummary expandIcon={<ExpandMoreIcon/>} className={classes.accordionSummary} IconButtonProps={{size:"small"}}>
-                    <Typography>{name}</Typography>
+                    <Typography variant="body2">{name}</Typography>
                 </AccordionSummary>
                 <AccordionDetails className={classes.accordionDetails}>
                     <Plugin app={props.app}/>

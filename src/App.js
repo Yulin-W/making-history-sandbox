@@ -20,12 +20,11 @@ import TimelineEventComponent from './components/TimelineEventComponent.js';
 import themeDict from './themes/default';
 
 // Import default basemap geojson
-import mapAdmin from "./assets/basemap/mapAdmin.json";
+import mapAdmin from "./assets/basemap/mapAdmin.json"; // This is the only default map for the app
 
 // Import scripts
 import createRegionDict from './scripts/createRegionDict.js';
 import createScenarioEntry from './scripts/createScenarioEntry.js';
-import createRegionNameDict from './scripts/createRegionNameDict.js';
 import saveScenario from './scripts/saveScenario.js';
 
 // Import plugins
@@ -41,18 +40,6 @@ import ReactGA from 'react-ga';
 ReactGA.initialize("UA-176706567-4");
 ReactGA.pageview(window.location.pathname + window.location.search);
 
-// Convert mapAdmin to a prototype, const dictionary indexed by regionID
-const regionDictDefault = createRegionDict(mapAdmin);
-
-// Create a constant dictionary mapping index of region to name of region, as opposed to keeping this repeated info contained in every single entry in the scenario data
-const regionNameDict = createRegionNameDict(mapAdmin);
-
-// Default scenarioData value
-const scenarioDataDefault = [
-  createScenarioEntry(regionDictDefault, "2000 January 1", "An Event"), // Default is 2 entry with the default regionDict, empty date and event entry
-  createScenarioEntry(regionDictDefault, "2010 January 1", "Another Event"),
-];
-
 const theme = createMuiTheme(themeDict.material);
 
 const useStyles = theme => ({
@@ -66,23 +53,36 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
+    // Declare some constant attributes
+    this.baseMap = mapAdmin;
+    this.mapKey = "mapAdmin";
+    this.themeDict = themeDict;
+
+    // Some attributes for plugins to use
+    // Convert baseMap to a prototype, const dictionary indexed by regionID
+    this.regionDictDefault = createRegionDict(this.baseMap);
+    this.scenarioDataDefault = [
+      createScenarioEntry(this.regionDictDefault, "2000 January 1", "An Event"), // Default is 2 entry with the default regionDict, empty date and event entry
+      createScenarioEntry(this.regionDictDefault, "2010 January 1", "Another Event"),
+    ];
+
     this.plugins = plugins;
     // Default values should ideally all be based off the scenarioDataDefault
     // Setup default state values
     let pluginData = {};
     for (const [name, entry] of Object.entries(this.plugins)) {
-      pluginData[name] = entry.initState(scenarioDataDefault);
+      pluginData[name] = entry.initState(this.scenarioDataDefault);
     }
 
     let colorData = [];
     let i;
-    for (i = 0; i < scenarioDataDefault.length; i++) {
+    for (i = 0; i < this.scenarioDataDefault.length; i++) {
       colorData.push({});
     }
 
     // Set initial state
     this.state = {
-      scenarioData: scenarioDataDefault, // Array of information for the scenarios
+      scenarioData: this.scenarioDataDefault, // Array of information for the scenarios
       pluginData: pluginData, // Create object for data in plugin indexed by name of plugin
       colorData: colorData, // Dictionary with corresponding entries to scenarioData, that records the number of regions of specific color for the scenario timeline entry
       activeEntry: 0, // index of currently active on map entry in scenarioData
@@ -90,15 +90,8 @@ class App extends React.Component {
       erasing: false, // state for whether eraser tool is activated
       helpOn: true, // On opening app, defaults to have help on
       picking: false, // color picking tool defaults to not on
+      mapKey: this.mapKey, // This is here both as a state and to act as a trigger for MapComponent and App overall to rerender upon loading in a new GeoJSON, it should only be modified by CustomGeoJSONLoaderPlugin
     };
-
-    // Declare some constant attributes
-    this.regionNameDict = regionNameDict;
-    this.themeDict = themeDict;
-
-    // Some attributes for plugins to use
-    this.scenarioDataDefault = scenarioDataDefault;
-    this.regionDictDefault = regionDictDefault;
 
     // Numerous refs
     this.colorBarRef = React.createRef(null);
@@ -125,6 +118,52 @@ class App extends React.Component {
     this.openHelp = this.openHelp.bind(this);
     this.getRegionColorByIndex = this.getRegionColorByIndex.bind(this);
     this.updatePicking = this.updatePicking.bind(this);
+    this.resetAppBasedOnBasemap = this.resetAppBasedOnBasemap.bind(this);
+  }
+
+  // Resets app based on basemap, in particular the key states, including scenariodata, colorData, pluginData
+  resetAppBasedOnBasemap(baseMap, mapKey, callback=null) {
+    // This part is the same as from the app constructor TODO: try to alter so to promode code reuse
+    this.baseMap = baseMap;
+    this.mapKey = mapKey;
+    // Some attributes for plugins to use
+    // Convert baseMap to a prototype, const dictionary indexed by regionID
+    this.regionDictDefault = createRegionDict(this.baseMap);
+    this.scenarioDataDefault = [
+      createScenarioEntry(this.regionDictDefault, "2000 January 1", "An Event"), // Default is 2 entry with the default regionDict, empty date and event entry
+      createScenarioEntry(this.regionDictDefault, "2010 January 1", "Another Event"),
+    ];
+
+    this.plugins = plugins;
+    // Default values should ideally all be based off the scenarioDataDefault
+    // Setup default state values
+    let pluginData = {};
+    for (const [name, entry] of Object.entries(this.plugins)) {
+      pluginData[name] = entry.initState(this.scenarioDataDefault);
+    }
+
+    let colorData = [];
+    let i;
+    for (i = 0; i < this.scenarioDataDefault.length; i++) {
+      colorData.push({});
+    }
+
+    // This part is the same as the state setting, but here we use setState instead of directly setting, only difference is that helpOn here is not switched on as users would have seen it already
+    this.setState({
+      scenarioData: this.scenarioDataDefault, 
+      pluginData: pluginData, 
+      colorData: colorData, 
+      activeEntry: 0, 
+      lassoSelecting: false, 
+      erasing: false, 
+      helpOn: false, // This is different from the initial initialization state value
+      picking: false, 
+      mapKey: this.mapKey, 
+    }, () => {
+      if (callback) {
+        callback();
+      }
+    })
   }
 
   // Update color picker state
@@ -199,7 +238,7 @@ class App extends React.Component {
       newRegionDict = createScenarioEntry(currentData[index - 1].regionDict);
       newColorEntry = cloneDeep(currentColorData[index - 1]);
     } else { // use the default regionDict, color entry if we are to insert at the beginning, currently this is not possible as it seems to lead to a multi-rerender yet some code is not ran in app.render scenario, and I get a regionDict undefined thing which I have no idea why; in light of this, I didn't do the add entry button in front of the first entry
-      newRegionDict = createScenarioEntry(regionDictDefault);
+      newRegionDict = createScenarioEntry(this.regionDictDefault);
       newColorEntry = {};
     }
     currentData.splice(index, 0, newRegionDict);
@@ -419,7 +458,8 @@ class App extends React.Component {
           <MapComponent
             getRegionColorByIndex={this.getRegionColorByIndex}
             themeDict={this.themeDict.other}
-            baseMap={mapAdmin}
+            baseMap={this.baseMap}
+            key={this.state.mapKey}
             assignRegions={this.assignRegions}
             lassoSelecting={this.state.lassoSelecting}
             updateLassoSelecting={this.updateLassoSelecting}

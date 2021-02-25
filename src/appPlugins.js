@@ -4,6 +4,7 @@ import LegendPlugin from './plugins/LegendPlugin.js'; // Naming the plugins with
 import RegionInfoPlugin from './plugins/RegionInfoPlugin.js';
 import AltHistEditorLoaderPlugin from './plugins/AltHistEditorLoaderPlugin.js';
 import ScenarioPlugin from './plugins/ScenarioPlugin.js';
+import CustomGeoJSONLoaderPlugin from './plugins/CustomGeoJSONLoaderPlugin.js';
 
 // All imported plugins above should then be listed below with their names, which will serve as the title in the plugins menu
 // Names of plugins should be unique as they will also serve as keys to the accordion element
@@ -14,6 +15,7 @@ const plugins = {
     "Legend": LegendPlugin,
     "Scenario": ScenarioPlugin,
     "Alt Hist Editor Loader": AltHistEditorLoaderPlugin, 
+    "Custom GeoJSON Loader": CustomGeoJSONLoaderPlugin,
 };
 
 export default plugins;
