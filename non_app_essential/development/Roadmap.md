@@ -82,6 +82,7 @@
   - Various plugin shapes
   - Info adding to markers possible
 - [ ] 1.8.0: import background image option
+- [ ] 1.9.0: more projections
 ## Possible future plugins planned (these can go into separate repos, as separate projects), some might not be plugins in the sense that it goes into the sidebar menu
 - [ ] Convert image to basemap/scenario, of appropriate format
 - [ ] Wikipedia event AI recommendation
@@ -103,6 +104,9 @@
 - Try to find another way as opposed to passing the App's this value to the plugin methods that run after corresponding App methods
 - Improve map performance by reducing style resetting
 # Possible future features
+- THE LONGTERM AIM: can just upload an image, and base map geojson is auto generated with background, or perhaps background could be inputted manually and shuffled around; so that any mapping timeline could be easily achieved and imported from existing artistic works
+  - i.e. optical recognition and ai georeferencing are probably necessary
+  - On second thought, leaflet might be too restricting due to its geo nature; perhaps I should open a brand new app that has a choropleth custom made engine as opposed to the georeferenced leaflet for non-earth, i.e. general timeline mapping, where the focus is import your own world; of course there should be a base earth map to get people started with
 - Add theme options, e.g. light theme, e.g. allow changing opacity of regions, e.g. allow changing width of the region border lines
 - If webkit border image and background images fail, retreat back to a single color background
 - Making clicking and highlighting more responsive
