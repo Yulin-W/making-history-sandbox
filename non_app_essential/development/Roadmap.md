@@ -62,7 +62,7 @@
 - [x] 1.1.3: use react memo to improve performance
 - [x] 1.1.4: resolve lag due to regionInfo plugin
 - [x] 1.2.0: add color picker from region
-- [ ] 1.3.0: allow custom imports of geojson basemap plugin
+- [x] 1.3.0: allow custom imports of geojson basemap plugin
   - Add the basemap as part of the save file
 - [ ] 1.4.0: info marker plugin
   - Various plugin shapes
