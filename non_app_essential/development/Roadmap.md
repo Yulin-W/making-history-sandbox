@@ -75,12 +75,13 @@
 - [ ] 1.3.3: code thinning and reuse, split code to smaller files though functionality should remain same
 - [ ] 1.3.4: abusive use testing, fix bugs, try to minimise need to refresh page
 - [ ] 1.3.5: add in proptypes for type checking
-- [ ] 1.4.0: allow theme selection changing, e.g. swap out a different theme and only resetting style afterwards; themes could include no border lines, 1 opacity 
-- [ ] 1.5.0: add extra inbuilt base map, a more reasonable one with finer dividsions where it needs and less fine where it isn't needed
-- [ ] 1.6.0: info marker plugin
+- [ ] 1.4.0: setup an alternate site for in test deployment, and only deploy to main site once sure it works well
+- [ ] 1.5.0: allow theme selection changing, e.g. swap out a different theme and only resetting style afterwards; themes could include no border lines, 1 opacity 
+- [ ] 1.6.0: add extra inbuilt base map, a more reasonable one with finer dividsions where it needs and less fine where it isn't needed
+- [ ] 1.7.0: info marker plugin
   - Various plugin shapes
   - Info adding to markers possible
-- [ ] 1.7.0: import background image option
+- [ ] 1.8.0: import background image option
 ## Possible future plugins planned (these can go into separate repos, as separate projects), some might not be plugins in the sense that it goes into the sidebar menu
 - [ ] Convert image to basemap/scenario, of appropriate format
 - [ ] Wikipedia event AI recommendation
