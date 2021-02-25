@@ -28,7 +28,6 @@ Disclaimer: Making History Sandbox (application) is not intended to be historica
   - This is often due to zooming/resizing of the browser. Try resetting the browser zoom to 100%, usually that should be enough
 
 ## Extra Acknowledgements
-- "mapAdmin.json" (geojson basemap for the regions) was modified from:
-  - Data source: Made with Natural Earth. Free vector and raster map data @ naturalearthdata.com. 
+- "mapAdmin.json" (geojson basemap for the regions) was modified from: Natural Earth. Free vector and raster map data @ naturalearthdata.com. 
 - Community contributed scenarios: thanks to the following members of the community for these scenarios
   - 2021 Modern Map, by DawnbreakZ

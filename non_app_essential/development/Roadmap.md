@@ -7,6 +7,7 @@
 # Notes
 - When adding community scenarios, add attributions at
   - Name of scenario to display in app, e.g. by xxx
+  - Help
   - README
 # Basic requirements
 - Backward save compatibility (do so by making a plugin app for converting save from old map to new seamlessly)

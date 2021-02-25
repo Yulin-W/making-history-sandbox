@@ -43,6 +43,11 @@ function HelpComponent(props) {
             <p className={classes.helpContent}>To load save: use the Alt Hist Editor Loader panel at the end of the right panel (scroll down if it isn't visible)</p>
             <h2 className={classes.helpContent}>For those that want to see code</h2>
             <a className={classes.helpContent} href="https://github.com/Yulin-W/making-history-sandbox">Github repository</a>
+            <hr></hr>
+            <h2 className={classes.helpContent}>Acknowledgements</h2>
+            <p className={classes.helpContent}>"mapAdmin.json" (geojson basemap for the regions) was modified from: Natural Earth. Free vector and raster map data @ naturalearthdata.com.</p>
+            <h4 className={classes.helpContent}>Community contributed scenarios: Thanks to the following members of the community for these scenarios:</h4>
+            <p className={classes.helpContent}>2021 Modern Map, by DawnbreakZ</p>
         </div>
     );
 }
