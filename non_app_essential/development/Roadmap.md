@@ -82,6 +82,8 @@
   - Various plugin shapes
   - Info adding to markers possible
 - [ ] 1.8.0: import background image option
+  - to make aligning easier; enable resizing and dragging ,perhaps by binding to a polygon
+  - also in this case, to make custom regioning  easier, I should use some leaflet library to make a mode allowing in app editing of geojson; actually no, better for performance just put it as a separate app, then if i do choose to merge the two to a single app, it'd be easy to just add the component
 - [ ] 1.9.0: more projections
 ## Possible future plugins planned (these can go into separate repos, as separate projects), some might not be plugins in the sense that it goes into the sidebar menu
 - [ ] Convert image to basemap/scenario, of appropriate format
