@@ -22,10 +22,10 @@ function HelpComponent(props) {
             <p className={classes.helpContent}>This is an app aiming to make alternate history timeline creations easier. Features include a map with named regions that can be easily labelled, interactive timeline for adding/removing timepoints, pre-made scenarios and more.</p>
             <hr></hr>
             <hr></hr>
-            <h1>**NEW FEATURE: Custom Regions**</h1>
-            <p>Many wanted this (me too), so here it is.</p>
-            <p>How it works: </p>
-            <p></p>
+            <h1 className={classes.helpContent}>**NEW FEATURE: Custom Regions**</h1>
+            <p className={classes.helpContent}>Many wanted this (me too), so here it is.</p>
+            <p className={classes.helpContent}>How it works: </p>
+            <p className={classes.helpContent}></p>
             <hr></hr>
             <hr></hr>
             <h2 className={classes.helpContent}>Coloring and Labelling</h2>

@@ -114,7 +114,6 @@ class MapComponent extends React.PureComponent {
     }
 
     render() {
-        console.log(this.props.baseMap);
         const { classes } = this.props;
         return (
             <MapContainer

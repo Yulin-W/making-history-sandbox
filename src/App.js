@@ -122,8 +122,10 @@ class App extends React.Component {
   }
 
   // Resets app based on basemap, in particular the key states, including scenariodata, colorData, pluginData
-  resetAppBasedOnBasemap() {
+  resetAppBasedOnBasemap(baseMap, mapKey, callback=null) {
     // This part is the same as from the app constructor TODO: try to alter so to promode code reuse
+    this.baseMap = baseMap;
+    this.mapKey = mapKey;
     // Some attributes for plugins to use
     // Convert baseMap to a prototype, const dictionary indexed by regionID
     this.regionDictDefault = createRegionDict(this.baseMap);
@@ -157,6 +159,10 @@ class App extends React.Component {
       helpOn: false, // This is different from the initial initialization state value
       picking: false, 
       mapKey: this.mapKey, 
+    }, () => {
+      if (callback) {
+        callback();
+      }
     })
   }
 

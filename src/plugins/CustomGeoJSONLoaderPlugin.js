@@ -35,14 +35,25 @@ function loadGeoJSON(app, file) {
         console.log(obj);
         if ("scenarioData" in obj) {
             // This is used to test obj is a save, not a geoJSON
-            //FIXME: Need to call the plugin data so map update first, then call save loading
+            // Expects the file to have valid data, i.e. pluginData for GeoJSON loader and appropriate scenario data, colorDict, etc.
+            // First load in the basemap and map key
+            app.resetAppBasedOnBasemap(obj.pluginData["Custom GeoJSON Loader"].baseMap, obj.pluginData["Custom GeoJSON Loader"].mapKey, () => {
+                app.updatePluginData("Custom GeoJSON Loader", {
+                    mapKey: name, 
+                    baseMap: obj, // TODO: could be optimised so to instead of saving inmemeory two copies of such basemap, just save 1 copy, and say pass an argyument to resetAppBasedOnBasemap
+                })
+            });
+            // Then load save as usual
+            app.loadSave(obj);
         } else {
             // Assumes then the loaded file is geoJSON
-            // Setup regions
-            app.baseMap = obj;
-            app.mapKey = "name";
-            // Reset app based on these two updated values
-            app.resetAppBasedOnBasemap();
+            // Reset app based on these two updated values, baseMap and mapKey, then run callupdate to update the relevant pluginData, both mapKey and geoJSON map to record the data of the map there so saves will work
+            app.resetAppBasedOnBasemap(obj, name, () => {
+                app.updatePluginData("Custom GeoJSON Loader", {
+                    mapKey: name, 
+                    baseMap: obj, // TODO: could be optimised so to instead of saving inmemeory two copies of such basemap, just save 1 copy, and say pass an argyument to resetAppBasedOnBasemap
+                })
+            });
         }
     });
 }
