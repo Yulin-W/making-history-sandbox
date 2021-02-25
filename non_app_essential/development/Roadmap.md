@@ -72,31 +72,32 @@
   - Add the basemap as part of the save file
 - [x] 1.3.1: add 2021 map by DawnbreakerZ
 - [ ] 1.3.2: add in display names for elements to help debugging
-- [ ] 1.3.3: code thinning and reuse, split code to smaller files though functionality should remain same
+- [ ] 1.3.3: code thinning and reuse, split code to smaller files though functionality should remain same; shouldn't be too hard setting up multiple pages for the github repo
 - [ ] 1.3.4: abusive use testing, fix bugs, try to minimise need to refresh page
 - [ ] 1.3.5: add in proptypes for type checking
+- [ ] 1.3.6: structure code better, write up docs for personal plugin update
 - [ ] 1.4.0: setup an alternate site for in test deployment, and only deploy to main site once sure it works well
-- [ ] 1.5.0: allow theme selection changing, e.g. swap out a different theme and only resetting style afterwards; themes could include no border lines, 1 opacity 
-- [ ] 1.6.0: add extra inbuilt base map, a more reasonable one with finer dividsions where it needs and less fine where it isn't needed
-- [ ] 1.7.0: info marker plugin
+- [ ] 1.5.0: enable hiding all panels except timeline, so drawer like
+- [ ] 1.6.0: allow theme selection changing, e.g. swap out a different theme and only resetting style afterwards; themes could include no border lines, 1 opacity 
+- [ ] 1.7.0: info marker plugin : should advertise this on all the major mapmaking sites after done, after doing a own alterantive example of course, maybe for instance an alternative state and its internal transport/city info map
   - Various plugin shapes
   - Info adding to markers possible
-- [ ] 1.8.0: import background image option
+  - shouldn't be hard, just leverage existing polyline, marker, etc. features of leaflet and leaflet plugins
+- [ ] 1.8.0: import background image option and empty background option: should advertise this on all the major mapmaking sites after done
   - to make aligning easier; enable resizing and dragging ,perhaps by binding to a polygon
   - also in this case, to make custom regioning  easier, I should use some leaflet library to make a mode allowing in app editing of geojson; actually no, better for performance just put it as a separate app, then if i do choose to merge the two to a single app, it'd be easy to just add the component
-- [ ] 1.9.0: more projections
+  - need to make a plugin for this kind of save
 ## Possible future plugins planned (these can go into separate repos, as separate projects), some might not be plugins in the sense that it goes into the sidebar menu
+- [ ] Add extra inbuilt base map, a more reasonable one with finer dividsions where it needs and less fine where it isn't needed
 - [ ] Convert image to basemap/scenario, of appropriate format
 - [ ] Wikipedia event AI recommendation
 - [ ] Auto generation of territorial changes based on natural language processing or just in general with randomness
 - [ ] Visual customization
-- [ ] GIF/Screenshot generation
 - [ ] Timeline play button
 - [ ] Detailed state world building: e.g. mark major cities, flags, hereditary linages, populations, gdp
 - [ ] Data generation for states, e.g. land area
 - [ ] Marker features, e.g. city, factories, fortification, etc.
 - [ ] Import own basemaps, and then can include it as part of output save like in alternate history editor
-- [ ] Allow importing image as background instead of provided tilelayer, and possibly save image in a save package
 
 ## Potential side apps to supplement, possibly linking into a suite of apps
 - [ ] Image processing ai or likewise, turn image of borders into geojson polygons and then allow manual addition of labels; mainly its the ocr tech
