@@ -7,7 +7,6 @@
 # Notes
 - When adding community scenarios, add attributions at
   - Name of scenario to display in app, e.g. by xxx
-  - Help panel
   - README
 # Basic requirements
 - Backward save compatibility (do so by making a plugin app for converting save from old map to new seamlessly)
@@ -70,10 +69,11 @@
 - [x] 1.2.0: add color picker from region
 - [x] 1.3.0: allow custom imports of geojson basemap plugin
   - Add the basemap as part of the save file
-- [ ] 1.3.1: add in display names for elements to help debugging
-- [ ] 1.3.2: code thinning and reuse, split code to smaller files though functionality should remain same
-- [ ] 1.3.3: abusive use testing, fix bugs, try to minimise need to refresh page
-- [ ] 1.3.4: add in proptypes for type checking
+- [x] 1.3.1: add 2021 map by DawnbreakerZ
+- [ ] 1.3.2: add in display names for elements to help debugging
+- [ ] 1.3.3: code thinning and reuse, split code to smaller files though functionality should remain same
+- [ ] 1.3.4: abusive use testing, fix bugs, try to minimise need to refresh page
+- [ ] 1.3.5: add in proptypes for type checking
 - [ ] 1.4.0: allow theme selection changing, e.g. swap out a different theme and only resetting style afterwards; themes could include no border lines, 1 opacity 
 - [ ] 1.5.0: add extra inbuilt base map, a more reasonable one with finer dividsions where it needs and less fine where it isn't needed
 - [ ] 1.6.0: info marker plugin
