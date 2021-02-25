@@ -4,7 +4,9 @@ import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles((theme) => ({
     helpContainer: {
-        width: "80%"
+        height: "90%",
+        width: "80%",
+        overflowY: "scroll",
     },
     helpContent: {
         margin: 5,
@@ -14,10 +16,18 @@ const useStyles = makeStyles((theme) => ({
 function HelpComponent(props) {
     const classes = useStyles();
     return (
-        <Grid className = { classes.helpContainer } container direction = "column" justify = "center" alignItems = "flex-start">
+        <div className = { classes.helpContainer }>
             <h1 className={classes.helpContent}>Welcome to Making History Sandbox!</h1>
             <h3 className={classes.helpContent}>Click anywhere to return to app</h3>
             <p className={classes.helpContent}>This is an app aiming to make alternate history timeline creations easier. Features include a map with named regions that can be easily labelled, interactive timeline for adding/removing timepoints, pre-made scenarios and more.</p>
+            <hr></hr>
+            <hr></hr>
+            <h1>**NEW FEATURE: Custom Regions**</h1>
+            <p>Many wanted this (me too), so here it is.</p>
+            <p>How it works: </p>
+            <p></p>
+            <hr></hr>
+            <hr></hr>
             <h2 className={classes.helpContent}>Coloring and Labelling</h2>
             <p className={classes.helpContent}>Color/label region: use top panel, then click region to color. Use Legend panel on the right to modify label for regions of the color.</p>
             <p className={classes.helpContent}>Pick existing color: use pick button under color panel then click on a colored region or click on color in legend</p>
@@ -32,7 +42,7 @@ function HelpComponent(props) {
             <p className={classes.helpContent}>To load save: use the Alt Hist Editor Loader panel at the end of the right panel (scroll down if it isn't visible)</p>
             <h2 className={classes.helpContent}>For those that want to see code</h2>
             <a className={classes.helpContent} href="https://github.com/Yulin-W/making-history-sandbox">Github repository</a>
-        </Grid>
+        </div>
     );
 }
 
