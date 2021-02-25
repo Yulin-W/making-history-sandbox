@@ -22,10 +22,11 @@ function HelpComponent(props) {
             <p className={classes.helpContent}>This is an app aiming to make alternate history timeline creations easier. Features include a map with named regions that can be easily labelled, interactive timeline for adding/removing timepoints, pre-made scenarios and more.</p>
             <hr></hr>
             <hr></hr>
-            <h1 className={classes.helpContent}>**NEW FEATURE: Custom Regions**</h1>
-            <p className={classes.helpContent}>Many wanted this (me too), so here it is.</p>
-            <p className={classes.helpContent}>How it works: </p>
-            <p className={classes.helpContent}></p>
+            <h1 className={classes.helpContent}>**NEW FEATURE: Custom regions import, load and saving**</h1>
+            <p className={classes.helpContent}>Many wanted this (me too), so here it is. </p>
+            <p className={classes.helpContent}>Create basemap: Many external apps are available, I suggest <a href="https://geojson.io/">GeoJSON.io</a>. Use the polygon tool to draw the regions. For each region, give a regionID (from 0 onwards) and a name value. Then save the file as a geoJSON and you're good to go.</p>
+            <p className={classes.helpContent}>Importing basemap: Import the created geoJSON via the geoJSON loader panel on the bottom of the right panel (scroll to bottom)</p>
+            <p className={classes.helpContent}>Save and load your timeline with custom basemaps: Save as with a normal map, however on loading, use the geoJSON loader panel</p>
             <hr></hr>
             <hr></hr>
             <h2 className={classes.helpContent}>Coloring and Labelling</h2>
