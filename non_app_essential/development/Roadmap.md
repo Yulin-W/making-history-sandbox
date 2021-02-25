@@ -3,6 +3,12 @@
   - -1: background, should not be used
   - 0: background
   - 1: foreground
+
+# Notes
+- When adding community scenarios, add attributions at
+  - Name of scenario to display in app, e.g. by xxx
+  - Help panel
+  - README
 # Basic requirements
 - Backward save compatibility (do so by making a plugin app for converting save from old map to new seamlessly)
 - Plugin-extension system to allow adding stuff

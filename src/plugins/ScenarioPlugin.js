@@ -2,13 +2,15 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
+import MenuItem from '@material-ui/core/MenuItem';
 
 // Import scenarios
 import scen356BC from "../assets/scenario/356BC-Birth-of-Alexander.json";
 import scen1206 from "../assets/scenario/1206-Rise-of-Mongolia.json";
 import scen1444 from "../assets/scenario/1444-Battle-of-Varna.json";
 import scen1936 from "../assets/scenario/1936-Coming-of-the-Storm.json"
-import MenuItem from '@material-ui/core/MenuItem';
+
+// Import community scenarios; this is where to import; put the files in src/assets/communityScenario, import them here, then add them to the scenarios dictionary below
 
 // Import json scenarios, keys should be names that will be displayed for the scenario
 const scenarios = {
