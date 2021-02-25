@@ -20,7 +20,7 @@ import TimelineEventComponent from './components/TimelineEventComponent.js';
 import themeDict from './themes/default';
 
 // Import default basemap geojson
-import mapAdmin from "./assets/basemap/mapAdmin.json";
+import mapAdmin from "./assets/basemap/mapAdmin.json"; // This is the only default map for the app
 
 // Import scripts
 import createRegionDict from './scripts/createRegionDict.js';
@@ -54,11 +54,13 @@ class App extends React.Component {
     super(props);
 
     // Declare some constant attributes
+    this.baseMap = mapAdmin;
+    this.mapKey = "mapAdmin";
     this.themeDict = themeDict;
 
     // Some attributes for plugins to use
-    // Convert mapAdmin to a prototype, const dictionary indexed by regionID
-    this.regionDictDefault = createRegionDict(mapAdmin);
+    // Convert baseMap to a prototype, const dictionary indexed by regionID
+    this.regionDictDefault = createRegionDict(this.baseMap);
     this.scenarioDataDefault = [
       createScenarioEntry(this.regionDictDefault, "2000 January 1", "An Event"), // Default is 2 entry with the default regionDict, empty date and event entry
       createScenarioEntry(this.regionDictDefault, "2010 January 1", "Another Event"),
@@ -88,6 +90,7 @@ class App extends React.Component {
       erasing: false, // state for whether eraser tool is activated
       helpOn: true, // On opening app, defaults to have help on
       picking: false, // color picking tool defaults to not on
+      mapKey: this.mapKey, // This is here both as a state and to act as a trigger for MapComponent and App overall to rerender upon loading in a new GeoJSON, it should only be modified by CustomGeoJSONLoaderPlugin
     };
 
     // Numerous refs
@@ -115,6 +118,46 @@ class App extends React.Component {
     this.openHelp = this.openHelp.bind(this);
     this.getRegionColorByIndex = this.getRegionColorByIndex.bind(this);
     this.updatePicking = this.updatePicking.bind(this);
+    this.resetAppBasedOnBasemap = this.resetAppBasedOnBasemap.bind(this);
+  }
+
+  // Resets app based on basemap, in particular the key states, including scenariodata, colorData, pluginData
+  resetAppBasedOnBasemap() {
+    // This part is the same as from the app constructor TODO: try to alter so to promode code reuse
+    // Some attributes for plugins to use
+    // Convert baseMap to a prototype, const dictionary indexed by regionID
+    this.regionDictDefault = createRegionDict(this.baseMap);
+    this.scenarioDataDefault = [
+      createScenarioEntry(this.regionDictDefault, "2000 January 1", "An Event"), // Default is 2 entry with the default regionDict, empty date and event entry
+      createScenarioEntry(this.regionDictDefault, "2010 January 1", "Another Event"),
+    ];
+
+    this.plugins = plugins;
+    // Default values should ideally all be based off the scenarioDataDefault
+    // Setup default state values
+    let pluginData = {};
+    for (const [name, entry] of Object.entries(this.plugins)) {
+      pluginData[name] = entry.initState(this.scenarioDataDefault);
+    }
+
+    let colorData = [];
+    let i;
+    for (i = 0; i < this.scenarioDataDefault.length; i++) {
+      colorData.push({});
+    }
+
+    // This part is the same as the state setting, but here we use setState instead of directly setting, only difference is that helpOn here is not switched on as users would have seen it already
+    this.setState({
+      scenarioData: this.scenarioDataDefault, 
+      pluginData: pluginData, 
+      colorData: colorData, 
+      activeEntry: 0, 
+      lassoSelecting: false, 
+      erasing: false, 
+      helpOn: false, // This is different from the initial initialization state value
+      picking: false, 
+      mapKey: this.mapKey, 
+    })
   }
 
   // Update color picker state
@@ -367,8 +410,6 @@ class App extends React.Component {
 
   render() {
     const { classes } = this.props;
-    // Set baseMap to be custom geoJSON if it exists//TODO: has room for performace improvement I reckon
-    const baseMap = this.state.pluginData["Custom GeoJSON Loader"] ? this.state.pluginData["Custom GeoJSON Loader"] : mapAdmin
     return (
       <ThemeProvider theme={theme}>
         <div className="App">
@@ -411,7 +452,8 @@ class App extends React.Component {
           <MapComponent
             getRegionColorByIndex={this.getRegionColorByIndex}
             themeDict={this.themeDict.other}
-            baseMap={baseMap}
+            baseMap={this.baseMap}
+            key={this.state.mapKey}
             assignRegions={this.assignRegions}
             lassoSelecting={this.state.lassoSelecting}
             updateLassoSelecting={this.updateLassoSelecting}

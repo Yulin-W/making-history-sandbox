@@ -26,9 +26,6 @@ const useStyles = theme => ({
 class MapComponent extends React.PureComponent {
     constructor(props) {
         super(props);
-        this.state = {
-            baseMap: props.baseMap,
-        }
         this.geojsonRef = React.createRef(null);
         // Binding methods
         this.onEachFeature = this.onEachFeature.bind(this);
@@ -117,6 +114,7 @@ class MapComponent extends React.PureComponent {
     }
 
     render() {
+        console.log(this.props.baseMap);
         const { classes } = this.props;
         return (
             <MapContainer
@@ -142,7 +140,7 @@ class MapComponent extends React.PureComponent {
                     </LayersControl.BaseLayer>)}
                     <LayersControl.Overlay checked name="Regions">
                         <GeoJSON
-                            data={this.state.baseMap}
+                            data={this.props.baseMap}
                             style={this.style}
                             onEachFeature={this.onEachFeature}
                             ref={this.geojsonRef}

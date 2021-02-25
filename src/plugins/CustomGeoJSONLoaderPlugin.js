@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Dropzone from 'react-dropzone';
 
 // This should be used both for loading saves made with custom geojsons and for loading a custom geojson
+// To remove this plugin completely, technically just remove it from plugin list, but there is the mapKey attribute in the App.js which facilitates the plugin which I guess is needed for it to work well
 
 // Setup styles
 const useStyles = makeStyles((theme) => ({
@@ -28,14 +29,20 @@ const useStyles = makeStyles((theme) => ({
 // Function for loading such file
 // Expects geoJSON either alone or part of a save to be of format, i.e. polygons have name, regionID attributes
 function loadGeoJSON(app, file) {
+    const name = file.name;
     file.text().then(text => {
         const obj = JSON.parse(text);
         console.log(obj);
         if ("scenarioData" in obj) {
             // This is used to test obj is a save, not a geoJSON
+            //FIXME: Need to call the plugin data so map update first, then call save loading
         } else {
             // Assumes then the loaded file is geoJSON
-
+            // Setup regions
+            app.baseMap = obj;
+            app.mapKey = "name";
+            // Reset app based on these two updated values
+            app.resetAppBasedOnBasemap();
         }
     });
 }
