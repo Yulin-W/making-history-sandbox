@@ -9,6 +9,8 @@ Disclaimer: Making History Sandbox (application) is not intended to be historica
 ![](https://raw.githubusercontent.com/Yulin-W/making-history-sandbox/main/non_app_essential/showcase/scenario-background-showcase.gif)
 
 ![](https://raw.githubusercontent.com/Yulin-W/making-history-sandbox/main/non_app_essential/showcase/timeline-showcase.gif)
+
+![](https://raw.githubusercontent.com/Yulin-W/making-history-sandbox/main/non_app_essential/showcase/import_geojson_showcase.gif)
 ## Features
 - Fast, simple, responsive
 - Easy map timeline editing: added new dates come with its independent map inherited from previous time point
