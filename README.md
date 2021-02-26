@@ -26,6 +26,10 @@ Disclaimer: Making History Sandbox (application) is not intended to be historica
 # Common issues and possible solutions
 - Dimensions/font size/location of elements are strange
   - This is often due to zooming/resizing of the browser. Try resetting the browser zoom to 100%, usually that should be enough
+- Load error/white page: just refresh page
+  - Likely due to loading files with the incorrect panel
+- Region not being colored:
+  - Usually due to color picker/eraser being on, so check if they are
 
 ## Extra Acknowledgements
 - "mapAdmin.json" (geojson basemap for the regions) was modified from: Natural Earth. Free vector and raster map data @ naturalearthdata.com. 
