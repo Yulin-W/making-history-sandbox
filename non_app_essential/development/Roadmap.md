@@ -78,13 +78,14 @@
 - [ ] 1.3.5: add in proptypes for type checking
 - [ ] 1.3.6: structure code better, write up docs for personal plugin update
 - [ ] 1.4.0: setup an alternate site for in test deployment, and only deploy to main site once sure it works well
-- [ ] 1.5.0: enable hiding all panels except timeline, so drawer like
-- [ ] 1.6.0: allow theme selection changing, e.g. swap out a different theme and only resetting style afterwards; themes could include no border lines, 1 opacity 
-- [ ] 1.7.0: info marker plugin : should advertise this on all the major mapmaking sites after done, after doing a own alterantive example of course, maybe for instance an alternative state and its internal transport/city info map
+- [ ] 1.5.0: add rgb/hex color picker, just add it beside the slide picker, take the compoennt from react color, no need to make it a separate plugin
+- [ ] 1.6.0: enable hiding all panels except timeline, so drawer like
+- [ ] 1.7.0: allow theme selection changing, e.g. swap out a different theme and only resetting style afterwards; themes could include no border lines, 1 opacity 
+- [ ] 1.8.0: info marker plugin : should advertise this on all the major mapmaking sites after done, after doing a own alterantive example of course, maybe for instance an alternative state and its internal transport/city info map
   - Various plugin shapes
   - Info adding to markers possible
   - shouldn't be hard, just leverage existing polyline, marker, etc. features of leaflet and leaflet plugins
-- [ ] 1.8.0: import background image option and empty background option: should advertise this on all the major mapmaking sites after done
+- [ ] 1.9.0: import background image option and empty background option: should advertise this on all the major mapmaking sites after done
   - to make aligning easier; enable resizing and dragging ,perhaps by binding to a polygon
   - also in this case, to make custom regioning  easier, I should use some leaflet library to make a mode allowing in app editing of geojson; actually no, better for performance just put it as a separate app, then if i do choose to merge the two to a single app, it'd be easy to just add the component
   - need to make a plugin for this kind of save
