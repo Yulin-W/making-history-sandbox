@@ -74,6 +74,7 @@
 - [ ] 1.3.2: add in display names for elements to help debugging
 - [ ] 1.3.3: code thinning and reuse, split code to smaller files though functionality should remain same; shouldn't be too hard setting up multiple pages for the github repo
 - [ ] 1.3.4: abusive use testing, fix bugs, try to minimise need to refresh page
+  - Ensure color picker is mutually exclusivye with lasso and eraser tool
 - [ ] 1.3.5: add in proptypes for type checking
 - [ ] 1.3.6: structure code better, write up docs for personal plugin update
 - [ ] 1.4.0: setup an alternate site for in test deployment, and only deploy to main site once sure it works well
