@@ -11,7 +11,7 @@ import scen1444 from "../assets/scenario/1444-Battle-of-Varna.json";
 import scen1936 from "../assets/scenario/1936-Coming-of-the-Storm.json"
 
 // Import community scenarios; this is where to import; put the files in src/assets/communityScenario, import them here, then add them to the scenarios dictionary below
-import scen2021 from "../assets/communityScenario/2021-Modern-Map-by-DawnbreakZ.json";
+import scen2021 from "../assets/communityScenario/2021-Modern-Map-made-by-DawnbreakZ-edited-by-yunus3663.json";
 
 // Import json scenarios, keys should be names that will be displayed for the scenario
 const scenarios = {
@@ -19,7 +19,7 @@ const scenarios = {
     "1206 Rise of Mongolia": scen1206,
     "1444 Battle of Varna": scen1444,
     "1936 Coming of the Storm": scen1936,
-    "2021 Modern Map by DawnbreakZ": scen2021,
+    "2021 Modern Map made by DawnbreakZ edited by yunus3663": scen2021,
 };
 
 // Setup styles
