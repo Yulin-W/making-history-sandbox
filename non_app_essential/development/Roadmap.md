@@ -77,7 +77,8 @@
   - Ensure color picker is mutually exclusivye with lasso and eraser tool
 - [ ] 1.3.5: add in proptypes for type checking
 - [ ] 1.3.6: structure code better, write up docs for personal plugin update
-- [ ] 1.4.0: setup an alternate site for in test deployment, and only deploy to main site once sure it works well
+- [ ] 1.4.0: display total numebr of regions and regions of each label color, perhaps as part of legend plugin; also make legend more readable, i.e. see more entries
+- [ ] 1.4.1: setup an alternate site for in test deployment, and only deploy to main site once sure it works well
 - [ ] 1.5.0: add rgb/hex color picker, just add it beside the slide picker, take the compoennt from react color, no need to make it a separate plugin
 - [ ] 1.6.0: enable hiding all panels except timeline, so drawer like
 - [ ] 1.7.0: allow theme selection changing, e.g. swap out a different theme and only resetting style afterwards; themes could include no border lines, 1 opacity 
