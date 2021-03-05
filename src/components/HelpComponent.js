@@ -10,6 +10,7 @@ const useStyles = makeStyles((theme) => ({
     },
     helpContent: {
         margin: 5,
+        color: theme.palette.text.primary,
     }
 }));
 
