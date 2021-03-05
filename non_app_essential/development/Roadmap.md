@@ -71,12 +71,11 @@
 - [x] 1.3.0: allow custom imports of geojson basemap plugin
   - Add the basemap as part of the save file
 - [x] 1.3.1: add 2021 map by DawnbreakerZ
-- [ ] 1.3.2: code thinning and reuse, split code to smaller files though functionality should remain same; shouldn't be too hard setting up multiple pages for the github repo
-- [ ] 1.3.3: abusive use testing, fix bugs, try to minimise need to refresh page
+- [ ] 1.3.2: abusive use testing, fix bugs, try to minimise need to refresh page
   - Ensure color picker is mutually exclusivye with lasso and eraser tool
-- [ ] 1.3.4: add in proptypes for type checking
-- [ ] 1.3.5: structure code better, write up docs for personal plugin update
-- [ ] 1.3.6：add tooltips and easier to find help sections than the large chunk of word that no one reads
+- [ ] 1.3.3: add in proptypes for type checking
+- [ ] 1.3.4: structure code better, write up docs for personal plugin update
+- [ ] 1.3.5：add tooltips and easier to find help sections than the large chunk of word that no one reads
 - [ ] 1.4.0: display total numebr of regions and regions of each label color, perhaps as part of legend plugin; also make legend more readable, i.e. see more entries
 - [ ] 1.4.1: setup an alternate site for in test deployment, and only deploy to main site once sure it works well
 - [ ] 1.5.0: add rgb/hex color picker, just add it beside the slide picker, take the compoennt from react color, no need to make it a separate plugin
