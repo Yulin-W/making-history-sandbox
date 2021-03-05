@@ -40,9 +40,41 @@ function ToolbarComponent(props) {
     const pickingButtonColor = props.picking ? "secondary" : "default";
     return (
         <div className={classes.toolbarContainer} id="toolbar">
-            <Button color={eraserButtonColor} className={classes.toolbarButton} onClick={() => { props.updateErasing(!props.erasing); }}>{eraserButtonText}</Button>
-            <Button color={lassoButtonColor} className={classes.toolbarButton} onClick={() => { props.updateLassoSelecting(!props.lassoSelecting); }}>{lassoButtonText}</Button>
-            <Button color={pickingButtonColor} className={classes.toolbarButton} onClick={() => { props.updatePicking(!props.picking); }}>{pickingButtonText}</Button>
+            <Button
+                color={eraserButtonColor}
+                className={classes.toolbarButton}
+                onClick={() => {
+                    props.updatePicking(false, () => {
+                        props.updateErasing(!props.erasing);
+                    })
+                }}
+            >
+                {eraserButtonText}
+            </Button>
+            <Button
+                color={lassoButtonColor}
+                className={classes.toolbarButton}
+                onClick={() => {
+                    props.updatePicking(false, () => {
+                        props.updateLassoSelecting(!props.lassoSelecting); 
+                    })
+                }}
+            >
+                {lassoButtonText}
+            </Button>
+            <Button
+                color={pickingButtonColor}
+                className={classes.toolbarButton}
+                onClick={() => {
+                    props.updateLassoSelecting(false, () => {
+                        props.updateErasing(false, () => {
+                            props.updatePicking(!props.picking);
+                        });
+                    }); 
+                }}
+            >
+                {pickingButtonText}
+            </Button>
         </div>
     );
 }

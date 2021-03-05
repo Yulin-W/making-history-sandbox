@@ -45,7 +45,6 @@ const theme = createMuiTheme(themeDict.material);
 const useStyles = theme => ({
   backdrop: {
     zIndex: 3,
-    color: '#fff',
   },
 });
 
@@ -167,8 +166,12 @@ class App extends React.Component {
   }
 
   // Update color picker state
-  updatePicking(newState) {
-    this.setState({ picking: newState });
+  updatePicking(newState, callback=null) {
+    this.setState({ picking: newState }, () => {
+      if (callback) {
+        callback();
+      }
+    });
   }
 
   openHelp() {
@@ -214,8 +217,12 @@ class App extends React.Component {
   }
 
   // Update eraser state, such state in turn determins the value getColor returns
-  updateErasing(newState) {
-    this.setState({ erasing: newState });
+  updateErasing(newState, callback=null) {
+    this.setState({ erasing: newState }, () => {
+      if (callback) {
+        callback();
+      }
+    });
   }
 
   // Returns hex of currently selected color, as in the colorBarComponent
