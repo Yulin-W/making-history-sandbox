@@ -71,7 +71,7 @@
 - [x] 1.3.0: allow custom imports of geojson basemap plugin
   - Add the basemap as part of the save file
 - [x] 1.3.1: add 2021 map by DawnbreakerZ
-- [ ] 1.3.2: abusive use testing, fix bugs, try to minimise need to refresh page
+- [x] 1.3.2: abusive use testing, fix bugs, try to minimise need to refresh page
   - Ensure color picker is mutually exclusivye with lasso and eraser tool
 - [ ] 1.3.3: structure code better, write up docs for personal plugin update
 - [ ] 1.3.4：add tooltips and easier to find help sections than the large chunk of word that no one reads
