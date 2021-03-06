@@ -13,6 +13,9 @@ const themeDict = {
             },
             border: "#d4af37",
             borderImage: `url(${GoldTexture}) 30`,
+            background: {
+                light: "#F5F5F5",
+            },
             backgroundImage: {
                 main: `url(${MarbleTexture})`,
             }
