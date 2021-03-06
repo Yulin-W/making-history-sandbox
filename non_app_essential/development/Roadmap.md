@@ -77,7 +77,7 @@
   - Instead of having to put null for all onXXX functions for all plugins, make plugin method running check to see if the function key is in the plugin's functions dictionary, and if so then run, else don't run
 - [x] 1.3.4：add better help, perhaps a joyride
 - [x] 1.4.0: display total numebr of regions and regions of each label color, perhaps as part of legend plugin; also make legend more readable, i.e. see more entries
-- [ ] 1.5.0: add rgb/hex color picker, just add it beside the slide picker, take the compoennt from react color, no need to make it a separate plugin
+- [x] 1.5.0: add rgb/hex color picker, just add it beside the slide picker, take the compoennt from react color, no need to make it a separate plugin
 - [ ] 1.6.0: enable hiding all panels except timeline, so drawer like
 - [ ] 1.7.0: allow theme selection changing, e.g. swap out a different theme and only resetting style afterwards; themes could include no border lines, 1 opacity 
 - [ ] 1.8.0: info marker plugin : should advertise this on all the major mapmaking sites after done, after doing a own alterantive example of course, maybe for instance an alternative state and its internal transport/city info map
