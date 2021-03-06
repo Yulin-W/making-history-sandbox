@@ -1,13 +1,11 @@
 // Import React and other modules
 import React from "react";
 import { createMuiTheme, ThemeProvider, withStyles } from '@material-ui/core/styles';
-import Backdrop from '@material-ui/core/Backdrop';
 
 // Import css
 import './App.css';
 
 // Import custom components
-import HelpComponent from "./components/HelpComponent";
 import MenuComponent from "./components/MenuComponent.js";
 import MapComponent from './components/MapComponent.js';
 import ColorBarComponent from './components/ColorBarComponent.js';
@@ -33,6 +31,10 @@ import plugins from "./appPlugins.js";
 // Import deep clone
 import cloneDeep from "clone-deep";
 
+// Import react-joyride
+import ReactJoyride, { EVENTS } from 'react-joyride';
+import steps from './assets/other/joyrideSteps.js';
+
 // Import Google Analytics
 import ReactGA from 'react-ga';
 
@@ -43,9 +45,6 @@ ReactGA.pageview(window.location.pathname + window.location.search);
 const theme = createMuiTheme(themeDict.material);
 
 const useStyles = theme => ({
-  backdrop: {
-    zIndex: 3,
-  },
 });
 
 class App extends React.Component {
@@ -57,7 +56,6 @@ class App extends React.Component {
     this.mapKey = "mapAdmin";
     this.themeDict = themeDict;
 
-    // Some attributes for plugins to use
     // Convert baseMap to a prototype, const dictionary indexed by regionID
     this.regionDictDefault = createRegionDict(this.baseMap);
     this.scenarioDataDefault = [
@@ -113,12 +111,11 @@ class App extends React.Component {
     this.processRegionHoveredOn = this.processRegionHoveredOn.bind(this);
     this.processRegionHoveredOut = this.processRegionHoveredOut.bind(this);
     this.save = this.save.bind(this);
-    this.closeHelp = this.closeHelp.bind(this);
-    this.openHelp = this.openHelp.bind(this);
     this.getRegionColorByIndex = this.getRegionColorByIndex.bind(this);
     this.updatePicking = this.updatePicking.bind(this);
     this.resetAppBasedOnBasemap = this.resetAppBasedOnBasemap.bind(this);
     this.runPluginFunc = this.runPluginFunc.bind(this)
+    this.handleJoyrideCallback = this.handleJoyrideCallback.bind(this);
   }
 
   // Runs functions entry in plugin of specified key, supplies the args to the function called in addition to the this argument
@@ -182,14 +179,6 @@ class App extends React.Component {
         callback();
       }
     });
-  }
-
-  openHelp() {
-    this.setState({ helpOn: true });
-  }
-
-  closeHelp() {
-    this.setState({ helpOn: false });
   }
 
   processRegionHoveredOn(layer) {
@@ -395,18 +384,34 @@ class App extends React.Component {
     return this.state.scenarioData[this.state.activeEntry].regionDict[index].color;
   }
 
+  // Function for controlling Joyride
+  handleJoyrideCallback(data) {
+    const { type } = data;
+    if (type === EVENTS.TOUR_END && this.state.helpOn) {
+      this.setState({helpOn: false});
+    }
+  }
+
   render() {
     const { classes } = this.props;
+    console.log(this.state.helpOn);
     return (
       <ThemeProvider theme={theme}>
         <div className="App">
-          <Backdrop className={classes.backdrop} open={this.state.helpOn} onClick={this.closeHelp}>
-            <HelpComponent />
-          </Backdrop>
+          <ReactJoyride
+            callback={this.handleJoyrideCallback}
+            steps={steps}
+            continuous
+            disableOverlayClose
+            disableCloseOnEsc
+            showProgress
+            showSkipButton
+            run={this.state.helpOn}
+          />
           <MenuComponent
             save={this.save}
             loadSave={this.loadSave}
-            openHelp={this.openHelp}
+            openHelp={() => {this.setState({helpOn: true});}}
           />
           <ToolbarComponent
             lassoSelecting={this.state.lassoSelecting}
