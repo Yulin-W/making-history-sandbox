@@ -394,7 +394,6 @@ class App extends React.Component {
 
   render() {
     const { classes } = this.props;
-    console.log(this.state.helpOn);
     return (
       <ThemeProvider theme={theme}>
         <div className="App">
@@ -407,6 +406,11 @@ class App extends React.Component {
             showProgress
             showSkipButton
             run={this.state.helpOn}
+            styles={{
+              buttonClose: {
+                display:"none",
+              }
+            }}
           />
           <MenuComponent
             save={this.save}
