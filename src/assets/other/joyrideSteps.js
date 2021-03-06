@@ -45,6 +45,10 @@ const steps = [
         content: 'This is where additional functionalities are, including information about region hovered upon, legend, scenarios, loading of custom maps, etc.',
     },
     {
+        target: '#menu',
+        content: 'This is the menu bar. I guess there is not much to say.'
+    },
+    {
         target: 'body',
         content: <React.Fragment>
             <p>Acknowledgements</p>
