@@ -80,6 +80,7 @@
 - [x] 1.5.0: add rgb/hex color picker, just add it beside the slide picker, take the compoennt from react color, no need to make it a separate plugin
 - [ ] 1.6.0: enable hiding all panels except timeline, so drawer like
 - [ ] 1.7.0: allow theme selection changing, e.g. swap out a different theme and only resetting style afterwards; themes could include no border lines, 1 opacity 
+  - Look at some popular styles online to learn from and ideally give some room for customization (though I guess not too much as such would be a task of matters such as photoshop as opposed to this app)
 - [ ] 1.8.0: info marker plugin : should advertise this on all the major mapmaking sites after done, after doing a own alterantive example of course, maybe for instance an alternative state and its internal transport/city info map
   - Various plugin shapes
   - Info adding to markers possible
