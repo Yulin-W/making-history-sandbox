@@ -22,7 +22,7 @@ const steps = [
     },
     {
         target: '#colorbar',
-        content: 'Choose your color using the various methods provided, for instance the slide.'
+        content: 'Choose your color using the various methods provided, for instance the slider or the RGB input.'
     },
     {
         target: '#toolbar',
