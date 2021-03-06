@@ -52,4 +52,4 @@ const steps = [
         placement: 'center'
     }
 ]
-export default steps
+export default steps;

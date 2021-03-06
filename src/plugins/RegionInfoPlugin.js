@@ -8,8 +8,8 @@ const useStyles = makeStyles((theme) => ({
         paddingLeft: 10,
     },
     regionInfoColor: {
-        width: 20,
-        height: 20,
+        width: 15,
+        height: 15,
         marginLeft: 5,
         marginRight: 10,
         borderColor: theme.palette.text.primary,

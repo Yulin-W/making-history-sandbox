@@ -6,7 +6,7 @@ import Button from "@material-ui/core/Button";
 const useStyles = makeStyles((theme) => ({
     toolbarContainer: {
         position: "absolute",
-        top: 96,
+        top: 105,
         right: "50%",
         marginRight: -210 / 2,
         height: 30,
