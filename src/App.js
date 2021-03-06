@@ -409,7 +409,12 @@ class App extends React.Component {
             styles={{
               buttonClose: {
                 display:"none",
-              }
+              },
+              buttonSkip: {
+                backgroundColor: theme.palette.secondary.main,
+                color: theme.palette.text.primary,
+                fontSize: 20,
+              },
             }}
           />
           <MenuComponent
