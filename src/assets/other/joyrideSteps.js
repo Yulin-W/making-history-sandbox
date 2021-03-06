@@ -3,10 +3,13 @@ import React from 'react';
 const steps = [
     {
         target: 'body',
-        content: <React.Fragment>
+        content: 
+        <React.Fragment>
             <p>Welcome to Making History Sandbox! Click next for the tutorial.</p>
             <hr/>
             <p>***NEW FEATURES***</p>
+            <p>Hex/RGB color picker</p>
+            <p>Display of number of regions per label and total</p>
             <hr/>
             <p>If you made a historic scenario and is willing to share the save, you can send it to me at Yulin-W@outlook.com. If you want attribution, send the name you want as well.</p>
             <hr/>
@@ -19,7 +22,7 @@ const steps = [
     },
     {
         target: '#colorbar',
-        content: 'Choose your color using the slider, then select the specific shade out of the 5 options.'
+        content: 'Choose your color using the various methods provided, for instance the slide.'
     },
     {
         target: '#toolbar',
