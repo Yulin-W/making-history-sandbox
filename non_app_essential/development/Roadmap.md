@@ -75,7 +75,7 @@
   - Ensure color picker is mutually exclusivye with lasso and eraser tool
 - [x] 1.3.3: structure code better, write up docs for personal plugin update
   - Instead of having to put null for all onXXX functions for all plugins, make plugin method running check to see if the function key is in the plugin's functions dictionary, and if so then run, else don't run
-- [ ] 1.3.4：add better help, perhaps a joyride
+- [x] 1.3.4：add better help, perhaps a joyride
 - [ ] 1.4.0: display total numebr of regions and regions of each label color, perhaps as part of legend plugin; also make legend more readable, i.e. see more entries
 - [ ] 1.4.1: setup an alternate site for in test deployment, and only deploy to main site once sure it works well
 - [ ] 1.5.0: add rgb/hex color picker, just add it beside the slide picker, take the compoennt from react color, no need to make it a separate plugin
