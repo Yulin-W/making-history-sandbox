@@ -21,7 +21,8 @@ const useStyles = makeStyles((theme) => ({
         margin: 5,
     },
     legendEntryLabel: {
-        fontSize: 11,
+        width: 80,
+        fontSize: 10,
     },
     legendGrid: {
         height: 200,
