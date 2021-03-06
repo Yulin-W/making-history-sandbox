@@ -33,6 +33,10 @@ const steps = [
         content: 'This is the map. To color/erase color, click the region. Or, if lasso is used, click and hold to select regions.',
     },
     {
+        target: '.leaflet-control-layers',
+        content: 'This is where you change the background map and switch on/off the regions.'
+    },
+    {
         target: '#timeline_bar',
         content: 'This is the timeline. To add a timepoint, click the + in intended position. The added timepoint will inherit the region colors of the preceding timepoint. To go to a timepoint, click on it.',
     },
