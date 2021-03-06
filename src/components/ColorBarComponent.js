@@ -39,8 +39,8 @@ const useStyles = theme => ({
         flexFlow: "column",
         alignItems: "stretch",
         width: 245,
-        margin: -30,
-        transform: "scale(0.75)",
+        margin: -22,
+        transform: "scale(0.8)",
     },
     rgbInput: {
         display: "flex",
