@@ -65,15 +65,8 @@ const RegionInfoPluginDict = {
     component: RegionInfoComponent,
     initState: initState,
     functions: {
-        onAssignRegions: null,
-        onAddEntry: null,
-        onDeleteEntry: null,
-        onUpdateActiveEntry: null,
-        onUpdateEventDate: null,
-        onUpdateEvent: null,
-        onLoadSave: null,
         onProcessRegionHoveredOn: onProcessRegionHoveredOn,
-        onProcessRegionHoveredOut: null, // Although not having this causes the region info to linger on  after moving out of a region, it is faster and I feel that is worth is, nevertheless, try to find a solution that resolves the performance issue and ensures on moving out the region info is set to null
+        // Although not having this causes the region info to linger on  after moving out of a region, it is faster and I feel that is worth is, nevertheless, try to find a solution that resolves the performance issue and ensures on moving out the region info is not set
     }
 };
 

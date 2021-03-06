@@ -90,17 +90,7 @@ const initState = scenarioData => {
 const CustomGeoJSONLoaderPluginDict = {
     component: CustomGeoJSONLoaderPluginComponent,
     initState: initState,
-    functions: {
-        onAssignRegions: null,
-        onAddEntry: null,
-        onDeleteEntry: null,
-        onUpdateActiveEntry: null,
-        onUpdateEventDate: null,
-        onUpdateEvent: null,
-        onLoadSave: null,
-        onProcessRegionHoveredOn: null,
-        onProcessRegionHoveredOut: null,
-    }
+    functions: {}
 };
 
 export default CustomGeoJSONLoaderPluginDict;

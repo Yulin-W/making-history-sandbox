@@ -68,17 +68,7 @@ const initState = scenarioData => {
 const ScenarioPluginDict = {
     component: ScenarioPluginComponent,
     initState: initState,
-    functions: {
-        onAssignRegions: null,
-        onAddEntry: null,
-        onDeleteEntry: null,
-        onUpdateActiveEntry: null,
-        onUpdateEventDate: null,
-        onUpdateEvent: null,
-        onLoadSave: null,
-        onProcessRegionHoveredOn: null,
-        onProcessRegionHoveredOut: null,
-    }
+    functions: {}
 };
 
 export default ScenarioPluginDict;
