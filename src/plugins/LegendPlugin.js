@@ -1,9 +1,12 @@
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Scrollbars from 'react-custom-scrollbars';
 import cloneDeep from "clone-deep";
 import InputBase from '@material-ui/core/InputBase';
 import Typography from '@material-ui/core/Typography';
+import Switch from '@material-ui/core/Switch';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 const useStyles = makeStyles((theme) => ({
     legendContainer: {
@@ -42,6 +45,15 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "center",
         alignItems: "center",
         transform: "scale(0.9)"
+    },
+    displayNumSwitch: {
+        transform: "scale(0.6)",
+    },
+    displayNumSwitchContainer: {
+        display: "flex",
+        flexFlow: "column",
+        justifyContent: "center",
+        alignItems: "flex-end",
     }
 }));
 
@@ -61,19 +73,21 @@ function LegendEntry(props) {
                 value={props.label}
                 onChange={props.onChange}
             />
-            <Typography variant="caption" className={classes.legendEntryNum}>{props.num}</Typography>
+            {props.displayNum && <Typography variant="caption" className={classes.legendEntryNum}>{props.num}</Typography>}
         </div>
     )
 }
 
 function LegendComponent(props) {
     const classes = useStyles();
+    const [displayNum, setDisplayNum] = React.useState(true);
     const entries = Object.keys(props.app.state.pluginData["Legend"][props.app.state.activeEntry]).map((color) =>
         <LegendEntry
             key={color}
             color={color}
             label={props.app.state.pluginData["Legend"][props.app.state.activeEntry][color]}
             num={props.app.state.colorData[props.app.state.activeEntry][color]}
+            displayNum={displayNum}
             item
             onChange={e => {
                 let currentLegendData = cloneDeep(props.app.state.pluginData["Legend"]);
@@ -84,6 +98,14 @@ function LegendComponent(props) {
         />);
     return (
         <div className={classes.legendContainer}>
+            <div className={classes.displayNumSwitchContainer}>
+                <FormControlLabel
+                    className={classes.displayNumSwitch}
+                    control={<Switch checked={displayNum} onChange={() => setDisplayNum(!displayNum)} />}
+                    label="Counts"
+                    labelPlacement="start"
+                />
+            </div>
             <div className={classes.totalLabel}>
                 <Typography variant="caption">Total Regions: {props.app.baseMap.features.length}</Typography>
             </div>
