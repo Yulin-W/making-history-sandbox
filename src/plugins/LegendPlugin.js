@@ -116,22 +116,11 @@ function onDeleteEntry(app, index) {
 // This dictionary contains the component, initial state value generation function for the plugin's entry in pluginData; this be based off the scenarioData state value
 const LegendPluginDict = {
     component: LegendComponent,
-    initState: initState, // Given the value of scenarioData (assumed to be the scenarioDataDefault), the plugin should be able to work out its initial pluginData value
-    // Below are functions to be called as part of App.js's corresponding methods, they expected to have this (of App) binded to them, and so code for them can be written accordingly
-    // The arguments they expect should be the app (as in this of the app component) + the same as the corresponding arguments in App, except for the callback TODO: this is quite a dangerous practice to give reference to top element to plugin, but it is quite useful, so going to do this for now (meaning probably not gunna change)
-    // For certain methods, other arguments are provided to improve performance and code reuse, check app.js for details
-    // The functions should not rely on the completion of the associated methods, it should only depend on the state of the app prior to running the method
-    // This is, except onAssignRegions, which I've set to have to run as a callback after the app's setting is complete
-    functions: { // Note adding more functions than ones below would require adding in the run plugin function codes in the respective method of App
+    initState: initState,
+    functions: {
         onAssignRegions: onAssignRegions,
         onAddEntry: onAddEntry, // Expects index argument
         onDeleteEntry: onDeleteEntry, // Expects index argument
-        onUpdateActiveEntry: null,
-        onUpdateEventDate: null,
-        onUpdateEvent: null,
-        onLoadSave: null,
-        onProcessRegionHoveredOn: null,
-        onProcessRegionHoveredOut: null,
     }
 };
 

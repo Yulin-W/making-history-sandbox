@@ -118,6 +118,16 @@ class App extends React.Component {
     this.getRegionColorByIndex = this.getRegionColorByIndex.bind(this);
     this.updatePicking = this.updatePicking.bind(this);
     this.resetAppBasedOnBasemap = this.resetAppBasedOnBasemap.bind(this);
+    this.runPluginFunc = this.runPluginFunc.bind(this)
+  }
+
+  // Runs functions entry in plugin of specified key, supplies the args to the function called in addition to the this argument
+  runPluginFunc(key, args) {
+    Object.values(this.plugins).forEach(entry => {
+      if (key in entry.functions) {
+        entry.functions[key](this, ...args);
+      }
+    });
   }
 
   // Resets app based on basemap, in particular the key states, including scenariodata, colorData, pluginData
@@ -184,20 +194,12 @@ class App extends React.Component {
 
   processRegionHoveredOn(layer) {
     // Running plugin methods
-    Object.values(this.plugins).forEach(entry => {
-      if (entry.functions.onProcessRegionHoveredOn) {
-        entry.functions.onProcessRegionHoveredOn(this, layer);
-      }
-    });
+    this.runPluginFunc("onProcessRegionHoveredOn", [layer]);
   }
 
   processRegionHoveredOut(layer) {
     // Running plugin methods
-    Object.values(this.plugins).forEach(entry => {
-      if (entry.functions.onProcessRegionHoveredOut) {
-        entry.functions.onProcessRegionHoveredOut(this, layer);
-      }
-    });
+    this.runPluginFunc("onProcessRegionHoveredOut", [layer]);
   }
 
   // Updates plugin data for the specified plugin with the specified data, the key should be the one used in the plugins dictionary
@@ -253,11 +255,7 @@ class App extends React.Component {
     this.setState({ scenarioData: currentData, colorData: currentColorData }, () => { this.updateActiveEntry(index); });
 
     // Running plugin methods
-    Object.values(this.plugins).forEach(entry => {
-      if (entry.functions.onAddEntry) {
-        entry.functions.onAddEntry(this, index);
-      }
-    });
+    this.runPluginFunc("onAddEntry", [index]);
   }
 
   // Deletes entry in position at specified index in scenarioData and colorData
@@ -277,11 +275,7 @@ class App extends React.Component {
     }
 
     // Running plugin methods
-    Object.values(this.plugins).forEach(entry => {
-      if (entry.functions.onDeleteEntry) {
-        entry.functions.onDeleteEntry(this, index);
-      }
-    });
+    this.runPluginFunc("onDeleteEntry", [index]);
   }
 
   // Updates event date for active entry, expects a string argument
@@ -291,11 +285,7 @@ class App extends React.Component {
     this.setState({ scenarioData: currentData });
 
     // Running plugin methods
-    Object.values(this.plugins).forEach(entry => {
-      if (entry.functions.onUpdateEventDate) {
-        entry.functions.onUpdateEventDate(this, date);
-      }
-    });
+    this.runPluginFunc("onUpdateEventDate", [date]);
   }
 
   // Updates event description for active entry, expects a string argument
@@ -305,11 +295,7 @@ class App extends React.Component {
     this.setState({ scenarioData: currentData });
 
     // Running plugin methods
-    Object.values(this.plugins).forEach(entry => {
-      if (entry.functions.onUpdateEvent) {
-        entry.functions.onUpdateEvent(this, event);
-      }
-    });
+    this.runPluginFunc("onUpdateEvent", [event]);
   }
 
   // Clears date and event of the current active entry, not the map though
@@ -332,11 +318,7 @@ class App extends React.Component {
       });
 
     // Running plugin methods
-    Object.values(this.plugins).forEach(entry => {
-      if (entry.functions.onUpdateActiveEntry) {
-        entry.functions.onUpdateActiveEntry(this, newIndex);
-      }
-    });
+    this.runPluginFunc("onUpdateActiveEntry", [newIndex]);
   }
 
   // Assigns regions of specified indices the currently selected color and update colorData accordingly, then run callback if any
@@ -387,11 +369,7 @@ class App extends React.Component {
         }
 
         // Running plugin methods
-        Object.values(this.plugins).forEach(entry => {
-          if (entry.functions.onAssignRegions) {
-            entry.functions.onAssignRegions(this, indices, color, removedColors, addedColor);
-          }
-        });
+        this.runPluginFunc("onAssignRegions", [indices, color, removedColors, addedColor]);
       });
   }
 
@@ -409,11 +387,7 @@ class App extends React.Component {
     this.setState({ scenarioData: saveData.scenarioData, colorData: saveData.colorData, pluginData: saveData.pluginData }, () => { this.updateActiveEntry(0) });
 
     // Running plugin methods
-    Object.values(this.plugins).forEach(entry => {
-      if (entry.functions.onLoadSave) {
-        entry.functions.onLoadSave(this, saveData);
-      }
-    });
+    this.runPluginFunc("onLoadSave", [saveData]);
   }
 
   getRegionColorByIndex(index) {

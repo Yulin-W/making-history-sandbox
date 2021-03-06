@@ -73,7 +73,8 @@
 - [x] 1.3.1: add 2021 map by DawnbreakerZ
 - [x] 1.3.2: abusive use testing, fix bugs, try to minimise need to refresh page
   - Ensure color picker is mutually exclusivye with lasso and eraser tool
-- [ ] 1.3.3: structure code better, write up docs for personal plugin update
+- [x] 1.3.3: structure code better, write up docs for personal plugin update
+  - Instead of having to put null for all onXXX functions for all plugins, make plugin method running check to see if the function key is in the plugin's functions dictionary, and if so then run, else don't run
 - [ ] 1.3.4：add tooltips and easier to find help sections than the large chunk of word that no one reads
 - [ ] 1.4.0: display total numebr of regions and regions of each label color, perhaps as part of legend plugin; also make legend more readable, i.e. see more entries
 - [ ] 1.4.1: setup an alternate site for in test deployment, and only deploy to main site once sure it works well
