@@ -10,7 +10,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 const useStyles = makeStyles((theme) => ({
     legendContainer: {
-        height: 220,
+        height: 240,
         width: "100%",
         display: "flex",
         flexFlow: "column",
@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
         fontSize: 10,
     },
     legendGrid: {
-        height: 200,
+        height: 180,
     },
     totalLabel: {
         display: "flex",
