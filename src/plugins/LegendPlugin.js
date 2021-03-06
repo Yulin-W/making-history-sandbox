@@ -3,11 +3,15 @@ import Grid from '@material-ui/core/Grid';
 import Scrollbars from 'react-custom-scrollbars';
 import cloneDeep from "clone-deep";
 import InputBase from '@material-ui/core/InputBase';
+import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles((theme) => ({
     legendContainer: {
-        height: 200,
+        height: 220,
         width: "100%",
+        display: "flex",
+        flexFlow: "column",
+        justifyContent: "space-evenly"
     },
     legendEntry: {
         display: "flex",
@@ -24,8 +28,20 @@ const useStyles = makeStyles((theme) => ({
         width: 80,
         fontSize: 10,
     },
+    legendEntryNum: {
+        marginLeft: 5,
+        marginRight: 5,
+        fontSize: 10,
+    },
     legendGrid: {
         height: 200,
+    },
+    totalLabel: {
+        display: "flex",
+        flexFlow: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        transform: "scale(0.9)"
     }
 }));
 
@@ -45,6 +61,7 @@ function LegendEntry(props) {
                 value={props.label}
                 onChange={props.onChange}
             />
+            <Typography variant="caption" className={classes.legendEntryNum}>{props.num}</Typography>
         </div>
     )
 }
@@ -56,6 +73,7 @@ function LegendComponent(props) {
             key={color}
             color={color}
             label={props.app.state.pluginData["Legend"][props.app.state.activeEntry][color]}
+            num={props.app.state.colorData[props.app.state.activeEntry][color]}
             item
             onChange={e => {
                 let currentLegendData = cloneDeep(props.app.state.pluginData["Legend"]);
@@ -66,6 +84,9 @@ function LegendComponent(props) {
         />);
     return (
         <div className={classes.legendContainer}>
+            <div className={classes.totalLabel}>
+                <Typography variant="caption">Total Regions: {props.app.baseMap.features.length}</Typography>
+            </div>
             <Scrollbars>
                 <Grid container direction="column" justify="flex-start" wrap="wrap" className={classes.legendGrid}>
                     {entries}

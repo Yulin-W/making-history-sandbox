@@ -6,7 +6,7 @@ const steps = [
         content: <React.Fragment>
             <p>Welcome to Making History Sandbox! Click next for the tutorial.</p>
             <hr/>
-            ***NEW FEATURES***<br/>
+            <p>***NEW FEATURES***</p>
             <hr/>
             <p>If you made a historic scenario and is willing to share the save, you can send it to me at Yulin-W@outlook.com. If you want attribution, send the name you want as well.</p>
             <hr/>
