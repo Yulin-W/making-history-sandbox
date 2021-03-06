@@ -11,7 +11,7 @@ const steps = [
             <p>If you made a historic scenario and is willing to share the save, you can send it to me at Yulin-W@outlook.com. If you want attribution, send the name you want as well.</p>
             <hr/>
             <p>Making custom regions</p>
-            <p>See tutorial at: <a href="https://github.com/Yulin-W/making-history-sandbox/blob/main/customRegionTutorial.md">Custom Region Tutorial</a></p>
+            <p>See tutorial at: <a href="https://github.com/Yulin-W/making-history-sandbox/blob/main/customRegionTutorial.md" target="_blank">Custom Region Tutorial</a></p>
             <hr/>
             <p>Please see acknowledgements at the end of the tutorial</p>
         </React.Fragment>,
