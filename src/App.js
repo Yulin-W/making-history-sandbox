@@ -157,7 +157,7 @@ class App extends React.Component {
 
     // This part is the same as the state setting, but here we use setState instead of directly setting, only difference is that helpOn here is not switched on as users would have seen it already
     this.setState({
-      themeDict: this.themeDictDefault,
+      // Themedict is not reset to default, the existing themeDict settings will continue to be used
       scenarioData: this.scenarioDataDefault, 
       pluginData: pluginData, 
       colorData: colorData, 
