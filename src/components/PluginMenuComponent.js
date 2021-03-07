@@ -1,3 +1,4 @@
+import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import plugins from "../appPlugins.js";
 import Accordion from '@material-ui/core/Accordion';
@@ -6,12 +7,16 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Typography from '@material-ui/core/Typography';
 import Scrollbars from 'react-custom-scrollbars';
+import Slide from '@material-ui/core/Slide';
+
+// Import retract button custom component
+import RetractButton from './RetractButton.js';
 
 const useStyles = makeStyles((theme) => ({
     pluginMenuContainer: {
-        position:"absolute",
+        position: "absolute",
         right: 0,
-        top: "50%",
+        top: 180,
         zIndex: 1,
         minWidth: 140, // At least 150px adding in padding
         width: "12%",
@@ -45,27 +50,31 @@ const useStyles = makeStyles((theme) => ({
 
 export default function PluginMenuComponent(props) {
     const classes = useStyles();
+    const [display, setDisplay] = React.useState(true);
     let accordionItems = [];
     for (const [name, value] of Object.entries(plugins)) {
         const Plugin = value.component;
         accordionItems.push(
             <Accordion defaultExpanded key={name} square>
-                <AccordionSummary expandIcon={<ExpandMoreIcon/>} className={classes.accordionSummary} IconButtonProps={{size:"small"}}>
+                <AccordionSummary expandIcon={<ExpandMoreIcon />} className={classes.accordionSummary} IconButtonProps={{ size: "small" }}>
                     <Typography variant="body2">{name}</Typography>
                 </AccordionSummary>
                 <AccordionDetails className={classes.accordionDetails}>
-                    <Plugin app={props.app}/>
+                    <Plugin app={props.app} />
                 </AccordionDetails>
             </Accordion>
         );
     }
     return (
-        <div className={classes.pluginMenuContainer} id="plugin_menu">
-            <Scrollbars>
-                <div className={classes.accordionContainer}>
-                    {accordionItems}
-                </div>
-            </Scrollbars>
-        </div>
+        <Slide direction="left" in={display} unmountOnExit={false} mountOnEnter={false}>
+            <div className={classes.pluginMenuContainer} id="plugin_menu">
+                <Scrollbars>
+                    <div className={classes.accordionContainer}>
+                        {accordionItems}
+                    </div>
+                </Scrollbars>
+                <RetractButton direction="right" top={"50%"} left={-6} checked={display} onClick={() => setDisplay(!display)} />
+            </div>
+        </Slide>
     );
 }

@@ -1,6 +1,10 @@
 // Import React
 import React from "react";
 import { withStyles } from '@material-ui/core/styles';
+import Slide from '@material-ui/core/Slide';
+
+// Import retract button custom component
+import RetractButton from './RetractButton.js';
 
 // Import color picker
 import { SliderPicker, CompactPicker } from 'react-color';
@@ -13,7 +17,7 @@ const useStyles = theme => ({
         left: "50%",
         width: 400,
         height: 60,
-        zIndex: 1,
+        zIndex: 2,
         display: "flex",
         justifyContent: "space-between",
         flexFlow: "row",
@@ -54,7 +58,7 @@ const useStyles = theme => ({
     },
     compactPicker: {
         backgroundColor: theme.palette.background.light,
-    }
+    },
 });
 
 class ColorBarComponent extends React.PureComponent {
@@ -62,6 +66,7 @@ class ColorBarComponent extends React.PureComponent {
         super(props);
         this.state = {
             color: "#bf4340", // Default color, it is the color when slider in first row of color bar is set to leftmost position, and the centre one of the 5 colors in the second row of the color bar is chosen
+            display: true, // Default to showing the colorbar
         }
     }
 
@@ -69,15 +74,18 @@ class ColorBarComponent extends React.PureComponent {
         const { classes } = this.props;
         const colorHex = this.state.color;
         return (
-            <div className={classes.colorBarContainer} id="colorbar">
-                <div className={classes.currentColor} style={{ backgroundColor: colorHex }} />
-                <div className={classes.sliderPickerContainer}>
-                    <SliderPicker color={colorHex} onChange={(color, event) => this.setState({ color: color.hex })} />
+            <Slide direction="down" in={this.state.display} unmountOnExit={false} mountOnEnter={false}>
+                <div className={classes.colorBarContainer} id="colorbar">
+                    <div className={classes.currentColor} style={{ backgroundColor: colorHex }} />
+                    <div className={classes.sliderPickerContainer}>
+                        <SliderPicker color={colorHex} onChange={(color, event) => this.setState({ color: color.hex })} />
+                    </div>
+                    <div className={classes.compactPickerContainer}>
+                        <CompactPicker className={classes.compactPicker} color={colorHex} colors={defaultColors} onChange={(color, event) => this.setState({ color: color.hex })} />
+                    </div>
+                    <RetractButton direction="up" top={76} left={27} checked={this.state.display} onClick={() => this.setState({ display: !this.state.display })} />
                 </div>
-                <div className={classes.compactPickerContainer}>
-                    <CompactPicker className={classes.compactPicker} color={colorHex} colors={defaultColors} onChange={(color, event) => this.setState({ color: color.hex })}/>
-                </div>
-            </div>
+            </Slide>
         );
     }
 }
