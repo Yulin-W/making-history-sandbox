@@ -142,6 +142,7 @@ class MapComponent extends React.PureComponent {
                             data={this.props.baseMap}
                             style={this.style}
                             onEachFeature={this.onEachFeature}
+                            smoothFactor={0}
                             ref={this.geojsonRef}
                         ></GeoJSON>
                     </LayersControl.Overlay>
