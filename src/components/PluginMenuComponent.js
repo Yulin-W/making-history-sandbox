@@ -73,7 +73,7 @@ export default function PluginMenuComponent(props) {
                         {accordionItems}
                     </div>
                 </Scrollbars>
-                <RetractButton direction="right" top={27} left={-6} checked={display} onClick={() => setDisplay(!display)} />
+                <RetractButton direction="right" top={"50%"} left={-6} checked={display} onClick={() => setDisplay(!display)} />
             </div>
         </Slide>
     );

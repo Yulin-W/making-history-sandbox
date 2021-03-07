@@ -17,6 +17,8 @@ const useStyles = makeStyles((theme) => ({
         width: 100,
         height: 10,
         backgroundColor: theme.palette.background.light,
+        borderBottomLeftRadius: 10,
+        borderBottomRightRadius: 10,
         display: "flex",
         justifyContent: "center",
         alignItems: "center",

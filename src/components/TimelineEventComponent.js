@@ -73,7 +73,7 @@ function TimelineEventComponent(props) {
                     </div>
                 </div>
                 <textarea className={classes.eventContent} value={props.event} onChange={e => { props.updateEvent(e.target.value) }} multiline="true"></textarea>
-                <RetractButton direction="left" top={27} left={"calc(100% + 6px)"} checked={display} onClick={() => setDisplay(!display)} />
+                <RetractButton direction="left" top={"50%"} left={"calc(100% + 6px)"} checked={display} onClick={() => setDisplay(!display)} />
             </div>
         </Slide>
     );
