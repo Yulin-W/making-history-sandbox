@@ -82,6 +82,7 @@
 - [x] 1.6.0: enable hiding all panels except timeline, so drawer like
   - Also add github link to app
 - [ ] 1.7.0: allow theme selection changing, e.g. swap out a different theme and only resetting style afterwards; themes could include no border lines, 1 opacity 
+  - Used smoothFactor=0 of geojson to get rid of blank spacings between polygons when without borders
   - Look at some popular styles online to learn from and ideally give some room for customization (though I guess not too much as such would be a task of matters such as photoshop as opposed to this app)
 - [ ] 1.8.0: info marker plugin : should advertise this on all the major mapmaking sites after done, after doing a own alterantive example of course, maybe for instance an alternative state and its internal transport/city info map
   - Various plugin shapes
