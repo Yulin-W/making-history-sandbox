@@ -29,7 +29,7 @@ function RegionInfoComponent(props) {
             <Grid container item direction="row" justify="flex-start" alignItems="center">
                 <div
                     item="true"
-                    style={{ backgroundColor: data.color ? data.color : props.app.themeDict.other.polyFillColorDefault }}
+                    style={{ backgroundColor: data.color ? data.color : props.app.themeDictDefault.other.polyFillColorDefault }}
                     className={classes.regionInfoColor}
                 />
                 <Typography variant="body2" item="true">{"Name: "}{data.name ? data.name : "None"}</Typography>
