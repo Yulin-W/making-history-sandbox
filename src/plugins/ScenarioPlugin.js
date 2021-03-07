@@ -54,7 +54,7 @@ function ScenarioPluginComponent(props) {
                     {key}
                 </MenuItem>)}
             </Select>
-            <Button onClick={() => {
+            <Button size="small" onClick={() => {
                 props.app.loadSave(scenarios[selectedScenario]);
             }}>Load</Button>
         </div>

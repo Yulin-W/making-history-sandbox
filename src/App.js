@@ -54,7 +54,7 @@ class App extends React.Component {
     // Declare some constant attributes
     this.baseMap = mapAdmin;
     this.mapKey = "mapAdmin";
-    this.themeDict = themeDict;
+    this.themeDictDefault = themeDict;
 
     // Convert baseMap to a prototype, const dictionary indexed by regionID
     this.regionDictDefault = createRegionDict(this.baseMap);
@@ -79,6 +79,7 @@ class App extends React.Component {
 
     // Set initial state
     this.state = {
+      themeDict: this.themeDictDefault,
       scenarioData: this.scenarioDataDefault, // Array of information for the scenarios
       pluginData: pluginData, // Create object for data in plugin indexed by name of plugin
       colorData: colorData, // Dictionary with corresponding entries to scenarioData, that records the number of regions of specific color for the scenario timeline entry
@@ -156,6 +157,7 @@ class App extends React.Component {
 
     // This part is the same as the state setting, but here we use setState instead of directly setting, only difference is that helpOn here is not switched on as users would have seen it already
     this.setState({
+      themeDict: this.themeDictDefault,
       scenarioData: this.scenarioDataDefault, 
       pluginData: pluginData, 
       colorData: colorData, 
@@ -436,7 +438,7 @@ class App extends React.Component {
             activeEntry={this.state.activeEntry}
             scenarioData={this.state.scenarioData}
             addEntry={this.addEntry}
-            themeDict={this.themeDict.other}
+            themeDict={this.state.themeDict.other}
           />
           <TimelineEventComponent
             date={this.state.scenarioData[this.state.activeEntry].date}
@@ -447,12 +449,12 @@ class App extends React.Component {
             activeEntry={this.state.activeEntry}
             clearEntry={this.clearEntry}
             oneEntryLeft={this.state.scenarioData.length === 1}
-            themeDict={this.themeDict.other}
+            themeDict={this.state.themeDict.other}
           />
-          <ColorBarComponent ref={this.colorBarRef} themeDict={this.themeDict.other} />
+          <ColorBarComponent ref={this.colorBarRef} themeDict={this.state.themeDict.other} />
           <MapComponent
             getRegionColorByIndex={this.getRegionColorByIndex}
-            themeDict={this.themeDict.other}
+            themeDict={this.state.themeDict.other}
             baseMap={this.baseMap}
             key={this.state.mapKey}
             assignRegions={this.assignRegions}
