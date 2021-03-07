@@ -8,16 +8,17 @@ const steps = [
             <p>Welcome to Making History Sandbox! Click next for the tutorial.</p>
             <hr/>
             <p>***NEW FEATURES***</p>
+            <p>Map region theme customizability, including region border thickness (polyStrokeWeight), fill opacity, etc.</p>
             <p>Hex/RGB color picker</p>
             <p>Display of number of regions per label and total</p>
             <p>Collapsible panels in the interface</p>
             <hr/>
-            <p>If you made a historic scenario and is willing to share the save, you can send it to me at Yulin-W@outlook.com. If you want attribution, send the name you want as well.</p>
+            <p>If you are willing to share you scenario, feel free to send it to Yulin-W@outlook.com. If you want attribution, send the name you want as well.</p>
             <hr/>
-            <p>Making custom regions</p>
-            <p>See tutorial at: <a href="https://github.com/Yulin-W/making-history-sandbox/blob/main/customRegionTutorial.md" target="_blank">Custom Region Tutorial</a></p>
+            <p>Making custom regions: <a href="https://github.com/Yulin-W/making-history-sandbox/blob/main/customRegionTutorial.md" target="_blank">Custom Region Tutorial</a></p>
             <hr/>
-            <p>Please see acknowledgements at the end of the tutorial</p>
+            <p>See acknowledgements at the end of the tutorial</p>
+            <p><a href="https://github.com/Yulin-W/making-history-sandbox">Github</a></p>
         </React.Fragment>,
         placement: 'center'
     },

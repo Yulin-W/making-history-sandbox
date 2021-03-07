@@ -15,14 +15,14 @@ const useStyles = theme => ({
         position: "absolute",
         top: 0,
         left: "50%",
-        width: 400,
+        width: 360,
         height: 60,
         zIndex: 2,
         display: "flex",
         justifyContent: "space-between",
         flexFlow: "row",
         alignItems: "center",
-        marginLeft: -200,
+        marginLeft: -185,
         marginTop: 30,
         padding: 5,
         borderStyle: "ridge",
@@ -35,7 +35,7 @@ const useStyles = theme => ({
         justifyContent: "center",
         flexFlow: "column",
         alignItems: "stretch",
-        width: 160
+        width: 120
     },
     compactPickerContainer: {
         display: "flex",
