@@ -5,7 +5,6 @@ import Input from '@material-ui/core/Input';
 import Popper from '@material-ui/core/Popper';
 import Grid from '@material-ui/core/Grid';
 import cloneDeep from "clone-deep";
-import Typography from "@material-ui/core/Typography";
 
 // Import icons
 import markerIcons from "../assets/other/markerIcons.js";
@@ -23,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     },
     iconSelect: {
         zIndex: 3,
-        height: 80,
+        height: 50,
         display: "flex",
         flexFlow: "row",
         alignItems: "center",
@@ -48,9 +47,6 @@ const useStyles = makeStyles((theme) => ({
         height: 20,
         width: 20,
     },
-    markerHelp: {
-        width: "100%",
-    }
 }));
 
 // Function to run when active entry is updated, this updates the markerData in the mapComponent, then reloads the markers
@@ -125,10 +121,6 @@ function MarkerPluginComponent(props) {
 
     return (
         <div id="marker_panel" className={classes.markerContainer}>
-            <Typography className={classes.markerHelp} align="left" variant="caption">Choose icon: click icon</Typography>
-            <Typography className={classes.markerHelp} align="left" variant="caption">Choose color: click rectangle.</Typography>
-            <Typography className={classes.markerHelp} align="left" variant="caption">Drag icon: click and hold.</Typography>
-            <Typography className={classes.markerHelp} align="left" variant="caption">Remove icon or view/edit its tooltip: click icon on the map.</Typography>
             <div className={classes.iconSelect}>
                 <IconSelector value={Icon} color={color} updateIconIndex={setIconIndex}/>
                 <Input className={classes.iconColorInput} value={color} type="color" onChange={e => setColor(e.target.value)} />
