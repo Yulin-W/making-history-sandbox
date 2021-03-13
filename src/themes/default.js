@@ -30,7 +30,6 @@ const themeDict = {
         polyFillOpacityHovered: 0.9,
         timelineMarkerSpacing: 120,
         timelineMarkerLabelWidth: 100,
-        markerSize: 30,
     }
 
 }

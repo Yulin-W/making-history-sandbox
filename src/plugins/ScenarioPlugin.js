@@ -44,7 +44,7 @@ function ScenarioPluginComponent(props) {
     const classes = useStyles();
     const [selectedScenario, setSelectedScenario] = React.useState(Object.keys(scenarios)[0]);
     return (
-        <div id="scenario" className={classes.scenarioContainer}>
+        <div className={classes.scenarioContainer}>
             <Select
                 value={selectedScenario}
                 className={classes.scenarioSelect}
@@ -68,7 +68,6 @@ const initState = scenarioData => {
 const ScenarioPluginDict = {
     component: ScenarioPluginComponent,
     initState: initState,
-    help: "For loading several premade scenarios.",
     functions: {}
 };
 

@@ -1,7 +1,7 @@
 {
   "name": "making-history-sandbox",
   "homepage": "https://yulin-w.github.io/making-history-sandbox",
-  "version": "1.8.0",
+  "version": "1.7.0",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.3",
@@ -21,7 +21,6 @@
     "react-dom": "^17.0.1",
     "react-dropzone": "^11.3.1",
     "react-ga": "^3.3.0",
-    "react-icons": "^4.2.0",
     "react-joyride": "^2.3.0",
     "react-leaflet": "^3.1.0",
     "react-leaflet-editable-popup": "^2.0.3",
