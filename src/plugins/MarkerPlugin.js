@@ -155,6 +155,7 @@ const initState = scenarioData => {
 const MarkerPluginDict = {
     component: MarkerPluginComponent,
     initState: initState,
+    help: "For adding colored markers to the map.",
     functions: {
         onUpdateActiveEntry: onUpdateActiveEntry,
         onAddEntry: onAddEntry,

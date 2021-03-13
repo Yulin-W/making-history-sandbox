@@ -64,6 +64,7 @@ function onProcessRegionHoveredOn(app, layer) {
 const RegionInfoPluginDict = {
     component: RegionInfoComponent,
     initState: initState,
+    help: "Displays name and label for the region hovered over.",
     functions: {
         onProcessRegionHoveredOn: onProcessRegionHoveredOn,
         // Although not having this causes the region info to linger on  after moving out of a region, it is faster and I feel that is worth is, nevertheless, try to find a solution that resolves the performance issue and ensures on moving out the region info is not set
