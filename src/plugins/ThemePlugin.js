@@ -47,17 +47,6 @@ const typeConvFunc = {
     "number": Number,
 };
 
-// Labels to display in the theme panel as opposed to original labels
-const fieldLabels = {
-    "polyStrokeColor": "Reg. border color",
-    "polyStrokeWeight": "Reg. border width",
-    "polyFillColorDefault": "Default reg. color",
-    "polyFillOpacityDefault": "Default reg. opacity",
-    "polyFillOpacityColored": "Colored reg. opacity",
-    "polyFillOpacityHovered": "Hovered reg. opacity",
-    "markerSize": "Marker size",
-};
-
 // Load file 
 function ThemePluginComponent(props) {
     const classes = useStyles();
@@ -68,7 +57,7 @@ function ThemePluginComponent(props) {
                 className={classes.themeInput}
                 key={entry[0]}
                 value={entry[1]}
-                label={fieldLabels[entry[0]]}
+                label={entry[0]}
                 margin="dense"
                 type={custThemeType[entry[0]]}
                 onChange={e => {
@@ -85,7 +74,7 @@ function ThemePluginComponent(props) {
             <IconButton size="small" onClick={() => {
                 let newTheme = cloneDeep(props.app.state.themeDict);
                 newTheme.other = themeDict;
-                props.app.setState({ themeDict: newTheme }, () => {
+                props.app.setState({themeDict: newTheme}, () => {
                     props.app.mapRef.current.resetAllRegionStyle();
                 });
             }}>
@@ -102,7 +91,6 @@ const initState = scenarioData => {
 const ThemePluginDict = {
     component: ThemePluginComponent,
     initState: initState,
-    help: "For modifying map visuals.",
     functions: {}
 };
 

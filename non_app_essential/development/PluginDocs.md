@@ -14,7 +14,6 @@
     - \<PluginName\>PluginDict is an object with:
         - component: expects React component, either function or class, for the plugin's panel entry
         - initState: expects function returning the initial default state for the plugin's pluginData entry in App, should depend only on the supplied scenarioData value
-        - help: a string, or maybe even React.Fragment, that outlines key help points for the plugin panel's usage
         - functions: object containing functions to that should be called upon corresponding function calls in App, see below for details
             - If no function is supplied for the plugin for the specific corresponding function in App.js, don't put it down in the regionDict
                 - To see which methods of App offers capability of running plugin methods, see App.js, note not all App methods allow that

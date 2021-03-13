@@ -161,7 +161,6 @@ function onDeleteEntry(app, index) {
 const LegendPluginDict = {
     component: LegendComponent,
     initState: initState,
-    help: "Click to edit labells. Note legend is scrollable. Numbers beside labels represent regions with the label.",
     functions: {
         onAssignRegions: onAssignRegions,
         onAddEntry: onAddEntry, // Expects index argument

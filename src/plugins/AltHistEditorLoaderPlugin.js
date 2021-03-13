@@ -195,7 +195,6 @@ const initState = scenarioData => {
 const AltHistEditorLoaderPluginDict = {
     component: AltHistEditorLoaderPluginComponent,
     initState: initState,
-    help: "For loading saves from Alternate History Editor.",
     functions: {}
 };
 

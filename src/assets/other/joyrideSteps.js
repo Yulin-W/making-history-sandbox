@@ -5,7 +5,7 @@ const steps = [
         target: 'body',
         content: 
         <React.Fragment>
-            <p>FAQ: Removing borders: set region border width to 0 in theme panel on the right</p>
+            <p>FAQ: Removing borders: make polyStrokeWeight = 0 in theme panel on the right</p>
             <hr/>
             <p>Welcome to Making History Sandbox! Click next for the tutorial.</p>
             <hr/>
