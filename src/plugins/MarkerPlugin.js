@@ -107,7 +107,7 @@ function MarkerPluginComponent(props) {
             </div>
             <Button onClick={() => {
                 const center = props.app.mapRef.current.mapElement.getBounds().getCenter();
-                props.app.mapRef.current.addMarker(iconIndex, color, center.lat, center.lng);
+                props.app.mapRef.current.addMarker(iconIndex, color, center.lat, center.lng, "This is editable.");
             }}>
                 Add
             </Button>

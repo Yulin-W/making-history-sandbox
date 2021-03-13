@@ -426,6 +426,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(this.state.pluginData);
     const { classes } = this.props;
     return (
       <ThemeProvider theme={theme}>

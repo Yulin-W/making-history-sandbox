@@ -56,6 +56,19 @@ class MapComponent extends React.PureComponent {
         this.addMarker = this.addMarker.bind(this);
         this.updateMarkerPosition = this.updateMarkerPosition.bind(this);
         this.updateMarkerData = this.updateMarkerData.bind(this);
+        this.updateMarkerContent = this.updateMarkerContent.bind(this);
+        this.removeMarker = this.removeMarker.bind(this);
+    }
+
+    removeMarker(markerID) {
+        let currentData = cloneDeep(this.state.markerData);
+
+        delete currentData[markerID];
+
+        this.setState({ markerData: currentData }, () => {
+            console.log(this.state.markerData);
+            this.props.updateMarkerData(this.state.markerData);
+        });        
     }
 
     updateMarkerPosition(markerID, position) {
@@ -67,6 +80,16 @@ class MapComponent extends React.PureComponent {
         this.setState({ markerData: currentData }, () => {
             this.props.updateMarkerData(this.state.markerData);
         });
+    }
+
+    updateMarkerContent(markerID, content) {
+        let currentData = cloneDeep(this.state.markerData);
+
+        currentData[markerID].content = content;
+
+        this.setState({ markerData: currentData }, () => {
+            this.props.updateMarkerData(this.state.markerData);
+        });        
     }
 
     addMarker(iconIndex, color, lat = 50, lng = 0, content = "") {
@@ -188,6 +211,8 @@ class MapComponent extends React.PureComponent {
                     size={this.props.themeDict.markerSize}
                     content={marker[1].content}
                     updatePosition={this.updateMarkerPosition}
+                    updateContent={this.updateMarkerContent}
+                    removeMarker={this.removeMarker}
                 >
                     <Icon className={classes.markerIcon} style={{ color: marker[1].color }} />
                 </JsxMarker>
