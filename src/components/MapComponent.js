@@ -3,7 +3,7 @@ import React from "react";
 import { withStyles } from '@material-ui/core/styles';
 
 // Import leaflet and related libraries
-import { MapContainer, GeoJSON, TileLayer, AttributionControl, LayersControl, FeatureGroup } from 'react-leaflet';
+import { MapContainer, GeoJSON, TileLayer, AttributionControl, LayersControl, FeatureGroup, useMap } from 'react-leaflet';
 import "leaflet/dist/leaflet.css";
 import JsxMarker from "./JsxMarker.js";
 
@@ -42,7 +42,7 @@ class MapComponent extends React.PureComponent {
 
         // Add reference to geojson
         this.geojsonRef = React.createRef(null);
-        this.markerGroupRef = React.createRef(null);
+        this.mapElement = null;
 
         // Binding methods
         this.onEachFeature = this.onEachFeature.bind(this);
@@ -63,7 +63,7 @@ class MapComponent extends React.PureComponent {
         currentData[markerID].lat = position.lat;
         currentData[markerID].lng = position.lng;
 
-        this.setState({markerData:currentData}, () => {
+        this.setState({ markerData: currentData }, () => {
             this.props.updateMarkerData(this.state.markerData);
         });
     }
@@ -81,7 +81,7 @@ class MapComponent extends React.PureComponent {
             lng: lng,
             content: content
         };
-        this.setState({markerData:currentData}, () => {
+        this.setState({ markerData: currentData }, () => {
             this.props.updateMarkerData(this.state.markerData);
         });
     }
@@ -203,6 +203,7 @@ class MapComponent extends React.PureComponent {
                 attributionControl={false}
                 worldCopyJump
                 id="map"
+                whenCreated={map => {this.mapElement = map;}}
                 className={classes.mapContainer}
             >
                 <LayersControl position="topright">

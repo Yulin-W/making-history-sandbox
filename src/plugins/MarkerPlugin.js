@@ -24,9 +24,12 @@ function MarkerPluginComponent(props) {
     // #Rremove 5the data check button FIXME:
     return (
         <div className={classes.markerContainer}>
-            <Button onClick={() => 
-                props.app.mapRef.current.addMarker(GiWarAxe, "#FF0000")
-            }>Add Marker</Button>
+            <Button onClick={() => {
+                const center = props.app.mapRef.current.mapElement.getBounds().getCenter();
+                props.app.mapRef.current.addMarker(GiWarAxe, "#FF0000", center.lat, center.lng);
+            }}>
+                Add
+            </Button>
         </div>
     );
 }

@@ -15,8 +15,8 @@ import MarkerPlugin from './plugins/MarkerPlugin';
 const plugins = {
     "Region Info": RegionInfoPlugin,
     "Legend": LegendPlugin,
-    "Scenario": ScenarioPlugin,
     "Marker": MarkerPlugin,
+    "Scenario": ScenarioPlugin,
     "Theme": ThemePlugin,
     "Alt Hist Editor Loader": AltHistEditorLoaderPlugin, 
     "Custom GeoJSON Loader": CustomGeoJSONLoaderPlugin,
