@@ -84,9 +84,10 @@
   - Used smoothFactor=0 of geojson to get rid of blank spacings between polygons when without borders
   - Add github link to app
   - Look at some popular styles online to learn from and ideally give some room for customization (though I guess not too much as such would be a task of matters such as photoshop as opposed to this app)
-- [x] 1.8.0: info marker plugin : should advertise this on all the major mapmaking sites after done, after doing a own alterantive example of course, maybe for instance an alternative state and its internal transport/city info map
+- [ ] 1.8.0: info marker plugin : should advertise this on all the major mapmaking sites after done, after doing a own alterantive example of course, maybe for instance an alternative state and its internal transport/city info map
   - Various plugin shapes
   - Info adding to markers possible
+  - shouldn't be hard, just leverage existing polyline, marker, etc. features of leaflet and leaflet plugins
 - [ ] 1.9.0: import background image option and empty background option: should advertise this on all the major mapmaking sites after done
   - to make aligning easier; enable resizing and dragging ,perhaps by binding to a polygon
   - also in this case, to make custom regioning  easier, I should use some leaflet library to make a mode allowing in app editing of geojson; actually no, better for performance just put it as a separate app, then if i do choose to merge the two to a single app, it'd be easy to just add the component
