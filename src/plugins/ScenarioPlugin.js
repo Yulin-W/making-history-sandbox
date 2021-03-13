@@ -68,6 +68,7 @@ const initState = scenarioData => {
 const ScenarioPluginDict = {
     component: ScenarioPluginComponent,
     initState: initState,
+    help: "For loading several premade scenarios.",
     functions: {}
 };
 
