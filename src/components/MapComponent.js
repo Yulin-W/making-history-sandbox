@@ -173,6 +173,7 @@ class MapComponent extends React.PureComponent {
 
         const markers = Object.entries(this.state.markerData).map(marker => {
             const Icon = marker[1].Icon;
+            console.log(Icon);
             return (
                 <JsxMarker
                     key={marker[0]}

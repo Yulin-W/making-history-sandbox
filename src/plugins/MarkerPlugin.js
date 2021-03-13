@@ -1,9 +1,10 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import Input from '@material-ui/core/Input';
 
 // Import icons
-import { GiWarAxe } from 'react-icons/gi';
+import markerIcons from "../assets/other/markerIcons.js";
 
 // Setup styles
 const useStyles = makeStyles((theme) => ({
@@ -16,17 +17,41 @@ const useStyles = makeStyles((theme) => ({
         alignItems: "center",
         justifyContent: "flex-start",
     },
+    iconSelect: {
+        height: 50,
+        display: "flex",
+        flexFlow: "row",
+        alignItems: "center",
+        justifyContent: "space-evenly",
+        width: "100%",
+    },
+    iconDisplay: {
+        height: 30,
+        width: 30,
+    },
+    iconColorInput: {
+        width: 40,
+        height: 40,
+    }
 }));
 
 // Load file 
 function MarkerPluginComponent(props) {
     const classes = useStyles();
-    // #Rremove 5the data check button FIXME:
+    const [color, setColor] = React.useState("#bf4340");// Default color of icons
+    const [iconIndex, setIconIndex] = React.useState(0);// Defaults to first icon in list
+
+    const Icon = markerIcons[iconIndex];
+    
     return (
         <div className={classes.markerContainer}>
+            <div className={classes.iconSelect}>
+                <Icon className={classes.iconDisplay} style={{color:color}}/>
+                <Input className={classes.iconColorInput} value={color} type="color" onChange={e => setColor(e.target.value)}/>
+            </div>
             <Button onClick={() => {
                 const center = props.app.mapRef.current.mapElement.getBounds().getCenter();
-                props.app.mapRef.current.addMarker(GiWarAxe, "#FF0000", center.lat, center.lng);
+                props.app.mapRef.current.addMarker(Icon, color, center.lat, center.lng);
             }}>
                 Add
             </Button>
