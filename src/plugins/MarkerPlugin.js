@@ -69,6 +69,7 @@ function IconSelector(props) {
 
     const iconChoices = markerIcons.map((MarkerIcon, index) => (
         <MarkerIcon
+            key={index}
             className={classes.iconListEntry}
             style={{color:props.color}}
             onClick={() => {
@@ -106,7 +107,7 @@ function MarkerPluginComponent(props) {
             </div>
             <Button onClick={() => {
                 const center = props.app.mapRef.current.mapElement.getBounds().getCenter();
-                props.app.mapRef.current.addMarker(Icon, color, center.lat, center.lng);
+                props.app.mapRef.current.addMarker(iconIndex, color, center.lat, center.lng);
             }}>
                 Add
             </Button>

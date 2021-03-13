@@ -16,6 +16,7 @@ import mapProviders from '../settings/mapProviders.js';
 // Additional imports
 import cloneDeep from "clone-deep";
 import generateUniqueID from "../scripts/generateUniqueID.js";
+import markerIcons from "../assets/other/markerIcons.js";
 
 const useStyles = theme => ({
     mapContainer: {
@@ -68,14 +69,14 @@ class MapComponent extends React.PureComponent {
         });
     }
 
-    addMarker(Icon, color, lat = 50, lng = 0, content = "") {
+    addMarker(iconIndex, color, lat = 50, lng = 0, content = "") {
         let currentData = cloneDeep(this.state.markerData);
 
         // Generate a unique ID
         const id = generateUniqueID(currentData);
 
         currentData[id] = {
-            Icon: Icon,
+            iconIndex: iconIndex,
             color: color,
             lat: lat,
             lng: lng,
@@ -175,7 +176,7 @@ class MapComponent extends React.PureComponent {
         const { classes } = this.props;
 
         const markers = Object.entries(this.state.markerData).map(marker => {
-            const Icon = marker[1].Icon;
+            const Icon = markerIcons[marker[1].iconIndex];
             return (
                 <JsxMarker
                     key={marker[0]}

@@ -119,6 +119,7 @@ class App extends React.Component {
     this.handleJoyrideCallback = this.handleJoyrideCallback.bind(this);
     this.updateMarkerData = this.updateMarkerData.bind(this);
     this.getMarkerData = this.getMarkerData.bind(this);
+    this.initUndefinedPluginData = this.initUndefinedPluginData.bind(this);
   }
 
   // Returns pluginData for marker of current activeEntry
@@ -385,9 +386,27 @@ class App extends React.Component {
     });
   }
 
+  // Filling undefined entries of pluginData to appropriate initialization states if necessary such that plugins may all function
+  initUndefinedPluginData(callback=null) {
+    let currentPluginData = cloneDeep(this.state.pluginData);
+    let pluginData = {};
+    for (const [name, entry] of Object.entries(this.plugins)) {
+      if (!(name in currentPluginData)) {
+        currentPluginData[name] = entry.initState(this.state.scenarioData);
+      }
+    }
+    this.setState({pluginData:currentPluginData}, () => {
+      if (callback) {
+        callback();
+      }
+    });
+  }
+
   // Loads the specified save file containing scenarioData and pluginData, then sets current active entry to the first one, thereby resetting the region styling as well
   loadSave(saveData) {
-    this.setState({ scenarioData: saveData.scenarioData, colorData: saveData.colorData, pluginData: saveData.pluginData }, () => { this.updateActiveEntry(0) });
+    this.setState({ scenarioData: saveData.scenarioData, colorData: saveData.colorData, pluginData: saveData.pluginData }, () => {
+      this.initUndefinedPluginData(() => this.updateActiveEntry(0));
+    });
 
     // Running plugin methods
     this.runPluginFunc("onLoadSave", [saveData]);
@@ -408,6 +427,7 @@ class App extends React.Component {
 
   render() {
     const { classes } = this.props;
+    console.log(this.state.pluginData);
     return (
       <ThemeProvider theme={theme}>
         <div className="App">
@@ -465,6 +485,7 @@ class App extends React.Component {
           />
           <ColorBarComponent ref={this.colorBarRef} themeDict={this.state.themeDict.other} />
           <MapComponent
+            activeEntry={this.state.activeEntry}
             getRegionColorByIndex={this.getRegionColorByIndex}
             themeDict={this.state.themeDict.other}
             baseMap={this.baseMap}
