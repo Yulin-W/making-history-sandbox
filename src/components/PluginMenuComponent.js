@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     pluginMenuContainer: {
         position: "absolute",
         right: 0,
-        top: 180,
+        bottom: 100,
         zIndex: 1,
         minWidth: 140, // At least 150px adding in padding
         width: "12%",
