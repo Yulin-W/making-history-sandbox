@@ -18,11 +18,11 @@ const useStyles = makeStyles((theme) => ({
     pluginMenuContainer: {
         position: "absolute",
         right: 0,
-        bottom: 100,
+        bottom: 80,
         zIndex: 1,
         minWidth: 140, // At least 150px adding in padding
         width: "12%",
-        minHeight: 240, // At least 250px adding in padding
+        minHeight: 170, // At least 180px adding in padding
         height: "60%",
         display: "flex",
         justifyContent: "flex-start",
