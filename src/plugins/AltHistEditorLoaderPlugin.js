@@ -134,9 +134,9 @@ function loadScenario(app, file, onload = null) {
             // Initialise pluginData first
             let pluginData = {};
             for (const [name, entry] of Object.entries(app.plugins)) {
-                pluginData[name] = entry.initState(app.scenarioDataDefault);
+                pluginData[name] = entry.initState(convertedObj.scenarioData);
             };
-            // Modify pluginData entries (in comparison to the scenarioDataDefault case) that need to be changed according to our save, in this case at the time of writing only legend need to have its data modified
+            // Modify pluginData entries (in comparison to the initstate case) that need to be changed according to our save, in this case at the time of writing only legend need to have its data modified
             // Generate Legend data
             pluginData["Legend"] = [];
             Object.values(obj.entryDict).forEach((entry, index) => {
@@ -195,6 +195,7 @@ const initState = scenarioData => {
 const AltHistEditorLoaderPluginDict = {
     component: AltHistEditorLoaderPluginComponent,
     initState: initState,
+    help: "For loading saves from Alternate History Editor.",
     functions: {}
 };
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useDebugValue } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import plugins from "../appPlugins.js";
 import Accordion from '@material-ui/core/Accordion';
@@ -8,6 +8,8 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Typography from '@material-ui/core/Typography';
 import Scrollbars from 'react-custom-scrollbars';
 import Slide from '@material-ui/core/Slide';
+import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
+import Tooltip from '@material-ui/core/Tooltip';
 
 // Import retract button custom component
 import RetractButton from './RetractButton.js';
@@ -46,6 +48,9 @@ const useStyles = makeStyles((theme) => ({
     accordionDetails: {
         padding: 0,
     },
+    accordionHelp: {
+        marginLeft: 5,
+    }
 }));
 
 export default function PluginMenuComponent(props) {
@@ -58,6 +63,13 @@ export default function PluginMenuComponent(props) {
             <Accordion defaultExpanded key={name} square>
                 <AccordionSummary expandIcon={<ExpandMoreIcon />} className={classes.accordionSummary} IconButtonProps={{ size: "small" }}>
                     <Typography variant="body2">{name}</Typography>
+                    <Tooltip
+                        title={value.help}
+                    >
+                        <div className={classes.accordionHelp}>
+                            <HelpOutlineIcon fontSize="small"/>
+                        </div>
+                    </Tooltip>
                 </AccordionSummary>
                 <AccordionDetails className={classes.accordionDetails}>
                     <Plugin app={props.app} />

@@ -5,13 +5,13 @@ const steps = [
         target: 'body',
         content: 
         <React.Fragment>
+            <p>FAQ: Removing borders: set region border width to 0 in theme panel on the right</p>
+            <hr/>
             <p>Welcome to Making History Sandbox! Click next for the tutorial.</p>
             <hr/>
             <p>***NEW FEATURES***</p>
+            <p>Adding markers to the map with tooltips and custom colors, see side panel</p>
             <p>Map region theme customizability, including region border thickness (polyStrokeWeight), fill opacity, etc.</p>
-            <p>Hex/RGB color picker</p>
-            <p>Display of number of regions per label and total</p>
-            <p>Collapsible panels in the interface</p>
             <hr/>
             <p>If you are willing to share you scenario, feel free to send it to Yulin-W@outlook.com. If you want attribution, send the name you want as well.</p>
             <hr/>
@@ -48,7 +48,15 @@ const steps = [
     },
     {
         target: '#plugin_menu',
-        content: 'This is where additional functionalities are, including information about region hovered upon, legend, scenarios, loading of custom maps, etc.',
+        content: "This is where additional functionalities are, we'll just mention a few.",
+    },
+    {
+        target: '#theme_panel',
+        content: 'Adjust various theming options here; notably, polyStrokeWeight decides region border width, and poly in general refers to the polygons of the map.',
+    },
+    {
+        target: '#geojson_loader',
+        content: 'Load your custom region file or save here, for tutorial see https://github.com/Yulin-W/making-history-sandbox/blob/main/customRegionTutorial.md',
     },
     {
         target: '#menu',
