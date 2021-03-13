@@ -32,6 +32,7 @@ function loadGeoJSON(app, file) {
     const name = file.name;
     file.text().then(text => {
         const obj = JSON.parse(text);
+        console.log(obj);
         if ("scenarioData" in obj) {
             // This is used to test obj is a save, not a geoJSON
             // Expects the file to have valid data, i.e. pluginData for GeoJSON loader and appropriate scenario data, colorDict, etc.
@@ -61,7 +62,7 @@ function loadGeoJSON(app, file) {
 function CustomGeoJSONLoaderPluginComponent(props) {
     const classes = useStyles();
     return (
-        <div id="geojson_loader" className={classes.customGeoJSONLoaderContainer}>
+        <div className={classes.customGeoJSONLoaderContainer}>
             <Dropzone
                 onDrop={acceptedFiles => {
                     loadGeoJSON(props.app, acceptedFiles[0]);
@@ -89,7 +90,6 @@ const initState = scenarioData => {
 const CustomGeoJSONLoaderPluginDict = {
     component: CustomGeoJSONLoaderPluginComponent,
     initState: initState,
-    help: "For loading custom region geoJSON or saves with custom regions",
     functions: {}
 };
 
