@@ -44,7 +44,7 @@ function ScenarioPluginComponent(props) {
     const classes = useStyles();
     const [selectedScenario, setSelectedScenario] = React.useState(Object.keys(scenarios)[0]);
     return (
-        <div className={classes.scenarioContainer}>
+        <div id="scenario" className={classes.scenarioContainer}>
             <Select
                 value={selectedScenario}
                 className={classes.scenarioSelect}

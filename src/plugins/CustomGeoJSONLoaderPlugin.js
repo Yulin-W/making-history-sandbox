@@ -61,7 +61,7 @@ function loadGeoJSON(app, file) {
 function CustomGeoJSONLoaderPluginComponent(props) {
     const classes = useStyles();
     return (
-        <div className={classes.customGeoJSONLoaderContainer}>
+        <div id="geojson_loader" className={classes.customGeoJSONLoaderContainer}>
             <Dropzone
                 onDrop={acceptedFiles => {
                     loadGeoJSON(props.app, acceptedFiles[0]);

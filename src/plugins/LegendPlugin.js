@@ -140,7 +140,6 @@ function onAssignRegions(app, indices, color, removedColors, addedColor) {
 }
 
 function onAddEntry(app, index) {
-    console.log(1);
     let currentLegendData = cloneDeep(app.state.pluginData["Legend"]);
     let newLegendEntry = null;
     if (index > 0) { // Use new

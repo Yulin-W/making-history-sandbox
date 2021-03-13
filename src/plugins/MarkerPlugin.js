@@ -120,7 +120,7 @@ function MarkerPluginComponent(props) {
     const Icon = markerIcons[iconIndex];
 
     return (
-        <div className={classes.markerContainer}>
+        <div id="marker_panel" className={classes.markerContainer}>
             <div className={classes.iconSelect}>
                 <IconSelector value={Icon} color={color} updateIconIndex={setIconIndex}/>
                 <Input className={classes.iconColorInput} value={color} type="color" onChange={e => setColor(e.target.value)} />
