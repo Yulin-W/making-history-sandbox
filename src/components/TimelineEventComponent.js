@@ -14,9 +14,9 @@ const useStyles = makeStyles((theme) => ({
         left: 0,
         bottom: 48, // This value should be such that the event box touches the timeline bar on the bottom, so adjust accordingly
         minWidth: 140, // At least 150px adding in padding
-        width: "15%",
+        width: "20%",
         minHeight: 190, // At least 200px adding in padding
-        height: "25%",
+        height: "30%",
         zIndex: 1,
         display: "flex",
         flexFlow: "column",
