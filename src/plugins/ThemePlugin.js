@@ -29,6 +29,7 @@ const custTheme = [
     "polyFillOpacityDefault",
     "polyFillOpacityColored",
     "polyFillOpacityHovered",
+    "markerSize",
 ]
 
 // Constant list of functions for ensuring type of values in theme input fields are read correctly
@@ -39,6 +40,7 @@ const custThemeType = {
     "polyFillOpacityDefault": "number",
     "polyFillOpacityColored": "number",
     "polyFillOpacityHovered": "number",
+    "markerSize": "number",
 };
 const typeConvFunc = {
     "text": String,

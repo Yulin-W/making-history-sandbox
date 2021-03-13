@@ -2,9 +2,13 @@
 import React from "react";
 import { withStyles } from '@material-ui/core/styles';
 
-// Import leaflet
+// Import leaflet and related libraries
 import { MapContainer, GeoJSON, TileLayer, AttributionControl, LayersControl } from 'react-leaflet';
 import "leaflet/dist/leaflet.css";
+import JsxMarker from "./JsxMarker.js";
+
+// Import icons
+import { GiWarAxe } from 'react-icons/gi';
 
 // Import relevant custom components for plugins
 import LassoComponent from "./LassoComponent.js";
@@ -22,6 +26,10 @@ const useStyles = theme => ({
         zIndex: 0,
         filter: "brightness(1) contrast(100%)",
     },
+    markerIcon: {
+        width: "100%",
+        height: "100%",
+    }
 });
 class MapComponent extends React.PureComponent {
     constructor(props) {
@@ -131,7 +139,7 @@ class MapComponent extends React.PureComponent {
                 className={classes.mapContainer}
             >
                 <LayersControl position="topright">
-                    {mapProviders.map((entry, index) => <LayersControl.BaseLayer key={entry.name} checked={index===0} name={entry.name}>
+                    {mapProviders.map((entry, index) => <LayersControl.BaseLayer key={entry.name} checked={index === 0} name={entry.name}>
                         <TileLayer
                             attribution={entry.attr}
                             url={entry.src}
@@ -145,6 +153,17 @@ class MapComponent extends React.PureComponent {
                             smoothFactor={0}
                             ref={this.geojsonRef}
                         ></GeoJSON>
+                    </LayersControl.Overlay>
+                    <LayersControl.Overlay checked name="Markers">
+                        <JsxMarker
+                            position={{
+                                lat: 50,
+                                lng: 0
+                            }}
+                            size={this.props.themeDict.markerSize}
+                        >
+                            <GiWarAxe className={classes.markerIcon} style={{ color: "orange" }} />
+                        </JsxMarker>
                     </LayersControl.Overlay>
                 </LayersControl>
                 <AttributionControl position="bottomright" />
