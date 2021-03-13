@@ -148,19 +148,20 @@ function onAddEntry(app, index) {
         newLegendEntry = {};
     }
     currentLegendData.splice(index, 0, newLegendEntry);
-    app.updatePluginData("Legend", currentLegendData);
+    return currentLegendData;
 }
 
 function onDeleteEntry(app, index) {
     let currentLegendData = cloneDeep(app.state.pluginData["Legend"]);
     currentLegendData.splice(index, 1);
-    app.updatePluginData("Legend", currentLegendData);
+    return currentLegendData;
 }
 
 // This dictionary contains the component, initial state value generation function for the plugin's entry in pluginData; this be based off the scenarioData state value
 const LegendPluginDict = {
     component: LegendComponent,
     initState: initState,
+    help: "Click to edit labells. Note legend is scrollable. Numbers beside labels represent regions with the label.",
     functions: {
         onAssignRegions: onAssignRegions,
         onAddEntry: onAddEntry, // Expects index argument
