@@ -37,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
         height: 40,
     },
     iconList: {
+        zIndex: 1,
         backgroundColor: theme.palette.background.paper,
         color: theme.palette.text.primary,
         padding: 5,
