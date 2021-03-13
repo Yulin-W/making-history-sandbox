@@ -225,7 +225,6 @@ class App extends React.Component {
     });
   }
 
-  // This is needed to prevent bugs occurring when multiple plugin data updates are called close to each other and resulting in state update not as fast as one would wish
   updateMultiPluginData(dataDict, callback=null) {
     let currentData = cloneDeep(this.state.pluginData);
     for (const [key, data] of Object.entries(dataDict)) {
@@ -460,6 +459,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(this.state.pluginData);
     const { classes } = this.props;
     return (
       <ThemeProvider theme={theme}>

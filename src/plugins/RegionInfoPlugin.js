@@ -25,7 +25,7 @@ function RegionInfoComponent(props) {
     const classes = useStyles();
     const data = props.app.state.pluginData["Region Info"];
     return (
-        <Grid id="region_info" container direction="column" justify="flex-start" alignItems="flex-start" className={classes.regionInfoContainer}>
+        <Grid container direction="column" justify="flex-start" alignItems="flex-start" className={classes.regionInfoContainer}>
             <Grid container item direction="row" justify="flex-start" alignItems="center">
                 <div
                     item="true"

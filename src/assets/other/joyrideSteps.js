@@ -5,13 +5,13 @@ const steps = [
         target: 'body',
         content: 
         <React.Fragment>
-            <p>FAQ: Removing borders: make polyStrokeWeight = 0 in theme panel on the right</p>
-            <hr/>
             <p>Welcome to Making History Sandbox! Click next for the tutorial.</p>
             <hr/>
             <p>***NEW FEATURES***</p>
-            <p>Adding markers to the map with tooltips and custom colors</p>
             <p>Map region theme customizability, including region border thickness (polyStrokeWeight), fill opacity, etc.</p>
+            <p>Hex/RGB color picker</p>
+            <p>Display of number of regions per label and total</p>
+            <p>Collapsible panels in the interface</p>
             <hr/>
             <p>If you are willing to share you scenario, feel free to send it to Yulin-W@outlook.com. If you want attribution, send the name you want as well.</p>
             <hr/>
@@ -48,19 +48,7 @@ const steps = [
     },
     {
         target: '#plugin_menu',
-        content: "This is where additional functionalities are, we'll just mention a few.",
-    },
-    {
-        target: '#marker_panel',
-        content: 'Click icon for list of icons, click rectangle to choose color, click add to add to map. After added, click and hold to drag and position. To remove marker on the map or edit/view its tooltip, click on it.',
-    },
-    {
-        target: '#theme_panel',
-        content: 'Adjust various theming options here; notably, polyStrokeWeight decides region border width, and poly in general refers to the polygons of the map.',
-    },
-    {
-        target: '#geojson_loader',
-        content: 'Load your custom region file or save here, for tutorial see https://github.com/Yulin-W/making-history-sandbox/blob/main/customRegionTutorial.md',
+        content: 'This is where additional functionalities are, including information about region hovered upon, legend, scenarios, loading of custom maps, etc.',
     },
     {
         target: '#menu',

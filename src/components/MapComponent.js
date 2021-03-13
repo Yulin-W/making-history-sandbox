@@ -66,6 +66,7 @@ class MapComponent extends React.PureComponent {
         delete currentData[markerID];
 
         this.setState({ markerData: currentData }, () => {
+            console.log(this.state.markerData);
             this.props.updateMarkerData(this.state.markerData);
         });        
     }

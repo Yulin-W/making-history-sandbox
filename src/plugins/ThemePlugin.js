@@ -69,7 +69,7 @@ function ThemePluginComponent(props) {
         }
     });
     return (
-        <div id="theme_panel" className={classes.themeContainer}>
+        <div className={classes.themeContainer}>
             {fields}
             <IconButton size="small" onClick={() => {
                 let newTheme = cloneDeep(props.app.state.themeDict);
