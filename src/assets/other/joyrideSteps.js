@@ -10,7 +10,7 @@ const steps = [
             <p>Welcome to Making History Sandbox! Click next for the tutorial.</p>
             <hr/>
             <p>***NEW FEATURES***</p>
-            <p>Adding markers to the map with tooltips and custom colors</p>
+            <p>Adding markers to the map with tooltips and custom colors, see side panel</p>
             <p>Map region theme customizability, including region border thickness (polyStrokeWeight), fill opacity, etc.</p>
             <hr/>
             <p>If you are willing to share you scenario, feel free to send it to Yulin-W@outlook.com. If you want attribution, send the name you want as well.</p>
@@ -49,10 +49,6 @@ const steps = [
     {
         target: '#plugin_menu',
         content: "This is where additional functionalities are, we'll just mention a few.",
-    },
-    {
-        target: '#marker_panel',
-        content: 'Click icon for list of icons, click rectangle to choose color, click add to add to map. After added, click and hold to drag and position. To remove marker on the map or edit/view its tooltip, click on it.',
     },
     {
         target: '#theme_panel',
