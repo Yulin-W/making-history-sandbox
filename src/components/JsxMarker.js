@@ -1,7 +1,7 @@
 import React from 'react';
-import {divIcon} from "leaflet";
+import { divIcon } from "leaflet";
 import PropTypes from 'prop-types';
-import {Marker} from "react-leaflet";
+import { Marker } from "react-leaflet";
 import Popup from 'react-leaflet-editable-popup';
 
 // Component that gives a 
@@ -41,13 +41,14 @@ class JsxMarker extends React.Component {
         this.state = {
             html: null
         };
+
+        this.markerRef = React.createRef(null);
     }
 
     onInsideRender(html) {
 
         // Set it
         this.setState({ html });
-
     }
 
     render() {
@@ -62,12 +63,22 @@ class JsxMarker extends React.Component {
                 html,
                 iconSize: [this.props.size, this.props.size],
             });
-            marker = <Marker draggable position={this.props.position} icon={icon} {...this.props}>
-                <Popup editable removable open>
-                    Hello there
+            marker = <Marker
+                draggable
+                position={this.props.position}
+                ref={this.markerRef}
+                icon={icon} {...this.props}
+                eventHandlers={{
+                    dragend: () => {
+                        this.props.updatePosition(this.props.markerID, this.markerRef.current.getLatLng());
+                    }
+                }}
+            >
+                <Popup editable removable>
+                    {this.props.content}
                 </Popup>
             </Marker>
-        
+
         }
 
 

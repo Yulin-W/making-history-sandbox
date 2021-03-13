@@ -117,6 +117,20 @@ class App extends React.Component {
     this.resetAppBasedOnBasemap = this.resetAppBasedOnBasemap.bind(this);
     this.runPluginFunc = this.runPluginFunc.bind(this)
     this.handleJoyrideCallback = this.handleJoyrideCallback.bind(this);
+    this.updateMarkerData = this.updateMarkerData.bind(this);
+    this.getMarkerData = this.getMarkerData.bind(this);
+  }
+
+  // Returns pluginData for marker of current activeEntry
+  getMarkerData() {
+    return this.state.pluginData["Marker"][this.state.activeEntry];
+  }
+
+  // Updates pluginData for marker update of current activeEntry
+  updateMarkerData(markerData) {
+    let currentData = cloneDeep(this.state.pluginData["Marker"]);
+    currentData[this.state.activeEntry] = markerData;
+    this.updatePluginData("Marker", currentData);
   }
 
   // Runs functions entry in plugin of specified key, supplies the args to the function called in addition to the this argument
@@ -465,6 +479,8 @@ class App extends React.Component {
             updatePicking={this.updatePicking}
             picking={this.state.picking}
             setColorBarColor={this.setColorBarColor}
+            updateMarkerData={this.updateMarkerData}
+            getMarkerData={this.getMarkerData}
             ref={this.mapRef}
           />
         </div>

@@ -3,18 +3,19 @@ import React from "react";
 import { withStyles } from '@material-ui/core/styles';
 
 // Import leaflet and related libraries
-import { MapContainer, GeoJSON, TileLayer, AttributionControl, LayersControl } from 'react-leaflet';
+import { MapContainer, GeoJSON, TileLayer, AttributionControl, LayersControl, FeatureGroup } from 'react-leaflet';
 import "leaflet/dist/leaflet.css";
 import JsxMarker from "./JsxMarker.js";
-
-// Import icons
-import { GiWarAxe } from 'react-icons/gi';
 
 // Import relevant custom components for plugins
 import LassoComponent from "./LassoComponent.js";
 
 // Import mapProviders settings
 import mapProviders from '../settings/mapProviders.js';
+
+// Additional imports
+import cloneDeep from "clone-deep";
+import generateUniqueID from "../scripts/generateUniqueID.js";
 
 const useStyles = theme => ({
     mapContainer: {
@@ -34,7 +35,15 @@ const useStyles = theme => ({
 class MapComponent extends React.PureComponent {
     constructor(props) {
         super(props);
+
+        this.state = {
+            markerData: props.getMarkerData(),
+        }
+
+        // Add reference to geojson
         this.geojsonRef = React.createRef(null);
+        this.markerGroupRef = React.createRef(null);
+
         // Binding methods
         this.onEachFeature = this.onEachFeature.bind(this);
         this.style = this.style.bind(this);
@@ -43,6 +52,42 @@ class MapComponent extends React.PureComponent {
         this.highlightRegion = this.highlightRegion.bind(this);
         this.resetHighlightRegion = this.resetHighlightRegion.bind(this);
         this.resetSpecifiedRegionStyle = this.resetSpecifiedRegionStyle.bind(this);
+        this.addMarker = this.addMarker.bind(this);
+        this.resetMarkers = this.resetMarkers.bind(this);
+        this.updateMarkerPosition = this.updateMarkerPosition.bind(this);
+    }
+
+    updateMarkerPosition(markerID, position) {
+        let currentData = cloneDeep(this.state.markerData);
+
+        currentData[markerID].lat = position.lat;
+        currentData[markerID].lng = position.lng;
+
+        this.setState({markerData:currentData}, () => {
+            this.props.updateMarkerData(this.state.markerData);
+        });
+    }
+
+    addMarker(Icon, color, lat = 50, lng = 0, content = "") {
+        let currentData = cloneDeep(this.state.markerData);
+
+        // Generate a unique ID
+        const id = generateUniqueID(currentData);
+
+        currentData[id] = {
+            Icon: Icon,
+            color: color,
+            lat: lat,
+            lng: lng,
+            content: content
+        };
+        this.setState({markerData:currentData}, () => {
+            this.props.updateMarkerData(this.state.markerData);
+        });
+    }
+
+    resetMarkers() {
+        //FIXME:
     }
 
     onEachFeature(feature, layer) {
@@ -123,6 +168,28 @@ class MapComponent extends React.PureComponent {
 
     render() {
         const { classes } = this.props;
+
+        console.log(this.state.markerData);
+
+        const markers = Object.entries(this.state.markerData).map(marker => {
+            const Icon = marker[1].Icon;
+            return (
+                <JsxMarker
+                    key={marker[0]}
+                    markerID={marker[0]}
+                    position={{
+                        lat: marker[1].lat,
+                        lng: marker[1].lng
+                    }}
+                    size={this.props.themeDict.markerSize}
+                    content={marker[1].content}
+                    updatePosition={this.updateMarkerPosition}
+                >
+                    <Icon className={classes.markerIcon} style={{ color: marker[1].color }} />
+                </JsxMarker>
+            );
+        });
+
         return (
             <MapContainer
                 center={[30, 0]}
@@ -155,15 +222,9 @@ class MapComponent extends React.PureComponent {
                         ></GeoJSON>
                     </LayersControl.Overlay>
                     <LayersControl.Overlay checked name="Markers">
-                        <JsxMarker
-                            position={{
-                                lat: 50,
-                                lng: 0
-                            }}
-                            size={this.props.themeDict.markerSize}
-                        >
-                            <GiWarAxe className={classes.markerIcon} style={{ color: "orange" }} />
-                        </JsxMarker>
+                        <FeatureGroup>
+                            {markers}
+                        </FeatureGroup>
                     </LayersControl.Overlay>
                 </LayersControl>
                 <AttributionControl position="bottomright" />

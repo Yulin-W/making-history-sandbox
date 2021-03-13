@@ -1,5 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+
+// Import icons
+import { GiWarAxe } from 'react-icons/gi';
 
 // Setup styles
 const useStyles = makeStyles((theme) => ({
@@ -17,15 +21,23 @@ const useStyles = makeStyles((theme) => ({
 // Load file 
 function MarkerPluginComponent(props) {
     const classes = useStyles();
+    // #Rremove 5the data check button FIXME:
     return (
         <div className={classes.markerContainer}>
-            Marker container placeholder
+            <Button onClick={() => 
+                props.app.mapRef.current.addMarker(GiWarAxe, "#FF0000")
+            }>Add Marker</Button>
         </div>
     );
 }
 
 const initState = scenarioData => {
-    return null;
+    let retval = [];
+    let i;
+    for (i = 0; i < scenarioData.length; i++) {
+        retval.push({});
+    }
+    return retval;
 };
 
 const MarkerPluginDict = {
