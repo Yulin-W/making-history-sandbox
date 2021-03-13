@@ -140,6 +140,7 @@ function onAssignRegions(app, indices, color, removedColors, addedColor) {
 }
 
 function onAddEntry(app, index) {
+    console.log(1);
     let currentLegendData = cloneDeep(app.state.pluginData["Legend"]);
     let newLegendEntry = null;
     if (index > 0) { // Use new
@@ -148,13 +149,13 @@ function onAddEntry(app, index) {
         newLegendEntry = {};
     }
     currentLegendData.splice(index, 0, newLegendEntry);
-    app.updatePluginData("Legend", currentLegendData);
+    return currentLegendData;
 }
 
 function onDeleteEntry(app, index) {
     let currentLegendData = cloneDeep(app.state.pluginData["Legend"]);
     currentLegendData.splice(index, 1);
-    app.updatePluginData("Legend", currentLegendData);
+    return currentLegendData;
 }
 
 // This dictionary contains the component, initial state value generation function for the plugin's entry in pluginData; this be based off the scenarioData state value

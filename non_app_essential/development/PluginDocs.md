@@ -23,8 +23,8 @@
             - Whether functions are ran after the original function has finished or not depends, check App.js code for details
 # PluginDict functions
 - onAssignRegions
-- onAddEntry
-- onDeleteEntry
+- onAddEntry , expected to return appropriate plugindata value for updating plugindata
+- onDeleteEntry, expected to return appropriate plungindata value for updating plugindata
 - onUpdateActiveEntry
 - onUpdateEventDate
 - onUpdateEvent

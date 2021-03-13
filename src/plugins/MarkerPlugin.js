@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
 import Popper from '@material-ui/core/Popper';
 import Grid from '@material-ui/core/Grid';
+import cloneDeep from "clone-deep";
 
 // Import icons
 import markerIcons from "../assets/other/markerIcons.js";
@@ -51,6 +52,25 @@ const useStyles = makeStyles((theme) => ({
 // Function to run when active entry is updated, this updates the markerData in the mapComponent, then reloads the markers
 function onUpdateActiveEntry(app, newIndex) {
     app.mapRef.current.updateMarkerData();
+}
+
+function onAddEntry(app, index) {
+    let currentMarkerData = cloneDeep(app.state.pluginData["Marker"]);
+    let newMarkerEntry = null;
+    if (index > 0) { // Use new
+        newMarkerEntry = cloneDeep(currentMarkerData[index - 1]);
+    } else { // Use default
+        newMarkerEntry = {};
+    }
+    currentMarkerData.splice(index, 0, newMarkerEntry);
+    return currentMarkerData;
+}
+
+function onDeleteEntry(app, index) {
+    let currentMarkerData = cloneDeep(app.state.pluginData["Marker"]);
+    currentMarkerData.splice(index, 1);
+    return currentMarkerData;
+
 }
 
 // Icon selection component
@@ -129,6 +149,8 @@ const MarkerPluginDict = {
     initState: initState,
     functions: {
         onUpdateActiveEntry: onUpdateActiveEntry,
+        onAddEntry: onAddEntry,
+        onDeleteEntry: onDeleteEntry,
     }
 };
 

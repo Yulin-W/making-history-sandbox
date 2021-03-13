@@ -104,6 +104,7 @@ class App extends React.Component {
     this.updateEvent = this.updateEvent.bind(this);
     this.deleteEntry = this.deleteEntry.bind(this);
     this.updatePluginData = this.updatePluginData.bind(this);
+    this.updateMultiPluginData = this.updateMultiPluginData.bind(this);
     this.clearEntry = this.clearEntry.bind(this);
     this.loadSave = this.loadSave.bind(this);
     this.updateLassoSelecting = this.updateLassoSelecting.bind(this);
@@ -134,17 +135,22 @@ class App extends React.Component {
     this.updatePluginData("Marker", currentData);
   }
 
-  // Runs functions entry in plugin of specified key, supplies the args to the function called in addition to the this argument
+  // Runs functions entry in plugin of specified key, supplies the args to the function called in addition to the this argument, and also returns a list of the return values of the functions that did return values
   runPluginFunc(key, args) {
-    Object.values(this.plugins).forEach(entry => {
-      if (key in entry.functions) {
-        entry.functions[key](this, ...args);
+    let retval = {};
+    Object.entries(this.plugins).forEach(entry => {
+      if (key in entry[1].functions) {
+        const val = entry[1].functions[key](this, ...args);
+        if (val) {
+          retval[entry[0]] = val;
+        }
       }
     });
+    return retval;
   }
 
   // Resets app based on basemap, in particular the key states, including scenariodata, colorData, pluginData
-  resetAppBasedOnBasemap(baseMap, mapKey, callback=null) {
+  resetAppBasedOnBasemap(baseMap, mapKey, callback = null) {
     // This part is the same as from the app constructor TODO: try to alter so to promode code reuse
     this.baseMap = baseMap;
     this.mapKey = mapKey;
@@ -173,15 +179,15 @@ class App extends React.Component {
     // This part is the same as the state setting, but here we use setState instead of directly setting, only difference is that helpOn here is not switched on as users would have seen it already
     this.setState({
       // Themedict is not reset to default, the existing themeDict settings will continue to be used
-      scenarioData: this.scenarioDataDefault, 
-      pluginData: pluginData, 
-      colorData: colorData, 
-      activeEntry: 0, 
-      lassoSelecting: false, 
-      erasing: false, 
+      scenarioData: this.scenarioDataDefault,
+      pluginData: pluginData,
+      colorData: colorData,
+      activeEntry: 0,
+      lassoSelecting: false,
+      erasing: false,
       helpOn: false, // This is different from the initial initialization state value
-      picking: false, 
-      mapKey: this.mapKey, 
+      picking: false,
+      mapKey: this.mapKey,
     }, () => {
       if (callback) {
         callback();
@@ -190,7 +196,7 @@ class App extends React.Component {
   }
 
   // Update color picker state
-  updatePicking(newState, callback=null) {
+  updatePicking(newState, callback = null) {
     this.setState({ picking: newState }, () => {
       if (callback) {
         callback();
@@ -209,10 +215,26 @@ class App extends React.Component {
   }
 
   // Updates plugin data for the specified plugin with the specified data, the key should be the one used in the plugins dictionary
-  updatePluginData(key, data) {
+  updatePluginData(key, data, callback=null) {
     let currentData = cloneDeep(this.state.pluginData);
     currentData[key] = data;
-    this.setState({ pluginData: currentData });
+    this.setState({ pluginData: currentData }, () => {
+      if (callback) {
+        callback();
+      }
+    });
+  }
+
+  updateMultiPluginData(dataDict, callback=null) {
+    let currentData = cloneDeep(this.state.pluginData);
+    for (const [key, data] of Object.entries(dataDict)) {
+      currentData[key] = data;
+    }
+    this.setState({ pluginData: currentData }, () => {
+      if (callback) {
+        callback();
+      }
+    });
   }
 
   // Updates lasso selecting, expects true/false boolean value, then runs callback if any
@@ -225,7 +247,7 @@ class App extends React.Component {
   }
 
   // Update eraser state, such state in turn determins the value getColor returns
-  updateErasing(newState, callback=null) {
+  updateErasing(newState, callback = null) {
     this.setState({ erasing: newState }, () => {
       if (callback) {
         callback();
@@ -258,10 +280,11 @@ class App extends React.Component {
     }
     currentData.splice(index, 0, newRegionDict);
     currentColorData.splice(index, 0, newColorEntry);
-    this.setState({ scenarioData: currentData, colorData: currentColorData }, () => { this.updateActiveEntry(index); });
-
-    // Running plugin methods
-    this.runPluginFunc("onAddEntry", [index]);
+    this.setState({ scenarioData: currentData, colorData: currentColorData }, () => {
+      // Update the plugin data, then in call back update active entry to ensure order of execution
+      const retval = this.runPluginFunc("onAddEntry", [index]);
+      this.updateMultiPluginData(retval, () => {this.updateActiveEntry(index);});
+    });
   }
 
   // Deletes entry in position at specified index in scenarioData and colorData
@@ -274,10 +297,20 @@ class App extends React.Component {
       // Deleted entry is last entry, hence new entry to be focused on is the entry before the last entry
       let newIndex = index - 1;
       // To avoid possibly access invalid active entry values, we update the activeEntry first, then update the scenarioDict to delete the entry
-      this.updateActiveEntry(newIndex, () => { this.setState({ scenarioData: currentData, colorData: currentColorData }); }) // Note reset style is included in the updateActiveEntry function already
+      this.updateActiveEntry(newIndex, () => {
+        this.setState({ scenarioData: currentData, colorData: currentColorData }, () => {
+          const retval = this.runPluginFunc("onDeleteEntry", [index]);
+          this.updateMultiPluginData(retval);
+        });
+      }) // Note reset style is included in the updateActiveEntry function already
     } else {
       // Deleted entry was not the last entry, hence new entry to be focused on is the entry after the deleted entry, i.e. activeEntry index need not change
-      this.setState({ scenarioData: currentData, colorData: currentColorData }, () => { this.mapRef.current.resetAllRegionStyle(); });
+      this.setState({ scenarioData: currentData, colorData: currentColorData }, () => {
+        const retval = this.runPluginFunc("onDeleteEntry", [index]);
+        this.updateMultiPluginData(retval, () => {
+          this.mapRef.current.resetAllRegionStyle();
+        });
+      });
     }
 
     // Running plugin methods
@@ -387,7 +420,7 @@ class App extends React.Component {
   }
 
   // Filling undefined entries of pluginData to appropriate initialization states if necessary such that plugins may all function
-  initUndefinedPluginData(callback=null) {
+  initUndefinedPluginData(callback = null) {
     let currentPluginData = cloneDeep(this.state.pluginData);
     let pluginData = {};
     for (const [name, entry] of Object.entries(this.plugins)) {
@@ -395,7 +428,7 @@ class App extends React.Component {
         currentPluginData[name] = entry.initState(this.state.scenarioData);
       }
     }
-    this.setState({pluginData:currentPluginData}, () => {
+    this.setState({ pluginData: currentPluginData }, () => {
       if (callback) {
         callback();
       }
@@ -421,7 +454,7 @@ class App extends React.Component {
   handleJoyrideCallback(data) {
     const { type } = data;
     if (type === EVENTS.TOUR_END && this.state.helpOn) {
-      this.setState({helpOn: false});
+      this.setState({ helpOn: false });
     }
   }
 
@@ -442,7 +475,7 @@ class App extends React.Component {
             run={this.state.helpOn}
             styles={{
               buttonClose: {
-                display:"none",
+                display: "none",
               },
               buttonSkip: {
                 backgroundColor: theme.palette.secondary.main,
@@ -454,7 +487,7 @@ class App extends React.Component {
           <MenuComponent
             save={this.save}
             loadSave={this.loadSave}
-            openHelp={() => {this.setState({helpOn: true});}}
+            openHelp={() => { this.setState({ helpOn: true }); }}
           />
           <ToolbarComponent
             lassoSelecting={this.state.lassoSelecting}
