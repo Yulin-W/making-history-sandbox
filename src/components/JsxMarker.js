@@ -77,6 +77,8 @@ class JsxMarker extends React.Component {
                 <Popup
                     editable
                     removable
+                    autoClose={false}
+                    closeOnClick={false}
                     saveContentCallback={content => this.props.updateContent(this.props.markerID, content)}
                     removalCallback={index => this.props.removeMarker(this.props.markerID)}
                 >
