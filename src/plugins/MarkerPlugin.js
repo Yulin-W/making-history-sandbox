@@ -47,6 +47,11 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+// Function to run when active entry is updated, this updates the markerData in the mapComponent, then reloads the markers
+function onUpdateActiveEntry(app, newIndex) {
+    app.mapRef.current.updateMarkerData();
+}
+
 // Icon selection component
 function IconSelector(props) {
     const classes = useStyles();
@@ -120,7 +125,9 @@ const initState = scenarioData => {
 const MarkerPluginDict = {
     component: MarkerPluginComponent,
     initState: initState,
-    functions: {}
+    functions: {
+        onUpdateActiveEntry: onUpdateActiveEntry,
+    }
 };
 
 export default MarkerPluginDict;

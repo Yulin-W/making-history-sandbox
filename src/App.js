@@ -317,13 +317,11 @@ class App extends React.Component {
       { activeEntry: newIndex },
       () => {
         this.mapRef.current.resetAllRegionStyle();
+        this.runPluginFunc("onUpdateActiveEntry", [newIndex]);
         if (callback) { // runs callback if callback is not null
           callback();
         }
       });
-
-    // Running plugin methods
-    this.runPluginFunc("onUpdateActiveEntry", [newIndex]);
   }
 
   // Assigns regions of specified indices the currently selected color and update colorData accordingly, then run callback if any

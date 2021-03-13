@@ -40,7 +40,7 @@ class MapComponent extends React.PureComponent {
             markerData: props.getMarkerData(),
         }
 
-        // Add reference to geojson
+        // Add references to useful entites
         this.geojsonRef = React.createRef(null);
         this.mapElement = null;
 
@@ -53,8 +53,8 @@ class MapComponent extends React.PureComponent {
         this.resetHighlightRegion = this.resetHighlightRegion.bind(this);
         this.resetSpecifiedRegionStyle = this.resetSpecifiedRegionStyle.bind(this);
         this.addMarker = this.addMarker.bind(this);
-        this.resetMarkers = this.resetMarkers.bind(this);
         this.updateMarkerPosition = this.updateMarkerPosition.bind(this);
+        this.updateMarkerData = this.updateMarkerData.bind(this);
     }
 
     updateMarkerPosition(markerID, position) {
@@ -86,8 +86,13 @@ class MapComponent extends React.PureComponent {
         });
     }
 
-    resetMarkers() {
-        //FIXME:
+    // Updates marker data to correspond to the active entry
+    updateMarkerData(callback=null) {
+        this.setState({ markerData: this.props.getMarkerData() }, () => {
+            if (callback) {
+                callback();
+            }
+        });
     }
 
     onEachFeature(feature, layer) {
@@ -169,11 +174,8 @@ class MapComponent extends React.PureComponent {
     render() {
         const { classes } = this.props;
 
-        console.log(this.state.markerData);
-
         const markers = Object.entries(this.state.markerData).map(marker => {
             const Icon = marker[1].Icon;
-            console.log(Icon);
             return (
                 <JsxMarker
                     key={marker[0]}
@@ -224,7 +226,7 @@ class MapComponent extends React.PureComponent {
                         ></GeoJSON>
                     </LayersControl.Overlay>
                     <LayersControl.Overlay checked name="Markers">
-                        <FeatureGroup>
+                        <FeatureGroup key={this.props.activeEntry}>
                             {markers}
                         </FeatureGroup>
                     </LayersControl.Overlay>

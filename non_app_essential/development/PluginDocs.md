@@ -20,8 +20,7 @@
             - For consistency, supplied function for the function key should be of the same string, e.g. for onAssignRegions, give value as onAssignRegions where the latter was a function defined in the plugin file
             - Apart from specific arguments, all these functions expect to have the app's instance passed as an argument (i.e. they can in effect do whatever the app does)
                 - For specifically what other arguments are provided when calling these functions, check App.js's corresponding methods and see how these plugin methods are called
-            - Functions should not reply on completion of associated methods, it should on depend on state of app prior to running method (due to these functions not being treated as callbacks)
-                - This is, except onAssignRegions, which I've set to have to run as a callback after the app's setting is complete
+            - Whether functions are ran after the original function has finished or not depends, check App.js code for details
 # PluginDict functions
 - onAssignRegions
 - onAddEntry
