@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack://src/index.css","webpack://src/App.css"],"names":[],"mappings":"AAAA,UACE,QAAS,CACT,SAAU,CACV,eACF,CCJA,EACI,eAAgB,CAChB,aACJ","file":"main.702a3d53.chunk.css","sourcesContent":["body, html {\r\n  margin: 0;\r\n  padding: 0;\r\n  overflow: hidden;\r\n}\r\n","p {\r\n    font-size: small;\r\n    line-height: 1;\r\n}"]}
