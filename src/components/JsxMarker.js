@@ -3,6 +3,7 @@ import { divIcon } from "leaflet";
 import PropTypes from 'prop-types';
 import { Marker } from "react-leaflet";
 import Popup from 'react-leaflet-editable-popup';
+import './JsxMarker.css';
 
 // Component that gives a 
 class JsxMarkerContent extends React.Component {
@@ -77,6 +78,7 @@ class JsxMarker extends React.Component {
                 <Popup
                     editable
                     removable
+                    closeButton={false}
                     autoClose={false}
                     closeOnClick={false}
                     saveContentCallback={content => this.props.updateContent(this.props.markerID, content)}
