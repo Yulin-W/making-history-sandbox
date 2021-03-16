@@ -56,9 +56,11 @@ function ScenarioPluginComponent(props) {
                 className={classes.scenarioSelect}
                 onChange={e => {setSelectedScenario(e.target.value);}}
             >
+                <ListSubheader>Base Scenarios</ListSubheader>
                 {Object.keys(scenarios).map(key => <MenuItem key={key} value={key}>
                     {key}
                 </MenuItem>)}
+                <ListSubheader>Community-made Scenarios</ListSubheader>
                 {Object.keys(comScenarios).map(key => <MenuItem key={key} value={key}>
                     {key}
                 </MenuItem>)}
