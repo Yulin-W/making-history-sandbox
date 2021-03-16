@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
 import MenuItem from '@material-ui/core/MenuItem';
+import ListSubheader from '@material-ui/core/ListSubheader';
 
 // Import scenarios
 import scen356BC from "../assets/scenario/356BC-Birth-of-Alexander.json";
@@ -11,6 +12,7 @@ import scen1444 from "../assets/scenario/1444-Battle-of-Varna.json";
 import scen1936 from "../assets/scenario/1936-Coming-of-the-Storm.json"
 
 // Import community scenarios; this is where to import; put the files in src/assets/communityScenario, import them here, then add them to the scenarios dictionary below
+import scen1914 from "../assets/communityScenario/1914-WWI.json";
 import scen2021 from "../assets/communityScenario/2021-Modern-Map-made-by-DawnbreakZ-edited-by-yunus3663.json";
 
 // Import json scenarios, keys should be names that will be displayed for the scenario
@@ -19,8 +21,12 @@ const scenarios = {
     "1206 Rise of Mongolia": scen1206,
     "1444 Battle of Varna": scen1444,
     "1936 Coming of the Storm": scen1936,
-    "2021 Modern Map made by DawnbreakZ edited by yunus3663": scen2021,
 };
+
+const comScenarios = {
+    "1914 WWI": scen1914,
+    "2021 Modern Map made by DawnbreakZ edited by yunus3663": scen2021,
+}
 
 // Setup styles
 const useStyles = makeStyles((theme) => ({
@@ -53,9 +59,17 @@ function ScenarioPluginComponent(props) {
                 {Object.keys(scenarios).map(key => <MenuItem key={key} value={key}>
                     {key}
                 </MenuItem>)}
+                {Object.keys(comScenarios).map(key => <MenuItem key={key} value={key}>
+                    {key}
+                </MenuItem>)}
             </Select>
             <Button size="small" onClick={() => {
-                props.app.loadSave(scenarios[selectedScenario]);
+                // Load save from appropriate dictionary based on what dictionary the key is in TODO: this is not the most efficient way to do it IMO, better to use I gess some label for quicker access
+                if (selectedScenario in scenarios) {
+                    props.app.loadSave(scenarios[selectedScenario]);
+                } else {
+                    props.app.loadSave(comScenarios[selectedScenario]);
+                }
             }}>Load</Button>
         </div>
     );
