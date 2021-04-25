@@ -92,11 +92,13 @@
   - to make aligning easier; enable resizing and dragging ,perhaps by binding to a polygon
   - also in this case, to make custom regioning  easier, I should use some leaflet library to make a mode allowing in app editing of geojson; actually no, better for performance just put it as a separate app, then if i do choose to merge the two to a single app, it'd be easy to just add the component
   - need to make a plugin for this kind of save
-- [ ] 1.10.0: play button to automatically cycle through events
+- [ ] 1.10.0: play button to automatically cycle through events, also enlarge the right panel for larger legends
 - [ ] 1.11.0: easy mouse wheel scroll in events bar, avoid the shift scroll i reckon and do normal scroll
 - [ ] 1.12.0: Drag/shift timeline event entries
 - [ ] 1.13.0: One click remove label and relevant regions
 - [ ] 1.14.0: Old editor to new editor date messup fix
+- [ ] 1.15.0: Speed improvement to changing timeline entries
+- [ ] 1.16.0: Add old editor like display to events to allow seeing all events in a single panel (I'd say have it as an optional thing, i.e. can expand the events bar)
 - [ ] 2.0.0: improve performance
 ## Possible future plugins (these can go into separate repos, as separate projects), some might not be plugins in the sense that it goes into the sidebar menu
 - [ ] Add extra inbuilt base map, a more reasonable one with finer dividsions where it needs and less fine where it isn't needed
