@@ -99,6 +99,7 @@
 - [ ] 1.14.0: Old editor to new editor date messup fix
 - [ ] 1.15.0: Speed improvement to changing timeline entries
 - [ ] 1.16.0: Add old editor like display to events to allow seeing all events in a single panel (I'd say have it as an optional thing, i.e. can expand the events bar)
+- [ ] 1.17.0: add general drawings capability on map (beware memory issues), so i.e. have a drawings editor addin i suppose vector graphics ideally tbh to save memory, most important are things like arrows and basic shapes
 - [ ] 2.0.0: improve performance
 ## Possible future plugins (these can go into separate repos, as separate projects), some might not be plugins in the sense that it goes into the sidebar menu
 - [ ] Add extra inbuilt base map, a more reasonable one with finer dividsions where it needs and less fine where it isn't needed
