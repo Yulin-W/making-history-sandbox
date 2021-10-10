@@ -90,16 +90,18 @@
 - [x] 1.8.1: Added 867 Macedonian Dynasty scenario
 - [x] 1.8.2: Streamlining scenario creation
   - Making scenario adding a simple 2 step process of copying scenario file into the respective folder and editing the scenario information file
-- [ ] 1.9.0: play button to automatically cycle through events
-  - Change slider color to lighter for visibilities
-  - Scenario GIF generation
 ## Potential future versions (won't work on it soon)
-- [ ] 1.10.0: easy mouse wheel scroll in events bar, avoid the shift scroll i reckon and do normal scroll
-- [ ] 1.11.0: Drag/shift timeline event entries
-- [ ] 1.12.0: One click remove label and relevant regions
-- [ ] 1.13.0: Old editor to new editor date messup fix
-- [ ] 1.14.0: Speed improvement to changing timeline entries
-- [ ] 1.15.0: Add old editor like display to events to allow seeing all events in a single panel (I'd say have it as an optional thing, i.e. can expand the events bar)
+- [ ] 1.9.0: import background image option: should advertise this on all the major mapmaking sites after done
+  - to make aligning easier; enable resizing and dragging ,perhaps by binding to a polygon
+  - also in this case, to make custom regioning  easier, I should use some leaflet library to make a mode allowing in app editing of geojson; actually no, better for performance just put it as a separate app, then if i do choose to merge the two to a single app, it'd be easy to just add the component
+  - need to make a plugin for this kind of save
+- [ ] 1.10.0: play button to automatically cycle through events, also enlarge the right panel for larger legends
+- [ ] 1.11.0: easy mouse wheel scroll in events bar, avoid the shift scroll i reckon and do normal scroll
+- [ ] 1.12.0: Drag/shift timeline event entries
+- [ ] 1.13.0: One click remove label and relevant regions
+- [ ] 1.14.0: Old editor to new editor date messup fix
+- [ ] 1.15.0: Speed improvement to changing timeline entries
+- [ ] 1.16.0: Add old editor like display to events to allow seeing all events in a single panel (I'd say have it as an optional thing, i.e. can expand the events bar)
 - [ ] 1.17.0: add general drawings capability on map (beware memory issues), so i.e. have a drawings editor addin i suppose vector graphics ideally tbh to save memory, most important are things like arrows and basic shapes
 - [ ] 2.0.0: improve performance
 ## Possible future plugins (these can go into separate repos, as separate projects), some might not be plugins in the sense that it goes into the sidebar menu
@@ -114,9 +116,6 @@
 - [ ] Marker features, e.g. city, factories, fortification, etc.
 - [ ] Import own basemaps, and then can include it as part of output save like in alternate history editor
 
-## BUGS
-- Old editor to new editor date messup fix
-- Loading scenarios in the midst of a current scenario sometimes whitescreens the app, i.e. leads to error
 ## Potential side apps to supplement, possibly linking into a suite of apps
 - [ ] Image processing ai or likewise, turn image of borders into geojson polygons and then allow manual addition of labels; mainly its the ocr tech
 
