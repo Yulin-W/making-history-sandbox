@@ -8,8 +8,9 @@ const steps = [
             <p>***NEW FEATURES*** October, 2021</p>
             <p>New 867 Macedonian Dynasty scenario: see side panel</p>
             <hr/>
-            <p>FAQ: Removing borders: set region border width to 0 in theme panel on the right</p>
-            <p>FAQ: Adding markers with tooltips: use market box on side panel; added markers can be dragged to position and clicked to reveal/edit tooltip</p>
+            <p>FAQs:</p>
+            <p>Removing borders: set region border width to 0 in theme panel on the right</p>
+            <p>Adding markers with tooltips: use market box on side panel; added markers can be dragged to position and clicked to reveal/edit tooltip</p>
             <hr/>
             <p>Welcome to Making History Sandbox! Click next for the tutorial.</p>
             <hr/>
