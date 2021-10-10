@@ -88,6 +88,8 @@
   - Various plugin shapes
   - Info adding to markers possible
 - [x] 1.8.1: Added 867 Macedonian Dynasty scenario
+- [ ] 1.8.2: Streamlining scenario creation
+  - Making scenario adding a simple 2 step process of copying scenario file into the respective folder and editing the scenario information file
 ## Potential future versions (won't work on it soon)
 - [ ] 1.9.0: import background image option: should advertise this on all the major mapmaking sites after done
   - to make aligning easier; enable resizing and dragging ,perhaps by binding to a polygon
