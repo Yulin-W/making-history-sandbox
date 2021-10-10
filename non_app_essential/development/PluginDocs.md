@@ -34,3 +34,10 @@
 - onProcessRegionHoveredOut
 # Making Plugin Live
 - In appPlugins.js, import the plugin from its file, and add to the plugins dictionary in appPlugins.js
+
+# Plugin specific notes
+## ScenarioPlugin
+- How to add scenarios
+    - Save file produced from the app
+    - Put save in assets/scenario/ or assets/communityScenario (depending on how you want to group it)
+    - Go into plugins/ScenarioPlugin.js and import the scenario or community scenario, and add corresponding code to scenarios or comScenarios variable to set the name that will appear in the app for the scenario

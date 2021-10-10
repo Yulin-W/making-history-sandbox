@@ -87,6 +87,7 @@
 - [x] 1.8.0: info marker plugin : should advertise this on all the major mapmaking sites after done, after doing a own alterantive example of course, maybe for instance an alternative state and its internal transport/city info map
   - Various plugin shapes
   - Info adding to markers possible
+- [x] 1.8.1: Added 867 Macedonian Dynasty scenario
 ## Potential future versions (won't work on it soon)
 - [ ] 1.9.0: import background image option: should advertise this on all the major mapmaking sites after done
   - to make aligning easier; enable resizing and dragging ,perhaps by binding to a polygon
