@@ -6,29 +6,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import ListSubheader from '@material-ui/core/ListSubheader';
 
 // Import scenarios
-import scen356BC from "../assets/scenario/356BC-Birth-of-Alexander.json";
-import scen867 from "../assets/scenario/867-Macedonian-Dynasty.json";
-import scen1206 from "../assets/scenario/1206-Rise-of-Mongolia.json";
-import scen1444 from "../assets/scenario/1444-Battle-of-Varna.json";
-import scen1936 from "../assets/scenario/1936-Coming-of-the-Storm.json"
-
-// Import community scenarios; this is where to import; put the files in src/assets/communityScenario, import them here, then add them to the scenarios dictionary below
-import scen1914 from "../assets/communityScenario/1914-WWI.json";
-import scen2021 from "../assets/communityScenario/2021-Modern-Map-made-by-DawnbreakZ-edited-by-yunus3663.json";
-
-// Import json scenarios, keys should be names that will be displayed for the scenario
-const scenarios = {
-    "356BC Birth of Alexander": scen356BC,
-    "867 Macedonian Dynasty": scen867,
-    "1206 Rise of Mongolia": scen1206,
-    "1444 Battle of Varna": scen1444,
-    "1936 Coming of the Storm": scen1936,
-};
-
-const comScenarios = {
-    "1914 WWI": scen1914,
-    "2021 Modern Map made by DawnbreakZ edited by yunus3663": scen2021,
-}
+import scenarios from "../assets/scenario/scenarios.js";
+import comScenarios from "../assets/communityScenario/comScenarios.js";
 
 // Setup styles
 const useStyles = makeStyles((theme) => ({

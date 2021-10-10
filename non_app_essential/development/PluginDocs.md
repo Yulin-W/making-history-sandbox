@@ -40,4 +40,4 @@
 - How to add scenarios
     - Save file produced from the app
     - Put save in assets/scenario/ or assets/communityScenario (depending on how you want to group it)
-    - Go into plugins/ScenarioPlugin.js and import the scenario or community scenario, and add corresponding code to scenarios or comScenarios variable to set the name that will appear in the app for the scenario
+    - Depending on if scenario added is scenario or community scenario, modify the corresponding scenarios.js or comScenarios.js respectively in assts/scenario, assets/communityScenario to import the new save file and specify display name for it in the app
