@@ -7,7 +7,7 @@ const steps = [
         <React.Fragment>
             <p>***NEW FEATURES*** October, 2021</p>
             <p>Erase Same: Erases regions with same color with single click.</p>
-            <p>New 867 Macedonian Dynasty scenario: see side panel</p>
+            <p>New scenarios: 2800BC Epic of Gilgamesh, 867 Macedonian Dynasty: see side panel</p>
             <hr/>
             <p>FAQs:</p>
             <p>Erasing multiple regions: use erase all button to erase all regions with same label, or use erase + lasso to erase any selected region</p>
