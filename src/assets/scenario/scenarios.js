@@ -10,7 +10,7 @@ import scen1936 from "./1936-Coming-of-the-Storm.json"
 const scenarios = {
   "2800BC Epic of Gilgamesh": scen2800BC,
   "356BC Birth of Alexander": scen356BC,
-  "117-Pax-Romana": scen117,
+  "117 Pax Romana": scen117,
   "867 Macedonian Dynasty": scen867,
   "1206 Rise of Mongolia": scen1206,
   "1444 Battle of Varna": scen1444,
