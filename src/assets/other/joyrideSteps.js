@@ -6,9 +6,11 @@ const steps = [
         content: 
         <React.Fragment>
             <p>***NEW FEATURES*** October, 2021</p>
+            <p>Erase Same: Erases regions with same color with single click.</p>
             <p>New 867 Macedonian Dynasty scenario: see side panel</p>
             <hr/>
             <p>FAQs:</p>
+            <p>Erasing multiple regions: use erase all button to erase all regions with same label, or use erase + lasso to erase any selected region</p>
             <p>Removing borders: set region border width to 0 in theme panel on the right</p>
             <p>Adding markers with tooltips: use market box on side panel; added markers can be dragged to position and clicked to reveal/edit tooltip</p>
             <hr/>
@@ -29,7 +31,7 @@ const steps = [
     },
     {
         target: '#toolbar',
-        content: 'Use erase for removing colors, lasso for mass colouring, and pick for picking colors from the map.'
+        content: 'Use erase for removing colors, erase same to erase same label regions, lasso for mass colouring (can be used with erase to mass erase), and pick for picking colors from the map.'
     },
     {
         target: '#map',

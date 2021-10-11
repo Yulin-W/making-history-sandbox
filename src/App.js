@@ -86,6 +86,7 @@ class App extends React.Component {
       activeEntry: 0, // index of currently active on map entry in scenarioData
       lassoSelecting: false, // state for whether lasso select tool is activated
       erasing: false, // state for whether eraser tool is activated
+      erasingSame: false, // state for whetehr erasing same tool is activated
       helpOn: true, // On opening app, defaults to have help on
       picking: false, // color picking tool defaults to not on
       mapKey: this.mapKey, // This is here both as a state and to act as a trigger for MapComponent and App overall to rerender upon loading in a new GeoJSON, it should only be modified by CustomGeoJSONLoaderPlugin
@@ -121,6 +122,8 @@ class App extends React.Component {
     this.updateMarkerData = this.updateMarkerData.bind(this);
     this.getMarkerData = this.getMarkerData.bind(this);
     this.initUndefinedPluginData = this.initUndefinedPluginData.bind(this);
+    this.updateErasingSame = this.updateErasingSame.bind(this);
+    this.eraseSameColor = this.eraseSameColor.bind(this);
   }
 
   // Returns pluginData for marker of current activeEntry
@@ -185,6 +188,7 @@ class App extends React.Component {
       activeEntry: 0,
       lassoSelecting: false,
       erasing: false,
+      erasingSame: false,
       helpOn: false, // This is different from the initial initialization state value
       picking: false,
       mapKey: this.mapKey,
@@ -256,9 +260,13 @@ class App extends React.Component {
     });
   }
 
-  // Returns hex of currently selected color, as in the colorBarComponent
+  // Returns hex of currently selected color, as in the colorBarComponent; or null if erasing or erasing same mode is activated
   getColor() {
-    return this.state.erasing ? null : this.colorBarRef.current.state.color;
+    if (this.state.erasing || this.state.erasingSame) { // This ensures that upon erase tool selected, clicking will erase label and color
+      return null;
+    } else {
+      return this.colorBarRef.current.state.color;
+    }
   }
 
   // Sets color in colorBarComponent, expects a hex string
@@ -459,6 +467,30 @@ class App extends React.Component {
     }
   }
 
+  // Update erase same state
+  updateErasingSame(newState, callback = null) {
+    this.setState({ erasingSame: newState }, () => {
+      if (callback) {
+        callback();
+      }
+    });
+  }
+
+  // Erase all regions with the specified color hex
+  eraseSameColor(colorID) {
+    // First we need to find the indices of the regions with the specified color
+    let currentEntryRegionDict = this.state.scenarioData[this.state.activeEntry].regionDict;
+    let indices = [];
+    for (const [regionID, regionData] of Object.entries(currentEntryRegionDict)) {
+      if (regionData.color === colorID) {
+        indices.push(regionID);
+      }
+    }
+
+    // Now run assign region (which will erase the region of specified indices since under erase same being activated, assign region will erase as opposed to setting a particular color)
+    this.assignRegions(indices);
+  }
+
   render() {
     const { classes } = this.props;
     return (
@@ -496,6 +528,8 @@ class App extends React.Component {
             updateErasing={this.updateErasing}
             picking={this.state.picking}
             updatePicking={this.updatePicking}
+            updateErasingSame = {this.updateErasingSame}
+            erasingSame={this.state.erasingSame}
           />
           <PluginMenuComponent app={this} />
           <TimelineBarComponent
@@ -530,6 +564,8 @@ class App extends React.Component {
             processRegionHoveredOut={this.processRegionHoveredOut}
             updatePicking={this.updatePicking}
             picking={this.state.picking}
+            erasingSame={this.state.erasingSame}
+            eraseSameColor={this.eraseSameColor}
             setColorBarColor={this.setColorBarColor}
             updateMarkerData={this.updateMarkerData}
             getMarkerData={this.getMarkerData}

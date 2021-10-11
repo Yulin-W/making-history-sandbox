@@ -90,7 +90,8 @@
 - [x] 1.8.1: Added 867 Macedonian Dynasty scenario
 - [x] 1.8.2: Streamlining scenario creation
   - Making scenario adding a simple 2 step process of copying scenario file into the respective folder and editing the scenario information file
-- [ ] 1.9.0: One click remove label and relevant regions
+- [x] 1.9.0: One click remove label and relevant regions
+  - Update help to state new feature
 ## Potential future versions (won't work on it soon)
 - [ ] 1.10.0: easy mouse wheel scroll in events bar, avoid the shift scroll i reckon and do normal scroll
 - [ ] 1.11.0: Drag/shift timeline event entries

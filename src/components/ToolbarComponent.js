@@ -12,9 +12,9 @@ const useStyles = makeStyles((theme) => ({
         position: "absolute",
         top: 102,
         right: "50%",
-        marginRight: -202 / 2,
-        height: 30,
-        width: 190,
+        marginRight: -265 / 2,
+        height: 36,
+        width: 240,
         zIndex: 1,
         display: "flex",
         flexFlow: "row",
@@ -29,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
         margin: 0,
         padding: 0,
         height: "100%",
+        minWidth: 60,
     }
 }));
 
@@ -38,6 +39,8 @@ function ToolbarComponent(props) {
     const lassoButtonColor = props.lassoSelecting ? "secondary" : "default";
     const eraserButtonText = props.erasing ? "Cancel" : "Erase";
     const eraserButtonColor = props.erasing ? "secondary" : "default";
+    const eraseSameButtonText = props.erasingSame ? "Cancel" : "Erase Same";
+    const eraseSameButtonColor = props.erasingSame ? "secondary" : "default";
     const pickingButtonText = props.picking ? "Cancel" : "Pick";
     const pickingButtonColor = props.picking ? "secondary" : "default";
     const [display, setDisplay] = React.useState(true);
@@ -49,18 +52,37 @@ function ToolbarComponent(props) {
                     className={classes.toolbarButton}
                     onClick={() => {
                         props.updatePicking(false, () => {
-                            props.updateErasing(!props.erasing);
+                            props.updateErasingSame(false, () => {
+                                props.updateErasing(!props.erasing);
+                            });
                         })
                     }}
                 >
                     {eraserButtonText}
                 </Button>
                 <Button
+                    color={eraseSameButtonColor}
+                    className={classes.toolbarButton}
+                    onClick={() => {
+                        props.updateLassoSelecting(false, () => {
+                            props.updateErasing(false, () => {
+                                props.updatePicking(false, () => {
+                                    props.updateErasingSame(!props.erasingSame);
+                                });
+                            });
+                        });
+                    }}
+                >
+                    {eraseSameButtonText}
+                </Button>
+                <Button
                     color={lassoButtonColor}
                     className={classes.toolbarButton}
                     onClick={() => {
                         props.updatePicking(false, () => {
-                            props.updateLassoSelecting(!props.lassoSelecting);
+                            props.updateErasingSame(false, () => {
+                                props.updateLassoSelecting(!props.lassoSelecting);
+                            });
                         })
                     }}
                 >
@@ -72,14 +94,16 @@ function ToolbarComponent(props) {
                     onClick={() => {
                         props.updateLassoSelecting(false, () => {
                             props.updateErasing(false, () => {
-                                props.updatePicking(!props.picking);
+                                props.updateErasingSame(false, () => {
+                                    props.updatePicking(!props.picking);
+                                });
                             });
                         });
                     }}
                 >
                     {pickingButtonText}
                 </Button>
-                <RetractButton direction="up" top={36} left={"50%"} checked={display} onClick={() => setDisplay(!display)} />
+                <RetractButton direction="up" top={42} left={"50%"} checked={display} onClick={() => setDisplay(!display)} />
             </div>
         </Slide>
     );
