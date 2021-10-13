@@ -92,12 +92,14 @@
   - Making scenario adding a simple 2 step process of copying scenario file into the respective folder and editing the scenario information file
 - [x] 1.9.0: One click remove label and relevant regions
   - Update help to state new feature
+- [ ] 1.10.0: One click color change of relevant regions (and modify color of associated label; but keep legend in same order)
+  - Update help for new features
 ## Potential future versions (won't work on it soon)
-- [ ] 1.10.0: easy mouse wheel scroll in events bar, avoid the shift scroll i reckon and do normal scroll
-- [ ] 1.11.0: Drag/shift timeline event entries
-- [ ] 1.12.0: Old editor to new editor date messup fix
-- [ ] 1.13.0: Speed improvement to changing timeline entries
-- [ ] 1.14.0: Add old editor like display to events to allow seeing all events in a single panel (I'd say have it as an optional thing, i.e. can expand the events bar)
+- [ ] 1.11.0: easy mouse wheel scroll in events bar, avoid the shift scroll i reckon and do normal scroll
+- [ ] 1.12.0: Drag/shift timeline event entries
+- [ ] 1.13.0: Old editor to new editor date messup fix
+- [ ] 1.14.0: Speed improvement to changing timeline entries
+- [ ] 1.15.0: Add old editor like display to events to allow seeing all events in a single panel (I'd say have it as an optional thing, i.e. can expand the events bar)
 - [ ] 2.0.0: improve performance
 ## Possible future plugins (these can go into separate repos, as separate projects), some might not be plugins in the sense that it goes into the sidebar menu
 - [ ] Add extra inbuilt base map, a more reasonable one with finer dividsions where it needs and less fine where it isn't needed

@@ -1,6 +1,7 @@
 import scen2800BC from "./2800BC-Epic-of-Gilgamesh.json";
 import scen356BC from "./356BC-Birth-of-Alexander.json";
 import scen117 from "./117-Pax-Romana.json";
+import scen565 from "./565-The-Last-Roman.json";
 import scen867 from "./867-Macedonian-Dynasty.json";
 import scen1206 from "./1206-Rise-of-Mongolia.json";
 import scen1444 from "./1444-Battle-of-Varna.json";
@@ -11,6 +12,7 @@ const scenarios = {
   "2800BC Epic of Gilgamesh": scen2800BC,
   "356BC Birth of Alexander": scen356BC,
   "117 Pax Romana": scen117,
+  "565 The Last Roman": scen565,
   "867 Macedonian Dynasty": scen867,
   "1206 Rise of Mongolia": scen1206,
   "1444 Battle of Varna": scen1444,
