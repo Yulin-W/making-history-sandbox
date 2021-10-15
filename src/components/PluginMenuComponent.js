@@ -28,7 +28,8 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "flex-start",
         flexFlow: "column",
         alignItems: "stretch",
-        padding: 3,
+        paddingTop: 5,
+        paddingBottom: 5,
         transform: "translate(0%, -50%)",
         borderTopStyle: "ridge",
         borderBottomStyle: "ridge",
@@ -38,8 +39,8 @@ const useStyles = makeStyles((theme) => ({
         WebkitBorderImage: theme.palette.borderImage
     },
     accordionContainer: {
-        paddingRight: 10,
-        paddingLeft: 10,
+        paddingRight: 5,
+        paddingLeft: 5,
     },
     accordionSummary: {
         paddingTop: 0,

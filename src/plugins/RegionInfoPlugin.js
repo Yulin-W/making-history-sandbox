@@ -6,9 +6,14 @@ const useStyles = makeStyles((theme) => ({
     regionInfoContainer: {
         width: "100%",
         paddingLeft: 10,
+        display: "flex",
+        flexFlow: "column",
+        alignItems: "flex-start",
+        justifyContent: "flex-start",
+        height: 80,
     },
     regionInfoColor: {
-        width: 15,
+        minWidth: 15,
         height: 15,
         marginLeft: 5,
         marginRight: 10,
@@ -32,9 +37,9 @@ function RegionInfoComponent(props) {
                     style={{ backgroundColor: data.color ? data.color : props.app.themeDictDefault.other.polyFillColorDefault }}
                     className={classes.regionInfoColor}
                 />
-                <Typography variant="body2" item="true">{"Name: "}{data.name ? data.name : "None"}</Typography>
+                <Typography noWrap variant="body2" item="true">{"Name: "}{data.name ? data.name : "None"}</Typography>
             </Grid>
-            <Typography item="true" variant="caption" className={classes.regionInfoLabel}>{"Label: "}{data.label ? data.label : "None"}</Typography>
+            <Typography item="true" variant="caption" noWrap className={classes.regionInfoLabel}>{"Label: "}{data.label ? data.label : "None"}</Typography>
         </Grid>
     );
 }

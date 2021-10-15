@@ -3,6 +3,7 @@ import React from "react";
 import { withStyles } from '@material-ui/core/styles';
 import Slide from '@material-ui/core/Slide';
 import Typography from '@material-ui/core/Typography';
+import InputBase from '@material-ui/core/InputBase';
 
 // Import retract button custom component
 import RetractButton from './RetractButton.js';
@@ -91,6 +92,9 @@ const useStyles = theme => ({
         justifyContent: "center",
         flexFlow: "row",
         alignItems: "center",
+    },
+    colorInfoLabelEntry: {
+        fontSize: 14,
     }
 });
 
@@ -105,7 +109,7 @@ class ColorBarComponent extends React.PureComponent {
     }
 
     render() {
-        const { classes } = this.props;
+        const { classes, getColorLabel, updateLegendLabel } = this.props;
         const colorHex = this.state.color;
         return (
             <Slide direction="down" in={this.state.display} unmountOnExit={false} mountOnEnter={false}>
@@ -113,10 +117,10 @@ class ColorBarComponent extends React.PureComponent {
                     <div className={classes.colorPickerContainer}>
                         <div className={classes.currentColor} style={{ backgroundColor: colorHex }} />
                         <div className={classes.sliderPickerContainer}>
-                            <SliderPicker color={colorHex} onChange={(color, event) => this.setState({ color: color.hex, colorLabel: this.props.getColorLabel(color.hex) })} />
+                            <SliderPicker color={colorHex} onChange={(color, event) => this.setState({ color: color.hex, colorLabel: getColorLabel(color.hex) })} />
                         </div>
                         <div className={classes.compactPickerContainer}>
-                            <CompactPicker className={classes.compactPicker} color={colorHex} colors={defaultColors} onChange={(color, event) => this.setState({ color: color.hex, colorLabel: this.props.getColorLabel(color.hex) })} />
+                            <CompactPicker className={classes.compactPicker} color={colorHex} colors={defaultColors} onChange={(color, event) => this.setState({ color: color.hex, colorLabel: getColorLabel(color.hex) })} />
                         </div>
                     </div>
                     <div className={classes.colorInfo} id="colorinfo">
@@ -124,7 +128,14 @@ class ColorBarComponent extends React.PureComponent {
                             <Typography noWrap variant="body2" item="true">{"Legend label: "}</Typography>
                         </div>
                         <div className={classes.colorInfoTextLabel}>
-                            <Typography noWrap variant="body2" item="true">{this.state.colorLabel ? this.state.colorLabel : "Color not on map"}</Typography>
+                            <InputBase
+                                className={classes.colorInfoLabelEntry}
+                                inputProps={{style: { textAlign: "center"} }}
+                                value={this.state.colorLabel ? this.state.colorLabel : "Not on map"}
+                                fullWidth
+                                onChange={e => updateLegendLabel(this.state.color, e.target.value)}
+                                disabled={this.state.colorLabel ? false : true}
+                            />
                         </div>
                     </div>
                     <RetractButton direction="up" top={96} left={27} checked={this.state.display} onClick={() => this.setState({ display: !this.state.display })} />

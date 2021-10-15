@@ -126,6 +126,7 @@ class App extends React.Component {
     this.assignSameColor = this.assignSameColor.bind(this);
     this.getColorLabel = this.getColorLabel.bind(this);
     this.refreshColorBarInfo = this.refreshColorBarInfo.bind(this);
+    this.updateLegendLabel = this.updateLegendLabel.bind(this);
   }
 
   // Returns pluginData for marker of current activeEntry
@@ -300,7 +301,6 @@ class App extends React.Component {
     }
     currentData.splice(index, 0, newRegionDict);
     currentColorData.splice(index, 0, newColorEntry);
-    console.log(this.state);
     this.setState({ scenarioData: currentData, colorData: currentColorData }, () => {
       // Update the plugin data, then in call back update active entry to ensure order of execution
       const retval = this.runPluginFunc("onAddEntry", [index]);
@@ -520,6 +520,13 @@ class App extends React.Component {
     }
   }
 
+  // Updates particular label in legend
+  updateLegendLabel(color, label) {
+    let currentLegendData = cloneDeep(this.state.pluginData["Legend"]);
+    currentLegendData[this.state.activeEntry][color] = label;
+    this.updatePluginData("Legend", currentLegendData);
+  }
+
   render() {
     const { classes } = this.props;
     return (
@@ -583,6 +590,7 @@ class App extends React.Component {
             ref={this.colorBarRef}
             themeDict={this.state.themeDict.other}
             getColorLabel={this.getColorLabel}
+            updateLegendLabel={this.updateLegendLabel}
           />
           <MapComponent
             activeEntry={this.state.activeEntry}
