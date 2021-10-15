@@ -459,9 +459,12 @@ class App extends React.Component {
 
   // Loads the specified save file containing scenarioData and pluginData, then sets current active entry to the first one, thereby resetting the region styling as well
   loadSave(saveData) {
-    this.setState({ scenarioData: saveData.scenarioData, colorData: saveData.colorData, pluginData: saveData.pluginData }, () => {
-      this.initUndefinedPluginData(() => this.updateActiveEntry(0));
-    });
+    // Note we run update active entry first to avoid issues of current active entry being undefined after loading save
+    this.updateActiveEntry(0, () => {
+      this.setState({ scenarioData: saveData.scenarioData, colorData: saveData.colorData, pluginData: saveData.pluginData }, () => {
+        this.initUndefinedPluginData(() => this.updateActiveEntry(0));
+      });
+    })
 
     // Running plugin methods
     this.runPluginFunc("onLoadSave", [saveData]);
