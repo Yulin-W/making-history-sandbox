@@ -8,6 +8,7 @@ const steps = [
             <p>Welcome to Making History Sandbox! Click next for the tutorial.</p>
             <hr/>
             <p>***NEW FEATURES*** October, 2021</p>
+            <p>Shows and allow editing of label for current color in color picker</p>
             <p>Same Button: Colors in (or erase if erase button activated) regions with the same color with single click.</p>
             <p>New scenarios: 2800BC Epic of Gilgamesh, 117 Pax Romana, 565 The Last Roman, 867 Macedonian Dynasty: see side panel</p>
             <hr/>
@@ -27,7 +28,7 @@ const steps = [
     },
     {
         target: '#colorbar',
-        content: 'Choose color to color with via various methods provided, for instance slider or RGB input.'
+        content: 'Choose color to color with via various methods provided, e.g. slider, RGB. Displays legend label for selected color that can be edited here (alternatively edit in legend panel).'
     },
     {
         target: '#toolbar',

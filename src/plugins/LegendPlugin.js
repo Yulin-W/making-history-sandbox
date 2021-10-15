@@ -89,11 +89,7 @@ function LegendComponent(props) {
             num={props.app.state.colorData[props.app.state.activeEntry][color]}
             displayNum={displayNum}
             item
-            onChange={e => {
-                let currentLegendData = cloneDeep(props.app.state.pluginData["Legend"]);
-                currentLegendData[props.app.state.activeEntry][color] = e.target.value;
-                props.app.updatePluginData("Legend", currentLegendData);
-            }}
+            onChange={e => props.app.updateLegendLabel(color, e.target.value)}
             setColorBarColor={props.app.setColorBarColor}
         />);
     return (

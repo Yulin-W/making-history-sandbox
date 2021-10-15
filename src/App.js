@@ -124,6 +124,9 @@ class App extends React.Component {
     this.initUndefinedPluginData = this.initUndefinedPluginData.bind(this);
     this.updateSame = this.updateSame.bind(this);
     this.assignSameColor = this.assignSameColor.bind(this);
+    this.getColorLabel = this.getColorLabel.bind(this);
+    this.refreshColorBarInfo = this.refreshColorBarInfo.bind(this);
+    this.updateLegendLabel = this.updateLegendLabel.bind(this);
   }
 
   // Returns pluginData for marker of current activeEntry
@@ -193,6 +196,7 @@ class App extends React.Component {
       picking: false,
       mapKey: this.mapKey,
     }, () => {
+      this.refreshColorBarInfo(); // Refresh color bar so that correct legend label is displayed
       if (callback) {
         callback();
       }
@@ -223,6 +227,10 @@ class App extends React.Component {
     let currentData = cloneDeep(this.state.pluginData);
     currentData[key] = data;
     this.setState({ pluginData: currentData }, () => {
+      // Refresh color bar info if the updated pluginData is for legend so that correct legend labels are displayed
+      if (key === "Legend") {
+        this.refreshColorBarInfo();
+      }
       if (callback) {
         callback();
       }
@@ -236,6 +244,10 @@ class App extends React.Component {
       currentData[key] = data;
     }
     this.setState({ pluginData: currentData }, () => {
+      // Refresh color bar info so that correct legend labels are displayed
+      if ("Legend" in dataDict) {
+        this.refreshColorBarInfo();
+      }
       if (callback) {
         callback();
       }
@@ -271,7 +283,7 @@ class App extends React.Component {
 
   // Sets color in colorBarComponent, expects a hex string
   setColorBarColor(color) {
-    this.colorBarRef.current.setState({ color: color });
+    this.colorBarRef.current.setState({ color: color, colorLabel: this.getColorLabel(color) });
   }
 
   // Adds entry in position at specified index in scenarioData and colorData, new entry has no date nor event
@@ -361,6 +373,7 @@ class App extends React.Component {
       () => {
         this.mapRef.current.resetAllRegionStyle();
         this.runPluginFunc("onUpdateActiveEntry", [newIndex]);
+        this.refreshColorBarInfo(); // Refresh color bar so that correct legend label is displayed
         if (callback) { // runs callback if callback is not null
           callback();
         }
@@ -431,13 +444,13 @@ class App extends React.Component {
   // Filling undefined entries of pluginData to appropriate initialization states if necessary such that plugins may all function
   initUndefinedPluginData(callback = null) {
     let currentPluginData = cloneDeep(this.state.pluginData);
-    let pluginData = {};
     for (const [name, entry] of Object.entries(this.plugins)) {
       if (!(name in currentPluginData)) {
         currentPluginData[name] = entry.initState(this.state.scenarioData);
       }
     }
     this.setState({ pluginData: currentPluginData }, () => {
+      this.refreshColorBarInfo(); // Refresh color bar so that correct legend label is displayed
       if (callback) {
         callback();
       }
@@ -452,6 +465,13 @@ class App extends React.Component {
 
     // Running plugin methods
     this.runPluginFunc("onLoadSave", [saveData]);
+  }
+
+  // Refreshes color bar info so that legend label displayed corresponds to legend
+  refreshColorBarInfo() {
+    if (this.colorBarRef.current) { // Only resets upon legend change given the app has been loaded and the colorBar is loaded up
+      this.setColorBarColor(this.colorBarRef.current.state.color);
+    }
   }
 
   getRegionColorByIndex(index) {
@@ -489,6 +509,22 @@ class App extends React.Component {
 
     // Now run assign region (which will either assign color or erase depending on if erase is also activated)
     this.assignRegions(indices);
+  }
+
+  // Returns label for the color if it is on the map, else return null
+  getColorLabel(colorID) {
+    if (colorID in this.state.pluginData["Legend"][this.state.activeEntry]) {
+      return this.state.pluginData["Legend"][this.state.activeEntry][colorID];
+    } else {
+      return null;
+    }
+  }
+
+  // Updates particular label in legend
+  updateLegendLabel(color, label) {
+    let currentLegendData = cloneDeep(this.state.pluginData["Legend"]);
+    currentLegendData[this.state.activeEntry][color] = label;
+    this.updatePluginData("Legend", currentLegendData);
   }
 
   render() {
@@ -550,7 +586,12 @@ class App extends React.Component {
             oneEntryLeft={this.state.scenarioData.length === 1}
             themeDict={this.state.themeDict.other}
           />
-          <ColorBarComponent ref={this.colorBarRef} themeDict={this.state.themeDict.other} />
+          <ColorBarComponent
+            ref={this.colorBarRef}
+            themeDict={this.state.themeDict.other}
+            getColorLabel={this.getColorLabel}
+            updateLegendLabel={this.updateLegendLabel}
+          />
           <MapComponent
             activeEntry={this.state.activeEntry}
             getRegionColorByIndex={this.getRegionColorByIndex}
