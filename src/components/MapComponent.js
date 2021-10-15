@@ -170,14 +170,11 @@ class MapComponent extends React.PureComponent {
                 // if region has a color, else just do nothing
                 this.props.setColorBarColor(color);
             }
-        } else if (this.props.erasingSame) { // Case if click is when erase same button is activated
+        } else if (this.props.same) { // Case if click is when erase same button is activated
             const color = this.props.getRegionColorByIndex(feature.properties.regionID); // Get color of region clicked on, this will serve as our ID for region
-            if (color) {
-                // if region has a color; i.e. it has been labelled already, else just do nothing
-                this.props.eraseSameColor(color);
-            }
+            this.props.assignSameColor(color);
         } else {
-            // Picking color tool not selected, hence color region as usual (either color or erase)
+            // Picking color tool not selected and same color region modification not selected, hence color region as usual (either color or erase)
             this.props.assignRegions([feature.properties.regionID]);
             layer.setStyle(this.style(feature, layer)); // TODO: such setting would not highlight the region though, which might be a problem
         }
