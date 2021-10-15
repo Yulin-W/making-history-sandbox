@@ -471,7 +471,6 @@ class App extends React.Component {
   refreshColorBarInfo() {
     if (this.colorBarRef.current) { // Only resets upon legend change given the app has been loaded and the colorBar is loaded up
       this.setColorBarColor(this.colorBarRef.current.state.color);
-      console.log("refreshed");
     }
   }
 
