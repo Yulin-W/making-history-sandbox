@@ -92,7 +92,7 @@
   - Making scenario adding a simple 2 step process of copying scenario file into the respective folder and editing the scenario information file
 - [x] 1.9.0: One click remove label and relevant regions
   - Update help to state new feature
-- [ ] 1.10.0: One click color change of relevant regions (and modify color of associated label; but keep legend in same order)
+- [x] 1.10.0: One click color change of relevant regions (and modify color of associated label; but keep legend in same order)
   - Update help for new features
 ## Potential future versions (won't work on it soon)
 - [ ] 1.11.0: easy mouse wheel scroll in events bar, avoid the shift scroll i reckon and do normal scroll

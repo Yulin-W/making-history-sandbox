@@ -97,7 +97,7 @@ function LegendComponent(props) {
             setColorBarColor={props.app.setColorBarColor}
         />);
     return (
-        <div className={classes.legendContainer}>
+        <div id="legend" className={classes.legendContainer}>
             <div className={classes.displayNumSwitchContainer}>
                 <FormControlLabel
                     className={classes.displayNumSwitch}

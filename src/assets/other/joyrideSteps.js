@@ -5,17 +5,17 @@ const steps = [
         target: 'body',
         content: 
         <React.Fragment>
+            <p>Welcome to Making History Sandbox! Click next for the tutorial.</p>
+            <hr/>
             <p>***NEW FEATURES*** October, 2021</p>
-            <p>Same: Colors (or erase if erase button activated) regions with same color with single click.</p>
+            <p>Same Button: Colors in (or erase if erase button activated) regions with the same color with single click.</p>
             <p>New scenarios: 2800BC Epic of Gilgamesh, 117 Pax Romana, 565 The Last Roman, 867 Macedonian Dynasty: see side panel</p>
             <hr/>
             <p>FAQs:</p>
             <p>Removing borders: set region border width to 0 in theme panel on the right</p>
             <p>Adding markers with tooltips: use market box on side panel; added markers can be dragged to position and clicked to reveal/edit tooltip</p>
             <hr/>
-            <p>Welcome to Making History Sandbox! Click next for the tutorial.</p>
-            <hr/>
-            <p>If you are willing to share your scenario, feel free to send it to Yulin-W@outlook.com. If you want attribution, send the name you want as well.</p>
+            <p>If you made a historic scenario and is willing to have it added to the scenarios list, feel free to send it to Yulin-W@outlook.com. If you want attribution, send the name you want as well.</p>
             <hr/>
             <p>Making custom regions: <a href="https://github.com/Yulin-W/making-history-sandbox/blob/main/customRegionTutorial.md" target="_blank">Custom Region Tutorial</a></p>
             <hr/>
@@ -27,19 +27,19 @@ const steps = [
     },
     {
         target: '#colorbar',
-        content: 'Choose your color using the various methods provided, for instance the slider or the RGB input.'
+        content: 'Choose color to color with via various methods provided, for instance slider or RGB input.'
     },
     {
         target: '#toolbar',
-        content: 'Use erase for removing colors, erase same to erase same label regions, lasso for mass colouring (can be used with erase to mass erase), and pick for picking colors from the map.'
+        content: 'Use erase for removing colors, same for coloring (or erasing if erase button on) regions with same color, lasso for colouring (or erasing if erase button on) selected regions, and pick for picking color of a region as current color.'
     },
     {
         target: '#map',
-        content: 'This is the map. To color/erase color, click the region. Or, if lasso is used, click and hold to select regions.',
+        content: 'This is the map. To color/erase, click the region. Or, if lasso is used, click and hold to select regions.',
     },
     {
         target: '.leaflet-control-layers',
-        content: 'This is where you change the background map and switch on/off the regions.'
+        content: 'This is where you change the background map and switch on/off the regions/markers.'
     },
     {
         target: '#timeline_bar',
@@ -51,15 +51,7 @@ const steps = [
     },
     {
         target: '#plugin_menu',
-        content: "This is where additional functionalities are, we'll just mention a few.",
-    },
-    {
-        target: '#theme_panel',
-        content: 'Adjust various theming options here; notably, polyStrokeWeight decides region border width, and poly in general refers to the polygons of the map.',
-    },
-    {
-        target: '#geojson_loader',
-        content: 'Load your custom region file or save here, for tutorial see https://github.com/Yulin-W/making-history-sandbox/blob/main/customRegionTutorial.md',
+        content: "This is where additional functionalities are, including legend, premade scenarios, map theme editing (e.g. borders), loading custom region file/save, etc. For custom region tutorial see https://github.com/Yulin-W/making-history-sandbox/blob/main/customRegionTutorial.md",
     },
     {
         target: '#menu',
