@@ -95,6 +95,7 @@
 - [x] 1.10.0: One click color change of relevant regions (and modify color of associated label; but keep legend in same order)
   - Update help for new features
 - [x] 1.10.1: Color picker displays whether current color is on map, and if so, what its label is
+  - Allow edit label in color bar as well
 ## Potential future versions (won't work on it soon)
 - [ ] 1.11.0: easy mouse wheel scroll in events bar, avoid the shift scroll i reckon and do normal scroll
 - [ ] 1.12.0: Drag/shift timeline event entries
