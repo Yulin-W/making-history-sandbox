@@ -89,7 +89,7 @@ const initState = scenarioData => {
 const CustomGeoJSONLoaderPluginDict = {
     component: CustomGeoJSONLoaderPluginComponent,
     initState: initState,
-    help: "For loading custom region geoJSON or saves with custom regions",
+    help: "For loading custom region geoJSON or saves with custom regions. See help for tutorial",
     functions: {}
 };
 
