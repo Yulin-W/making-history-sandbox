@@ -2,6 +2,7 @@
 import React from "react";
 import { withStyles } from '@material-ui/core/styles';
 import Slide from '@material-ui/core/Slide';
+import Typography from '@material-ui/core/Typography';
 
 // Import retract button custom component
 import RetractButton from './RetractButton.js';
@@ -16,11 +17,11 @@ const useStyles = theme => ({
         top: 0,
         left: "50%",
         width: 360,
-        height: 60,
+        height: 80,
         zIndex: 2,
         display: "flex",
-        justifyContent: "space-between",
-        flexFlow: "row",
+        justifyContent: "space-evenly",
+        flexFlow: "column",
         alignItems: "center",
         marginLeft: -185,
         marginTop: 30,
@@ -28,7 +29,16 @@ const useStyles = theme => ({
         borderStyle: "ridge",
         borderColor: theme.palette.border,
         backgroundImage: theme.palette.backgroundImage.main,
-        WebkitBorderImage: theme.palette.borderImage
+        WebkitBorderImage: theme.palette.borderImage,
+        color: theme.palette.text.primary,
+    },
+    colorPickerContainer: {
+        display: "flex",
+        justifyContent: "space-evenly",
+        flexFlow: "row",
+        alignItems: "center",
+        width: "100%",
+        flexGrow: 1,
     },
     sliderPickerContainer: {
         display: "flex",
@@ -59,6 +69,29 @@ const useStyles = theme => ({
     compactPicker: {
         backgroundColor: theme.palette.background.light,
     },
+    colorInfo: {
+        height: 20,
+        width: "100%",
+        display: "flex",
+        justifyContent: "center",
+        flexFlow: "row",
+        alignItems: "center",
+    },
+    colorInfoTextDescriptor: {
+        width: "25%",
+        display: "flex",
+        justifyContent: "center",
+        flexFlow: "row",
+        alignItems: "center",
+        marginRight: 10,
+    },
+    colorInfoTextLabel: {
+        width: "50%",
+        display: "flex",
+        justifyContent: "center",
+        flexFlow: "row",
+        alignItems: "center",
+    }
 });
 
 class ColorBarComponent extends React.PureComponent {
@@ -67,23 +100,34 @@ class ColorBarComponent extends React.PureComponent {
         this.state = {
             color: "#bf4340", // Default color, it is the color when slider in first row of color bar is set to leftmost position, and the centre one of the 5 colors in the second row of the color bar is chosen
             display: true, // Default to showing the colorbar
+            colorLabel: props.getColorLabel("#bf4340")
         }
     }
 
-    render() { //FIXME: add some color tests to ensure that selected color is notified if coincides with a color already on the page
+    render() {
         const { classes } = this.props;
         const colorHex = this.state.color;
         return (
             <Slide direction="down" in={this.state.display} unmountOnExit={false} mountOnEnter={false}>
                 <div className={classes.colorBarContainer} id="colorbar">
-                    <div className={classes.currentColor} style={{ backgroundColor: colorHex }} />
-                    <div className={classes.sliderPickerContainer}>
-                        <SliderPicker color={colorHex} onChange={(color, event) => this.setState({ color: color.hex })} />
+                    <div className={classes.colorPickerContainer}>
+                        <div className={classes.currentColor} style={{ backgroundColor: colorHex }} />
+                        <div className={classes.sliderPickerContainer}>
+                            <SliderPicker color={colorHex} onChange={(color, event) => this.setState({ color: color.hex, colorLabel: this.props.getColorLabel(color.hex) })} />
+                        </div>
+                        <div className={classes.compactPickerContainer}>
+                            <CompactPicker className={classes.compactPicker} color={colorHex} colors={defaultColors} onChange={(color, event) => this.setState({ color: color.hex, colorLabel: this.props.getColorLabel(color.hex) })} />
+                        </div>
                     </div>
-                    <div className={classes.compactPickerContainer}>
-                        <CompactPicker className={classes.compactPicker} color={colorHex} colors={defaultColors} onChange={(color, event) => this.setState({ color: color.hex })} />
+                    <div className={classes.colorInfo} id="colorinfo">
+                        <div className={classes.colorInfoTextDescriptor}>
+                            <Typography noWrap variant="body2" item="true">{"Legend label: "}</Typography>
+                        </div>
+                        <div className={classes.colorInfoTextLabel}>
+                            <Typography noWrap variant="body2" item="true">{this.state.colorLabel ? this.state.colorLabel : "Color not on map"}</Typography>
+                        </div>
                     </div>
-                    <RetractButton direction="up" top={76} left={27} checked={this.state.display} onClick={() => this.setState({ display: !this.state.display })} />
+                    <RetractButton direction="up" top={96} left={27} checked={this.state.display} onClick={() => this.setState({ display: !this.state.display })} />
                 </div>
             </Slide>
         );

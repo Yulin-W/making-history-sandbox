@@ -10,7 +10,7 @@ import RetractButton from './RetractButton.js';
 const useStyles = makeStyles((theme) => ({
     toolbarContainer: {
         position: "absolute",
-        top: 102,
+        top: 122,
         right: "50%",
         marginRight: -235 / 2,
         height: 30,
