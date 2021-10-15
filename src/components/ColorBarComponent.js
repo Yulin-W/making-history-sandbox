@@ -2,6 +2,10 @@
 import React from "react";
 import { withStyles } from '@material-ui/core/styles';
 import Slide from '@material-ui/core/Slide';
+import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
+import Tooltip from '@material-ui/core/Tooltip';
+
+// Import react stuff for color info
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 
@@ -31,7 +35,6 @@ const useStyles = theme => ({
         borderColor: theme.palette.border,
         backgroundImage: theme.palette.backgroundImage.main,
         WebkitBorderImage: theme.palette.borderImage,
-        color: theme.palette.text.primary,
     },
     colorPickerContainer: {
         display: "flex",
@@ -77,6 +80,7 @@ const useStyles = theme => ({
         justifyContent: "center",
         flexFlow: "row",
         alignItems: "center",
+        color: theme.palette.text.primary,
     },
     colorInfoTextDescriptor: {
         width: "25%",
@@ -95,6 +99,10 @@ const useStyles = theme => ({
     },
     colorInfoLabelEntry: {
         fontSize: 14,
+    },
+    colorInfoHelp: {
+        marginTop: 3,
+        marginRight: 10,
     }
 });
 
@@ -124,6 +132,13 @@ class ColorBarComponent extends React.PureComponent {
                         </div>
                     </div>
                     <div className={classes.colorInfo} id="colorinfo">
+                        <Tooltip
+                            title={"Legend label (if any) for selected color. Edit label by clicking (alternatively use legend panel in side menu)"}
+                        >
+                            <div className={classes.colorInfoHelp}>
+                                <HelpOutlineIcon fontSize="small"/>
+                            </div>
+                        </Tooltip>
                         <div className={classes.colorInfoTextDescriptor}>
                             <Typography noWrap variant="body2" item="true">{"Legend label: "}</Typography>
                         </div>
