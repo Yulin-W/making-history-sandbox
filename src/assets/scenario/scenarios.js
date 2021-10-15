@@ -1,4 +1,5 @@
 import scen2800BC from "./2800BC-Epic-of-Gilgamesh.json";
+import scen1279BC from "./1279BC-Ozzymandias-King-of-Kings.json";
 import scen356BC from "./356BC-Birth-of-Alexander.json";
 import scen117 from "./117-Pax-Romana.json";
 import scen565 from "./565-The-Last-Roman.json";
@@ -10,6 +11,7 @@ import scen1936 from "./1936-Coming-of-the-Storm.json"
 // Import json scenarios, keys should be names that will be displayed for the scenario
 const scenarios = {
   "2800BC Epic of Gilgamesh": scen2800BC,
+  "1279BC Ozzymandias, King of Kings": scen1279BC,
   "356BC Birth of Alexander": scen356BC,
   "117 Pax Romana": scen117,
   "565 The Last Roman": scen565,
