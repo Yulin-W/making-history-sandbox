@@ -98,12 +98,20 @@
   - Allow edit label in color bar as well
 - [x] 1.10.2: Bugfix on whitescreen error if save is loaded when current active entry is larger than available timepoints in save
   - Fix: set active entry to 0 (first time point) before loading any saves
+- [x] 1.10.3: 1861 scenario, revolutions and civil wars (in particular US civil war began in 1861)
+- [ ] 1.10.4: 1789 scenario, French Revolution
+- [ ] 1.11.0: 1 click color modern countries mode (try to somehow use the basemap information ideally)
+  - Then in help tips, or tooltips, recommend using it aloneside a background map with nation borders, i.e. the black white map one
+- [ ] 1.11.1: 1776 scenario, US Independence
+- [ ] 1.11.2: Change increment amounts in themes for more reasonable experience, e.g. border width shouldn't increment by 1 upon pressing buttons, but instead by 0.1
+- [ ] 1.11.3: 1618 scenario, 30 years war begin
 ## Potential future versions (won't work on it soon)
-- [ ] 1.11.0: easy mouse wheel scroll in events bar, avoid the shift scroll i reckon and do normal scroll
-- [ ] 1.12.0: Drag/shift timeline event entries
-- [ ] 1.13.0: Old editor to new editor date messup fix
-- [ ] 1.14.0: Speed improvement to changing timeline entries
-- [ ] 1.15.0: Add old editor like display to events to allow seeing all events in a single panel (I'd say have it as an optional thing, i.e. can expand the events bar)
+- [ ] 1.12.0: easy mouse wheel scroll in events bar, avoid the shift scroll i reckon and do normal scroll
+- [ ] 1.13.0: Drag/shift timeline event entries (probably just a shift left/right button)
+- [ ] 1.14.0: Old editor to new editor date messup fix
+- [ ] 1.15.0: Speed improvement to changing timeline entries, and maybe improving speed by not rerendering entire canvas on changing region hovered over or colored?
+- [ ] 1.16.0: Copy/paste time point
+- [ ] 1.17.0: Add old editor like display to events to allow seeing all events in a single panel (I'd say have it as an optional thing, i.e. can expand the events bar)
 - [ ] 2.0.0: improve performance
 ## Possible future plugins (these can go into separate repos, as separate projects), some might not be plugins in the sense that it goes into the sidebar menu
 - [ ] Add extra inbuilt base map, a more reasonable one with finer dividsions where it needs and less fine where it isn't needed
