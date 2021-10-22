@@ -146,10 +146,10 @@ class ColorBarComponent extends React.PureComponent {
                             <InputBase
                                 className={classes.colorInfoLabelEntry}
                                 inputProps={{style: { textAlign: "center"} }}
-                                value={this.state.colorLabel ? this.state.colorLabel : "Not on map"}
+                                value={this.state.colorLabel !== null ? this.state.colorLabel : "Not on map"}
                                 fullWidth
                                 onChange={e => updateLegendLabel(this.state.color, e.target.value)}
-                                disabled={this.state.colorLabel ? false : true}
+                                disabled={this.state.colorLabel !== null ? false : true}
                             />
                         </div>
                     </div>
