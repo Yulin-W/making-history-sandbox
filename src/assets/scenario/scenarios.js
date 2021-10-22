@@ -6,6 +6,7 @@ import scen565 from "./565-The-Last-Roman.json";
 import scen867 from "./867-Macedonian-Dynasty.json";
 import scen1206 from "./1206-Rise-of-Mongolia.json";
 import scen1444 from "./1444-Battle-of-Varna.json";
+import scen1789 from "./1789-French-Revolution.json";
 import scen1861 from "./1861-American-Civil-War.json";
 import scen1936 from "./1936-Coming-of-the-Storm.json"
 
@@ -19,6 +20,7 @@ const scenarios = {
   "867 Macedonian Dynasty": scen867,
   "1206 Rise of Mongolia": scen1206,
   "1444 Battle of Varna": scen1444,
+  "1789 French Revolution": scen1789,
   "1861 American Civil War": scen1861,
   "1936 Coming of the Storm": scen1936,
 };
