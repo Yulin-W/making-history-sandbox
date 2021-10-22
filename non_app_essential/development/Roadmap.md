@@ -105,11 +105,12 @@
 - [ ] 1.11.1: 1776 scenario, US Independence
 - [ ] 1.11.2: Change increment amounts in themes for more reasonable experience, e.g. border width shouldn't increment by 1 upon pressing buttons, but instead by 0.1
 - [ ] 1.11.3: 1618 scenario, 30 years war begin
+- [ ] 1.12.0: Undo button; i think just keep track of past calls of region assigning of current entry, i think past 10 calls should be enough; and history kept clears upon changing entry.
 ## Potential future versions (won't work on it soon)
-- [ ] 1.12.0: easy mouse wheel scroll in events bar, avoid the shift scroll i reckon and do normal scroll
-- [ ] 1.13.0: Drag/shift timeline event entries (probably just a shift left/right button)
-- [ ] 1.14.0: Old editor to new editor date messup fix
-- [ ] 1.15.0: Speed improvement to changing timeline entries, and maybe improving speed by not rerendering entire canvas on changing region hovered over or colored?
+- [ ] 1.13.0: easy mouse wheel scroll in events bar, avoid the shift scroll i reckon and do normal scroll
+- [ ] 1.14.0: Drag/shift timeline event entries (probably just a shift left/right button)
+- [ ] 1.15.0: Old editor to new editor date messup fix
+- [ ] 1.16.0: Speed improvement to changing timeline entries, and maybe improving speed by not rerendering entire canvas on changing region hovered over or colored?
 - [ ] 1.16.0: Copy/paste time point
 - [ ] 1.17.0: Add old editor like display to events to allow seeing all events in a single panel (I'd say have it as an optional thing, i.e. can expand the events bar)
 - [ ] 2.0.0: improve performance
