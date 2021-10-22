@@ -99,7 +99,7 @@
 - [x] 1.10.2: Bugfix on whitescreen error if save is loaded when current active entry is larger than available timepoints in save
   - Fix: set active entry to 0 (first time point) before loading any saves
 - [x] 1.10.3: 1861 scenario, revolutions and civil wars (in particular US civil war began in 1861)
-- [ ] 1.10.4: 1789 scenario, French Revolution
+- [x] 1.10.4: 1789 scenario, French Revolution
 - [ ] 1.11.0: 1 click color modern countries mode (try to somehow use the basemap information ideally)
   - Then in help tips, or tooltips, recommend using it aloneside a background map with nation borders, i.e. the black white map one
 - [ ] 1.11.1: 1776 scenario, US Independence

@@ -10,7 +10,7 @@ const steps = [
             <p>***NEW FEATURES*** October, 2021</p>
             <p>Shows and allow editing of label for current color in color picker</p>
             <p>Same Button: Colors in (or erase if erase button activated) regions with the same color with single click.</p>
-            <p>New scenarios: 2800BC Epic of Gilgamesh, 1279BC Ozymandias King of Kings, 117 Pax Romana, 565 The Last Roman, 867 Macedonian Dynasty, 1861 US Civil War: see side panel</p>
+            <p>New scenarios: 2800BC Epic of Gilgamesh, 1279BC Ozymandias King of Kings, 117 Pax Romana, 565 The Last Roman, 867 Macedonian Dynasty, 1789 French Revolution, 1861 US Civil War: see side panel</p>
             <hr/>
             <p>FAQs:</p>
             <p>Removing borders: set region border width to 0 in theme panel on the right</p>
