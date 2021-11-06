@@ -16,8 +16,6 @@ const steps = [
             <p>Removing borders: set region border width to 0 in theme panel on the right</p>
             <p>Adding markers with tooltips: use market box on side panel; added markers can be dragged to position and clicked to reveal/edit tooltip</p>
             <hr/>
-            <p>If you made a historic scenario and is willing to have it added to the scenarios list, feel free to send it to Yulin-W@outlook.com. If you want attribution, send the name you want as well.</p>
-            <hr/>
             <p>Making custom regions: <a href="https://github.com/Yulin-W/making-history-sandbox/blob/main/customRegionTutorial.md" target="_blank">Custom Region Tutorial</a></p>
             <hr/>
             <p>See acknowledgements at the end of the tutorial</p>
