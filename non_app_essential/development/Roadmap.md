@@ -100,20 +100,26 @@
   - Fix: set active entry to 0 (first time point) before loading any saves
 - [x] 1.10.3: 1861 scenario, revolutions and civil wars (in particular US civil war began in 1861)
 - [x] 1.10.4: 1789 scenario, French Revolution
-- [ ] 1.11.0: 1 click color modern countries mode (try to somehow use the basemap information ideally)
+- [ ] 1.11.0: Speed improvement to changing timeline entries, and maybe improving speed by not rerendering entire canvas on changing region hovered over or colored? Get performance upon timepoint switch to those of the old editor level.
+- [ ] 1.12.0: Play timeline like old editor; different speeds allowed (reply and close issue in GITHUB for SNWSETH)
+- [ ] 1.12.1: Generate timeline gif
+- [ ] 1.13.0: Condensed view mode of timeline; just add as an extra sidebar on top of the main event info edit side bar, containing everything in timeline data as a table. Also allow timeline edits to be from there as well; i.e. clicking entry there will also change the bottom timebar and the main event edit bar (ensure the timebar at the bottom does scroll in response)
+- [ ] 1.14.0: 1 click color modern countries mode (try to somehow use the basemap information ideally)
   - Then in help tips, or tooltips, recommend using it aloneside a background map with nation borders, i.e. the black white map one
-- [ ] 1.11.1: 1776 scenario, US Independence
-- [ ] 1.11.2: Change increment amounts in themes for more reasonable experience, e.g. border width shouldn't increment by 1 upon pressing buttons, but instead by 0.1
-- [ ] 1.11.3: 1618 scenario, 30 years war begin
-- [ ] 1.12.0: Undo button; i think just keep track of past calls of region assigning of current entry, i think past 10 calls should be enough; and history kept clears upon changing entry.
+- [ ] 1.14.1: 1776 scenario, US Independence
+- [ ] 1.14.2: Change increment amounts in themes for more reasonable experience, e.g. border width shouldn't increment by 1 upon pressing buttons, but instead by 0.1
+- [ ] 1.14.3: 1618 scenario, 30 years war begin
+- [ ] 1.15.0: Add flag overlap capability (automatic adjust kind) (if done, go reply to the dude that sent the email request)
+
 ## Potential future versions (won't work on it soon)
-- [ ] 1.13.0: easy mouse wheel scroll in events bar, avoid the shift scroll i reckon and do normal scroll
-- [ ] 1.14.0: Drag/shift timeline event entries (probably just a shift left/right button)
-- [ ] 1.15.0: Old editor to new editor date messup fix
-- [ ] 1.16.0: Speed improvement to changing timeline entries, and maybe improving speed by not rerendering entire canvas on changing region hovered over or colored?
-- [ ] 1.16.0: Copy/paste time point
-- [ ] 1.17.0: Add old editor like display to events to allow seeing all events in a single panel (I'd say have it as an optional thing, i.e. can expand the events bar)
-- [ ] 2.0.0: improve performance
+- [ ] Undo button; i think just keep track of past calls of region assigning of current entry, i think past 10 calls should be enough; and history kept clears upon changing entry.
+- [ ] easy mouse wheel scroll in events bar, avoid the shift scroll i reckon and do normal scroll
+- [ ] Drag/shift timeline event entries (probably just a shift left/right button)
+- [ ] Old editor to new editor date messup fix
+- [ ] Copy/paste time point
+- [ ] Add old editor like display to events to allow seeing all events in a single panel (I'd say have it as an optional thing, i.e. can expand the events bar)
+- [ ] improve performance
+
 ## Possible future plugins (these can go into separate repos, as separate projects), some might not be plugins in the sense that it goes into the sidebar menu
 - [ ] Add extra inbuilt base map, a more reasonable one with finer dividsions where it needs and less fine where it isn't needed
 - [ ] Convert image to basemap/scenario, of appropriate format
