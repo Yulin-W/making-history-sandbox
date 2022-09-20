@@ -563,7 +563,6 @@ class App extends React.Component {
       }
       await new Promise(r => setTimeout(r, 2000 / this.state.playSpeed)); // base speed is 2s
     }
-    //FIXME: add a help section regarding this
   }
 
   // Pauses playing timeline

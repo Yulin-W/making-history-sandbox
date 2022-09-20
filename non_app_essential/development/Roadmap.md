@@ -100,7 +100,7 @@
   - Fix: set active entry to 0 (first time point) before loading any saves
 - [x] 1.10.3: 1861 scenario, revolutions and civil wars (in particular US civil war began in 1861)
 - [x] 1.10.4: 1789 scenario, French Revolution
-- [ ] 1.11.0: Play timeline like old editor; different speeds allowed (reply and close issue in GITHUB for SNWSETH)
+- [x] 1.11.0: Play timeline like old editor; different speeds allowed (reply and close issue in GITHUB for SNWSETH)
 - [ ] 1.11.1: Generate timeline gif
 - [ ] 1.12.0: Condensed view mode of timeline; just add as an extra sidebar on top of the main event info edit side bar, containing everything in timeline data as a table. Also allow timeline edits to be from there as well; i.e. clicking entry there will also change the bottom timebar and the main event edit bar (ensure the timebar at the bottom does scroll in response)
 - [ ] 1.13.0: 1 click color modern countries mode (try to somehow use the basemap information ideally)
