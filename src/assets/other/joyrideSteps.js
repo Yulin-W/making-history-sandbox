@@ -7,14 +7,13 @@ const steps = [
         <React.Fragment>
             <p>Welcome to Making History Sandbox! Click next for the tutorial.</p>
             <hr/>
-            <p>***NEW FEATURES*** October, 2021</p>
-            <p>Shows and allow editing of label for current color in color picker</p>
-            <p>Same Button: Colors in (or erase if erase button activated) regions with the same color with single click.</p>
-            <p>New scenarios: 2800BC Epic of Gilgamesh, 1279BC Ozymandias King of Kings, 117 Pax Romana, 565 The Last Roman, 867 Macedonian Dynasty, 1789 French Revolution, 1861 US Civil War: see side panel</p>
+            <p>***NEW FEATURES*** September, 2022</p>
+            <p>Play timeline toolbar (on the left of the page, above events editor). Currently offers 1x to 16x speeds, where 1x corresponds to ~2s per time point.</p>
             <hr/>
             <p>FAQs:</p>
+            <p>Changing color of regions of same color: toggle "Same" button, then color as usual</p>
             <p>Removing borders: set region border width to 0 in theme panel on the right</p>
-            <p>Adding markers with tooltips: use market box on side panel; added markers can be dragged to position and clicked to reveal/edit tooltip</p>
+            <p>Adding markers with tooltips: use marker box on side panel; added markers can be dragged to position and clicked to reveal/edit tooltip</p>
             <hr/>
             <p>Making custom regions: <a href="https://github.com/Yulin-W/making-history-sandbox/blob/main/customRegionTutorial.md" target="_blank">Custom Region Tutorial</a></p>
             <hr/>

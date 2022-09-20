@@ -13,6 +13,7 @@ import ToolbarComponent from "./components/ToolbarComponent.js";
 import PluginMenuComponent from "./components/PluginMenuComponent.js";
 import TimelineBarComponent from './components/TimelineBarComponent.js';
 import TimelineEventComponent from './components/TimelineEventComponent.js';
+import PlayToolbarComponent from './components/PlayToolbarComponent.js';
 
 // Import default themeDict
 import themeDict from './themes/default';
@@ -24,6 +25,7 @@ import mapAdmin from "./assets/basemap/mapAdmin.json"; // This is the only defau
 import createRegionDict from './scripts/createRegionDict.js';
 import createScenarioEntry from './scripts/createScenarioEntry.js';
 import saveScenario from './scripts/saveScenario.js';
+import nextNumInList from './scripts/nextNumInList';
 
 // Import plugins
 import plugins from "./appPlugins.js";
@@ -90,6 +92,8 @@ class App extends React.Component {
       helpOn: true, // On opening app, defaults to have help on
       picking: false, // color picking tool defaults to not on
       mapKey: this.mapKey, // This is here both as a state and to act as a trigger for MapComponent and App overall to rerender upon loading in a new GeoJSON, it should only be modified by CustomGeoJSONLoaderPlugin
+      playing: false, // defaults to not playing time line on opening app
+      playSpeed: 1, // defaults to 1x play speed
     };
 
     // Numerous refs
@@ -127,6 +131,11 @@ class App extends React.Component {
     this.getColorLabel = this.getColorLabel.bind(this);
     this.refreshColorBarInfo = this.refreshColorBarInfo.bind(this);
     this.updateLegendLabel = this.updateLegendLabel.bind(this);
+    this.updatePlaying = this.updatePlaying.bind(this);
+    this.playTimeline = this.playTimeline.bind(this);
+    this.stopPlaying = this.stopPlaying.bind(this);
+    this.changePlaySpeed = this.changePlaySpeed.bind(this);
+    this.pausePlaying = this.pausePlaying.bind(this);
   }
 
   // Returns pluginData for marker of current activeEntry
@@ -195,6 +204,8 @@ class App extends React.Component {
       helpOn: false, // This is different from the initial initialization state value
       picking: false,
       mapKey: this.mapKey,
+      playing: false,
+      playSpeed: 1,
     }, () => {
       this.refreshColorBarInfo(); // Refresh color bar so that correct legend label is displayed
       if (callback) {
@@ -530,6 +541,49 @@ class App extends React.Component {
     this.updatePluginData("Legend", currentLegendData);
   }
 
+  // Updates status of playing
+  updatePlaying(newState, callback = null) {
+    this.setState({ playing: newState }, () => {
+      if (callback) {
+        callback();
+      }
+    });
+  }
+
+  // Plays timeline
+  async playTimeline() {
+    while (this.state.playing) {
+      const newEntry = this.state.activeEntry + 1;
+      if (newEntry === this.state.scenarioData.length) {
+        // Stop playing if next entry is the beyond end of timeline, i.e. reached end of timeline already
+        this.updatePlaying(false);
+      } else {
+        // Move to next entry
+        this.updateActiveEntry(newEntry)
+      }
+      await new Promise(r => setTimeout(r, 2000 / this.state.playSpeed)); // base speed is 2s
+    }
+  }
+
+  // Pauses playing timeline
+  pausePlaying() {
+    this.updatePlaying(false);
+  }
+
+  // Stops playing timeline and goes back to start
+  stopPlaying() {
+    this.updatePlaying(false, () => {
+      this.updateActiveEntry(0)
+    });
+  }
+
+  // Change timeline play speed
+  changePlaySpeed() {
+    const playSpeedArray = [1,2,4,8,16];
+    const newSpeed = nextNumInList(this.state.playSpeed, playSpeedArray);
+    this.setState({ playSpeed: newSpeed });
+  }
+
   render() {
     const { classes } = this.props;
     return (
@@ -588,6 +642,15 @@ class App extends React.Component {
             clearEntry={this.clearEntry}
             oneEntryLeft={this.state.scenarioData.length === 1}
             themeDict={this.state.themeDict.other}
+          />
+          <PlayToolbarComponent
+            playing={this.state.playing}
+            updatePlaying={this.updatePlaying}
+            playTimeline={this.playTimeline}
+            pausePlaying={this.pausePlaying}
+            stopPlaying={this.stopPlaying}
+            playSpeed={this.state.playSpeed}
+            changePlaySpeed={this.changePlaySpeed}
           />
           <ColorBarComponent
             ref={this.colorBarRef}
