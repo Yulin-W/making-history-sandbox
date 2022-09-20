@@ -12,7 +12,7 @@
     "clone-deep": "^4.0.1",
     "css-color-names": "^1.0.1",
     "file-saver": "^2.0.5",
-    "gh-pages": "^3.1.0",
+    "gh-pages": "^3.2.3",
     "leaflet": "^1.7.1",
     "leaflet-lasso": "^2.2.4",
     "react": "^17.0.1",
