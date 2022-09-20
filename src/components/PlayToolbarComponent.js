@@ -38,7 +38,6 @@ const useStyles = makeStyles((theme) => ({
 
 function PlayToolbarComponent(props) {
     const classes = useStyles();
-    const speedButtonText = "1x";
     const [display, setDisplay] = React.useState(true);
     return (
         <Slide direction="right" in={display} unmountOnExit={false} mountOnEnter={false}>
@@ -47,7 +46,11 @@ function PlayToolbarComponent(props) {
                     className={classes.playToolbarButton}
                     onClick={() => {
                         props.updatePlaying(!props.playing, () => {
-                            props.playTimeline();
+                            if (props.playing) {
+                                props.pausePlaying();
+                            } else {
+                                props.playTimeline();
+                            }
                         })
                     }}
                 >
@@ -60,7 +63,7 @@ function PlayToolbarComponent(props) {
                 <IconButton
                     className={classes.playToolbarButton}
                     onClick={() => {
-                        props.stopPlayingTimeline();
+                        props.stopPlaying();
                     }}
                 >
                     <StopIcon/>
@@ -71,7 +74,7 @@ function PlayToolbarComponent(props) {
                         props.changePlaySpeed();
                     }}
                 >
-                    {speedButtonText}
+                    {props.playSpeed + "x"}
                 </IconButton>
                 <RetractButton direction="left" top={"50%"} left={36} checked={display} onClick={() => setDisplay(!display)} />
             </div>

@@ -25,6 +25,7 @@ import mapAdmin from "./assets/basemap/mapAdmin.json"; // This is the only defau
 import createRegionDict from './scripts/createRegionDict.js';
 import createScenarioEntry from './scripts/createScenarioEntry.js';
 import saveScenario from './scripts/saveScenario.js';
+import nextNumInList from './scripts/nextNumInList';
 
 // Import plugins
 import plugins from "./appPlugins.js";
@@ -132,8 +133,9 @@ class App extends React.Component {
     this.updateLegendLabel = this.updateLegendLabel.bind(this);
     this.updatePlaying = this.updatePlaying.bind(this);
     this.playTimeline = this.playTimeline.bind(this);
-    this.stopPlayingTimeline = this.stopPlayingTimeline.bind(this);
+    this.stopPlaying = this.stopPlaying.bind(this);
     this.changePlaySpeed = this.changePlaySpeed.bind(this);
+    this.pausePlaying = this.pausePlaying.bind(this);
   }
 
   // Returns pluginData for marker of current activeEntry
@@ -552,7 +554,6 @@ class App extends React.Component {
   async playTimeline() {
     while (this.state.playing) {
       const newEntry = this.state.activeEntry + 1;
-      console.log(newEntry)
       if (newEntry === this.state.scenarioData.length) {
         // Stop playing if next entry is the beyond end of timeline, i.e. reached end of timeline already
         this.updatePlaying(false);
@@ -565,14 +566,23 @@ class App extends React.Component {
     //FIXME: add a help section regarding this
   }
 
+  // Pauses playing timeline
+  pausePlaying() {
+    this.updatePlaying(false);
+  }
+
   // Stops playing timeline and goes back to start
-  stopPlayingTimeline() {
-    //FIXME:
+  stopPlaying() {
+    this.updatePlaying(false, () => {
+      this.updateActiveEntry(0)
+    });
   }
 
   // Change timeline play speed
   changePlaySpeed() {
-    //FIXME:
+    const playSpeedArray = [1,2,4,8,16];
+    const newSpeed = nextNumInList(this.state.playSpeed, playSpeedArray);
+    this.setState({ playSpeed: newSpeed });
   }
 
   render() {
@@ -638,7 +648,9 @@ class App extends React.Component {
             playing={this.state.playing}
             updatePlaying={this.updatePlaying}
             playTimeline={this.playTimeline}
-            stopPlayingTimeline={this.stopPlayingTimeline}
+            pausePlaying={this.pausePlaying}
+            stopPlaying={this.stopPlaying}
+            playSpeed={this.state.playSpeed}
             changePlaySpeed={this.changePlaySpeed}
           />
           <ColorBarComponent
