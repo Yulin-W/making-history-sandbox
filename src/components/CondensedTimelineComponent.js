@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
       bottom: 309, // This value should be such that the event box touches the play bar
       minWidth: 140,
       width: "20%",
-      height: 500,
+      height: 400,
       zIndex: 1,
       display: "flex",
       flexFlow: "column",
@@ -41,14 +41,14 @@ const useStyles = makeStyles((theme) => ({
       padding: 5,
     },
     tableCell: {
-      fontSize: 12,
+      fontSize: 10,
       overflowWrap: "break-word",
       hyphens: "auto",
       padding: 5,
     },
     dateColumn: {
-      maxWidth: 70,
-      minWidth: 70,
+      maxWidth: 30,
+      minWidth: 30,
     },
     notCurrentTableEntry: {
       opacity: 0.5,
