@@ -50,7 +50,7 @@ const steps = [
     },
     {
         target: '#condensed_timeline',
-        content: 'This is a condensed view of the timeline. You can also navigate to events by clicking them here. Albeit editing cannot be done here.',
+        content: 'This is a condensed view of the timeline. You can also navigate to events by clicking them here. Adding and deleting events can also be done (using +, x buttons). Albeit editing cannot be done here.',
     },
     {
         target: '#plugin_menu',

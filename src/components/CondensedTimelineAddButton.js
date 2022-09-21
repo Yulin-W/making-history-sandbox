@@ -5,7 +5,7 @@ import IconButton from '@material-ui/core/IconButton';
 const useStyles = makeStyles((theme) => ({
     addIconButtonContainerCondensedTimeline: {
         position: "absolute",
-        right: 0,
+        left: 78,
         bottom: -11,
         padding: 0,
         zIndex: 1,
