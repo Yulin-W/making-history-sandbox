@@ -102,7 +102,8 @@
 - [x] 1.10.4: 1789 scenario, French Revolution
 - [x] 1.11.0: Play timeline like old editor; different speeds allowed (reply and close issue in GITHUB for SNWSETH)
 - [x] 1.12.0: Condensed view mode of timeline; just add as an extra sidebar on top of the main event info edit side bar, containing everything in timeline data as a table. Also allow timeline edits to be from there as well; i.e. clicking entry there will also change the bottom timebar and the main event edit bar (ensure the timebar at the bottom does scroll in response)
-- [ ] 1.12.1: Generate timeline gif
+- [x] 1.12.1: Deletion button in condensed timeline
+- [ ] 1.12.2: Generate timeline gif
 - [ ] 1.13.0: Speed improvement to changing timeline entries, and maybe improving speed by not rerendering entire canvas on changing region hovered over or colored? Get performance upon timepoint switch to those of the old editor level. Main issue is the rerendering due to markets; can't really find a easy way without massive refactoring.
 - [ ] 1.14.0: 1 click color modern countries mode (try to somehow use the basemap information ideally)
   - Then in help tips, or tooltips, recommend using it aloneside a background map with nation borders, i.e. the black white map one

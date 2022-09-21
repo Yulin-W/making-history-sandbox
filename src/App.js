@@ -321,14 +321,17 @@ class App extends React.Component {
   }
 
   // Deletes entry in position at specified index in scenarioData and colorData
+  // NB: this only works for deleting the index that is currently the active entry due to a bug (which isn't a problem right now because i recoded where it is called (specifically main location of concern is in the condensed timeline call; where upon calling not necessarily on the particular entry) to always ensure is at the active entry before calling this method); rip life then. TODO:
+  // TODO: this part of code is highly repetitive and copy and pasted; pretty cooked 
   deleteEntry(index) {
-    let currentData = cloneDeep(this.state.scenarioData);
-    let currentColorData = cloneDeep(this.state.colorData);
+    const currentData = cloneDeep(this.state.scenarioData);
+    const currentColorData = cloneDeep(this.state.colorData);
     currentData.splice(index, 1);
     currentColorData.splice(index, 1);
-    if (index === this.state.scenarioData.length - 1) {
-      // Deleted entry is last entry, hence new entry to be focused on is the entry before the last entry
-      let newIndex = index - 1;
+    if ((index === this.state.activeEntry) && (index === this.state.scenarioData.length - 1)) {
+      // Deleted entry is the current entry and the last entry
+      // Hence we need to change entry to be focused on
+      const newIndex = this.state.activeEntry - 1;
       // To avoid possibly access invalid active entry values, we update the activeEntry first, then update the scenarioDict to delete the entry
       this.updateActiveEntry(newIndex, () => {
         this.setState({ scenarioData: currentData, colorData: currentColorData }, () => {
@@ -336,18 +339,52 @@ class App extends React.Component {
           this.updateMultiPluginData(retval);
         });
       }) // Note reset style is included in the updateActiveEntry function already
-    } else {
-      // Deleted entry was not the last entry, hence new entry to be focused on is the entry after the deleted entry, i.e. activeEntry index need not change
+    } else if ((index !== this.state.activeEntry) && (index === this.state.scenarioData.length - 1)) {
+      // Deleted entry is not the current entry and is the last entry
+      // Just delete entry
       this.setState({ scenarioData: currentData, colorData: currentColorData }, () => {
         const retval = this.runPluginFunc("onDeleteEntry", [index]);
         this.updateMultiPluginData(retval, () => {
           this.mapRef.current.resetAllRegionStyle();
         });
       });
+    } else if ((index === this.state.activeEntry) && (index !== this.state.scenarioData.length - 1)) {
+      // Deleted entry is the current entry and not the last entry
+      // Just delete entry; the index remains the same will automatically mean change to what was originally after the deleted event
+      this.setState({ scenarioData: currentData, colorData: currentColorData }, () => {
+        const retval = this.runPluginFunc("onDeleteEntry", [index]);
+        this.updateMultiPluginData(retval, () => {
+          this.mapRef.current.resetAllRegionStyle();
+        });
+      });
+    } else {
+      // Deleted entry is not the current entry and not the last entry
+      // If the deleted entry is after the current entry then all good; but if index is before then need to shift index down to keep on the same event
+      if (index > this.state.activeEntry) {
+        // Deleted index after current index
+        this.setState({ scenarioData: currentData, colorData: currentColorData }, () => {
+          const retval = this.runPluginFunc("onDeleteEntry", [index]);
+          this.updateMultiPluginData(retval, () => {
+            this.mapRef.current.resetAllRegionStyle();
+          });
+        });
+      } else if (index < this.state.activeEntry) {
+        // Deleted index before current index
+        const newIndex = this.state.activeEntry - 1;
+        this.updateActiveEntry(newIndex, () => {
+          this.setState({ scenarioData: currentData, colorData: currentColorData }, () => {
+            const retval = this.runPluginFunc("onDeleteEntry", [index]);
+            this.updateMultiPluginData(retval);
+          });
+        }) // Note reset style is included in the updateActiveEntry function already
+      } else {
+        // deleted entry is the current entry; this shouldn't happen for this case. So throw an error
+        throw "Delete entry is current entry despite this if/else cases is intended for situation where that is not true";
+      }
     }
 
     // Running plugin methods
-    this.runPluginFunc("onDeleteEntry", [index]);
+    // this.runPluginFunc("onDeleteEntry", [index]);
   }
 
   // Updates event date for active entry, expects a string argument
@@ -652,6 +689,8 @@ class App extends React.Component {
             activeEntry={this.state.activeEntry}
             updateActiveEntry={this.updateActiveEntry}
             addEntry={this.addEntry}
+            deleteEntry={this.deleteEntry}
+            oneEntryLeft={this.state.scenarioData.length === 1}
           />
           <PlayToolbarComponent
             playing={this.state.playing}

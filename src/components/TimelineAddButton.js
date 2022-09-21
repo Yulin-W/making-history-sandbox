@@ -22,7 +22,7 @@ export default function TimelineAddButton(props) {
     return (
         <div>
             <div className={classes.addIconButtonContainer} style={{left : props.themeDict.timelineMarkerSpacing/2 + 16}}>
-                <IconButton size="small" className={classes.addIconButton} onClick={() => { props.addEntry(props.index + 1); }}>
+                <IconButton size="small" className={classes.addIconButton} onClick={(e) => { props.addEntry(props.index + 1); e.stopPropagation();}}>
                     {/*This is the fake button for visuals only*/}
                     <AddIcon></AddIcon>
                 </IconButton>

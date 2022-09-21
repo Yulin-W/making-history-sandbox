@@ -11,6 +11,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import CondensedTimelineAddButton from "./CondensedTimelineAddButton.js";
+import CondensedTimelineDeleteButton from "./CondensedTimelineDeleteButton.js"
 
 // Import retract button custom component
 import RetractButton from './RetractButton.js';
@@ -106,6 +107,7 @@ function CondensedTimelineComponent(props) {
                           <TableCell key={"event_cell_" + index} className={classes.tableCell + ' ' + classes.eventColumn} align="left">
                             {entry.event}
                           </TableCell>
+                          <CondensedTimelineDeleteButton themeDict={props.themeDict} deleteEntry={props.deleteEntry} index={index} disabled={props.oneEntryLeft}/>
                           <CondensedTimelineAddButton themeDict={props.themeDict} addEntry={props.addEntry} index={index}/>
                         </TableRow>
                       ))}
