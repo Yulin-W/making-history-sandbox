@@ -97,6 +97,7 @@ function CondensedTimelineComponent(props) {
                             classes.tableEntry + " " +
                             (index === props.activeEntry ? classes.currentTableEntry : classes.notCurrentTableEntry)
                           }
+                          hover={true}
                           onClick={() => {props.updateActiveEntry(index)}}
                         >
                           <TableCell key={"date_cell_" + index} className={classes.tableCell + ' ' + classes.dateColumn}>
