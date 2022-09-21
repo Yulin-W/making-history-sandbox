@@ -51,6 +51,9 @@ const useStyles = makeStyles((theme) => ({
     },
     accordionHelp: {
         marginLeft: 5,
+    },
+    accordionItemContainer: {
+        borderRadius: 3,
     }
 }));
 
@@ -61,7 +64,7 @@ export default function PluginMenuComponent(props) {
     for (const [name, value] of Object.entries(plugins)) {
         const Plugin = value.component;
         accordionItems.push(
-            <Accordion defaultExpanded key={name} square>
+            <Accordion defaultExpanded key={name} className={classes.accordionItemContainer} square>
                 <AccordionSummary expandIcon={<ExpandMoreIcon />} className={classes.accordionSummary} IconButtonProps={{ size: "small" }}>
                     <Typography variant="body2">{name}</Typography>
                     <Tooltip

@@ -41,11 +41,13 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "space-between",
     },
     eventContent: {
-        marginTop: 5,
+        margin: 0,
         flexGrow: 1,
         resize: "none",
         backgroundColor: theme.palette.background.paper,
         color: theme.palette.text.primary,
+        border: 0,
+        borderRadius: 3
     },
     eventButton: {
         fontSize: 10,
