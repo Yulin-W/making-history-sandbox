@@ -47,7 +47,7 @@ export default function TimelineMarker(props) {
             {props.label}
             </Typography>
             <TimelineAddButton themeDict={props.themeDict} addEntry={props.addEntry} index={props.index}/>
-            <IconButton className={classes.entryButton} size="small" onClick={() => {props.updateActiveEntry(props.index);}}>
+            <IconButton id={"timeline_marker_" + props.index} className={classes.entryButton} size="small" onClick={() => {props.updateActiveEntry(props.index);}}>
                 {icon}
             </IconButton>
         </div>

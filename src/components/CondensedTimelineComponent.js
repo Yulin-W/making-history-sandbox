@@ -16,23 +16,23 @@ import RetractButton from './RetractButton.js';
 
 const useStyles = makeStyles((theme) => ({
     condensedTimelineContainer: {
-        position: "absolute",
-        left: 0,
-        bottom: 309, // This value should be such that the event box touches the play bar
-        minWidth: 140,
-        width: "20%",
-        height: 500,
-        zIndex: 1,
-        display: "flex",
-        flexFlow: "column",
-        alignItems: "stretch",
-        padding: 5,
-        borderRightStyle: "ridge",
-        borderTopStyle: "ridge",
-        borderBottomStyle: "ridge",
-        borderColor: theme.palette.border,
-        backgroundImage: theme.palette.backgroundImage.main,
-        WebkitBorderImage: theme.palette.borderImage
+      position: "absolute",
+      left: 0,
+      bottom: 309, // This value should be such that the event box touches the play bar
+      minWidth: 140,
+      width: "20%",
+      height: 500,
+      zIndex: 1,
+      display: "flex",
+      flexFlow: "column",
+      alignItems: "stretch",
+      padding: 5,
+      borderRightStyle: "ridge",
+      borderTopStyle: "ridge",
+      borderBottomStyle: "ridge",
+      borderColor: theme.palette.border,
+      backgroundImage: theme.palette.backgroundImage.main,
+      WebkitBorderImage: theme.palette.borderImage,
     },
     tableHeading: {
       fontSize: 14,
@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
       padding: 5,
     },
     tableCell: {
-      fontSize: 11,
+      fontSize: 12,
       overflowWrap: "break-word",
       hyphens: "auto",
       padding: 5,
@@ -71,22 +71,23 @@ function CondensedTimelineComponent(props) {
                 <TableContainer component={Paper}>
                   <Table size="small" aria-label="a dense table">
                     <TableHead>
-                      <TableRow key={"TableHead"}>
-                        <TableCell key={"dateCellHead"} className={classes.tableHeading + ' ' + classes.dateColumn}>Date</TableCell>
-                        <TableCell key={"eventCellHead"} className={classes.tableHeading} align="left">Event</TableCell>
+                      <TableRow key={"table_head"}>
+                        <TableCell key={"date_cell_head"} className={classes.tableHeading + ' ' + classes.dateColumn}>Date</TableCell>
+                        <TableCell key={"event_cell_head"} className={classes.tableHeading} align="left">Event</TableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
                       {props.scenarioData.map((entry, index) => (
                         <TableRow
-                          key={"TableRow" + index}
-                          className={index == props.activeEntry ? classes.currentTableEntry : classes.notCurrentTableEntry}
+                          id={"table_row_" + index}
+                          key={"table_row_" + index}
+                          className={index === props.activeEntry ? classes.currentTableEntry : classes.notCurrentTableEntry}
                           onClick={() => {props.updateActiveEntry(index)}}
                         >
-                          <TableCell key={"DateCell" + index} className={classes.tableCell + ' ' + classes.dateColumn}>
+                          <TableCell key={"date_cell_" + index} className={classes.tableCell + ' ' + classes.dateColumn}>
                             {entry.date}
                           </TableCell>
-                          <TableCell key={"EventCell" + index} className={classes.tableCell} align="left">
+                          <TableCell key={"event_cell_" + index} className={classes.tableCell} align="left">
                             {entry.event}
                           </TableCell>
                         </TableRow>

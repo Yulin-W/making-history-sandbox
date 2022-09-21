@@ -383,6 +383,8 @@ class App extends React.Component {
     this.setState(
       { activeEntry: newIndex },
       () => {
+        document.getElementById("timeline_marker_" + newIndex).scrollIntoView({block: 'nearest'});
+        document.getElementById("table_row_" + newIndex).scrollIntoView({block: 'nearest'});
         this.mapRef.current.resetAllRegionStyle();
         this.runPluginFunc("onUpdateActiveEntry", [newIndex]);
         this.refreshColorBarInfo(); // Refresh color bar so that correct legend label is displayed
