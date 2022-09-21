@@ -8,7 +8,8 @@ const steps = [
             <p>Welcome to Making History Sandbox! Click next for the tutorial.</p>
             <hr/>
             <p>***NEW FEATURES*** September, 2022</p>
-            <p>Play timeline toolbar (on the left of the page, above events editor). Currently offers 1x to 16x speeds, where 1x corresponds to ~2s per time point.</p>
+            <p>Condensed timeline view (on left of page): Can be used to navigate the timeline by clicking, albeit cannot edit events/dates here.</p>
+            <p>Play timeline toolbar (on the left of the page): Currently offers 1x to 16x speeds, where 1x corresponds to ~2s per time point.</p>
             <hr/>
             <p>FAQs:</p>
             <p>Changing color of regions of same color: toggle "Same" button, then color as usual</p>
@@ -46,6 +47,10 @@ const steps = [
     {
         target: '#timeline_event',
         content: 'This is where you edit the date label and event description of the timepoint. Clear empties the date/event entry (not the map colors though). Delete removes the current timepoint.',
+    },
+    {
+        target: '#condensed_timeline',
+        content: 'This is a condensed view of the timeline. You can also navigate to events by clicking them here. Albeit editing cannot be done here.',
     },
     {
         target: '#plugin_menu',

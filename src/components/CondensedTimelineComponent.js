@@ -10,6 +10,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import ButtonBase from "@material-ui/core";
 
 // Import retract button custom component
 import RetractButton from './RetractButton.js';
@@ -51,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
       minWidth: 30,
     },
     notCurrentTableEntry: {
-      opacity: 0.5,
+      opacity: 1,
     },
     currentTableEntry: {
       border: 7,
