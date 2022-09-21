@@ -14,6 +14,7 @@ import PluginMenuComponent from "./components/PluginMenuComponent.js";
 import TimelineBarComponent from './components/TimelineBarComponent.js';
 import TimelineEventComponent from './components/TimelineEventComponent.js';
 import PlayToolbarComponent from './components/PlayToolbarComponent.js';
+import CondensedTimelineComponent from './components/CondensedTimelineComponent';
 
 // Import default themeDict
 import themeDict from './themes/default';
@@ -643,6 +644,11 @@ class App extends React.Component {
             oneEntryLeft={this.state.scenarioData.length === 1}
             themeDict={this.state.themeDict.other}
           />
+          <CondensedTimelineComponent
+            themeDict={this.state.themeDict.other}
+            scenarioData={this.state.scenarioData}
+            activeEntry={this.state.activeEntry}
+          />
           <PlayToolbarComponent
             playing={this.state.playing}
             updatePlaying={this.updatePlaying}
@@ -651,6 +657,7 @@ class App extends React.Component {
             stopPlaying={this.stopPlaying}
             playSpeed={this.state.playSpeed}
             changePlaySpeed={this.changePlaySpeed}
+            themeDict={this.state.themeDict.other}
           />
           <ColorBarComponent
             ref={this.colorBarRef}

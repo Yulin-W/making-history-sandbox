@@ -18,7 +18,8 @@ const themeDict = {
             },
             backgroundImage: {
                 main: `url(${MarbleTexture})`,
-            }
+            },
+            tableRowFocusColor: "#F5F5F5",
         },
     },
     other: { // Theme object for map (currently done via cesium) to use, this is passed down as props to all child
