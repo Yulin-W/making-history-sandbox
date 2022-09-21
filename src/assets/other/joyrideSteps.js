@@ -9,7 +9,7 @@ const steps = [
             <hr/>
             <p>***NEW FEATURES*** September, 2022</p>
             <p>Condensed timeline view (on left of page): Can be used to navigate the timeline by clocking on entries and add new events, albeit cannot edit events/dates here.</p>
-            <p>Play timeline toolbar (on the left of the page): Currently offers 1x to 16x speeds, where 1x corresponds to ~2s per time point.</p>
+            <p>Play timeline toolbar (on the left of the page): Currently offers 1x to 16x speeds, where 1x corresponds to ~2s per time point</p>
             <hr/>
             <p>FAQs:</p>
             <p>Changing color of regions of same color: toggle "Same" button, then color as usual</p>
