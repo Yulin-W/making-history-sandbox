@@ -37,6 +37,7 @@ export default function TimelineMarker(props) {
         <div className={classes.timelineMarker} style={{left: (props.index+1)*props.themeDict.timelineMarkerSpacing}}>
             {/*props.index+1 as we wish to add after the current entry*/}
             <Typography
+                id={"timeline_marker_" + props.index}
                 className={classes.markerLabel}
                 variant="body2"
                 style={{

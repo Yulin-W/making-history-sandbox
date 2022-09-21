@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     playToolbarContainer: {
         position: "absolute",
         left: 0,
-        bottom: 309, // This value should be such that the play toolbar lie just above the event box
+        bottom: 723, // This value should be such that the play toolbar lie just above the event box
         width: 20,
         height: 65,
         zIndex: 1,
