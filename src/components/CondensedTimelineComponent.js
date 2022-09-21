@@ -10,10 +10,11 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import ButtonBase from "@material-ui/core";
+import CondensedTimelineAddButton from "./CondensedTimelineAddButton.js";
 
 // Import retract button custom component
 import RetractButton from './RetractButton.js';
+import { CallReceived } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
     condensedTimelineContainer: {
@@ -43,21 +44,31 @@ const useStyles = makeStyles((theme) => ({
     },
     tableCell: {
       fontSize: 10,
-      overflowWrap: "break-word",
-      hyphens: "auto",
+      overflowWrap: "anywhere",
       padding: 5,
     },
     dateColumn: {
-      maxWidth: 30,
-      minWidth: 30,
+      width: 80,
+    },
+    eventColumn: {
     },
     notCurrentTableEntry: {
       opacity: 1,
+      border: 7,
+      borderLeftStyle: "none",
     },
     currentTableEntry: {
       border: 7,
       borderColor: theme.palette.tableRowFocusColor,
       borderLeftStyle: "solid",
+    },
+    tableEntry: {
+      position: "relative",
+      height: 25,
+    },
+    tableEnd: {
+      position: "relative",
+      height: 10,
     }
 }));
 
@@ -74,7 +85,7 @@ function CondensedTimelineComponent(props) {
                     <TableHead>
                       <TableRow key={"table_head"}>
                         <TableCell key={"date_cell_head"} className={classes.tableHeading + ' ' + classes.dateColumn}>Date</TableCell>
-                        <TableCell key={"event_cell_head"} className={classes.tableHeading} align="left">Event</TableCell>
+                        <TableCell key={"event_cell_head"} className={classes.tableHeading + ' ' + classes.eventColumn} align="left">Event</TableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
@@ -82,17 +93,25 @@ function CondensedTimelineComponent(props) {
                         <TableRow
                           id={"table_row_" + index}
                           key={"table_row_" + index}
-                          className={index === props.activeEntry ? classes.currentTableEntry : classes.notCurrentTableEntry}
+                          className={
+                            classes.tableEntry + " " +
+                            (index === props.activeEntry ? classes.currentTableEntry : classes.notCurrentTableEntry)
+                          }
                           onClick={() => {props.updateActiveEntry(index)}}
                         >
                           <TableCell key={"date_cell_" + index} className={classes.tableCell + ' ' + classes.dateColumn}>
                             {entry.date}
                           </TableCell>
-                          <TableCell key={"event_cell_" + index} className={classes.tableCell} align="left">
+                          <TableCell key={"event_cell_" + index} className={classes.tableCell + ' ' + classes.eventColumn} align="left">
                             {entry.event}
                           </TableCell>
+                          <CondensedTimelineAddButton themeDict={props.themeDict} addEntry={props.addEntry} index={index}/>
                         </TableRow>
                       ))}
+                      <TableRow key={"table_end"} className={classes.tableEnd}>
+                          <TableCell key={"date_cell_table_end"}/>
+                          <TableCell key={"event_cell_table_end"}/>
+                      </TableRow>
                     </TableBody>
                   </Table>
                 </TableContainer>

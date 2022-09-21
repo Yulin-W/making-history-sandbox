@@ -651,6 +651,7 @@ class App extends React.Component {
             scenarioData={this.state.scenarioData}
             activeEntry={this.state.activeEntry}
             updateActiveEntry={this.updateActiveEntry}
+            addEntry={this.addEntry}
           />
           <PlayToolbarComponent
             playing={this.state.playing}
