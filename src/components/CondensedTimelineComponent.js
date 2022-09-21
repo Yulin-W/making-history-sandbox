@@ -71,20 +71,22 @@ function CondensedTimelineComponent(props) {
                 <TableContainer component={Paper}>
                   <Table size="small" aria-label="a dense table">
                     <TableHead>
-                      <TableRow>
-                        <TableCell className={classes.tableHeading + ' ' + classes.dateColumn}>Date</TableCell>
-                        <TableCell className={classes.tableHeading} align="left">Event</TableCell>
+                      <TableRow key={"TableHead"}>
+                        <TableCell key={"dateCellHead"} className={classes.tableHeading + ' ' + classes.dateColumn}>Date</TableCell>
+                        <TableCell key={"eventCellHead"} className={classes.tableHeading} align="left">Event</TableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
                       {props.scenarioData.map((entry, index) => (
                         <TableRow
+                          key={"TableRow" + index}
                           className={index == props.activeEntry ? classes.currentTableEntry : classes.notCurrentTableEntry}
+                          onClick={() => {props.updateActiveEntry(index)}}
                         >
-                          <TableCell key={index + "DateCell"} className={classes.tableCell + ' ' + classes.dateColumn}>
+                          <TableCell key={"DateCell" + index} className={classes.tableCell + ' ' + classes.dateColumn}>
                             {entry.date}
                           </TableCell>
-                          <TableCell key={index + "EventCell"} className={classes.tableCell} align="left">
+                          <TableCell key={"EventCell" + index} className={classes.tableCell} align="left">
                             {entry.event}
                           </TableCell>
                         </TableRow>

@@ -648,6 +648,7 @@ class App extends React.Component {
             themeDict={this.state.themeDict.other}
             scenarioData={this.state.scenarioData}
             activeEntry={this.state.activeEntry}
+            updateActiveEntry={this.updateActiveEntry}
           />
           <PlayToolbarComponent
             playing={this.state.playing}
