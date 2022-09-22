@@ -104,13 +104,16 @@
 - [x] 1.12.0: Condensed view mode of timeline; just add as an extra sidebar on top of the main event info edit side bar, containing everything in timeline data as a table. Also allow timeline edits to be from there as well; i.e. clicking entry there will also change the bottom timebar and the main event edit bar (ensure the timebar at the bottom does scroll in response)
 - [x] 1.12.1: Deletion button in condensed timeline
 - [x] 1.12.2: minor joyride update for FAQ regarding loading GeoJSON save files.
-- [ ] 1.12.3: Generate timeline gif
-- [ ] 1.13.0: Speed improvement to changing timeline entries, and maybe improving speed by not rerendering entire canvas on changing region hovered over or colored? Get performance upon timepoint switch to those of the old editor level. Main issue is the rerendering due to markets; can't really find a easy way without massive refactoring.
-- [ ] 1.14.0: 1 click color modern countries mode (try to somehow use the basemap information ideally)
+- [ ] 1.13.0：Scenario updates: 304BC: Fourth War of the Diadochi (technically in the middle of the Fourth War; why this particular date was since it is effectively the first confirmed year after which the Diadochi have declared each of themselves kings, in effect officially breaking from Alexander's subordinate status)
+  - [ ] 1.13.1: Scenario: 1776: US Declaration of Independence
+  - [ ] 1.13.2: Scenario: 1618 scenario, 30 years war begin
+  - [ ] 1.13.3：Scenario: 218BC: Second Punic War
+  - [ ] 1.13.4: Scenario: 270: Restorer of the World (Aurelian becomes Emperor of Rome)
+- [ ] 1.14.0: Speed improvement to changing timeline entries, and maybe improving speed by not rerendering entire canvas on changing region hovered over or colored? Get performance upon timepoint switch to those of the old editor level. Main issue is the rerendering due to markets; can't really find a easy way without massive refactoring.
+- [ ] 1.15.0: 1 click color modern countries mode (try to somehow use the basemap information ideally)
   - Then in help tips, or tooltips, recommend using it aloneside a background map with nation borders, i.e. the black white map one
-- [ ] 1.15.0: 1776 scenario, US Independence
-- [ ] 1.15.1: Change increment amounts in themes for more reasonable experience, e.g. border width shouldn't increment by 1 upon pressing buttons, but instead by 0.1
-- [ ] 1.15.2: 1618 scenario, 30 years war begin
+- [ ] 1.16.0: 1776 scenario, US Independence
+- [ ] 1.16.1: Change increment amounts in themes for more reasonable experience, e.g. border width shouldn't increment by 1 upon pressing buttons, but instead by 0.1
 
 ## Bugs
 - [ ] When loading in old alt hist editor saves; you get the condensed timeline bar displaying all the events as the current event (i.e. with the white bar indicator for current event)
