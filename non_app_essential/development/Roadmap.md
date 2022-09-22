@@ -112,6 +112,9 @@
 - [ ] 1.15.1: Change increment amounts in themes for more reasonable experience, e.g. border width shouldn't increment by 1 upon pressing buttons, but instead by 0.1
 - [ ] 1.15.2: 1618 scenario, 30 years war begin
 
+## Bugs
+- [ ] When loading in old alt hist editor saves; you get the condensed timeline bar displaying all the events as the current event (i.e. with the white bar indicator for current event)
+
 ## Potential future versions (won't work on it soon)
 - [ ] Add flag overlap capability (automatic adjust kind) (if done, go reply to the dude that sent the email request)
 - [ ] Undo button; i think just keep track of past calls of region assigning of current entry, i think past 10 calls should be enough; and history kept clears upon changing entry.
