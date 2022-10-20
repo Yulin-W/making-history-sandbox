@@ -5,6 +5,7 @@ const steps = [
         target: 'body',
         content: 
         <React.Fragment>
+            <p>***IF YOU CAN'T SEE THE SKIP BUTTON: TRY ZOOMING OUT (e.g. CTRL + SCROLL)***</p>
             <p>Welcome to Making History Sandbox! Click next for the tutorial.</p>
             <hr/>
             <p>***NEW FEATURES*** September, 2022</p>
