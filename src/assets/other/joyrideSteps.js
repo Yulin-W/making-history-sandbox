@@ -1,31 +1,35 @@
 import React from 'react';
+import Scrollbars from 'react-custom-scrollbars';
 
 const steps = [
     {
         target: 'body',
         content: 
         <React.Fragment>
-            <p>***IF YOU CAN'T SEE THE SKIP BUTTON: TRY ZOOMING OUT (e.g. CTRL + SCROLL)***</p>
-            <p>Welcome to Making History Sandbox! Click NEXT for the tutorial or SKIP to close the tutorial.</p>
-            <hr/>
-            <p>***NEW FEATURES*** September, 2022</p>
-            <p>Condensed timeline view (on left of page): Can be used to navigate the timeline by clocking on entries and add new events, albeit cannot edit events/dates here.</p>
-            <p>Play timeline toolbar (on the left of the page): Currently offers 1x to 16x speeds, where 1x corresponds to ~2s per time point</p>
-            <hr/>
-            <p>FAQs:</p>
-            <p>Changing color of regions of same color: toggle "Same" button, then color as usual</p>
-            <p>Removing borders: set region border width to 0 in theme panel on the right</p>
-            <p>Adding markers with tooltips: use marker box on side panel; added markers can be dragged and clicked to reveal/edit tooltip</p>
-            <p>Custom geoJSON saves don't load: load them using CustomGeoJSON panel (saves too), not the load button</p>
-            <hr/>
-            <p>Making custom regions: <a href="https://github.com/Yulin-W/making-history-sandbox/blob/main/customRegionTutorial.md" target="_blank">Custom Region Tutorial</a></p>
-            <hr/>
-            <p>See acknowledgements at the end of the tutorial</p>
-            <p>Disclaimer: Making History Sandbox (application) is not intended to be historically accurate nor do they represent personal views of the author. The application is provided without any warranty of any kind whatsoever, either express or implied.</p>
-            <hr/>
-            <p>Feedback/Suggestions</p>
-            <p>Please open an issue on <a href="https://github.com/Yulin-W/making-history-sandbox">Github</a> or email me at Yulin-W@outlook.com</p>
-            <p>Note: I am not actively developing this anymore. I will try but cannot guarantee timely updates/fixes/reply to feedback.</p>
+            <div style={{height:400}}>
+                <Scrollbars>
+                <p>Welcome to Making History Sandbox! Click NEXT for the tutorial or SKIP to close the tutorial.</p>
+                <hr/>
+                <p>***NEW FEATURES*** September, 2022</p>
+                <p>Condensed timeline view (on left of page): Can be used to navigate the timeline by clocking on entries and add new events, albeit cannot edit events/dates here.</p>
+                <p>Play timeline toolbar (on the left of the page): Currently offers 1x to 16x speeds, where 1x corresponds to ~2s per time point</p>
+                <hr/>
+                <p>FAQs:</p>
+                <p>Changing color of regions of same color: toggle "Same" button, then color as usual</p>
+                <p>Removing borders: set region border width to 0 in theme panel on the right</p>
+                <p>Adding markers with tooltips: use marker box on side panel; added markers can be dragged and clicked to reveal/edit tooltip</p>
+                <p>Custom geoJSON saves don't load: load them using CustomGeoJSON panel (saves too), not the load button</p>
+                <hr/>
+                <p>Making custom regions: <a href="https://github.com/Yulin-W/making-history-sandbox/blob/main/customRegionTutorial.md" target="_blank">Custom Region Tutorial</a></p>
+                <hr/>
+                <p>See acknowledgements at the end of the tutorial</p>
+                <p>Disclaimer: Making History Sandbox (application) is not intended to be historically accurate nor do they represent personal views of the author. The application is provided without any warranty of any kind whatsoever, either express or implied.</p>
+                <hr/>
+                <p>Feedback/Suggestions</p>
+                <p>Please open an issue on <a href="https://github.com/Yulin-W/making-history-sandbox">Github</a> or email me at Yulin-W@outlook.com</p>
+                <p>Note: I am not actively developing this anymore. I will try but cannot guarantee timely updates/fixes/reply to feedback.</p>
+                </Scrollbars>
+            </div>
         </React.Fragment>,
         placement: 'center'
     },
