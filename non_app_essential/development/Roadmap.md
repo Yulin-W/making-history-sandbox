@@ -1,15 +1,19 @@
 # Code notes
+
 - z-index levels: (of course higher levels are appropriate if need be)
   - -1: background, should not be used
   - 0: background
   - 1: foreground
 
 # Notes
+
 - When adding community scenarios, add attributions at
   - Name of scenario to display in app, e.g. by xxx
   - Help
   - README
+
 # Basic requirements
+
 - Backward save compatibility (do so by making a plugin app for converting save from old map to new seamlessly)
 - Plugin-extension system to allow adding stuff
 - Tool panel like in Krita to allow slapping tools and plugins in
@@ -19,7 +23,9 @@
 - Link old app to new app both via github and via the actual app file itself
 - All side bar components should be allowed to disappeear and be retracted
 - Make components have good APIs for extensibility
+
 # Beta version
+
 - [x] 0.1.0: 3D or 2D Map component (perhaps allowing 2D alternatives, it depends on what library we get), should allow basemap imports
 - [x] 0.2.0: Timeline component
   - Clear entry
@@ -51,17 +57,20 @@
   - Position attribution element in a convenient location, this is mandatory as attribution is key
 - [x] 0.13.0: Scenarios plugin
 - [x] 0.14.0: Help button
+
 # Standard version
+
 ## Version 1
+
 - [x] 1.0.0: fix any bugs from the beta versions and bundle it no release on github pages
-    - Favicon
-    - Add google analytics
-    - Meta, SEO
-    - Linking from old app
-    - README
-    - Advertising online
-    - Attributions
-      - Basemap source (use same as alternative history editor, noting on personal alterations)
+  - Favicon
+  - Add google analytics
+  - Meta, SEO
+  - Linking from old app
+  - README
+  - Advertising online
+  - Attributions
+    - Basemap source (use same as alternative history editor, noting on personal alterations)
 - [x] 1.1.0: more background map providers
 - [x] 1.1.1: add title to site
 - [x] 1.1.2: changing positions of buttons and minimum sizes of panels for better mobile performance
@@ -80,7 +89,7 @@
 - [x] 1.5.0: add rgb/hex color picker, just add it beside the slide picker, take the compoennt from react color, no need to make it a separate plugin
 - [x] 1.5.1: switch for hiding region labels counts in legend (for those who wish to screenshot)
 - [x] 1.6.0: enable hiding all panels except timeline, so drawer like
-- [x] 1.7.0: allow theme selection changing, e.g. swap out a different theme and only resetting style afterwards; themes could include no border lines, 1 opacity 
+- [x] 1.7.0: allow theme selection changing, e.g. swap out a different theme and only resetting style afterwards; themes could include no border lines, 1 opacity
   - Used smoothFactor=0 of geojson to get rid of blank spacings between polygons when without borders
   - Add github link to app
   - Look at some popular styles online to learn from and ideally give some room for customization (though I guess not too much as such would be a task of matters such as photoshop as opposed to this app)
@@ -104,7 +113,8 @@
 - [x] 1.12.0: Condensed view mode of timeline; just add as an extra sidebar on top of the main event info edit side bar, containing everything in timeline data as a table. Also allow timeline edits to be from there as well; i.e. clicking entry there will also change the bottom timebar and the main event edit bar (ensure the timebar at the bottom does scroll in response)
 - [x] 1.12.1: Deletion button in condensed timeline
 - [x] 1.12.2: minor joyride update for FAQ regarding loading GeoJSON save files.
-- [ ] 1.12.3: allow more general GeoJSON uploads (fixing issue #39)
+- [x] 1.12.3: allow more general GeoJSON uploads (fixing issue #39)
+- [ ] 1.12.4: allow uploading a non custom geojson save file after previously loading a custom one
 - [ ] 1.13.0：Scenario updates: 304BC: Fourth War of the Diadochi (technically in the middle of the Fourth War; why this particular date was since it is effectively the first confirmed year after which the Diadochi have declared each of themselves kings, in effect officially breaking from Alexander's subordinate status).
   - [ ] 1.13.1: minor visual updates; make the condensed timeline indicator bar smaller
   - [ ] 1.13.2: Scenario: 1776: US Declaration of Independence
@@ -118,9 +128,11 @@
 - [ ] 1.16.1: Change increment amounts in themes for more reasonable experience, e.g. border width shouldn't increment by 1 upon pressing buttons, but instead by 0.1
 
 ## Bugs
+
 - [ ] When loading in old alt hist editor saves; you get the condensed timeline bar displaying all the events as the current event (i.e. with the white bar indicator for current event)
 
 ## Potential future versions (won't work on it soon)
+
 - [ ] Add flag overlap capability (automatic adjust kind) (if done, go reply to the dude that sent the email request)
 - [ ] Undo button; i think just keep track of past calls of region assigning of current entry, i think past 10 calls should be enough; and history kept clears upon changing entry.
 - [ ] easy mouse wheel scroll in events bar, avoid the shift scroll i reckon and do normal scroll
@@ -131,6 +143,7 @@
 - [ ] improve performance
 
 ## Possible future plugins (these can go into separate repos, as separate projects), some might not be plugins in the sense that it goes into the sidebar menu
+
 - [ ] Add extra inbuilt base map, a more reasonable one with finer dividsions where it needs and less fine where it isn't needed
 - [ ] Convert image to basemap/scenario, of appropriate format
 - [ ] Wikipedia event AI recommendation
@@ -143,15 +156,19 @@
 - [ ] Import own basemaps, and then can include it as part of output save like in alternate history editor
 
 ## Potential side apps to supplement, possibly linking into a suite of apps
+
 - [ ] Image processing ai or likewise, turn image of borders into geojson polygons and then allow manual addition of labels; mainly its the ocr tech
 
 # Possible code improvements
+
 - Minimise use of refs
 - Add proptypes for type checking
 - Try to find another way as opposed to passing the App's this value to the plugin methods that run after corresponding App methods
 - Improve map performance by reducing style resetting
 - Setup an alternate site for in test deployment, and only deploy to main site once sure it works well
+
 # Possible future features
+
 - THE LONGTERM AIM: can just upload an image, and base map geojson is auto generated with background, or perhaps background could be inputted manually and shuffled around; so that any mapping timeline could be easily achieved and imported from existing artistic works
   - i.e. optical recognition and ai georeferencing are probably necessary
   - On second thought, leaflet might be too restricting due to its geo nature; perhaps I should open a brand new app that has a choropleth custom made engine as opposed to the georeferenced leaflet for non-earth, i.e. general timeline mapping, where the focus is import your own world; of course there should be a base earth map to get people started with

@@ -62,8 +62,8 @@ class App extends React.Component {
     // Convert baseMap to a prototype, const dictionary indexed by regionID
     this.regionDictDefault = createRegionDict(this.baseMap);
     this.scenarioDataDefault = [
-      createScenarioEntry(this.regionDictDefault, "2000 January 1", "An Event"), // Default is 2 entry with the default regionDict, empty date and event entry
-      createScenarioEntry(this.regionDictDefault, "2010 January 1", "Another Event"),
+      createScenarioEntry(this.regionDictDefault, "2000 Jan 1", "An Event"), // Default is 2 entry with the default regionDict, empty date and event entry
+      createScenarioEntry(this.regionDictDefault, "2010 Jan 1", "Another Event"),
     ];
 
     this.plugins = plugins;
@@ -235,7 +235,7 @@ class App extends React.Component {
   }
 
   // Updates plugin data for the specified plugin with the specified data, the key should be the one used in the plugins dictionary
-  updatePluginData(key, data, callback=null) {
+  updatePluginData(key, data, callback = null) {
     let currentData = cloneDeep(this.state.pluginData);
     currentData[key] = data;
     this.setState({ pluginData: currentData }, () => {
@@ -250,7 +250,7 @@ class App extends React.Component {
   }
 
   // This is needed to prevent bugs occurring when multiple plugin data updates are called close to each other and resulting in state update not as fast as one would wish
-  updateMultiPluginData(dataDict, callback=null) {
+  updateMultiPluginData(dataDict, callback = null) {
     let currentData = cloneDeep(this.state.pluginData);
     for (const [key, data] of Object.entries(dataDict)) {
       currentData[key] = data;
@@ -316,7 +316,7 @@ class App extends React.Component {
     this.setState({ scenarioData: currentData, colorData: currentColorData }, () => {
       // Update the plugin data, then in call back update active entry to ensure order of execution
       const retval = this.runPluginFunc("onAddEntry", [index]);
-      this.updateMultiPluginData(retval, () => {this.updateActiveEntry(index);});
+      this.updateMultiPluginData(retval, () => { this.updateActiveEntry(index); });
     });
   }
 
@@ -420,8 +420,8 @@ class App extends React.Component {
     this.setState(
       { activeEntry: newIndex },
       () => {
-        document.getElementById("timeline_marker_" + newIndex).scrollIntoView({block: 'nearest'});
-        document.getElementById("table_row_" + newIndex).scrollIntoView({block: 'nearest'});
+        document.getElementById("timeline_marker_" + newIndex).scrollIntoView({ block: 'nearest' });
+        document.getElementById("table_row_" + newIndex).scrollIntoView({ block: 'nearest' });
         this.mapRef.current.resetAllRegionStyle();
         this.runPluginFunc("onUpdateActiveEntry", [newIndex]);
         this.refreshColorBarInfo(); // Refresh color bar so that correct legend label is displayed
@@ -619,7 +619,7 @@ class App extends React.Component {
 
   // Change timeline play speed
   changePlaySpeed() {
-    const playSpeedArray = [1,2,4,8,16];
+    const playSpeedArray = [1, 2, 4, 8, 16];
     const newSpeed = nextNumInList(this.state.playSpeed, playSpeedArray);
     this.setState({ playSpeed: newSpeed });
   }
@@ -650,6 +650,8 @@ class App extends React.Component {
             }}
           />
           <MenuComponent
+            app={this}
+            // TODO: passing this is a very bad practice; try to circumvent
             save={this.save}
             loadSave={this.loadSave}
             openHelp={() => { this.setState({ helpOn: true }); }}
@@ -661,7 +663,7 @@ class App extends React.Component {
             updateErasing={this.updateErasing}
             picking={this.state.picking}
             updatePicking={this.updatePicking}
-            updateSame = {this.updateSame}
+            updateSame={this.updateSame}
             same={this.state.same}
           />
           <PluginMenuComponent app={this} />

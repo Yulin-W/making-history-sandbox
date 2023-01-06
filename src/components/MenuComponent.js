@@ -7,6 +7,7 @@ import Slide from '@material-ui/core/Slide';
 
 // Import retract button custom component
 import RetractButton from './RetractButton.js';
+import { loadGeoJSON } from '../plugins/CustomGeoJSONLoaderPlugin.js';
 
 const useStyles = makeStyles((theme) => ({
     menuContainer: {
@@ -43,7 +44,34 @@ function MenuComponent(props) {
                 <Button size="small" className={classes.menuButton} onClick={props.save}>Save</Button>
                 <Dropzone
                     onDrop={acceptedFiles => {
-                        loadScenario(acceptedFiles[0], props.loadSave);
+                        // Checks what kind of file it is, then decide what save loading function to pass
+                        const file = acceptedFiles[0];
+                        file.text().then(text => { // TODO: this is very inefficient; it pretty much parses file once to determine what kind of file, then passes it through to be parsed again by loading handlers, very inefficient IMO
+                            const obj = JSON.parse(text);
+                            if (obj?.scenarioData) {
+                                // This is a save
+                                if (obj?.pluginData) {
+                                    if ('Custom GeoJSON Loader' in obj.pluginData) {
+                                        if (obj.pluginData['Custom GeoJSON Loader']) {
+                                            if (obj.pluginData['Custom GeoJSON Loader']?.baseMap) {
+                                                // This is a custom GeoJSON based save
+                                                loadGeoJSON(props.app, file)
+                                            }
+                                        }
+                                    }
+                                }
+                                // This is a typical save without custom GeoJSON
+                                loadScenario(file, props.loadSave);
+                            } else {
+                                if (obj?.type) {
+                                    if (obj.type === "FeatureCollection") {
+                                        // This is a custom GeoJSON base map
+                                        loadGeoJSON(props.app, file)
+                                    }
+                                }
+                            }
+                            // TODO: if file type doesn't fit into any of above currently does nothing; probably should give some user feedback; like tell them this or something
+                        })
                     }}
                 >
                     {/*acceptedFiles[0] as we only care about a single file TODO: make some restriction to filetype (.json) to upload and number of files to upload (1 only)*/}
