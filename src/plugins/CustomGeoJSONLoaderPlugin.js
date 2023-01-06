@@ -56,7 +56,7 @@ function getCompatibleGeoJSON(rawObj) {
 
 // Function for loading such file
 // Expects geoJSON either alone or part of a save to only have polygons
-function loadGeoJSON(app, file) {
+export function loadGeoJSON(app, file) {
     const name = file.name;
     file.text().then(text => {
         const rawObj = JSON.parse(text);
