@@ -16,6 +16,7 @@ const steps = [
                         <p>Play timeline toolbar (on the left of the page): Currently offers 1x to 16x speeds, where 1x corresponds to ~2s per time point</p>
                         <hr />
                         <p>FAQs:</p>
+                        <p>I want to use different regions: download any geoJSON file with regions you want (plenty online), or make your own (see tutorials below) and just load it.</p>
                         <p>Can't load a normal map save after loading a custom GeoJSON: refresh then load</p>
                         <p>Changing color of regions of same color: toggle "Same" button, then color as usual</p>
                         <p>Removing borders: set region border width to 0 in theme panel on the right</p>
