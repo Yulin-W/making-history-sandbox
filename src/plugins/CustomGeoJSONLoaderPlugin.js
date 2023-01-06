@@ -41,7 +41,13 @@ function getCompatibleGeoJSON(rawObj) {
     mapObj.features.forEach((feature, index) => {
         feature.properties['regionID'] = index; // regardless of whether already has regionID, resetting it for consistency
         if (!('name' in feature.properties)) {
-            feature.properties['name'] = `Region ${index}`;
+            if ('Name' in feature.properties) {
+                feature.properties['name'] = feature.properties['Name'];
+            } else if ('NAME' in feature.properties) {
+                feature.properties['name'] = feature.properties['NAME'];
+            } else {
+                feature.properties['name'] = `Region ${index}`;
+            }
         }
     });
 
