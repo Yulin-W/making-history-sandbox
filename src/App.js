@@ -62,8 +62,8 @@ class App extends React.Component {
     // Convert baseMap to a prototype, const dictionary indexed by regionID
     this.regionDictDefault = createRegionDict(this.baseMap);
     this.scenarioDataDefault = [
-      createScenarioEntry(this.regionDictDefault, "2000 January 1", "An Event"), // Default is 2 entry with the default regionDict, empty date and event entry
-      createScenarioEntry(this.regionDictDefault, "2010 January 1", "Another Event"),
+      createScenarioEntry(this.regionDictDefault, "2000 Jan 1", "An Event"), // Default is 2 entry with the default regionDict, empty date and event entry
+      createScenarioEntry(this.regionDictDefault, "2010 Jan 1", "Another Event"),
     ];
 
     this.plugins = plugins;
