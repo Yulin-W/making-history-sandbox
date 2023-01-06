@@ -104,6 +104,7 @@
 - [x] 1.12.0: Condensed view mode of timeline; just add as an extra sidebar on top of the main event info edit side bar, containing everything in timeline data as a table. Also allow timeline edits to be from there as well; i.e. clicking entry there will also change the bottom timebar and the main event edit bar (ensure the timebar at the bottom does scroll in response)
 - [x] 1.12.1: Deletion button in condensed timeline
 - [x] 1.12.2: minor joyride update for FAQ regarding loading GeoJSON save files.
+- [ ] 1.12.3: allow more general GeoJSON uploads (fixing issue #39)
 - [ ] 1.13.0：Scenario updates: 304BC: Fourth War of the Diadochi (technically in the middle of the Fourth War; why this particular date was since it is effectively the first confirmed year after which the Diadochi have declared each of themselves kings, in effect officially breaking from Alexander's subordinate status).
   - [ ] 1.13.1: minor visual updates; make the condensed timeline indicator bar smaller
   - [ ] 1.13.2: Scenario: 1776: US Declaration of Independence
