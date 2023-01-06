@@ -26,19 +26,46 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
+function getCompatibleGeoJSON(rawObj) {
+    // Convert geojson map or map in save to compatible format (i.e. polygons have name, regionID attribute) if doesn't exist already
+    const obj = JSON.parse(JSON.stringify(rawObj)); // Makes a copy of the original file
+
+    // Obtain the geoJSON map object
+    let mapObj = obj;
+    if ("scenarioData" in obj) {
+        // File is a save, not just a GeoJSON alone
+        mapObj = obj.pluginData["Custom GeoJSON Loader"].baseMap
+    }
+
+    // Construct new compatible geoJSON map
+    mapObj.features.forEach((feature, index) => {
+        feature.properties['regionID'] = index; // regardless of whether already has regionID, resetting it for consistency
+        if (!('name' in feature.properties)) {
+            feature.properties['name'] = `Region ${index}`;
+        }
+    });
+
+    return obj;
+}
+
 // Function for loading such file
-// Expects geoJSON either alone or part of a save to be of format, i.e. polygons have name, regionID attributes
+// Expects geoJSON either alone or part of a save to only have polygons
 function loadGeoJSON(app, file) {
     const name = file.name;
     file.text().then(text => {
-        const obj = JSON.parse(text);
+        const rawObj = JSON.parse(text);
+
+        // Convert geojson map or map in save to compatible format (i.e. polygons have name, regionID attribute) if doesn't exist already
+        const obj = getCompatibleGeoJSON(rawObj);
+
+        // Load the file into the map 
         if ("scenarioData" in obj) {
             // This is used to test obj is a save, not a geoJSON
             // Expects the file to have valid data, i.e. pluginData for GeoJSON loader and appropriate scenario data, colorDict, etc.
             // First load in the basemap and map key
             app.resetAppBasedOnBasemap(obj.pluginData["Custom GeoJSON Loader"].baseMap, obj.pluginData["Custom GeoJSON Loader"].mapKey, () => {
                 app.updatePluginData("Custom GeoJSON Loader", {
-                    mapKey: name, 
+                    mapKey: name,
                     baseMap: obj, // TODO: could be optimised so to instead of saving inmemeory two copies of such basemap, just save 1 copy, and say pass an argyument to resetAppBasedOnBasemap
                 })
             });
@@ -49,7 +76,7 @@ function loadGeoJSON(app, file) {
             // Reset app based on these two updated values, baseMap and mapKey, then run callupdate to update the relevant pluginData, both mapKey and geoJSON map to record the data of the map there so saves will work
             app.resetAppBasedOnBasemap(obj, name, () => {
                 app.updatePluginData("Custom GeoJSON Loader", {
-                    mapKey: name, 
+                    mapKey: name,
                     baseMap: obj, // TODO: could be optimised so to instead of saving inmemeory two copies of such basemap, just save 1 copy, and say pass an argyument to resetAppBasedOnBasemap
                 })
             });
