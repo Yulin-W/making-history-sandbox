@@ -114,7 +114,7 @@
 - [x] 1.12.1: Deletion button in condensed timeline
 - [x] 1.12.2: minor joyride update for FAQ regarding loading GeoJSON save files.
 - [x] 1.12.3: allow more general GeoJSON uploads (fixing issue #39)
-- [ ] 1.12.4：Integrate region data showcasing: https://github.com/Yulin-W/making-history-sandbox/issues/41. Will need to first find a reliable data source
+- [ ] 1.12.4：Integrate region data showcasing: https://github.com/Yulin-W/making-history-sandbox/issues/41. Will need to first find a reliable data source (remember open new branch)
   - [ ] Close the issue once done
 - [ ] 1.12.5: Remove the basemaps that are no longer operational (add in some other ones to make up for this issue)
 - [ ] 1.13.0：Scenario updates: 304BC: Fourth War of the Diadochi (technically in the middle of the Fourth War; why this particular date was since it is effectively the first confirmed year after which the Diadochi have declared each of themselves kings, in effect officially breaking from Alexander's subordinate status).
