@@ -1,7 +1,7 @@
 // Import packages
 import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
-import { Scrollbars } from 'react-custom-scrollbars';
+import { Scrollbars } from 'react-custom-scrollbars-2';
 
 // Import custom components
 import TimelineMarker from './TimelineMarker.js';
