@@ -115,6 +115,7 @@
 - [x] 1.12.2: minor joyride update for FAQ regarding loading GeoJSON save files.
 - [x] 1.12.3: allow more general GeoJSON uploads (fixing issue #39)
   - [ ] 1.12.3.1: dependency fixing
+  - [ ] 1.12.3.2: Fix the eslint issues
 - [ ] 1.12.4：Integrate region data showcasing: https://github.com/Yulin-W/making-history-sandbox/issues/41. Will need to first find a reliable data source (remember open new branch)
   - [ ] Close the issue once done
 - [ ] 1.12.5: Remove the basemaps that are no longer operational (add in some other ones to make up for this issue)
@@ -125,6 +126,7 @@
   - [ ] 1.13.4：Scenario: 218BC: Second Punic War
   - [ ] 1.13.5: Scenario: 270: Restorer of the World (Aurelian becomes Emperor of Rome)
 - [ ] 2.0.0: Code refactoring, bring up to standards of idiomatic javascript (consider possibility of typescript transition or at least reasonable amount of typing (whilst keeping some legacy javascript written functionalities))
+  - [ ] Automated testing
   - [ ] Typing
   - [ ] Commenting
   - [ ] Cleaning logic flow (currently has some chaotic concurrency thing going on I think for certain actions)
