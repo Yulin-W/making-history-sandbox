@@ -126,6 +126,7 @@
   - [ ] 1.13.4：Scenario: 218BC: Second Punic War
   - [ ] 1.13.5: Scenario: 270: Restorer of the World (Aurelian becomes Emperor of Rome)
 - [ ] 2.0.0: Code refactoring, bring up to standards of idiomatic javascript (consider possibility of typescript transition or at least reasonable amount of typing (whilst keeping some legacy javascript written functionalities))
+  - [ ] New file format (ensure still have compatibility with old one, I guess add a marker for new file format a delimiter to signal file format is new); key is condensing the size substantially, compressing as much as possible
   - [ ] Automated testing
   - [ ] Typing
   - [ ] Commenting
@@ -134,8 +135,7 @@
 - [ ] 2.1.1: allow uploading a non custom geojson save file after previously loading a custom one
 - [ ] 2.2.0: 1 click color modern countries mode (try to somehow use the basemap information ideally)
   - Then in help tips, or tooltips, recommend using it aloneside a background map with nation borders, i.e. the black white map one
-- [ ] 2.3.0: 1776 scenario, US Independence
-- [ ] 2.3.1: Change increment amounts in themes for more reasonable experience, e.g. border width shouldn't increment by 1 upon pressing buttons, but instead by 0.1
+- [ ] 2.3.0: Change increment amounts in themes for more reasonable experience, e.g. border width shouldn't increment by 1 upon pressing buttons, but instead by 0.1
 
 ## Bugs
 
