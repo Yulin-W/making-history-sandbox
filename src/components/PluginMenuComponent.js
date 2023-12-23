@@ -52,6 +52,9 @@ const useStyles = makeStyles((theme) => ({
     accordionHelp: {
         marginLeft: 5,
     },
+    accordionHelpText: {
+        whiteSpace: 'pre-line'
+    },
     accordionItemContainer: {
         borderRadius: 3,
     }
@@ -68,7 +71,7 @@ export default function PluginMenuComponent(props) {
                 <AccordionSummary expandIcon={<ExpandMoreIcon />} className={classes.accordionSummary} IconButtonProps={{ size: "small" }}>
                     <Typography variant="body2">{name}</Typography>
                     <Tooltip
-                        title={value.help}
+                        title={<div className={classes.accordionHelpText}>{value.help}</div>}
                     >
                         <div className={classes.accordionHelp}>
                             <HelpOutlineIcon fontSize="small"/>
