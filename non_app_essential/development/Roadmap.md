@@ -114,9 +114,11 @@
 - [x] 1.12.1: Deletion button in condensed timeline
 - [x] 1.12.2: minor joyride update for FAQ regarding loading GeoJSON save files.
 - [x] 1.12.3: allow more general GeoJSON uploads (fixing issue #39)
+  - [x] 1.12.3.1: dependency fixing, and eslint fixing
 - [ ] 1.12.4：Integrate region data showcasing: https://github.com/Yulin-W/making-history-sandbox/issues/41. Will need to first find a reliable data source (remember open new branch)
   - [ ] Close the issue once done
 - [ ] 1.12.5: Remove the basemaps that are no longer operational (add in some other ones to make up for this issue)
+- [ ] 1.12.6：Change scenarios to load on request to hasten loading (i.e., by hosting them on some other site, or on same git repo or something as a subpage, can go explore options)
 - [ ] 1.13.0：Scenario updates: 304BC: Fourth War of the Diadochi (technically in the middle of the Fourth War; why this particular date was since it is effectively the first confirmed year after which the Diadochi have declared each of themselves kings, in effect officially breaking from Alexander's subordinate status).
   - [ ] 1.13.1: minor visual updates; make the condensed timeline indicator bar smaller
   - [ ] 1.13.2: Scenario: 1776: US Declaration of Independence
@@ -124,6 +126,8 @@
   - [ ] 1.13.4：Scenario: 218BC: Second Punic War
   - [ ] 1.13.5: Scenario: 270: Restorer of the World (Aurelian becomes Emperor of Rome)
 - [ ] 2.0.0: Code refactoring, bring up to standards of idiomatic javascript (consider possibility of typescript transition or at least reasonable amount of typing (whilst keeping some legacy javascript written functionalities))
+  - [ ] New file format (ensure still have compatibility with old one, I guess add a marker for new file format a delimiter to signal file format is new); key is condensing the size substantially, compressing as much as possible
+  - [ ] Automated testing
   - [ ] Typing
   - [ ] Commenting
   - [ ] Cleaning logic flow (currently has some chaotic concurrency thing going on I think for certain actions)
@@ -131,8 +135,7 @@
 - [ ] 2.1.1: allow uploading a non custom geojson save file after previously loading a custom one
 - [ ] 2.2.0: 1 click color modern countries mode (try to somehow use the basemap information ideally)
   - Then in help tips, or tooltips, recommend using it aloneside a background map with nation borders, i.e. the black white map one
-- [ ] 2.3.0: 1776 scenario, US Independence
-- [ ] 2.3.1: Change increment amounts in themes for more reasonable experience, e.g. border width shouldn't increment by 1 upon pressing buttons, but instead by 0.1
+- [ ] 2.3.0: Change increment amounts in themes for more reasonable experience, e.g. border width shouldn't increment by 1 upon pressing buttons, but instead by 0.1
 
 ## Bugs
 

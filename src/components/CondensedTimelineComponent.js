@@ -2,7 +2,7 @@
 import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Slide from '@material-ui/core/Slide';
-import Scrollbars from 'react-custom-scrollbars';
+import Scrollbars from 'react-custom-scrollbars-2';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -15,7 +15,6 @@ import CondensedTimelineDeleteButton from "./CondensedTimelineDeleteButton.js"
 
 // Import retract button custom component
 import RetractButton from './RetractButton.js';
-import { CallReceived } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
     condensedTimelineContainer: {

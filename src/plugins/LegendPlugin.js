@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import Scrollbars from 'react-custom-scrollbars';
+import Scrollbars from 'react-custom-scrollbars-2';
 import cloneDeep from "clone-deep";
 import InputBase from '@material-ui/core/InputBase';
 import Typography from '@material-ui/core/Typography';
