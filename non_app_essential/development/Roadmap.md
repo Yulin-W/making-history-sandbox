@@ -129,19 +129,14 @@
   - [ ] 1.13.3: Scenario: 1618 scenario, 30 years war begin
   - [ ] 1.13.4：Scenario: 218BC: Second Punic War
   - [ ] 1.13.5: Scenario: 270: Restorer of the World (Aurelian becomes Emperor of Rome)
-- [ ] 2.0.0: Code refactoring, bring up to standards of idiomatic javascript (consider possibility of typescript transition or at least reasonable amount of typing (whilst keeping some legacy javascript written functionalities))
-  - [ ] New file format (ensure still have compatibility with old one, I guess add a marker for new file format a delimiter to signal file format is new); key is condensing the size substantially, compressing as much as possible
-  - [ ] Automated testing
-  - [ ] Typing
-  - [ ] Commenting
-  - [ ] Cleaning logic flow (currently has some chaotic concurrency thing going on I think for certain actions)
-- [ ] 2.0.1: User interface, add hover lightup to anything that is editable or pressable (e.g. legend labels, marker plugin selection, etc.)
-- [ ] 2.1.0: Speed improvement to changing timeline entries, and maybe improving speed by not rerendering entire canvas on changing region hovered over or colored? Get performance upon timepoint switch to those of the old editor level. Main issue is the rerendering due to markets; can't really find a easy way without massive refactoring.
-- [ ] 2.1.1: allow uploading a non custom geojson save file after previously loading a custom one
-- [ ] 2.2.0: 1 click color modern countries mode (try to somehow use the basemap information ideally)
+- [ ] 1.14.0: User interface, add hover lightup to anything that is editable or pressable (e.g. legend labels, marker plugin selection, etc.)
+- [ ] 1.15.0: Speed improvement to changing timeline entries, and maybe improving speed by not rerendering entire canvas on changing region hovered over or colored? Get performance upon timepoint switch to those of the old editor level. Main issue is the rerendering due to markets; can't really find a easy way without massive refactoring. Use various profiling approaches to find the issue, aim to be at least as responsive and quick and smooth as the old map app
+  - [ ] 1.15.1: Check any potential timing issues with the play timeline feature so that it plays at the intended speed at actual regular interval (avoid stutter)
+- [ ] 1.16.0: allow uploading a non custom geojson save file after previously loading a custom one
+- [ ] 1.17.0: 1 click color modern countries mode (try to somehow use the basemap information ideally)
   - Then in help tips, or tooltips, recommend using it aloneside a background map with nation borders, i.e. the black white map one
-- [ ] 2.3.0: Change increment amounts in themes for more reasonable experience, e.g. border width shouldn't increment by 1 upon pressing buttons, but instead by 0.1
-- [ ] 2.4.0: Automatic map generator from imported image of world map (using some computer vision AI I think might be best, also a show of AI skills learning computer vision)
+- [ ] 1.18.0: Change increment amounts in themes for more reasonable experience, e.g. border width shouldn't increment by 1 upon pressing buttons, but instead by 0.1
+- [ ] 1.19.0: Automatic map generator from imported image of world map (using some computer vision AI I think might be best, also a show of AI skills learning computer vision)
 
 ## Bugs
 
@@ -161,7 +156,8 @@
 
 ## Possible future plugins (these can go into separate repos, as separate projects), some might not be plugins in the sense that it goes into the sidebar menu
 
-- [ ] Add extra inbuilt base map, a more reasonable one with finer dividsions where it needs and less fine where it isn't needed
+- [ ] Add extra inbuilt base map, a more reasonable one with finer divisions where it needs and less fine where it isn't needed
+  - [ ] Though better to keep as a online database for people to download and load indirectly through the app by using some button (like what I planned for the scenarios)
 - [ ] Convert image to basemap/scenario, of appropriate format
 - [ ] Wikipedia event AI recommendation
 - [ ] Auto generation of territorial changes based on natural language processing or just in general with randomness
