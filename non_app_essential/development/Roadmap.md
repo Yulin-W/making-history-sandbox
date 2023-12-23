@@ -118,11 +118,12 @@
 - [ ] 1.12.4：Integrate region data showcasing: https://github.com/Yulin-W/making-history-sandbox/issues/41. Will need to first find a reliable data source (remember open new branch)
   - [ ] Only display statistics of a particular selected color on the side panel
   - [ ] Setup a popup that freezes the app and occupies most of screen panel for more detailed summaries of all regions present (spreadsheet like or whatnot)
-  - [ ] Close the issue once done
+  - [ ] Close the relevant Github issue after 1.12.7 is done, not this one (and address the question regarding where to find GeoJSONs)
   - [ ] Add some tests if possible
   - [ ] Remember joyride update and tutorials
 - [ ] 1.12.5: Remove the basemaps that are no longer operational (add in some other ones to make up for this issue)
 - [ ] 1.12.6：Change scenarios to load on request to hasten loading (i.e., by hosting them on some other site, or on same git repo or something as a subpage, can go explore options)
+- [ ] 1.12.7：Change custom geojson formatting requirements to be much more relaxed (by doing some processing on my end to get it to the format I need; i.e. write bit of code to check format of geojson is in the format I use, and upon loading change any reformatable geojson to the format I used (if unable to format to our format then pop an error warning))
 - [ ] 1.13.0：Scenario updates: 304BC: Fourth War of the Diadochi (technically in the middle of the Fourth War; why this particular date was since it is effectively the first confirmed year after which the Diadochi have declared each of themselves kings, in effect officially breaking from Alexander's subordinate status).
   - [ ] 1.13.1: minor visual updates; make the condensed timeline indicator bar smaller
   - [ ] 1.13.2: Scenario: 1776: US Declaration of Independence
