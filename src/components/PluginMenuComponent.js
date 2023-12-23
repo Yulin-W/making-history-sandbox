@@ -1,4 +1,4 @@
-import React, { useDebugValue } from "react";
+import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import plugins from "../appPlugins.js";
 import Accordion from '@material-ui/core/Accordion';

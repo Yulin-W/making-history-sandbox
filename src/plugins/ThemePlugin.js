@@ -77,6 +77,8 @@ function ThemePluginComponent(props) {
                     setThemeDict(newTheme);
                 }}
             />)
+        } else {
+            return (null)
         }
     });
     return (

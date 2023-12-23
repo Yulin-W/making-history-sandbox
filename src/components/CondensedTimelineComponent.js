@@ -15,7 +15,6 @@ import CondensedTimelineDeleteButton from "./CondensedTimelineDeleteButton.js"
 
 // Import retract button custom component
 import RetractButton from './RetractButton.js';
-import { CallReceived } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
     condensedTimelineContainer: {

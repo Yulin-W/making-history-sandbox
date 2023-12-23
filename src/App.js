@@ -379,7 +379,7 @@ class App extends React.Component {
         }) // Note reset style is included in the updateActiveEntry function already
       } else {
         // deleted entry is the current entry; this shouldn't happen for this case. So throw an error
-        throw "Delete entry is current entry despite this if/else cases is intended for situation where that is not true";
+        throw new Error("Delete entry is current entry despite this if/else cases is intended for situation where that is not true");
       }
     }
 
@@ -625,7 +625,6 @@ class App extends React.Component {
   }
 
   render() {
-    const { classes } = this.props;
     return (
       <ThemeProvider theme={theme}>
         <div className="App">

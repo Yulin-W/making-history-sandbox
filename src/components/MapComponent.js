@@ -3,7 +3,7 @@ import React from "react";
 import { withStyles } from '@material-ui/core/styles';
 
 // Import leaflet and related libraries
-import { MapContainer, GeoJSON, TileLayer, AttributionControl, LayersControl, FeatureGroup, useMap } from 'react-leaflet';
+import { MapContainer, GeoJSON, TileLayer, AttributionControl, LayersControl, FeatureGroup } from 'react-leaflet';
 import "leaflet/dist/leaflet.css";
 import JsxMarker from "./JsxMarker.js";
 

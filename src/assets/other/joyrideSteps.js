@@ -22,7 +22,7 @@ const steps = [
                         <p>Removing borders: set region border width to 0 in theme panel on the right</p>
                         <p>Adding markers with tooltips: use marker box on side panel; added markers can be dragged and clicked to reveal/edit tooltip</p>
                         <hr />
-                        <p>Making custom regions: <a href="https://github.com/Yulin-W/making-history-sandbox/blob/main/customRegionTutorial.md" target="_blank">Custom Region Tutorial</a></p>
+                        <p>Making custom regions: <a href="https://github.com/Yulin-W/making-history-sandbox/blob/main/customRegionTutorial.md" target="_blank" rel="noreferrer">Custom Region Tutorial</a></p>
                         <hr />
                         <p>See acknowledgements at the end of the tutorial</p>
                         <p>Disclaimer: Making History Sandbox (application) is not intended to be historically accurate nor do they represent personal views of the author. The application is provided without any warranty of any kind whatsoever, either express or implied.</p>

@@ -48,9 +48,9 @@ class Loader { // Class which loads saves into the app, converting them regardle
 
         if (version === "1.0") {
             return this.processSave(this.one_zero_to_one_one(save));
-        } else if (version == "1.1") {
+        } else if (version === "1.1") {
             return this.one_one_to_one_two(save);
-        } else if (version == this.currentSaveVersion) { // no modification needed
+        } else if (version === this.currentSaveVersion) { // no modification needed
             return save;
         }
     }
