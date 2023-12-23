@@ -10,12 +10,11 @@ const steps = [
                     <Scrollbars>
                         <p>Welcome to Making History Sandbox! Click NEXT for the tutorial or SKIP to close the tutorial.</p>
                         <hr />
-                        <p>***NEW FEATURES*** January, 2023</p>
-                        <p>Loading GeoJSON/saves from LOAD button on top left.</p>
-                        <p>Accept more generic GeoJSON: no need for regionID and name fields (albeit recommended to have a name field)</p>
-                        <p>Play timeline toolbar (on the left of the page): Currently offers 1x to 16x speeds, where 1x corresponds to ~2s per time point</p>
+                        <p>***NEW FEATURES*** December, 2023</p>
+                        <p>Summary statistics for regions of the selected color</p>
                         <hr />
                         <p>FAQs:</p>
+                        <p>Load historic map presets: see 'Scenarios' in the panel on the right (may need to scroll the panel)</p>
                         <p>I want to use different regions: download any geoJSON file with regions you want (plenty online), or make your own (see tutorials below) and just load it.</p>
                         <p>Can't load a normal map save after loading a custom GeoJSON: refresh then load</p>
                         <p>Changing color of regions of same color: toggle "Same" button, then color as usual</p>
