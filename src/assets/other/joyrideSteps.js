@@ -63,12 +63,12 @@ const steps = [
         content: 'This is a condensed view of the timeline. You can also navigate to events by clicking them here. Adding and deleting events can also be done (using +, x buttons). Albeit editing cannot be done here.',
     },
     {
-        target: '#plugin_menu',
-        content: "This is where additional functionalities are, including legend, premade scenarios, map theme editing (e.g. borders), loading custom region file/save, etc. For custom region tutorial see https://github.com/Yulin-W/making-history-sandbox/blob/main/customRegionTutorial.md",
+        target: '#menu',
+        content: 'This is the menu bar where the timeline can be saved and loaded.'
     },
     {
-        target: '#menu',
-        content: 'This is the menu bar. I guess there is not much to say.'
+        target: '#plugin_menu',
+        content: "This is where additional functionalities are, including legend, premade scenarios, map theme editing (e.g. borders), loading custom region file/save, etc. For further information, please hover over question marks of individual sub-panels (after this tutorial). For custom region tutorial see: https://github.com/Yulin-W/making-history-sandbox/blob/main/customRegionTutorial.md",
     },
     {
         target: 'body',
