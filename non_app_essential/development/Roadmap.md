@@ -141,6 +141,7 @@
 - [ ] 2.2.0: 1 click color modern countries mode (try to somehow use the basemap information ideally)
   - Then in help tips, or tooltips, recommend using it aloneside a background map with nation borders, i.e. the black white map one
 - [ ] 2.3.0: Change increment amounts in themes for more reasonable experience, e.g. border width shouldn't increment by 1 upon pressing buttons, but instead by 0.1
+- [ ] 2.4.0: Automatic map generator from imported image of world map (using some computer vision AI I think might be best, also a show of AI skills learning computer vision)
 
 ## Bugs
 
