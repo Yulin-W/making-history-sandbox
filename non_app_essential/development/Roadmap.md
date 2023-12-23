@@ -135,6 +135,7 @@
   - [ ] Typing
   - [ ] Commenting
   - [ ] Cleaning logic flow (currently has some chaotic concurrency thing going on I think for certain actions)
+- [ ] 2.0.1: User interface, add hover lightup to anything that is editable or pressable (e.g. legend labels, marker plugin selection, etc.)
 - [ ] 2.1.0: Speed improvement to changing timeline entries, and maybe improving speed by not rerendering entire canvas on changing region hovered over or colored? Get performance upon timepoint switch to those of the old editor level. Main issue is the rerendering due to markets; can't really find a easy way without massive refactoring.
 - [ ] 2.1.1: allow uploading a non custom geojson save file after previously loading a custom one
 - [ ] 2.2.0: 1 click color modern countries mode (try to somehow use the basemap information ideally)
