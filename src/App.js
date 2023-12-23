@@ -66,6 +66,7 @@ class App extends React.Component {
       createScenarioEntry(this.regionDictDefault, "2010 Jan 1", "Another Event"),
     ];
 
+    // Set initial state
     this.plugins = plugins;
     // Default values should ideally all be based off the scenarioDataDefault
     // Setup default state values
@@ -80,7 +81,6 @@ class App extends React.Component {
       colorData.push({});
     }
 
-    // Set initial state
     this.state = {
       themeDict: this.themeDictDefault,
       scenarioData: this.scenarioDataDefault, // Array of information for the scenarios
