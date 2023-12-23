@@ -125,10 +125,6 @@ function MarkerPluginComponent(props) {
 
     return (
         <div id="marker_panel" className={classes.markerContainer}>
-            <Typography className={classes.markerHelp} align="left" variant="caption">Choose icon: click icon</Typography>
-            <Typography className={classes.markerHelp} align="left" variant="caption">Choose color: click rectangle.</Typography>
-            <Typography className={classes.markerHelp} align="left" variant="caption">Drag icon: click and hold.</Typography>
-            <Typography className={classes.markerHelp} align="left" variant="caption">Remove icon or view/edit its tooltip: click icon on the map.</Typography>
             <div className={classes.iconSelect}>
                 <IconSelector value={Icon} color={color} updateIconIndex={setIconIndex}/>
                 <Input className={classes.iconColorInput} value={color} type="color" onChange={e => setColor(e.target.value)} />
@@ -155,7 +151,7 @@ const initState = scenarioData => {
 const MarkerPluginDict = {
     component: MarkerPluginComponent,
     initState: initState,
-    help: "For adding colored markers to the map.",
+    help: "For adding colored markers to the map. \n Choose icon: click icon \n Choose color: click rectangle \n Drag icon: click and hold \n Remove icon or view/edit its tooltip: click icon on the map",
     functions: {
         onUpdateActiveEntry: onUpdateActiveEntry,
         onAddEntry: onAddEntry,
