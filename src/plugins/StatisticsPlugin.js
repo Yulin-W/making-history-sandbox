@@ -7,7 +7,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 const useStyles = makeStyles((theme) => ({
     statisticsContainer: {
-        height: 240,
+        height: 200,
         width: "100%",
         display: "flex",
         flexFlow: "column",
@@ -17,9 +17,14 @@ const useStyles = makeStyles((theme) => ({
 
 function StatisticsComponent(props) {
     const classes = useStyles();
+    // FIXME: use a material UI table or something similar IMO
     return (
         <div id="statistics" className={classes.statisticsContainer}>
-            <Typography variant="caption">Statistics Placeholder</Typography>
+            <div>Land Area</div>
+            <div>Population</div>
+            <div>Population Density</div>
+            <div>GDP</div>
+            <div>GDP per cap</div>
         </div>
     );
 }
@@ -32,9 +37,8 @@ const initState = scenarioData => {
 const StatisticsPluginDict = {
     component: StatisticsComponent,
     initState: initState,
-    help: "Summary statistics for selected regions", // TODO: change this to specify date for which data is valid; e.g. 2020 depending on source
-    functions: {
-    }
+    help: "Summary statistics for selected regions \n Select color by picking it on the map or clicking the color box in the legend", // TODO: change this to specify date for which data is valid; e.g. 2020 depending on source
+    functions: {}
 };
 
 export default StatisticsPluginDict;

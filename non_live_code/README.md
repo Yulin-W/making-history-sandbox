@@ -1,0 +1,1 @@
+This folder ('non_live_code') contains code files that are not ran live for the webapp, but instead for instance are ran during development to assist with developing the webapp. For example, code to generate a list of regions from the basemap to help develop of economic database for the basemap regions to use for the region statistics plugin of the webapp.
