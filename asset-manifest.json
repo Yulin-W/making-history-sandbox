@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/making-history-sandbox/static/css/main.d1d0e7cf.css",
-    "main.js": "/making-history-sandbox/static/js/main.92b24652.js",
+    "main.js": "/making-history-sandbox/static/js/main.9cce88ea.js",
     "static/media/MarbleTexture.jpg": "/making-history-sandbox/static/media/MarbleTexture.1cb26e163b8a8bf91682.jpg",
     "static/media/GoldTexture.png": "/making-history-sandbox/static/media/GoldTexture.302ee534b548ea8edd59.png",
     "index.html": "/making-history-sandbox/index.html",
     "main.d1d0e7cf.css.map": "/making-history-sandbox/static/css/main.d1d0e7cf.css.map",
-    "main.92b24652.js.map": "/making-history-sandbox/static/js/main.92b24652.js.map"
+    "main.9cce88ea.js.map": "/making-history-sandbox/static/js/main.9cce88ea.js.map"
   },
   "entrypoints": [
     "static/css/main.d1d0e7cf.css",
-    "static/js/main.92b24652.js"
+    "static/js/main.9cce88ea.js"
   ]
 }
