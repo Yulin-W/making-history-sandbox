@@ -115,10 +115,11 @@
 - [x] 1.12.2: minor joyride update for FAQ regarding loading GeoJSON save files.
 - [x] 1.12.3: allow more general GeoJSON uploads (fixing issue #39)
   - [x] 1.12.3.1: dependency fixing, and eslint fixing
-- [ ] 1.12.4：Integrate region data showcasing: https://github.com/Yulin-W/making-history-sandbox/issues/41. Will need to first find a reliable data source (remember open new branch)
+- [ ] 1.12.4: Read region name properties from geoboundaries GeoJSON files (those with region name as "shapeName")
+- [ ] 1.12.5：Integrate region data showcasing: https://github.com/Yulin-W/making-history-sandbox/issues/41. Will need to first find a reliable data source (remember open new branch)
   - [ ] Close the issue once done
-- [ ] 1.12.5: Remove the basemaps that are no longer operational (add in some other ones to make up for this issue)
-- [ ] 1.12.6：Change scenarios to load on request to hasten loading (i.e., by hosting them on some other site, or on same git repo or something as a subpage, can go explore options)
+- [ ] 1.12.6: Remove the basemaps that are no longer operational (add in some other ones to make up for this issue)
+- [ ] 1.12.7：Change scenarios to load on request to hasten loading (i.e., by hosting them on some other site, or on same git repo or something as a subpage, can go explore options)
 - [ ] 1.13.0：Scenario updates: 304BC: Fourth War of the Diadochi (technically in the middle of the Fourth War; why this particular date was since it is effectively the first confirmed year after which the Diadochi have declared each of themselves kings, in effect officially breaking from Alexander's subordinate status).
   - [ ] 1.13.1: minor visual updates; make the condensed timeline indicator bar smaller
   - [ ] 1.13.2: Scenario: 1776: US Declaration of Independence
