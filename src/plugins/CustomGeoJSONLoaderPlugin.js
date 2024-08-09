@@ -26,6 +26,18 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
+function removeGeoJSONFeatureUnusedProperties(featureProperties) {
+    // Filters all attributes of GeoJSON Feature object's properties to include only those used by the app (so to reduce lag)
+    // This filtering is in place, i.e. modifies the given object as opposed to returning filtered version
+    const allowedKeys = ["name", "regionID"];
+
+    for (const key in featureProperties) {
+        if (!allowedKeys.includes(key)) {
+            delete featureProperties[key];
+        }
+    }
+}
+
 function getCompatibleGeoJSON(rawObj) {
     // Convert geojson map or map in save to compatible format (i.e. polygons have name, regionID attribute) if doesn't exist already
     const obj = JSON.parse(JSON.stringify(rawObj)); // Makes a copy of the original file
@@ -45,10 +57,14 @@ function getCompatibleGeoJSON(rawObj) {
                 feature.properties['name'] = feature.properties['Name'];
             } else if ('NAME' in feature.properties) {
                 feature.properties['name'] = feature.properties['NAME'];
+            } else if ('shapeName' in feature.properties) {
+                feature.properties['name'] = feature.properties['shapeName'];
+
             } else {
                 feature.properties['name'] = `Region ${index}`;
             }
         }
+        removeGeoJSONFeatureUnusedProperties(feature.properties)
     });
 
     return obj;
@@ -87,6 +103,7 @@ export function loadGeoJSON(app, file) {
                 })
             });
         }
+        console.log(obj)
     });
 }
 
