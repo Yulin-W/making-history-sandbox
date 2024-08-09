@@ -10,13 +10,18 @@ const steps = [
                     <Scrollbars>
                         <p>Welcome to Making History Sandbox! Click NEXT for the tutorial or SKIP to close the tutorial.</p>
                         <hr />
-                        <p>***NEW FEATURES*** January, 2023</p>
-                        <p>Loading GeoJSON/saves from LOAD button on top left.</p>
+                        <p>***NEW FEATURES*** AUGUST, 2024</p>
+                        <p>Autoload region names for geojsons from <a href="https://www.geoboundaries.org/">geoBoundaries</a></p>
+                        <p>***(PAST) NEW FEATURES*** 2023</p>
+                        <p>Loading GeoJSON/saves from LOAD button on top left (no need to use right side panel anymore)</p>
                         <p>Accept more generic GeoJSON: no need for regionID and name fields (albeit recommended to have a name field)</p>
-                        <p>Play timeline toolbar (on the left of the page): Currently offers 1x to 16x speeds, where 1x corresponds to ~2s per time point</p>
+                        <hr />
+                        <p>Comments on <a href="https://www.geoboundaries.org/">geoBoundaries</a> geoJSONs</p>
+                        <p>ADMx means Administrative Level x (higher x means more detailed maps) (the app's default is a ADM1 world map)</p>
+                        <p>Recommended to use at most ADM2 single country files or ADM1 world files (otherwise file too large and will likely crash/lag)</p>
                         <hr />
                         <p>FAQs:</p>
-                        <p>I want to use different regions: download any geoJSON file with regions you want (plenty online), or make your own (see tutorials below) and just load it.</p>
+                        <p>I want to use different regions: download any geoJSON file with regions you want (plenty online, good resource is <a href="https://www.geoboundaries.org/">geoBoundaries</a>), or make your own (see tutorials below) and just load it. </p>
                         <p>Can't load a normal map save after loading a custom GeoJSON: refresh then load</p>
                         <p>Changing color of regions of same color: toggle "Same" button, then color as usual</p>
                         <p>Removing borders: set region border width to 0 in theme panel on the right</p>
