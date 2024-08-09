@@ -103,7 +103,6 @@ export function loadGeoJSON(app, file) {
                 })
             });
         }
-        console.log(obj)
     });
 }
 
