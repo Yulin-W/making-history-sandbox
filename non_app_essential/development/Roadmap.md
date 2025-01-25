@@ -116,6 +116,7 @@
 - [x] 1.12.3: allow more general GeoJSON uploads (fixing issue #39)
   - [x] 1.12.3.1: dependency fixing, and eslint fixing
 - [x] 1.12.4: Read region name properties from geoboundaries GeoJSON files (those with region name as "shapeName")
+- [ ] 1.12.4.1: Make file upload selection (GeoJSON, Save load, etc.) all single selection only (to reflect current functionalities and avoid bugs)
 - [ ] 1.12.5：Integrate region data showcasing: https://github.com/Yulin-W/making-history-sandbox/issues/41. Will need to first find a reliable data source (remember open new branch)
   - [ ] Close the issue once done
 - [ ] 1.12.6: Remove the basemaps that are no longer operational (add in some other ones to make up for this issue)
