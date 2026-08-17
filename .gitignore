@@ -23,5 +23,23 @@ yarn-debug.log*
 yarn-error.log*
 
 .env
-
 .history
+
+# IDE & Editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Obsidian local cache
+.obsidian/workspace*
+.obsidian/cache/
+.obsidian/indexeddb/
+
+# Secrets & Credentials
+*.pem
+*.key
+*.pfx
+credentials.json
+secrets.json
+auth.json

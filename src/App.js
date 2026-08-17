@@ -38,12 +38,6 @@ import cloneDeep from "clone-deep";
 import ReactJoyride, { EVENTS } from 'react-joyride';
 import steps from './assets/other/joyrideSteps.js';
 
-// Import Google Analytics
-import ReactGA from 'react-ga';
-
-// Setup Google Analytics
-ReactGA.initialize("UA-176706567-4");
-ReactGA.pageview(window.location.pathname + window.location.search);
 
 const theme = createMuiTheme(themeDict.material);
 
