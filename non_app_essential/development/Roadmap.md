@@ -147,6 +147,13 @@
 
 ## Potential future versions (won't work on it soon)
 
+- [ ] IF IT ISN'T BROKEN DON'T CHANGE IT. OLD USERS HAVE GOTTEN USED TO THE UI. DON'T DRASTICALLY CHANGE AT ALL.
+- [ ] New features; But do not bloat; the core old feature should stay as is for user familiaristy. IF IT ISN'T BROKEN DON'T CHANGE IT. 
+- [ ] Improve tool outreach
+  - [ ] More languages and accessible by more people
+  - [ ] Make more search optimised on diffrent languages.
+  - [ ] Do another wave of outreach to potential users possibly on different languages
+- [ ] Better local save and automatic memory? Link with Google Drive User Login? We'll see
 - [ ] Add flag overlap capability (automatic adjust kind) (if done, go reply to the dude that sent the email request)
 - [ ] Save condensing (alter save format to enable smaller size saves): ensure though compatibility with previous saves
 - [ ] Undo button; i think just keep track of past calls of region assigning of current entry, i think past 10 calls should be enough; and history kept clears upon changing entry.
